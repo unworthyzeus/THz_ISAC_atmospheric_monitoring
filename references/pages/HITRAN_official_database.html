@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="author" content="Christian Hill"/>
+<meta name="keywords" content="HITRAN, HITRANonline, Spectroscopy, Radiative Transfer, Database, Line list"/>
+<meta name="description" content="HITRANonline interface to the HITRAN database"/>
+<meta name="robots" content="all"/>
+
+<title>HITRANonline</title>
+<link rel="shortcut icon" type="image/png" href="/media/images/favicon.gif"/>
+
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="/static/css/layout.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="/static/css/nav.css" type="text/css" media="screen"/>
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.js" type="text/javascript"></script>
+
+<!-- Fall back to local copies of fonts, js and css if jquery didn't load -->
+<script type="text/javascript">
+    if (typeof jQuery == 'undefined') {
+        document.write('<script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"><\/script>');
+        /* if we didn't get the javascript js files, presumably we didn't get
+           the jquery ui css either */
+        document.write('<link rel="stylesheet" type="text/css" href="/static/css//jquery-ui-1.11.0/smoothness/jquery-ui.min.css"\/>');
+        document.write('<link rel="stylesheet" href="/static/css/local-fonts.css" type="text/css"\/>');
+    }
+</script>
+
+<script type="text/javascript">
+function init() { }
+</script>
+
+
+
+<!--<script src="/static/js/snowstorm.js"></script>-->
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $(".news-section").each(function()
+    {
+        var txtselection = window.getSelection();
+        $(this).find(".news-content").hide()
+        
+        $(this).click(function(e)
+        {        
+            if(  e.target.tagName.toLowerCase() != 'a'  &&  txtselection.toString().length === 0 ) {
+                $(this).find(".news-content").toggle();
+                $(this).find("span").toggleClass("fa-caret-down").toggleClass("fa-caret-up");
+            }
+        });
+        
+    });
+});
+</script>
+
+
+</head>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CD92L6Q2JQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CD92L6Q2JQ');
+</script>
+
+
+<body id="undefined">
+
+<noscript>
+    <div id="javascript-not-enabled-div">
+    <p>To search HITRAN<em>online</em>, please enable JavaScript in your browser.</p>
+    </div>
+</noscript>
+
+<div id="container">
+
+<div id="header">
+<!-- header contains heading, navigation and subheading -->
+
+<div id="heading" class="clear">
+<h1><strong>HITRAN</strong><em>online</em></h1>
+
+<div id="loginout">
+
+<p><a href="/login">Login</a> | <a href="/register">Register</a></p>
+
+</div>
+
+</div>
+
+
+<div id="nav">
+<ul>
+    <li><a href="/home/" class="selected">Home</a></li>
+    <li><a href="/data-index">Data Access</a>
+        <ul>
+        <li><a href="/lbl/">Line-by-line</a></li>
+        <li><a href="/xsc/">Absorption Cross Sections</a></li>
+        <li><a href="/cia/">Collision Induced Absorption</a></li>
+        <li><a href="/mtckd/">MT_CKD Water Vapor Continuum</a></li>
+        <li><a href="/aerosols/">Aerosol Properties</a></li>
+        <li><a href="/hitemp/">HITEMP</a></li>
+        <li><a href="/hapi/">HAPI</a></li>
+        <li><a href="/supplementary/">Supplemental</a></li>
+        </ul>
+    </li>
+    <li><a href="/docs/">Documentation</a>
+        <ul>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/docs/molec-meta/">Molecules</a></li>
+        <li><a href="/docs/iso-meta/">Isotopologues</a></li>
+        <li><a href="/docs/">Definitions <i class="fa-solid fa-caret-right"></i></a>
+        <ul>
+            <li><a href="/docs/definitions-and-units/">Line-by-line Parameters</a></li>
+            <li><a href="/docs/cross-sections-definitions/">Cross Section Data</a></li>
+        </ul>
+        </li>
+        <li><a href="/docs/uncertainties/">Uncertainties</a></li>
+        <li><a href="/quanta/">Quantum Notation</a></li>
+        <li><a href="/docs/hitran-papers/">HITRAN Papers</a></li>
+        <li><a href="/videos/">Video Tutorials</a></li>
+        <li><a href="/citepolicy/">Citation Policy</a></li>
+        </ul>
+    </li>
+    <li><a href="/conferences/">Conferences</a></li>
+    <li><a href="/links/">Links</a></li>
+    <li><a href="/about/">About</a>
+        <ul>
+        <li><a href="/about/">About HITRAN</a></li>
+        <li><a href="/about/group">Group Members</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+<div class="spacer">
+</div>
+
+
+<div id="subheading" class="clear">
+
+<h2>The HITRAN Database</h2>
+
+<div id="user-setting-icons">
+<p class="inactive">
+<a href="/settings/"><span class="fa-solid fa-gear" id="settings" style="font-size: 1.0em;vertical-align:middle;" title="Settings"></span></a>
+<!--<a href="/settings/"><span  class="fa-stack fa-1x" style="font-size: 0.5em;vertical-align:middle;" ><i class="fa-regular fa-circle fa-stack-2x"></i><i class="fa-solid fa-gear fa-stack-1x"></i>  </span></a>-->
+<a href="/profile/history/"><span class="fa-regular fa-clock" style="font-size: 1.0em;vertical-align:middle;" title="Search History"></span></a>
+<a href="/profile/"><span class="fa-regular fa-circle-user" style="font-size: 1.0em;vertical-align:middle;" title="Profile"></span></a>
+
+</p>
+</div>
+</div>
+
+<div id="subsubheading">
+
+
+</div>
+
+</div>  <!-- end div of header -->
+
+
+
+<div class="www_content home_page">
+<div class="home-content">
+<p>HITRAN is an acronym for <em>hi</em>gh-resolution <em>tran</em>smission molecular absorption database. HITRAN is a compilation of spectroscopic parameters that a variety of computer codes use to predict and simulate the transmission and emission of light in the atmosphere. HITRAN data is predominantly used in atmospheric science and astrophysics, but it has many applications throughout science, industry, and technology.</p>
+
+
+
+<div style="border: 2px solid #ea4; border-radius: 20px; padding: 5px; text-align: center; max-width: 450px; margin: 0 auto;" >
+
+<table cellpadding="0" cellspacing="0" border="0" width="420" style="text-align: center; vertical-align: middle; margin: 0 auto;" >
+
+<tr>
+<td width="25%" height="40">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-xl" > 
+<a class="fa-regular fa-calendar-check fa-2x" style="color:#ea4;text-decoration:none;"></a>
+</span></div></td>
+
+<td width="25%" height="40">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-xl"> 
+<a class="fa-solid fa-share-nodes fa-rotate-180 fa-2x" style="color:#ea4;text-decoration:none;"></a>
+</span></div></td>
+
+<td width="25%" height="40">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-xl"> 
+<a class="fa-solid fa-users fa-2x" style="color:#ea4;text-decoration:none;"></a>
+</span></div></td>
+
+<td width="25%" height="40">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-xl"> 
+<a class="fa-solid fa-download fa-2x" style="color:#ea4;text-decoration:none;"></a>
+</span></div></td>
+</tr>
+
+<tr>
+<td width="25%" height="20">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<font size="6" color="black" style=" vertical-align:middle;"><b>50+</b></font></a>
+</div></td>
+<td width="25%" height="20">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<font size="6" color="black" style=" vertical-align:middle;"><b>660+</b></font></a>
+</div></td>
+<td width="25%" height="20">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<font size="6" color="black" style=" vertical-align:middle;"><b>43k+</b></font></a>
+</div></td>
+<td width="25%" height="20">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<font size="6" color="black" style=" vertical-align:middle;"><b>600GB+</b></font></a>
+</div></td>
+</tr>
+
+<tr>
+<td width="25%" height="20">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<font size="3" color="black" style=" vertical-align:middle;">Years of science</font></a>
+</div></td>
+<td width="25%" height="20">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<font size="3" color="black" style=" vertical-align:middle;">Molecules represented</font></a>
+</div></td>
+<td width="25%" height="20">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<font size="3" color="black" style=" vertical-align:middle;">Users worldwide</font></a>
+</div></td>
+<td width="25%" height="20">
+<div align="center" style="margin-top: 3px;margin-left: 3px;">
+<font size="3" color="black" style=" vertical-align:middle;">Monthly downloads</font></a>
+</div></td>
+</tr>
+
+</table>
+</div>
+
+
+<p>The HITRAN project is directed from the <a target="_blank" href="https://www.cfa.harvard.edu/">Center for Astrophysics | Harvard &amp; Smithsonian</a>. Development and maintenance of HITRAN is currently supported by the <a target="_blank" href="https://www.nasa.gov/">National Aeronautics and Space Administration (NASA)</a>.</p>
+
+
+
+
+
+<!--
+<table cellpadding="0" cellspacing="0" border="0" width="550" style="text-align: center; vertical-align: middle;" >
+<tr>
+<td width="40%" height="70">
+<div align="left" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-lg" > 
+<a href="/citepolicy/" class="fa-solid fa-square fa-stack-2x" style="color:#319179;text-decoration:none;"></a> 
+<a href="/citepolicy/" class="fa-solid fa-quote-left fa-inverse fa-stack-1x" style="text-decoration:none;"></a> 
+</span> 
+<a href="/citepolicy/" style="text-decoration:none;"><font size="5" color="black" style=" line-height:46px; vertical-align:middle;">Citation Policy</font></a>
+</div>
+</td>
+
+<td width="30%">
+<div align="left" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-lg"> 
+<a target="_blank" href="https://www.youtube.com/playlist?list=PLqOG3cBizTUFQw5lwpkCpQFCVuxHTZgrT" class="fa-solid fa-square fa-stack-2x" style="color:#ff0000;text-decoration:none;" ></a> 
+<a target="_blank" href="https://www.youtube.com/playlist?list=PLqOG3cBizTUFQw5lwpkCpQFCVuxHTZgrT" class="fa-brands fa-youtube fa-inverse fa-stack-1x" style="text-decoration:none;"></a> 
+</span> 
+<a target="_blank" href="https://www.youtube.com/playlist?list=PLqOG3cBizTUFQw5lwpkCpQFCVuxHTZgrT" style="text-decoration:none;"><font size="5" color="black" style=" line-height:46px; vertical-align:middle;">Tutorials</font></a>
+</div>
+</td>
+
+<td width="30%" height="70">
+<div align="left" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-lg"> 
+<a target="_blank" href="https://twitter.com/hitran" class="fa-solid fa-square fa-stack-2x" style="color:#1DA1F2;text-decoration:none;" ></a> 
+<a target="_blank" href="https://twitter.com/hitran" class="fa-brands fa-x-twitter fa-inverse fa-stack-1x" style="text-decoration:none;"></a> 
+</span> 
+<a target="_blank" href="https://twitter.com/hitran" style="text-decoration:none;"><font size="5" color="black" style=" line-height:46px; vertical-align:middle;">@hitran</font></a>
+</div>
+</td>
+
+-->
+
+</tr>
+</table>
+
+<div align="left" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-lg" > 
+<a href="/citepolicy/" class="fa-solid fa-square fa-stack-2x" style="color:#319179;text-decoration:none;"></a> 
+<a href="/citepolicy/" class="fa-solid fa-quote-left fa-inverse fa-stack-1x" style="text-decoration:none;"></a> 
+</span> 
+<a href="/citepolicy/" style="text-decoration:none;"><font size="5" color="black" style=" line-height:46px; vertical-align:middle;">Citation Policy</font></a>
+</div>
+
+<div align="left" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-lg"> 
+<a target="_blank" href="https://www.youtube.com/playlist?list=PLqOG3cBizTUFQw5lwpkCpQFCVuxHTZgrT" class="fa-solid fa-square fa-stack-2x" style="color:#ff0000;text-decoration:none;" ></a> 
+<a target="_blank" href="https://www.youtube.com/playlist?list=PLqOG3cBizTUFQw5lwpkCpQFCVuxHTZgrT" class="fa-brands fa-youtube fa-inverse fa-stack-1x" style="text-decoration:none;"></a> 
+</span> 
+<a target="_blank" href="https://www.youtube.com/playlist?list=PLqOG3cBizTUFQw5lwpkCpQFCVuxHTZgrT" style="text-decoration:none;"><font size="5" color="black" style=" line-height:46px; vertical-align:middle;">Tutorials</font></a>
+</div>
+
+<div align="left" style="margin-top: 3px;margin-left: 3px;">
+<span class="fa-stack fa-lg"> 
+<a target="_blank" href="https://twitter.com/hitran" class="fa-solid fa-square fa-stack-2x" style="color:#1DA1F2;text-decoration:none;" ></a> 
+<!--<a target="_blank" href="https://twitter.com/hitran" class="fa-solid fa-square fa-stack-2x" style="color:#000000;text-decoration:none;" ></a>-->
+<a target="_blank" href="https://twitter.com/hitran" class="fa-brands fa-x-twitter fa-inverse fa-stack-1x" style="text-decoration:none;"></a> 
+</span> 
+<a target="_blank" href="https://twitter.com/hitran" style="text-decoration:none;"><font size="5" color="black" style=" line-height:46px; vertical-align:middle;">@hitran</font></a>
+</div>
+
+
+</div>
+
+
+<div class="news-sidebar">
+<h3>News</h3>
+
+<div class="news-section">
+<h4 ><div style="font-weight:normal;display:inline;">Jul 2026 &#124;</div> 43000 users milestone</h4>
+<div class="pull-down-icon"><span class="fa-solid fa-caret-down" style="cursor:pointer;"></span></div>
+<div class="spacer"></div>
+<div class="news-content">
+<p>We are pleased to announce there are now over 43000 registered users of www.hitran.org</p>
+<div class="date-footer" align="right">
+<p>July 2026</p>
+</div>
+</div>
+</div>
+
+<div class="news-section">
+<h4 ><div style="font-weight:normal;display:inline;">May 2026 &#124;</div> Second circular for the ASA-HITRAN meeting (Aug 26-28, 2026) is now available</h4>
+<div class="pull-down-icon"><span class="fa-solid fa-caret-down" style="cursor:pointer;"></span></div>
+<div class="spacer"></div>
+<div class="news-content">
+<p> The ASA - HITRAN 2026 will be held in Reims, France, from 26 – 28 August 2026. The second circular is available <a href="https://www.univ-reims.fr/asa-hitran/second-circular/second-circular,30319,46874.html">here</a>. </p>
+<div class="date-footer" align="right">
+<p>May 2026</p>
+</div>
+</div>
+</div>
+
+<div class="news-section">
+<h4 ><div style="font-weight:normal;display:inline;">Jan 2026 &#124;</div> &#128226; <font color="brown">HITRAN2024 is now live!</font>   &#128680;</h4>
+<div class="pull-down-icon"><span class="fa-solid fa-caret-down" style="cursor:pointer;"></span></div>
+<div class="spacer"></div>
+<div class="news-content">
+<p> The new edition of the HITRAN database is now officially available on our server. The HITRAN2020paper describing the new edition is available in Open Access</p>
+
+<p> I.E. Gordon, L.S. Rothman, R.J. Hargreaves, F.M. Gomez, T. Bertin, C. Hill, R.V. Kochanov, Y. Tan, P. Wcisło, V.Yu. Makhnev, P.F. Bernath, M. Birk, V. Boudon, A. Campargue, A. Coustenis, B.J. Drouin, R.R. Gamache, J.T. Hodges, D. Jacquemart, E.J. Mlawer, A.V. Nikitin, V.I. Perevalov, M. Rotger, S. Robert, J. Tennyson, G.C. Toon, H. Tran, V.G. Tyuterev, E.M. Adkins, A. Barbe, D.M. Bailey, K. Bielska, L. Bizzocchi, T.A. Blake, C.A. Bowesman, P. Cacciani, P. Čermák, A.G. Császár, L. Denis, S.C. Egbert, O. Egorov, A.Yu. Ermilov, A.J. Fleisher, H. Fleurbaey, A. Foltynowicz, T. Furtenbacher, M. Germann, E.R. Guest, J.J. Harrison, J.-M. Hartmann, A. Hjältén, S.-M. Hu, X. Huang, T.J. Johnson, H. Jóźwiak, S. Kassi, M.V. Khan, F. Kwabia-Tchana, T.J. Lee†, D. Lisak, A.-W. Liu, O.M. Lyulin, N.A. Malarich, L. Manceron, A.A. Marinina, S.T. Massie, J. Mascio, E.S. Medvedev, V.V. Meshkov, G.Ch. Mellau, M. Melosso, S.N. Mikhailenko, D. Mondelain, H.S.P. Müller, M. O'Donnell, A. Owens, A. Perrin, O.L. Polyansky, P.L. Raston, Z.D. Reed, M. Rey, C. Richard, G.B. Rieker, C. Röske, S.W. Sharpe, E. Starikova, N. Stolarczyk, A.V. Stolyarov, K. Sung, F. Tamassia, J. Terragni, V.G. Ushakov, S. Vasilchenko, B. Vispoel, K.L. Vodopyanov, G. Wagner, S. Wójtewicz, S.N. Yurchenko, N.F. Zobov,  The HITRAN2024 molecular spectroscopic database. J. Quant. Spectrosc. Radiat. Transf.  109807 (2026). <br><a href=" https://doi.org/10.1016/j.jqsrt.2026.109807">doi:10.1016/j.jqsrt.2026.109807.]</a><br> </p>
+
+<p> ==> Note that we are constantly making ongoing improvements and additions to many molecular bands.  Updates, improvements, and corrections to the edition are posted in the "Database Updates" panel located on the home page of the HITRAN website.  When citing the database, it is recommended to indicate whether an updated version of the HITRAN2024 edition was used.</p>
+ 
+<p>Please e-mail us (info@hitran.org) a summary of any serious problems you encounter (or successes or suggestions).  </p>
+<div class="date-footer" align="right">
+<p>January 2026</p>
+</div>
+</div>
+</div>
+
+<div class="news-section">
+<h4 ><div style="font-weight:normal;display:inline;">Jul 2015 &#124;</div> <b>All inquiries can be made to HITRAN's support team at</b><i> info@hitran.org</i></h4>
+<div class="pull-down-icon"><span class="fa-solid fa-caret-down" style="cursor:pointer;"></span></div>
+<div class="spacer"></div>
+<div class="news-content">
+<p>The HITRAN support e-mail has been established and our team is ready for questions.</p>
+<div class="date-footer" align="right">
+<p>July 2015</p>
+</div>
+</div>
+</div>
+
+
+<h3 style="margin-top: 20px;">Database Updates</h3>
+
+<div class="news-section">
+<h4> <div style="font-weight:normal;display:inline;">May 2026 &#124;</div> Minor updates to the line lists of molecular oxygen and water vapor</h4>
+<div class="pull-down-icon"><span class="fa-solid fa-caret-down" style="cursor:pointer;"></span></div>
+<div class="spacer"></div>
+<div class="news-content">
+<p> Some of the self-broadening parameters in the speed-dependent Voigt parameterization for the A-band of O<sub>2</sub> were switched around in the official release. This has now been fixed.</p>
+<p> Four weak water lines in the FIR were reassigned with changes to the line positions and/or intensities. </P>
+<div class="date-footer" align="right">
+<p>May 2026</p>
+</div>
+</div>
+</div>
+
+<div class="news-section">
+<h4> <div style="font-weight:normal;display:inline;">Jan 2026 &#124;</div> &#128240; The updates to the HITRAN2024 edition will be announced in this section as they appear</h4>
+<div class="pull-down-icon"><span class="fa-solid fa-caret-down" style="cursor:pointer;"></span></div>
+<div class="spacer"></div>
+<div class="news-content">
+<p>The data on this website corresponds to the HITRAN2024 edition. The updates to this edition will be announced in this section as they appear</p>
+<div class="date-footer" align="right">
+<p>January 2026</p>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="clear"></div>
+</div>
+
+
+</div>
+</body>
+</html>
+
