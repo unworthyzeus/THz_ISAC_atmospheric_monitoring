@@ -1,0 +1,45 @@
+{
+  "config": {
+    "n_samples": 20000,
+    "n_subcarriers": 256,
+    "min_freq_ghz": 60.0,
+    "max_freq_ghz": 400.0,
+    "elevation_deg_range": [
+      15.0,
+      80.0
+    ],
+    "snr_db_range": [
+      20.0,
+      45.0
+    ],
+    "reference_elevation_deg": 45.0,
+    "gas_peak_loss_db": 0.34,
+    "pm25_peak_loss_db": 0.22,
+    "pm10_peak_loss_db": 0.34,
+    "background_peak_loss_db": 0.08,
+    "random_seed": 7
+  },
+  "models": [
+    "linear",
+    "ridge_1",
+    "ridge_10",
+    "ridge_100",
+    "pls_8",
+    "pls_16",
+    "knn_7",
+    "random_forest",
+    "extra_trees"
+  ],
+  "feature_sets": [
+    "path_normalized",
+    "path_normalized_relative",
+    "template_projection",
+    "hybrid_path_template",
+    "path_normalized_context",
+    "hitran_templates"
+  ],
+  "data_sources": {
+    "hitran_lines": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv",
+    "pollution_records": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_model_sample.csv.gz"
+  }
+}

@@ -47,13 +47,13 @@ def main() -> None:
         axes[0].plot(best["snr_db"], best["r2"], marker="o", label=target)
         axes[1].plot(best["snr_db"], best["rmse"], marker="o", label=target)
 
-    axes[0].set_title("R2 frente a SNR")
+    axes[0].set_title("R2 vs SNR")
     axes[0].set_xlabel("SNR dB")
     axes[0].set_ylabel("R2")
     axes[0].grid(True, alpha=0.25)
     axes[0].legend()
 
-    axes[1].set_title("RMSE frente a SNR")
+    axes[1].set_title("RMSE vs SNR")
     axes[1].set_xlabel("SNR dB")
     axes[1].set_ylabel("RMSE")
     axes[1].grid(True, alpha=0.25)

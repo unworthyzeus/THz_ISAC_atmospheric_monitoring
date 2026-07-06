@@ -1,0 +1,46 @@
+{
+  "config": {
+    "n_samples": 3500,
+    "n_subcarriers": 256,
+    "min_freq_ghz": 60.0,
+    "max_freq_ghz": 400.0,
+    "gas_ppm_range": [
+      0.0,
+      120.0
+    ],
+    "pm_ug_m3_range": [
+      0.0,
+      180.0
+    ],
+    "elevation_deg_range": [
+      15.0,
+      80.0
+    ],
+    "snr_db_range": [
+      20.0,
+      45.0
+    ],
+    "random_seed": 7
+  },
+  "feature_modes": [
+    "relative",
+    "relative_context",
+    "path_normalized",
+    "path_normalized_relative",
+    "baseline_residual",
+    "physics_combo"
+  ],
+  "models": [
+    "linear",
+    "ridge_0_1",
+    "ridge_1",
+    "ridge_10",
+    "ridge_100",
+    "pls_8",
+    "pls_16",
+    "knn_7",
+    "random_forest",
+    "extra_trees"
+  ],
+  "ranking_metric": "mean_nrmse_range"
+}

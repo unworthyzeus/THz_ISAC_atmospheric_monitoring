@@ -1,6 +1,11 @@
 __pycache__/
 .pytest_cache/
 *.pyc
+data/raw/
 data/processed/
 results/tmp/
-
+*.aux
+*.log
+*.out
+*.synctex.gz
+paper/build/*.png

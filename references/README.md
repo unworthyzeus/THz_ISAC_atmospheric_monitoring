@@ -1,20 +1,20 @@
-# Referencias
+# References
 
-Esta carpeta contiene las fuentes copiadas para trabajar sin depender de la carpeta de Descargas original.
+This folder contains local copies of papers, source pages, and the original project proposal.
 
 ## Papers
 
-Los PDF están en `papers/`.
+PDF files are stored in `papers/`.
 
-## Páginas fuente
+## Source Pages
 
-Las páginas HTML y accesos directos están en `pages/`.
+HTML pages and URL shortcuts are stored in `pages/`.
 
-## Propuesta
+## Proposal
 
-La propuesta original está en `proposals/`.
+The original project proposal is stored in `proposals/`.
 
-## Nota sobre Risk Aware Link Adaptation
+## Note On Risk Aware Link Adaptation
 
-El DOI de IEEE está resuelto, pero no se encontró PDF público descargable sin acceso IEEE. Se guardaron la página IEEE y páginas de autores como trazabilidad.
+The IEEE DOI was resolved, but no public PDF was available without IEEE access. The IEEE document page and author pages were saved for traceability.
 

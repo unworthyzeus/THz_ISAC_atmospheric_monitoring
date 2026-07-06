@@ -1,0 +1,2 @@
+feature_set,model,reason
+template_projection,pls_16,`n_components` upper bound is 8. Got 16 instead. Reduce `n_components`.
