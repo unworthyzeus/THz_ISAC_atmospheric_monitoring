@@ -1,5 +1,7 @@
 # Scientific Audit and IEEE Paper Rebuild Record
 
+> **Historical audit snapshot:** This file records the audit that invalidated the former two page manuscript and `0.07793` headline. The current ten page paper, final evidence classes, and complete provenance boundary are recorded in `paper/main.tex`, `docs/34_multi_method_information_floor_study.md`, and `docs/35_data_provenance_and_synthetic_evidence_audit.md`.
+
 ## Record Metadata
 
 - Audit date: 2026-07-15

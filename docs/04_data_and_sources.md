@@ -1,5 +1,7 @@
 # Data And Sources
 
+> **Historical planning record:** This file predates the completed external data acquisition and physical study. Its pending language is retained to show the original plan. The canonical current provenance record is `docs/35_data_provenance_and_synthetic_evidence_audit.md`.
+
 ## Saved References
 
 Local copies of papers and source pages are stored under:
@@ -41,4 +43,3 @@ It is retained only for software tests and should not be used as main evidence i
 ## Real Data Status
 
 External data acquisition is the next active task.
-

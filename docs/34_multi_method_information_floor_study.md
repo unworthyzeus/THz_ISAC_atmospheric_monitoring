@@ -1,5 +1,9 @@
 # Multi Method Information Floor Study
 
+The complete source by source provenance, synthetic evidence boundary, hash ledger, data quality implications, and submission citation corrections are recorded in `docs/35_data_provenance_and_synthetic_evidence_audit.md`.
+
+In this document, `unbounded power allocation` means fixed total transmit power with no per tone allocation cap. It does not mean unlimited total transmit power, and the resulting optimizer may concentrate almost all of the fixed budget on one effective tone.
+
 ## Purpose
 
 This note continues the normalized RMSE investigation after the practical simulated THz spectral Ridge result was fixed at `0.3474434442`. The user first requested `0.03`, then accepted `0.08` when the result is at a defensible information limit. Neither threshold changes the metric, targets, rows, or chronological split.

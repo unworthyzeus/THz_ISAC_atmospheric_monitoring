@@ -337,7 +337,7 @@ The numerical objective was relaxed from `0.03` to `0.08` when a defensible info
 
 ### Results
 
-The advanced same time THz branch evaluated 216 frozen cases. The declared residual retaining training prior result is `0.347466150`, slightly worse than the original Ridge `0.347443444`. Zero residual equal power, bounded power, and unbounded power sensitivities reach `0.322726833`, `0.308334055`, and `0.277119777`. The most optimistic context assisted unbounded result is `0.239099664`, but it concentrates power and is not current hardware performance.
+The advanced same time THz branch evaluated 216 frozen cases. The declared residual retaining training prior result is `0.347466150`, slightly worse than the original Ridge `0.347443444`. Zero residual equal power, bounded power, and no per tone cap sensitivities reach `0.322726833`, `0.308334055`, and `0.277119777`. Total transmit power remains fixed in every case. The most optimistic context assisted result without a per tone cap is `0.239099664`, but it concentrates the fixed power budget and is not current hardware performance.
 
 Within the frozen exact physics posterior calculation, the minimum declared information budget that targets `0.08` needs a 5,918.011 fold noise standard deviation reduction, about 35.0 million ideal independent repeats, or 1.05 billion pilot symbols. Targeting `0.03` needs a 63,393.396 fold reduction and 4.02 billion ideal repeats. These are sensitivity calculations rather than achieved THz scores.
 
@@ -373,3 +373,41 @@ Bundled Tectonic 0.16.9 compiled a 10 page IEEE manuscript. Every page was rende
 ```
 
 The consolidated methods, exact information contracts, successes, failures, and reproduction commands are in `docs/34_multi_method_information_floor_study.md`.
+
+## 2026 07 15: Data Provenance and Synthetic Evidence Audit
+
+### Question
+
+The project was reviewed to answer exactly where each dataset came from and whether any of the reported data or observations are synthetic.
+
+### Work completed
+
+Every headline result and every major current or legacy experiment branch was traced through its source files, download scripts, manifests, forward models, masking rules, evaluation splits, and result artifacts. External official records were reconciled with the local documentation for UCI Beijing, HITRAN2024, ESA CCI CO, ESA CCI OMI NO2, the Mendeley measured THz protein data, and the UCI Italian field sensor data.
+
+The audit separates real measured values, measurement derived satellite retrievals, real reference parameters, semi synthetic observations, fully synthetic toy data, artificial masking, and derived outputs. It maps each headline RMSE to its exact evidence class and records the atmospheric forward assumptions, link assumptions, leakage risks, data quality limitations, hashes, Git behavior, and reproduction commands.
+
+### Main conclusion
+
+The central atmospheric study is semi synthetic. UCI pollutant labels and weather are real, and HITRAN line parameters are real external reference data, but all atmospheric THz attenuation observations, receiver errors, and link responses are simulated. No paired measured atmospheric sub THz CSI is used.
+
+The `0.074855260` result is based on real UCI Beijing ground measurements with one current sensor channel artificially hidden. It requires the other five current colocated pollutant channels, donor station measurements, weather, and historical values. It is a ground sensor repair result, not THz inversion.
+
+The Mendeley positive control is the only completed result using real measured THz spectra. It uses summary absorption spectra for seven lysozyme and six ovalbumin concentration levels and reaches macro normalized RMSE `0.199270`. It is a small aqueous protein laboratory task and cannot validate atmospheric sensing.
+
+### Documentation corrections
+
+The official ESA CCI CO citation should name Maya George and Cathy Clerbaux and include DOI `10.5285/6242532d87d442a3acf0171d35c02e56`. The official NO2 citation should name Isidora Anglou, I. A. Glissenaar, K. F. Boersma, and H. Eskes and clarify the difference between the current release wording and `fv1.0` filenames. The paper should also state explicitly that the scored Mendeley files contain reported means and standard deviations rather than raw replicates.
+
+Independent review corrected four documentation issues. The forward model uses only a subset of the fields retained in the HITRAN table. Auxiliary nowcasting, spectral stability, probe optimization, H2O, and ESA column controls now have explicit provenance rows. The detailed ESA per file hash manifest is local but ignored by Git. `Unbounded power allocation` means fixed total power without a per tone cap, not unlimited total transmit power.
+
+The Italian field calibration and retrospective repair controls are real data analyses but lack dedicated tracked reproduction scripts and result manifests. Raw and processed external data remain intentionally ignored by Git, so a fresh clone must rerun acquisition. The HITRAN processed hash fixes the analyzed table, but the download path does not pin an immutable remote server revision.
+
+### Canonical record
+
+The full audit is `docs/35_data_provenance_and_synthetic_evidence_audit.md`. It is linked from `README.md` and `docs/34_multi_method_information_floor_study.md`. The outdated pending language in `docs/04_data_and_sources.md` and `docs/06_experiments.md`, and the former two page paper state in `docs/26_scientific_audit_and_paper_rebuild.md`, are now labeled explicitly as historical.
+
+### Validation and one corrected check
+
+All cited local paths exist. The UCI and HITRAN counts, physical sample count, PM exclusion count, headline RMSE values, column month count, and current file hashes reconcile with the saved manifests. `git diff --check` passes for the edited tracked files.
+
+The first PowerShell consistency command compared parsed JSON floating point values with exact literal equality and reported final digit differences caused by PowerShell numeric formatting. It did not identify a result mismatch. The check was corrected to use tolerance `1e-12` for metrics and exact equality for counts and hashes. The corrected audit returned `PROVENANCE_NUMERIC_AND_HASH_AUDIT_OK`.
