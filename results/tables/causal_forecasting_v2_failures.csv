@@ -1,0 +1,3 @@
+candidate,target,status,validation_normalized_rmse,runtime_seconds,training_window_days,information_set,failure_message,feature_build_seconds
+full_training_hgb_268_features,CO,partial_before_resource_failure,0.116632879841,62.514,,268 causal features and all 219558 eligible training-period rows,Process ended during allocation for the second target after 291.3 total seconds.,
+full_training_hgb_268_features,ALL_REMAINING,failed_resource_limit,,291.3,,268 causal features and all 219558 eligible training-period rows,Resource pressure prevented completion; no test evaluation was performed.,

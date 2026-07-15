@@ -1,0 +1,114 @@
+{
+  "study_status": "physics only probe optimization with modeled attenuation",
+  "inputs": {
+    "air_quality_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+    "air_quality_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "hitran_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv",
+    "hitran_sha256": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8",
+    "uci_rows": 383585,
+    "hitran_lines": 9340
+  },
+  "surface_conditions_from_uci_medians": {
+    "temperature_k": 287.54999999999995,
+    "pressure_pa": 101040.0,
+    "dew_point_c": 2.9
+  },
+  "candidate_grid": {
+    "minimum_ghz": 60.0,
+    "maximum_ghz": 400.0,
+    "count": 1024,
+    "spacing_ghz": 0.3323558162267872,
+    "status": "conceptual multiband candidates, not a contiguous allocation"
+  },
+  "tone_counts": [
+    16,
+    32,
+    64,
+    128,
+    256
+  ],
+  "scenarios": [
+    {
+      "name": "reference",
+      "elevation_deg": 45.0,
+      "n_pilots": 30,
+      "residual_error_std_db": 0.63,
+      "tx_power_dbm": 23.0
+    },
+    {
+      "name": "reference_zero_residual",
+      "elevation_deg": 45.0,
+      "n_pilots": 30,
+      "residual_error_std_db": 0.0,
+      "tx_power_dbm": 23.0
+    },
+    {
+      "name": "optimistic_combined",
+      "elevation_deg": 15.0,
+      "n_pilots": 3000,
+      "residual_error_std_db": 0.0,
+      "tx_power_dbm": 33.0
+    }
+  ],
+  "selection": {
+    "method": "greedy regularized D optimal selection",
+    "design": "four gas columns plus offset, background, and two PM nuisance columns",
+    "column_normalization": true,
+    "regularization": 1e-09,
+    "uses_pollution_labels": false
+  },
+  "power_allocation": {
+    "tone_count": 32,
+    "method": "SLSQP maximization of nuisance projected gas log determinant",
+    "variance_model": "full pilot expression including the declared residual floor",
+    "fixed_total_power": true,
+    "minimum_fraction_of_equal_power": 0.001,
+    "optimizer_results": [
+      {
+        "scenario": "reference",
+        "optimizer_success": true,
+        "accepted": true,
+        "message": "Optimization terminated successfully",
+        "iterations": 39,
+        "initial_negative_logdet": 43.05583986446662,
+        "final_negative_logdet": 43.00875178012253,
+        "minimum_fraction": 0.006775735552968257,
+        "maximum_fraction": 0.0976705323943032,
+        "effective_tone_count": 20.046690257414678
+      },
+      {
+        "scenario": "reference_zero_residual",
+        "optimizer_success": true,
+        "accepted": true,
+        "message": "Optimization terminated successfully",
+        "iterations": 40,
+        "initial_negative_logdet": 41.17598229135141,
+        "final_negative_logdet": 41.118061250162356,
+        "minimum_fraction": 0.007822797399218855,
+        "maximum_fraction": 0.08206189900640948,
+        "effective_tone_count": 20.769437946491706
+      },
+      {
+        "scenario": "optimistic_combined",
+        "optimizer_success": true,
+        "accepted": true,
+        "message": "Optimization terminated successfully",
+        "iterations": 47,
+        "initial_negative_logdet": 15.67387008364043,
+        "final_negative_logdet": 15.382320128603734,
+        "minimum_fraction": 0.0041495818392309385,
+        "maximum_fraction": 0.11142054380473979,
+        "effective_tone_count": 14.833535896704984
+      }
+    ]
+  },
+  "known_limitations": [
+    "No measured sub THz attenuation is used.",
+    "The 1,024 frequencies are conceptual candidates without instrument bandpass or regulatory constraints.",
+    "The optimizer assumes exact HITRAN line positions and the declared median atmosphere.",
+    "Independent residual errors can overstate the value of adding probes.",
+    "Total occupied bandwidth and the count of independent residual samples increase with active probe count.",
+    "Power allocation is optimized at 32 tones only and is not a global hardware design.",
+    "WHO values are concentration scale comparisons with different averaging periods."
+  ]
+}

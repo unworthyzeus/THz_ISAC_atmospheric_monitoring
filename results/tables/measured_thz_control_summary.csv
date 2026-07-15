@@ -1,0 +1,3 @@
+analyte,concentration_count,band_min_thz,band_max_thz,band_frequency_count,spearman_rho,spearman_pvalue,loocv_rmse_mg_ml,loocv_q05_q95_nrmse,concentration_q05_q95_span_mg_ml
+lysozyme,7,0.9,1.3,5,-0.8928571428571429,0.006807187408935393,24.737513783154576,0.2718408108038965,90.99999999999999
+ovalbumin,6,0.9,1.3,5,-1.0,0.0,8.710591193310124,0.1266995082663291,68.75

@@ -1,0 +1,13 @@
+check,value,unit
+processed_rows,383585.0,count
+processed_columns,17.0,count
+source_complete_case_rate,0.9116306373108222,fraction
+dropped_incomplete_rows,37183.0,count
+station_count,12.0,count
+unique_timestamp_count,34821.0,count
+exact_duplicate_rows,0.0,count
+duplicate_datetime_station_keys,0.0,count
+pm10_below_pm2_5_rows,17642.0,count
+pm10_below_pm2_5_rate,0.045992413676238644,fraction
+dew_point_above_temperature_rows,0.0,count
+nonpositive_target_values,0.0,count

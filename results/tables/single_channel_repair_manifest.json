@@ -1,0 +1,338 @@
+{
+  "study_status": "single channel contemporaneous ground sensor repair benchmark",
+  "task_definition": {
+    "label": "single channel sensor repair",
+    "strict_all_six_masked_reconstruction": false,
+    "is_forecasting": false,
+    "is_thz_inversion": false,
+    "query": "repair one current pollutant channel at one station",
+    "allowed_current_information": "the other five current pollutant channels at the query station, current donor station pollutants, and current weather",
+    "forbidden_information": "the current query station value of the channel being repaired"
+  },
+  "strict_primary_reference": {
+    "validation_macro_normalized_rmse": 0.0750123957858738,
+    "test_macro_normalized_rmse": 0.0888899586482406,
+    "summary_sha256": "762e361f2cf5abe08e61990ee27876a04c7ac15c44e26860e46e20f420a4c32b"
+  },
+  "inputs": {
+    "air_quality_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+    "air_quality_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "complete_case_rows": 383585,
+    "stations": [
+      "Aotizhongxin",
+      "Changping",
+      "Dingling",
+      "Dongsi",
+      "Guanyuan",
+      "Gucheng",
+      "Huairou",
+      "Nongzhanguan",
+      "Shunyi",
+      "Tiantan",
+      "Wanliu",
+      "Wanshouxigong"
+    ]
+  },
+  "query_sample": {
+    "filter": "PM10_ug_m3 >= PM2_5_ug_m3",
+    "selection": "np.linspace(0, n_rows - 1, 20000, dtype=int)",
+    "rows": 20000,
+    "train_rows": 12000,
+    "validation_rows": 4000,
+    "test_rows": 4000,
+    "train_end": "2015-09-10 01:00:00",
+    "validation_end": "2016-06-03 04:00:00"
+  },
+  "normalization": {
+    "definition": "strict benchmark training query row Q05 to Q95 target span",
+    "denominators_ug_m3": {
+      "CO": 3000.0,
+      "O3": 185.0,
+      "SO2": 67.0,
+      "NO2": 107.0,
+      "PM2.5": 219.04999999999927,
+      "PM10": 264.0
+    },
+    "target_macro_normalized_rmse": 0.08
+  },
+  "leakage_controls": {
+    "current_repaired_target_diagonal_is_all_missing": true,
+    "masked_current_repaired_target_cells": 120000,
+    "current_other_five_query_channels_allowed": true,
+    "strict_donor_features_mask_all_six_query_targets": true,
+    "sentinel_test": "changing repaired target j to 999,999 leaves the target j repair design unchanged",
+    "test_labels_used_for_configuration_selection": false
+  },
+  "information_requirements_at_inference": [
+    "The query station identity, timestamp, and identity of the failed channel.",
+    "The other five current pollutant measurements from the query station.",
+    "Current pollutant measurements from available donor stations at the same timestamp.",
+    "Current weather and exact past pollutant measurements at the declared lags.",
+    "A synchronized station clock and a model fitted on the historical training period."
+  ],
+  "model_selection": {
+    "rule": "all hyperparameters and target components selected using validation metrics only",
+    "candidate_order": [
+      "strict_one_hour_network_delta_reference",
+      "single_channel_global_ridge",
+      "single_channel_station_delta_ridge",
+      "single_channel_histogram_boosting"
+    ],
+    "selected_component_by_target": {
+      "CO": "single_channel_global_ridge",
+      "O3": "single_channel_histogram_boosting",
+      "SO2": "single_channel_station_delta_ridge",
+      "NO2": "single_channel_global_ridge",
+      "PM2.5": "single_channel_global_ridge",
+      "PM10": "single_channel_global_ridge"
+    },
+    "selected_configs": {
+      "single_channel_global_ridge": {
+        "CO": {
+          "alpha": 1.0
+        },
+        "O3": {
+          "alpha": 100.0
+        },
+        "SO2": {
+          "alpha": 1000.0
+        },
+        "NO2": {
+          "alpha": 1.0
+        },
+        "PM2.5": {
+          "alpha": 10.0
+        },
+        "PM10": {
+          "alpha": 100.0
+        }
+      },
+      "single_channel_station_delta_ridge": {
+        "CO": {
+          "Aotizhongxin": 0.01,
+          "Changping": 10.0,
+          "Dingling": 1.0,
+          "Dongsi": 1000.0,
+          "Guanyuan": 1.0,
+          "Gucheng": 1.0,
+          "Huairou": 1.0,
+          "Nongzhanguan": 1.0,
+          "Shunyi": 10.0,
+          "Tiantan": 1.0,
+          "Wanliu": 1000.0,
+          "Wanshouxigong": 0.01
+        },
+        "O3": {
+          "Aotizhongxin": 1.0,
+          "Changping": 0.01,
+          "Dingling": 10.0,
+          "Dongsi": 0.01,
+          "Guanyuan": 1.0,
+          "Gucheng": 10.0,
+          "Huairou": 100.0,
+          "Nongzhanguan": 10.0,
+          "Shunyi": 1.0,
+          "Tiantan": 10.0,
+          "Wanliu": 0.1,
+          "Wanshouxigong": 1.0
+        },
+        "SO2": {
+          "Aotizhongxin": 100.0,
+          "Changping": 1000.0,
+          "Dingling": 100.0,
+          "Dongsi": 100.0,
+          "Guanyuan": 100.0,
+          "Gucheng": 100.0,
+          "Huairou": 1000.0,
+          "Nongzhanguan": 1000.0,
+          "Shunyi": 1000.0,
+          "Tiantan": 1000.0,
+          "Wanliu": 100.0,
+          "Wanshouxigong": 10.0
+        },
+        "NO2": {
+          "Aotizhongxin": 0.1,
+          "Changping": 0.1,
+          "Dingling": 0.1,
+          "Dongsi": 1.0,
+          "Guanyuan": 0.1,
+          "Gucheng": 0.1,
+          "Huairou": 100.0,
+          "Nongzhanguan": 1.0,
+          "Shunyi": 0.1,
+          "Tiantan": 1.0,
+          "Wanliu": 0.01,
+          "Wanshouxigong": 1.0
+        },
+        "PM2.5": {
+          "Aotizhongxin": 10.0,
+          "Changping": 10.0,
+          "Dingling": 0.01,
+          "Dongsi": 100.0,
+          "Guanyuan": 10.0,
+          "Gucheng": 10.0,
+          "Huairou": 10.0,
+          "Nongzhanguan": 10.0,
+          "Shunyi": 10.0,
+          "Tiantan": 1.0,
+          "Wanliu": 0.01,
+          "Wanshouxigong": 1.0
+        },
+        "PM10": {
+          "Aotizhongxin": 10.0,
+          "Changping": 10.0,
+          "Dingling": 1000.0,
+          "Dongsi": 100.0,
+          "Guanyuan": 10.0,
+          "Gucheng": 10.0,
+          "Huairou": 1.0,
+          "Nongzhanguan": 10.0,
+          "Shunyi": 10.0,
+          "Tiantan": 100.0,
+          "Wanliu": 100.0,
+          "Wanshouxigong": 10.0
+        }
+      },
+      "single_channel_histogram_boosting": {
+        "CO": {
+          "max_iter": 220,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 30,
+          "l2_regularization": 20.0,
+          "learning_rate": 0.05,
+          "early_stopping": true,
+          "fitted_iterations": 220
+        },
+        "O3": {
+          "max_iter": 220,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 30,
+          "l2_regularization": 20.0,
+          "learning_rate": 0.05,
+          "early_stopping": true,
+          "fitted_iterations": 220
+        },
+        "SO2": {
+          "max_iter": 220,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 30,
+          "l2_regularization": 20.0,
+          "learning_rate": 0.05,
+          "early_stopping": true,
+          "fitted_iterations": 168
+        },
+        "NO2": {
+          "max_iter": 220,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 30,
+          "l2_regularization": 20.0,
+          "learning_rate": 0.05,
+          "early_stopping": true,
+          "fitted_iterations": 220
+        },
+        "PM2.5": {
+          "max_iter": 220,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 30,
+          "l2_regularization": 20.0,
+          "learning_rate": 0.05,
+          "early_stopping": true,
+          "fitted_iterations": 220
+        },
+        "PM10": {
+          "max_iter": 220,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 30,
+          "l2_regularization": 20.0,
+          "learning_rate": 0.05,
+          "early_stopping": true,
+          "fitted_iterations": 220
+        }
+      },
+      "validation_selected_single_channel_repair": {
+        "CO": "single_channel_global_ridge",
+        "O3": "single_channel_histogram_boosting",
+        "SO2": "single_channel_station_delta_ridge",
+        "NO2": "single_channel_global_ridge",
+        "PM2.5": "single_channel_global_ridge",
+        "PM10": "single_channel_global_ridge"
+      }
+    }
+  },
+  "results": {
+    "target_achieved": true,
+    "selected_test_macro_normalized_rmse": 0.07485525974582292,
+    "candidate_results": {
+      "validation_selected_single_channel_repair": {
+        "validation_macro_normalized_rmse": 0.06292905416426657,
+        "test_macro_normalized_rmse": 0.07485525974582292,
+        "test_mean_r2": 0.9423877609068235,
+        "meets_target": true
+      },
+      "single_channel_station_delta_ridge": {
+        "validation_macro_normalized_rmse": 0.06563297046057585,
+        "test_macro_normalized_rmse": 0.080362250832261,
+        "test_mean_r2": 0.9360859765274351,
+        "meets_target": false
+      },
+      "single_channel_global_ridge": {
+        "validation_macro_normalized_rmse": 0.06616623852067656,
+        "test_macro_normalized_rmse": 0.07744807558738721,
+        "test_mean_r2": 0.9345799675777453,
+        "meets_target": true
+      },
+      "single_channel_histogram_boosting": {
+        "validation_macro_normalized_rmse": 0.06943578778386024,
+        "test_macro_normalized_rmse": 0.07856232124495162,
+        "test_mean_r2": 0.9374449627295848,
+        "meets_target": true
+      },
+      "strict_one_hour_network_delta_reference": {
+        "validation_macro_normalized_rmse": 0.08336423389134869,
+        "test_macro_normalized_rmse": 0.09477236224506856,
+        "test_mean_r2": 0.9158897595352019,
+        "meets_target": false
+      }
+    },
+    "paired_bootstrap_selected_minus_strict_delta_reference": {
+      "difference": -0.019917102499245637,
+      "confidence_lower": -0.023721042221701592,
+      "confidence_upper": -0.016818449934220027,
+      "probability_selected_better": 1.0,
+      "resamples": 1000
+    },
+    "interpretation": "Any score improvement applies only to single channel repair because it requires the other five current query station pollutant measurements."
+  },
+  "successes_and_failures": {
+    "successes": [
+      "The repaired current target is excluded from its target specific feature design.",
+      "The deterministic rows, chronological periods, and strict training denominators are unchanged."
+    ],
+    "failures": [
+      "This diagnostic cannot support a strict all-six-masked reconstruction claim.",
+      "This diagnostic cannot support a THz inversion claim because it consumes current ground sensor pollutant channels."
+    ]
+  },
+  "outputs": {
+    "metrics_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\single_channel_repair_metrics.csv",
+    "metrics_csv_sha256": "9d4b95e28723df35a04adf0d9f6f2f7d9eca0ea48d4d4ecf41fcbfe6a72703c6",
+    "summary_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\single_channel_repair_summary.csv",
+    "summary_csv_sha256": "4f1574692686ae844c93f8b8531415bb0d452feb9fd599dea7ed36306986dfa8",
+    "validation_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\single_channel_repair_validation.csv",
+    "validation_csv_sha256": "35c1c1fc1b33266579a7d37fc6829a2bdcc04f6a7af2ad2ffb5c753437a6cfe0",
+    "predictions_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\single_channel_repair_predictions.csv",
+    "predictions_csv_sha256": "28da43c0f944c4b09f7a1b3598b64975566a509163acfbdee381236885401f74"
+  },
+  "dependency_versions": {
+    "numpy": "2.4.4",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0"
+  },
+  "runtime_seconds": 81.05768420000095,
+  "limitations": [
+    "The evaluation population retains the original PM10 greater than or equal to PM2.5 filter.",
+    "The test period is a previously used chronological period, not a new pristine test window.",
+    "Natural source missingness is retained and Ridge imputation is fitted on training rows only."
+  ]
+}

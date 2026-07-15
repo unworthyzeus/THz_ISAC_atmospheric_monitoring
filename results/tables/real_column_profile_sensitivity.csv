@@ -1,0 +1,7 @@
+co_scale_height_m,target,one_sigma_floor_molecules_cm2,floor_to_real_q05_q95_range,selection
+4000.0,CO_total_column,1.458366930019323e+20,107.12200630733143,fixed reference D optimal 256 probes
+4000.0,NO2_tropospheric_column,1.0225692537347178e+20,5488.610028553989,fixed reference D optimal 256 probes
+8000.0,CO_total_column,1.1284214423422706e+20,82.88638913549359,fixed reference D optimal 256 probes
+8000.0,NO2_tropospheric_column,1.0202693357869241e+20,5476.26528743547,fixed reference D optimal 256 probes
+12000.0,CO_total_column,1.0175881348493605e+20,74.7453061062997,fixed reference D optimal 256 probes
+12000.0,NO2_tropospheric_column,1.019409652526467e+20,5471.65096312688,fixed reference D optimal 256 probes

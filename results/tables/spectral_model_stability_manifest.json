@@ -1,0 +1,271 @@
+{
+  "study_status": "spectral only receiver noise stability study with simulated attenuation observations",
+  "purpose": "Test whether frozen nonlinear or multitask estimators improve robustly over the current validation selected Ridge reference.",
+  "inputs": {
+    "air_quality_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+    "air_quality_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "air_quality_rows": 383585,
+    "hitran_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv",
+    "hitran_sha256": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8",
+    "hitran_lines": 9340,
+    "exact_frozen_input_hash_match": true
+  },
+  "data_scope": {
+    "labels": "real UCI Beijing station pollutant measurements",
+    "spectroscopy": "real processed HITRAN line parameters",
+    "observations": "simulated sub THz excess attenuation plus modeled receiver noise",
+    "measured_sub_thz_csi_used": false,
+    "spectral_only_features": true,
+    "meteorology_or_time_features_used_by_estimators": false
+  },
+  "sampling": {
+    "filter": "PM10_ug_m3 >= PM2_5_ug_m3",
+    "sort": [
+      "datetime",
+      "station"
+    ],
+    "selection": "20,000 deterministic linearly spaced row indices",
+    "sample_rows": 20000,
+    "excluded_pm_ordering_rows": 17642
+  },
+  "chronological_split": {
+    "method": "complete timestamp groups with 60 percent train, 20 percent validation, and 20 percent test",
+    "train_rows": 12000,
+    "validation_rows": 4000,
+    "test_rows": 4000,
+    "train_end": "2015-09-10 01:00:00",
+    "validation_end": "2016-06-03 04:00:00"
+  },
+  "target_normalization": {
+    "definition": "training Q95 minus training Q05 for each target",
+    "targets": [
+      "CO",
+      "O3",
+      "SO2",
+      "NO2",
+      "PM2.5",
+      "PM10"
+    ],
+    "denominators_ug_m3": {
+      "CO": 3000.0,
+      "O3": 185.0,
+      "SO2": 67.0,
+      "NO2": 107.0,
+      "PM2.5": 219.04999999999927,
+      "PM10": 264.0
+    }
+  },
+  "physical_forward_model": {
+    "frequency_min_ghz": 60.0,
+    "frequency_max_ghz": 400.0,
+    "frequency_count": 256,
+    "elevation_deg": 45.0,
+    "n_layers": 24,
+    "top_altitude_m": 12000.0,
+    "pollutant_scale_height_m": 1500.0,
+    "water_scale_height_m": 2000.0,
+    "pm_scale_height_m": 1000.0,
+    "surface_temperature_k": 287.54999999999995,
+    "surface_pressure_pa": 101040.0,
+    "surface_dew_point_c": 2.9
+  },
+  "reference_link": {
+    "satellite_altitude_km": 550.0,
+    "tx_power_dbm": 23.0,
+    "tx_aperture_diameter_m": 0.5,
+    "rx_aperture_diameter_m": 0.3,
+    "subcarrier_bandwidth_hz": 1000000.0,
+    "tx_aperture_efficiency": 0.65,
+    "rx_aperture_efficiency": 0.65,
+    "receiver_noise_figure_db": 6.0,
+    "receiver_noise_temperature_k": 290.0,
+    "implementation_loss_db": 5.0,
+    "earth_radius_km": 6371.0,
+    "n_active_subcarriers": 256
+  },
+  "receiver_noise": {
+    "noise_seeds": [
+      20260715,
+      20260716,
+      20260717,
+      20260718,
+      20260719,
+      20260720,
+      20260721,
+      20260722,
+      20260723,
+      20260724
+    ],
+    "primary_reproduction_seed": 20260715,
+    "n_pilots": 30,
+    "independent_residual_error_std_db": 0.63,
+    "generation_order": "one full 20,000 by 256 Gaussian matrix per seed before chronological indexing"
+  },
+  "predeclared_models": {
+    "ridge_validation_selected": {
+      "role": "confirmatory reference",
+      "alpha_grid": [
+        0.01,
+        0.1,
+        1.0,
+        10.0,
+        100.0,
+        1000.0,
+        10000.0,
+        100000.0,
+        1000000.0,
+        10000000.0,
+        100000000.0
+      ],
+      "selection": "minimum validation mean normalized RMSE separately for each noise seed"
+    },
+    "multitask_elastic_net_frozen": {
+      "role": "confirmatory candidate",
+      "configuration": {
+        "alpha": 0.01,
+        "l1_ratio": 0.8,
+        "fit_intercept": true,
+        "max_iter": 5000,
+        "tol": 1e-05,
+        "random_state": 20260715,
+        "selection": "cyclic"
+      },
+      "selection_origin": "selected in the prior primary seed exploratory validation search and frozen before this ten seed study",
+      "target_scaling": "training mean centered and divided by training Q05 to Q95 range"
+    },
+    "histogram_gradient_boosting_frozen": {
+      "role": "confirmatory candidate",
+      "configuration": {
+        "learning_rate": 0.05,
+        "max_iter": 100,
+        "max_leaf_nodes": 7,
+        "min_samples_leaf": 100,
+        "l2_regularization": 10.0,
+        "early_stopping": true,
+        "validation_fraction": 0.1,
+        "n_iter_no_change": 10
+      },
+      "per_target_random_states": [
+        20260715,
+        20260716,
+        20260717,
+        20260718,
+        20260719,
+        20260720
+      ],
+      "selection_origin": "selected in the prior primary seed exploratory validation search and frozen before this ten seed study",
+      "fit_mode": "one target specific estimator per pollutant"
+    }
+  },
+  "exploratory_composite": {
+    "status": "exploratory only and excluded from the confirmatory stability conclusion",
+    "candidate_order_for_ties": [
+      "histogram_gradient_boosting_frozen",
+      "exploratory_pca_knn_component",
+      "exploratory_targetwise_ridge_component",
+      "multitask_elastic_net_frozen"
+    ],
+    "pca_knn_configuration": {
+      "pca_components": 32,
+      "pca_solver": "randomized",
+      "n_neighbors": 200,
+      "weights": "uniform",
+      "p": 2
+    },
+    "targetwise_ridge_alpha_grid": [
+      0.01,
+      0.03162277660168379,
+      0.1,
+      0.31622776601683794,
+      1.0,
+      3.1622776601683795,
+      10.0,
+      31.622776601683793,
+      100.0,
+      316.22776601683796,
+      1000.0,
+      3162.2776601683795,
+      10000.0,
+      31622.776601683792,
+      100000.0,
+      316227.7660168379,
+      1000000.0,
+      3162277.6601683795,
+      10000000.0,
+      31622776.60168379,
+      100000000.0,
+      316227766.01683795,
+      1000000000.0,
+      3162277660.1683793,
+      10000000000.0,
+      31622776601.683792,
+      100000000000.0,
+      316227766016.83795,
+      1000000000000.0
+    ],
+    "selection": "minimum validation normalized RMSE separately for every target and noise seed",
+    "multiplicity_caveat": "The component set follows a broad primary seed search and may overfit validation through repeated comparisons."
+  },
+  "test_policy": {
+    "configuration_selection_uses_test": false,
+    "ridge_and_composite_selection_surface": "validation only",
+    "fixed_candidate_test_prediction": "computed after the candidate configuration was frozen",
+    "discarded_ridge_grid_test_predictions": "not computed",
+    "test_reuse_caveat": "This chronological test window was already reported by the physical feasibility study, so this is a robustness extension rather than a new pristine confirmatory period."
+  },
+  "stability_rule": {
+    "scope": "confirmatory candidates only",
+    "definition": "mean test normalized RMSE below Ridge and wins against Ridge on at least 8 of 10 fixed noise seeds",
+    "required_seed_wins": 8
+  },
+  "primary_seed_reproduction": {
+    "expected_ridge_test_mean_normalized_rmse": 0.34744344415084005,
+    "observed_ridge_test_mean_normalized_rmse": 0.34744344415084,
+    "absolute_error": 5.551115123125783e-17,
+    "verified": true
+  },
+  "headline_results": {
+    "ridge_mean_test_normalized_rmse": 0.3474755122697326,
+    "ridge_test_std_across_noise_seeds": 1.130247403596003e-05,
+    "confirmatory_candidate_stability": {
+      "multitask_elastic_net_frozen": {
+        "mean_test_normalized_rmse": 0.347740593310568,
+        "mean_test_delta_vs_ridge": 0.00026508104083538544,
+        "test_seed_wins_vs_ridge": 0,
+        "passes_predeclared_stability_rule": false
+      },
+      "histogram_gradient_boosting_frozen": {
+        "mean_test_normalized_rmse": 0.347582558609397,
+        "mean_test_delta_vs_ridge": 0.00010704633966440169,
+        "test_seed_wins_vs_ridge": 1,
+        "passes_predeclared_stability_rule": false
+      }
+    },
+    "stable_confirmatory_candidates": [],
+    "exploratory_composite_mean_test_normalized_rmse": 0.3474782902011313,
+    "exploratory_composite_seed_wins_vs_ridge": 4,
+    "conclusion": "Neither the frozen nonlinear candidate nor the frozen multitask candidate satisfies the predeclared stability rule; estimator complexity does not provide a stable spectral only improvement over Ridge."
+  },
+  "outputs": {
+    "detailed_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\spectral_model_stability_detailed.csv",
+    "detailed_csv_sha256": "beaad41d1cce99390846affa7e036846bed09e0943d77310c7c5d788c2babf5a",
+    "summary_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\spectral_model_stability_summary.csv",
+    "summary_csv_sha256": "8edda91a58a48170684979453c7858deb7cb8fb6fd95e7fb2a812bf336a64e5a",
+    "detailed_rows": 420,
+    "summary_rows": 49
+  },
+  "dependency_versions": {
+    "numpy": "2.4.4",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "hitran-api": "1.3.0.0"
+  },
+  "runtime_seconds": 114.9337091999987,
+  "known_limitations": [
+    "No measured paired sub THz CSI is used.",
+    "The ten seeds vary only the modeled independent receiver noise, not the real labels, atmosphere, link geometry, or chronological split.",
+    "The same previously reported chronological test period is reused for stability reporting.",
+    "The exploratory composite has validation multiplicity and must not be presented as confirmatory."
+  ]
+}

@@ -1,0 +1,89 @@
+model,candidate,validation_mean_normalized_rmse
+calendar Ridge,"{""alpha"": 0.01}",0.34482964608403793
+calendar Ridge,"{""alpha"": 0.1}",0.3448264795796181
+calendar Ridge,"{""alpha"": 1.0}",0.34479601997559106
+calendar Ridge,"{""alpha"": 10.0}",0.34454640713448376
+calendar Ridge,"{""alpha"": 100.0}",0.3429125469424168
+calendar Ridge,"{""alpha"": 1000.0}",0.33783186116056596
+calendar Ridge,"{""alpha"": 10000.0}",0.33564424969682394
+calendar Ridge,"{""alpha"": 100000.0}",0.34484083760234613
+calendar and current weather HGB,"{""early_stopping"": false, ""l2_regularization"": 1.0, ""learning_rate"": 0.05, ""max_iter"": 100, ""max_leaf_nodes"": 15, ""min_samples_leaf"": 20}",0.26244962270198535
+calendar and current weather HGB,"{""early_stopping"": false, ""l2_regularization"": 10.0, ""learning_rate"": 0.05, ""max_iter"": 200, ""max_leaf_nodes"": 15, ""min_samples_leaf"": 20}",0.2633961929385175
+calendar and current weather HGB,"{""early_stopping"": false, ""l2_regularization"": 10.0, ""learning_rate"": 0.05, ""max_iter"": 200, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 20}",0.264995995515273
+multilag HGB with true past labels,"{""early_stopping"": false, ""l2_regularization"": 1.0, ""learning_rate"": 0.05, ""max_iter"": 100, ""max_leaf_nodes"": 15, ""min_samples_leaf"": 20}",0.10289528899042936
+multilag HGB with true past labels,"{""early_stopping"": false, ""l2_regularization"": 10.0, ""learning_rate"": 0.05, ""max_iter"": 200, ""max_leaf_nodes"": 15, ""min_samples_leaf"": 20}",0.10156977608831308
+multilag HGB with true past labels,"{""early_stopping"": false, ""l2_regularization"": 10.0, ""learning_rate"": 0.05, ""max_iter"": 200, ""max_leaf_nodes"": 31, ""min_samples_leaf"": 20}",0.10165799416910164
+simulated THz spectral Ridge,"{""alpha"": 0.01}",0.3521930266802498
+simulated THz spectral Ridge,"{""alpha"": 0.1}",0.3521929707828752
+simulated THz spectral Ridge,"{""alpha"": 1.0}",0.35219241188491485
+simulated THz spectral Ridge,"{""alpha"": 10.0}",0.35218683047488053
+simulated THz spectral Ridge,"{""alpha"": 100.0}",0.35213176419364034
+simulated THz spectral Ridge,"{""alpha"": 1000.0}",0.35164769772355425
+simulated THz spectral Ridge,"{""alpha"": 10000.0}",0.34972491079726337
+simulated THz spectral Ridge,"{""alpha"": 100000.0}",0.3489118959733823
+simulated THz spectral Ridge,"{""alpha"": 1000000.0}",0.3489258797418686
+simulated THz spectral Ridge,"{""alpha"": 10000000.0}",0.3489316588224418
+simulated THz spectral Ridge,"{""alpha"": 100000000.0}",0.348932290954127
+calendar and current weather Ridge,"{""alpha"": 0.01, ""spectral_block_multiplier"": 0.0}",0.27781727813158685
+calendar and current weather Ridge,"{""alpha"": 0.1, ""spectral_block_multiplier"": 0.0}",0.2778147376621743
+calendar and current weather Ridge,"{""alpha"": 1.0, ""spectral_block_multiplier"": 0.0}",0.27779007620508217
+calendar and current weather Ridge,"{""alpha"": 10.0, ""spectral_block_multiplier"": 0.0}",0.2776280275964702
+calendar and current weather Ridge,"{""alpha"": 100.0, ""spectral_block_multiplier"": 0.0}",0.2773393807034479
+calendar and current weather Ridge,"{""alpha"": 1000.0, ""spectral_block_multiplier"": 0.0}",0.28797263630196435
+calendar and current weather Ridge,"{""alpha"": 10000.0, ""spectral_block_multiplier"": 0.0}",0.3165913382796101
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.01, ""spectral_block_multiplier"": 0.0003}",0.2778076559099257
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.1, ""spectral_block_multiplier"": 0.0003}",0.27781163987761154
+calendar weather Ridge plus simulated THz,"{""alpha"": 1.0, ""spectral_block_multiplier"": 0.0003}",0.2777888153929991
+calendar weather Ridge plus simulated THz,"{""alpha"": 10.0, ""spectral_block_multiplier"": 0.0003}",0.27762780257990255
+calendar weather Ridge plus simulated THz,"{""alpha"": 100.0, ""spectral_block_multiplier"": 0.0003}",0.27733937513818313
+calendar weather Ridge plus simulated THz,"{""alpha"": 1000.0, ""spectral_block_multiplier"": 0.0003}",0.2879726359474118
+calendar weather Ridge plus simulated THz,"{""alpha"": 10000.0, ""spectral_block_multiplier"": 0.0003}",0.3165913382498855
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.01, ""spectral_block_multiplier"": 0.001}",0.2783798232330707
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.1, ""spectral_block_multiplier"": 0.001}",0.27781356875088503
+calendar weather Ridge plus simulated THz,"{""alpha"": 1.0, ""spectral_block_multiplier"": 0.001}",0.2777840292188742
+calendar weather Ridge plus simulated THz,"{""alpha"": 10.0, ""spectral_block_multiplier"": 0.001}",0.2776245726825104
+calendar weather Ridge plus simulated THz,"{""alpha"": 100.0, ""spectral_block_multiplier"": 0.001}",0.27733931847834203
+calendar weather Ridge plus simulated THz,"{""alpha"": 1000.0, ""spectral_block_multiplier"": 0.001}",0.2879726427462862
+calendar weather Ridge plus simulated THz,"{""alpha"": 10000.0, ""spectral_block_multiplier"": 0.001}",0.31659133794934197
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.01, ""spectral_block_multiplier"": 0.003}",0.27965971115474636
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.1, ""spectral_block_multiplier"": 0.003}",0.2783322940068372
+calendar weather Ridge plus simulated THz,"{""alpha"": 1.0, ""spectral_block_multiplier"": 0.003}",0.27778574256564664
+calendar weather Ridge plus simulated THz,"{""alpha"": 10.0, ""spectral_block_multiplier"": 0.003}",0.27762219740747435
+calendar weather Ridge plus simulated THz,"{""alpha"": 100.0, ""spectral_block_multiplier"": 0.003}",0.27733911653188476
+calendar weather Ridge plus simulated THz,"{""alpha"": 1000.0, ""spectral_block_multiplier"": 0.003}",0.28797264666710776
+calendar weather Ridge plus simulated THz,"{""alpha"": 10000.0, ""spectral_block_multiplier"": 0.003}",0.3165913353075608
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.01, ""spectral_block_multiplier"": 0.01}",0.28002010786908177
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.1, ""spectral_block_multiplier"": 0.01}",0.27969333630055315
+calendar weather Ridge plus simulated THz,"{""alpha"": 1.0, ""spectral_block_multiplier"": 0.01}",0.2783692943300659
+calendar weather Ridge plus simulated THz,"{""alpha"": 10.0, ""spectral_block_multiplier"": 0.01}",0.27762624794004803
+calendar weather Ridge plus simulated THz,"{""alpha"": 100.0, ""spectral_block_multiplier"": 0.01}",0.2773405339021691
+calendar weather Ridge plus simulated THz,"{""alpha"": 1000.0, ""spectral_block_multiplier"": 0.01}",0.2879726641831552
+calendar weather Ridge plus simulated THz,"{""alpha"": 10000.0, ""spectral_block_multiplier"": 0.01}",0.3165913053022706
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.01, ""spectral_block_multiplier"": 0.03}",0.28005552230736364
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.1, ""spectral_block_multiplier"": 0.03}",0.2800132626094923
+calendar weather Ridge plus simulated THz,"{""alpha"": 1.0, ""spectral_block_multiplier"": 0.03}",0.27963508314215185
+calendar weather Ridge plus simulated THz,"{""alpha"": 10.0, ""spectral_block_multiplier"": 0.03}",0.27815338452570443
+calendar weather Ridge plus simulated THz,"{""alpha"": 100.0, ""spectral_block_multiplier"": 0.03}",0.27734476608396785
+calendar weather Ridge plus simulated THz,"{""alpha"": 1000.0, ""spectral_block_multiplier"": 0.03}",0.28797246204570714
+calendar weather Ridge plus simulated THz,"{""alpha"": 10000.0, ""spectral_block_multiplier"": 0.03}",0.3165910450668763
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.01, ""spectral_block_multiplier"": 0.1}",0.28006287079616404
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.1, ""spectral_block_multiplier"": 0.1}",0.2800574603953136
+calendar weather Ridge plus simulated THz,"{""alpha"": 1.0, ""spectral_block_multiplier"": 0.1}",0.2799959778424886
+calendar weather Ridge plus simulated THz,"{""alpha"": 10.0, ""spectral_block_multiplier"": 0.1}",0.2795186616644102
+calendar weather Ridge plus simulated THz,"{""alpha"": 100.0, ""spectral_block_multiplier"": 0.1}",0.2779416563094584
+calendar weather Ridge plus simulated THz,"{""alpha"": 1000.0, ""spectral_block_multiplier"": 0.1}",0.28799182642292354
+calendar weather Ridge plus simulated THz,"{""alpha"": 10000.0, ""spectral_block_multiplier"": 0.1}",0.3165885195480426
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.01, ""spectral_block_multiplier"": 0.3}",0.2800660984478129
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.1, ""spectral_block_multiplier"": 0.3}",0.2800632809092746
+calendar weather Ridge plus simulated THz,"{""alpha"": 1.0, ""spectral_block_multiplier"": 0.3}",0.28003568455184874
+calendar weather Ridge plus simulated THz,"{""alpha"": 10.0, ""spectral_block_multiplier"": 0.3}",0.2798399460662293
+calendar weather Ridge plus simulated THz,"{""alpha"": 100.0, ""spectral_block_multiplier"": 0.3}",0.2792318854463221
+calendar weather Ridge plus simulated THz,"{""alpha"": 1000.0, ""spectral_block_multiplier"": 0.3}",0.28863043625620627
+calendar weather Ridge plus simulated THz,"{""alpha"": 10000.0, ""spectral_block_multiplier"": 0.3}",0.3165939390903756
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.01, ""spectral_block_multiplier"": 1.0}",0.2800661400256605
+calendar weather Ridge plus simulated THz,"{""alpha"": 0.1, ""spectral_block_multiplier"": 1.0}",0.28006403237757516
+calendar weather Ridge plus simulated THz,"{""alpha"": 1.0, ""spectral_block_multiplier"": 1.0}",0.2800404770030611
+calendar weather Ridge plus simulated THz,"{""alpha"": 10.0, ""spectral_block_multiplier"": 1.0}",0.27988217021219036
+calendar weather Ridge plus simulated THz,"{""alpha"": 100.0, ""spectral_block_multiplier"": 1.0}",0.2796015770558539
+calendar weather Ridge plus simulated THz,"{""alpha"": 1000.0, ""spectral_block_multiplier"": 1.0}",0.2901876868668541
+calendar weather Ridge plus simulated THz,"{""alpha"": 10000.0, ""spectral_block_multiplier"": 1.0}",0.317351422721003

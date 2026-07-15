@@ -1,0 +1,33 @@
+{
+  "source": "UCI Beijing Multi Site Air Quality dataset",
+  "doi": "10.24432/C5RK5G",
+  "input_path": "data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+  "input_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+  "rows": 383585,
+  "columns": 17,
+  "time_start": "2013-03-01T00:00:00",
+  "time_end": "2017-02-28T23:00:00",
+  "stations": [
+    "Aotizhongxin",
+    "Changping",
+    "Dingling",
+    "Dongsi",
+    "Guanyuan",
+    "Gucheng",
+    "Huairou",
+    "Nongzhanguan",
+    "Shunyi",
+    "Tiantan",
+    "Wanliu",
+    "Wanshouxigong"
+  ],
+  "complete_case_filter": true,
+  "target_columns": [
+    "CO_ug_m3",
+    "O3_ug_m3",
+    "SO2_ug_m3",
+    "NO2_ug_m3",
+    "PM2_5_ug_m3",
+    "PM10_ug_m3"
+  ]
+}

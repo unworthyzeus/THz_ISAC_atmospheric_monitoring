@@ -1,0 +1,13 @@
+prior,likelihood,power_configuration,optimizer_success,accepted,message,iterations,equal_power_posterior_risk,optimized_posterior_risk,minimum_power_fraction,maximum_power_fraction,effective_tone_count
+training_prior,pilot_power_residual,power_unbounded,True,False,Optimization terminated successfully,1,0.33596318694090926,0.33596318694090926,0.03125,0.03125,32.0
+training_prior,pilot_power_residual,power_bounded_4x,True,False,Optimization terminated successfully,1,0.33596318694090926,0.33596318694090926,0.03125,0.03125,32.0
+training_prior,coherent_csi_residual,power_unbounded,True,True,Optimization terminated successfully,11,0.3358828552842819,0.33588236406550803,0.012421204951287915,0.0794335181275693,22.551401719116125
+training_prior,coherent_csi_residual,power_bounded_4x,True,True,Optimization terminated successfully,11,0.3358828552842819,0.33588236406550803,0.012421204951287915,0.0794335181275693,22.551401719116125
+training_prior,coherent_csi_zero_residual,power_unbounded,True,True,Optimization terminated successfully,12,0.32026984276191,0.2732069456597113,3.1249999999999974e-05,0.9990312499999995,1.0019402886796633
+training_prior,coherent_csi_zero_residual,power_bounded_4x,True,True,Optimization terminated successfully,22,0.32026984276191,0.3001766890685118,0.003125,0.125,8.9198606271777
+context_prior,pilot_power_residual,power_unbounded,True,False,Optimization terminated successfully,1,0.267130158946393,0.267130158946393,0.03125,0.03125,32.0
+context_prior,pilot_power_residual,power_bounded_4x,True,False,Optimization terminated successfully,1,0.267130158946393,0.267130158946393,0.03125,0.03125,32.0
+context_prior,coherent_csi_residual,power_unbounded,True,True,Optimization terminated successfully,11,0.2670917740253017,0.2670914912494519,0.012393523055150348,0.09108769263005448,21.973092728326936
+context_prior,coherent_csi_residual,power_bounded_4x,True,True,Optimization terminated successfully,11,0.2670917740253017,0.2670914912494519,0.012393523055150348,0.09108769263005448,21.973092728326936
+context_prior,coherent_csi_zero_residual,power_unbounded,True,True,Optimization terminated successfully,14,0.2594908249555536,0.23331032409887267,3.124999999999998e-05,0.9990312499999987,1.001940288679665
+context_prior,coherent_csi_zero_residual,power_bounded_4x,True,True,Optimization terminated successfully,29,0.2594908249555536,0.24936779276553123,0.0031250000000000015,0.12500000000000006,8.919860627177702

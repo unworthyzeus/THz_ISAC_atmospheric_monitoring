@@ -1,0 +1,102 @@
+{
+  "study_status": "auxiliary causal context and nowcasting benchmark",
+  "interpretation": {
+    "primary_physical_task": "same time inversion from simulated THz attenuation",
+    "pollutant_lag_task": "one step nowcasting with true past ground labels",
+    "warning": "Pollutant lag results are not satellite only THz retrievals and must not be presented as improved spectral identifiability."
+  },
+  "inputs": {
+    "air_quality_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+    "air_quality_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "hitran_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv",
+    "hitran_sha256": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8",
+    "complete_case_rows": 383585,
+    "pm_ordered_rows": 365943
+  },
+  "sample": {
+    "rows": 20000,
+    "rule": "np.linspace(0, n_rows - 1, 20000, dtype=int)",
+    "random_seed": 20260715
+  },
+  "split": {
+    "train_rows": 12000,
+    "validation_rows": 4000,
+    "test_rows": 4000,
+    "train_start": "2013-03-01 00:00:00",
+    "train_end": "2015-09-10 01:00:00",
+    "validation_start": "2015-09-10 03:00:00",
+    "validation_end": "2016-06-03 04:00:00",
+    "test_start": "2016-06-03 06:00:00",
+    "test_end": "2017-02-28 23:00:00"
+  },
+  "normalization": {
+    "definition": "training Q05 to Q95 target span",
+    "denominators_ug_m3": {
+      "CO": 3000.0,
+      "O3": 185.0,
+      "SO2": 67.0,
+      "NO2": 107.0,
+      "PM2.5": 219.04999999999927,
+      "PM10": 264.0
+    }
+  },
+  "features": {
+    "weather_columns": [
+      "temperature_c",
+      "pressure_hpa",
+      "dew_point_c",
+      "rain_mm",
+      "wind_speed_m_s"
+    ],
+    "lag_hours": [
+      1,
+      2,
+      3,
+      6,
+      24,
+      168
+    ],
+    "lag_join": "same station at exactly query time minus lag",
+    "missing_lag_handling": "training median imputation plus explicit missing indicators",
+    "multilag_transformed_feature_count": 138
+  },
+  "selection": {
+    "calendar_ridge_alpha": 10000.0,
+    "context_hgb": {
+      "max_iter": 100,
+      "max_leaf_nodes": 15,
+      "l2_regularization": 1.0,
+      "learning_rate": 0.05,
+      "min_samples_leaf": 20,
+      "early_stopping": false
+    },
+    "multilag_hgb": {
+      "max_iter": 200,
+      "max_leaf_nodes": 15,
+      "l2_regularization": 10.0,
+      "learning_rate": 0.05,
+      "min_samples_leaf": 20,
+      "early_stopping": false
+    },
+    "multilag_transformed_feature_count": 138,
+    "spectral_ridge_alpha": 100000.0,
+    "context_ridge_alpha": 100.0,
+    "combined_ridge_alpha": 100.0,
+    "combined_spectral_block_multiplier": 0.003
+  },
+  "headline": {
+    "current_spectral_ridge_test_mean_normalized_rmse": 0.34744344415083983,
+    "requested_tenfold_target": 0.034744344415083984,
+    "best_auxiliary_nowcast_test_mean_normalized_rmse": 0.10450708754197802,
+    "best_nowcast_over_requested_target": 3.007887738316544,
+    "context_only_ridge_test_mean_normalized_rmse": 0.275559547528781,
+    "context_plus_spectrum_test_mean_normalized_rmse": 0.27555981777510224,
+    "spectrum_test_delta_after_context": 2.702463212655992e-07
+  },
+  "outputs": {
+    "metrics": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\auxiliary_nowcasting_metrics.csv",
+    "ablation": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\auxiliary_nowcasting_ablation.csv",
+    "lag_coverage": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\auxiliary_nowcasting_lag_coverage.csv",
+    "validation_candidates": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\auxiliary_nowcasting_validation.csv"
+  }
+}

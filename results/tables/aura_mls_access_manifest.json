@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "status": "blocked_by_earthdata_authentication",
+  "created_utc": "2026-07-15T13:50:36.610669+00:00",
+  "sample_day_utc": "2013-03-01",
+  "purpose": "Identify a paired real submillimeter radiance and operational profile retrieval dataset for a future measured signal control.",
+  "records": [
+    {
+      "short_name": "ML1RADG",
+      "version": "005",
+      "role": "real calibrated Aura MLS GHz filter bank limb radiances",
+      "collection_concept_id": "C1729925081-GES_DISC",
+      "collection_title": "MLS/Aura L1 Radiances from Filter Banks for GHz V005 (ML1RADG) at GES DISC",
+      "granule_title": "ML1RADG.005:MLS-Aura_L1BRADG_v05-01-c01_2013d060.h5",
+      "producer_granule_id": "MLS-Aura_L1BRADG_v05-01-c01_2013d060.h5",
+      "reported_granule_size_mb": "1184.4088697433472",
+      "time_start": "2013-03-01T00:00:00.000Z",
+      "time_end": "2013-03-01T23:59:59.000Z",
+      "data_url": "https://data.gesdisc.earthdata.nasa.gov/data/Aura_MLS_Level1/ML1RADG.005/2013/MLS-Aura_L1BRADG_v05-01-c01_2013d060.h5",
+      "access_probe": {
+        "head": {
+          "status": 403,
+          "exception_type": "HTTPError",
+          "message": "HTTP Error 403: Forbidden"
+        },
+        "ranged_get": {
+          "status": 401,
+          "exception_type": "HTTPError",
+          "message": "HTTP Error 401: Unauthorized"
+        }
+      }
+    },
+    {
+      "short_name": "ML2CO",
+      "version": "005",
+      "role": "operational Aura MLS carbon monoxide profile retrieval",
+      "collection_concept_id": "C1729925130-GES_DISC",
+      "collection_title": "MLS/Aura Level 2 Carbon Monoxide (CO) Mixing Ratio V005 (ML2CO) at GES DISC",
+      "granule_title": "ML2CO.005:MLS-Aura_L2GP-CO_v05-01-c01_2013d060.he5",
+      "producer_granule_id": "MLS-Aura_L2GP-CO_v05-01-c01_2013d060.he5",
+      "reported_granule_size_mb": "1.714167594909668",
+      "time_start": "2013-03-01T00:00:00.000Z",
+      "time_end": "2013-03-01T23:59:59.999Z",
+      "data_url": "https://data.gesdisc.earthdata.nasa.gov/data/Aura_MLS_Level2/ML2CO.005/2013/MLS-Aura_L2GP-CO_v05-01-c01_2013d060.he5",
+      "access_probe": {
+        "head": {
+          "status": 403,
+          "exception_type": "HTTPError",
+          "message": "HTTP Error 403: Forbidden"
+        },
+        "ranged_get": {
+          "status": 401,
+          "exception_type": "HTTPError",
+          "message": "HTTP Error 401: Unauthorized"
+        }
+      }
+    },
+    {
+      "short_name": "ML2O3",
+      "version": "005",
+      "role": "operational Aura MLS ozone profile retrieval",
+      "collection_concept_id": "C1729925806-GES_DISC",
+      "collection_title": "MLS/Aura Level 2 Ozone (O3) Mixing Ratio V005 (ML2O3) at GES DISC",
+      "granule_title": "ML2O3.005:MLS-Aura_L2GP-O3_v05-01-c01_2013d060.he5",
+      "producer_granule_id": "MLS-Aura_L2GP-O3_v05-01-c01_2013d060.he5",
+      "reported_granule_size_mb": "2.481856346130371",
+      "time_start": "2013-03-01T00:00:00.000Z",
+      "time_end": "2013-03-01T23:59:59.999Z",
+      "data_url": "https://data.gesdisc.earthdata.nasa.gov/data/Aura_MLS_Level2/ML2O3.005/2013/MLS-Aura_L2GP-O3_v05-01-c01_2013d060.he5",
+      "access_probe": {
+        "head": {
+          "status": 403,
+          "exception_type": "HTTPError",
+          "message": "HTTP Error 403: Forbidden"
+        },
+        "ranged_get": {
+          "status": 401,
+          "exception_type": "HTTPError",
+          "message": "HTTP Error 401: Unauthorized"
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "interpretation": [
+    "ML1RADG contains real calibrated Aura MLS limb radiances.",
+    "ML2CO and ML2O3 are operational retrieval products derived from MLS observations, not independent ground truth.",
+    "Aura MLS profiles represent the upper troposphere and higher atmosphere, not Beijing surface pollution.",
+    "A successful access probe would authorize acquisition, not validate a retrieval model."
+  ],
+  "limitations": [
+    "NASA GES DISC granule downloads require a free Earthdata Login user account.",
+    "No credentials are requested, stored, or printed by this script.",
+    "The large Level 1 granule is intentionally not downloaded by this access check.",
+    "Effective Level 1 use requires the MLS file description, calibration, quality flags, and instrument specific channel mapping."
+  ],
+  "next_step": "After the user supplies an authorized Earthdata access mechanism, download a bounded day, verify hashes and HDF5 structure, then define a profile and pressure matched chronological retrieval benchmark."
+}

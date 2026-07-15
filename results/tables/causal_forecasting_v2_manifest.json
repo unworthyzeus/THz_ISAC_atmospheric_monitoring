@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "study_status": "strictly causal ground sensor forecasting v2",
+  "input": {
+    "path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+    "sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "complete_case_rows": 383585,
+    "eligible_evaluation_source_rows": 365943
+  },
+  "evaluation_contract": {
+    "sample_rows": 20000,
+    "train_rows": 12000,
+    "validation_rows": 4000,
+    "test_rows": 4000,
+    "train_end": "2015-09-10 01:00:00",
+    "validation_end": "2016-06-03 04:00:00",
+    "denominators": {
+      "CO": 3000.0,
+      "O3": 185.0,
+      "SO2": 67.0,
+      "NO2": 107.0,
+      "PM2.5": 219.04999999999927,
+      "PM10": 264.0
+    },
+    "selection_rule": "target-specific model selected using validation normalized RMSE only",
+    "test_policy": "frozen mapping before test feature construction; evaluated once"
+  },
+  "information_set": {
+    "feature_count": 189,
+    "current_information": [
+      "calendar",
+      "station ID",
+      "temperature_c",
+      "pressure_hpa",
+      "dew_point_c",
+      "rain_mm",
+      "wind_speed_m_s"
+    ],
+    "target_information": "same-station, cross-target, rolling, city, and cross-station observations strictly before query time",
+    "forbidden_information": "current or future pollutant labels",
+    "task": "ground sensor forecasting, not THz inversion"
+  },
+  "leakage_audit": {
+    "minimum_target_offset_hours": 1,
+    "rolling_window_boundary": "[query time minus window, query time), excluding the query hour",
+    "cross_station_target_boundary": "query time minus one hour or earlier",
+    "unit_test": "tests/test_causal_forecasting_v2.py mutates current and future labels and requires identical features",
+    "result": "passed"
+  },
+  "frozen_models": {
+    "CO": [
+      "extra_leaf4",
+      {
+        "n_estimators": 400,
+        "min_samples_leaf": 4,
+        "max_features": 1.0
+      }
+    ],
+    "O3": [
+      "hgb31",
+      {
+        "max_iter": 200,
+        "max_leaf_nodes": 31,
+        "learning_rate": 0.05,
+        "l2_regularization": 10.0
+      }
+    ],
+    "SO2": [
+      "extra_leaf2",
+      {
+        "n_estimators": 250,
+        "min_samples_leaf": 2,
+        "max_features": 0.8
+      }
+    ],
+    "NO2": [
+      "hgb31",
+      {
+        "max_iter": 200,
+        "max_leaf_nodes": 31,
+        "learning_rate": 0.05,
+        "l2_regularization": 10.0
+      }
+    ],
+    "PM2.5": [
+      "hgb_deep",
+      {
+        "max_iter": 400,
+        "max_leaf_nodes": 31,
+        "learning_rate": 0.03,
+        "l2_regularization": 30.0
+      }
+    ],
+    "PM10": [
+      "extra_leaf4",
+      {
+        "n_estimators": 400,
+        "min_samples_leaf": 4,
+        "max_features": 1.0
+      }
+    ]
+  },
+  "results": {
+    "validation_mean_normalized_rmse": 0.08452717129484276,
+    "test_mean_normalized_rmse": 0.09548456624292913,
+    "original_goal_0_03_met": false,
+    "relaxed_goal_0_08_met": false,
+    "complete_candidate_validation_plateau": {
+      "hgb15": 0.08568577273333333,
+      "hgb31": 0.08520624474350001,
+      "extra_leaf2": 0.08527080459016667,
+      "interpretation": "empirical model plateau, not a formal information lower bound"
+    }
+  },
+  "failures": [
+    "The 268-feature all-training-row HGB attempt exceeded the practical resource budget after CO.",
+    "The 365-day and 730-day recency windows were worse than full-period sample training on validation."
+  ],
+  "runtime_seconds": 113.92116349999924,
+  "outputs": {
+    "metrics": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\causal_forecasting_v2_metrics.csv",
+    "summary": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\causal_forecasting_v2_summary.csv",
+    "innovation": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\causal_forecasting_v2_innovation.csv",
+    "attempts": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\causal_forecasting_v2_attempts.csv",
+    "failures": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\causal_forecasting_v2_failures.csv"
+  }
+}

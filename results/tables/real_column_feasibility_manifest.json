@@ -1,0 +1,70 @@
+{
+  "study_status": "preliminary real column target feasibility with modeled THz attenuation",
+  "inputs": {
+    "column_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\columns\\beijing_column_series_2013.csv",
+    "column_csv_sha256": "d58d34469c7f5ef0c5b541f7bfb60a73366b59c5d0aa244543f8fdc561e08bfc",
+    "column_manifest": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\columns\\beijing_column_series_2013_manifest.json",
+    "column_manifest_sha256": "6923cba8c401c6d4d59338b0533a05e7ad8e30068b0d179111b34e7265543226",
+    "air_quality_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+    "air_quality_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "hitran_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv",
+    "hitran_sha256": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8",
+    "month_count": 10
+  },
+  "column_semantics": {
+    "CO": "ESA CCI merged IASI and MOPITT daytime total column retrieval",
+    "NO2": "ESA CCI OMI tropospheric vertical column retrieval",
+    "unit": "molecules per square centimetre",
+    "grid_cell": "39.5 degrees north, 116.5 degrees east",
+    "status": "retrieval products, not ground truth"
+  },
+  "atmosphere": {
+    "surface_temperature_k": 290.84999999999997,
+    "surface_pressure_pa": 100750.0,
+    "surface_dew_point_c": 6.9,
+    "top_altitude_m": 20000.0,
+    "n_layers": 40,
+    "co_total_column_scale_height_m": 8000.0,
+    "no2_tropospheric_scale_height_m": 1500.0
+  },
+  "candidate_count": 512,
+  "tone_counts": [
+    64,
+    128,
+    256
+  ],
+  "scenarios": [
+    {
+      "name": "reference",
+      "elevation_deg": 45.0,
+      "n_pilots": 30,
+      "residual_error_std_db": 0.63,
+      "tx_power_dbm": 23.0
+    },
+    {
+      "name": "optimistic_combined",
+      "elevation_deg": 15.0,
+      "n_pilots": 3000,
+      "residual_error_std_db": 0.0,
+      "tx_power_dbm": 33.0
+    }
+  ],
+  "nuisance": [
+    "additive offset",
+    "full atmospheric background scale",
+    "surface O3 profile",
+    "surface SO2 profile",
+    "fine PM mode",
+    "coarse PM mode"
+  ],
+  "known_limitations": [
+    "Only ten monthly retrievals from March through December 2013 are used.",
+    "The 1 degree grid cell does not represent individual UCI stations.",
+    "Satellite values are retrievals with uncertainty and prior dependence.",
+    "The CO total column is normalized into the supported 0 to 20 km model domain, which is an optimistic truncation.",
+    "The CO vertical profile is assumed and only swept by scale height.",
+    "The standard atmosphere above the tropopause is simplified.",
+    "No measured sub THz attenuation is used.",
+    "Candidate frequencies omit instrument and regulatory constraints."
+  ]
+}

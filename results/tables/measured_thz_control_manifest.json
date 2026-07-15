@@ -1,0 +1,55 @@
+{
+  "status": "success",
+  "dataset_doi": "10.17632/dpw4svmdr8.1",
+  "dataset_licence": "CC BY 4.0",
+  "source_type": "real measured THz-TDS summary spectra",
+  "scientific_scope": "Aqueous protein concentration positive control, not atmospheric pollution and not a gas inversion result.",
+  "analysis_contract": {
+    "fixed_high_band_min_thz": 0.9,
+    "fixed_high_band_max_thz": 1.3,
+    "frequency_selection_uses_labels": false,
+    "regressor": "one feature ordinary least squares",
+    "evaluation": "leave one measured concentration level out",
+    "normalization": "full sample concentration Q05 to Q95 span",
+    "pseudo_replicates_created_from_sd": false
+  },
+  "macro_loocv_q05_q95_nrmse": 0.1992701595351128,
+  "mean_absolute_high_band_spearman_rho": 0.9464285714285714,
+  "results": [
+    {
+      "analyte": "lysozyme",
+      "concentration_count": 7,
+      "band_min_thz": 0.9,
+      "band_max_thz": 1.3,
+      "band_frequency_count": 5,
+      "spearman_rho": -0.8928571428571429,
+      "spearman_pvalue": 0.006807187408935393,
+      "loocv_rmse_mg_ml": 24.737513783154576,
+      "loocv_q05_q95_nrmse": 0.2718408108038965,
+      "concentration_q05_q95_span_mg_ml": 90.99999999999999
+    },
+    {
+      "analyte": "ovalbumin",
+      "concentration_count": 6,
+      "band_min_thz": 0.9,
+      "band_max_thz": 1.3,
+      "band_frequency_count": 5,
+      "spearman_rho": -1.0,
+      "spearman_pvalue": 0.0,
+      "loocv_rmse_mg_ml": 8.710591193310124,
+      "loocv_q05_q95_nrmse": 0.1266995082663291,
+      "concentration_q05_q95_span_mg_ml": 68.75
+    }
+  ],
+  "limitations": [
+    "Only six or seven concentration levels are available per protein.",
+    "Files report means and standard deviations, not raw replicates.",
+    "The descriptive per frequency table is not a validated selector.",
+    "The task and normalization differ from the Beijing pollutant benchmark."
+  ],
+  "outputs": [
+    "results\\tables\\measured_thz_control_summary.csv",
+    "results\\tables\\measured_thz_control_frequency_monotonicity.csv",
+    "results\\tables\\measured_thz_control_predictions.csv"
+  ]
+}

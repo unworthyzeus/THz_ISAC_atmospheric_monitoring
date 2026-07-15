@@ -1,0 +1,464 @@
+{
+  "study_status": "contemporaneous cross station ground sensor fusion benchmark",
+  "task_definition": {
+    "label": "sensor network reconstruction",
+    "is_forecasting": false,
+    "is_thz_inversion": false,
+    "is_satellite_retrieval": false,
+    "query": "reconstruct one station's current six pollutant measurements",
+    "allowed_current_information": "current pollutant and weather measurements from other stations plus current query station weather",
+    "allowed_past_information": "exact strictly past query and donor station measurements",
+    "forbidden_information": "the query station's current six pollutant labels"
+  },
+  "inputs": {
+    "air_quality_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+    "air_quality_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "complete_case_rows": 383585,
+    "stations": [
+      "Aotizhongxin",
+      "Changping",
+      "Dingling",
+      "Dongsi",
+      "Guanyuan",
+      "Gucheng",
+      "Huairou",
+      "Nongzhanguan",
+      "Shunyi",
+      "Tiantan",
+      "Wanliu",
+      "Wanshouxigong"
+    ],
+    "station_count": 12
+  },
+  "query_sample": {
+    "filter": "PM10_ug_m3 >= PM2_5_ug_m3",
+    "sort": [
+      "datetime",
+      "station"
+    ],
+    "selection": "np.linspace(0, n_rows - 1, 20000, dtype=int)",
+    "rows": 20000,
+    "train_rows": 12000,
+    "validation_rows": 4000,
+    "test_rows": 4000,
+    "train_end": "2015-09-10 01:00:00",
+    "validation_end": "2016-06-03 04:00:00"
+  },
+  "normalization": {
+    "definition": "training query row Q05 to Q95 target span",
+    "denominators_ug_m3": {
+      "CO": 3000.0,
+      "O3": 185.0,
+      "SO2": 67.0,
+      "NO2": 107.0,
+      "PM2.5": 219.04999999999927,
+      "PM10": 264.0
+    },
+    "target_macro_normalized_rmse": 0.08
+  },
+  "leakage_controls": {
+    "query_current_targets_masked_before_features": true,
+    "query_current_targets_masked_before_aggregates": true,
+    "masked_query_target_cells": 120000,
+    "finite_masked_query_target_cells": 0,
+    "maximum_allowed_current_donors": 11,
+    "maximum_observed_current_donors": 11,
+    "exact_lag_rule": "same station at query timestamp minus a positive integer number of hours",
+    "sentinel_test": "changing all query current target values to 999,999 leaves every feature unchanged",
+    "test_labels_used_for_configuration_selection": false
+  },
+  "features": {
+    "total_feature_count": 398,
+    "spatial_only_feature_count": 146,
+    "spatial_causal_feature_count": 398,
+    "histogram_boosting_feature_count": 326,
+    "groups": {
+      "spatial_current_pivot": 72,
+      "spatial_current_aggregate": 36,
+      "query_causal_lag": 60,
+      "spatial_change_pivot": 72,
+      "spatial_change_aggregate": 120,
+      "query_weather": 5,
+      "network_weather": 15,
+      "calendar": 6,
+      "station_identity": 12
+    },
+    "lag_hours": [
+      1,
+      2,
+      3,
+      6,
+      24
+    ],
+    "coverage": {
+      "train": {
+        "minimum_current_donors": 2,
+        "median_current_donors": 10.0,
+        "q05_current_donors": 8.0,
+        "rows_with_no_current_donor_for_any_target": 0,
+        "exact_one_hour_query_lag_coverage": 0.97725
+      },
+      "validation": {
+        "minimum_current_donors": 4,
+        "median_current_donors": 11.0,
+        "q05_current_donors": 9.0,
+        "rows_with_no_current_donor_for_any_target": 0,
+        "exact_one_hour_query_lag_coverage": 0.98025
+      },
+      "test": {
+        "minimum_current_donors": 4,
+        "median_current_donors": 11.0,
+        "q05_current_donors": 9.0,
+        "rows_with_no_current_donor_for_any_target": 0,
+        "exact_one_hour_query_lag_coverage": 0.978
+      }
+    }
+  },
+  "information_requirements_at_inference": [
+    "The query station identity and timestamp.",
+    "Current six pollutant measurements from the other available ground stations at the same timestamp.",
+    "Current query and network weather for models that use context.",
+    "Exact past query and donor pollutant measurements at the declared lags for causal fusion models.",
+    "A synchronized station clock and station identifier mapping.",
+    "A model fitted on historical training period ground sensor data."
+  ],
+  "model_selection": {
+    "rule": "all hyperparameters and per target components selected by validation metrics only",
+    "ridge_alphas": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0,
+      10000.0
+    ],
+    "pls_components": [
+      4,
+      8,
+      16
+    ],
+    "histogram_boosting_configs": [
+      {
+        "max_iter": 120,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 30,
+        "l2_regularization": 10.0
+      },
+      {
+        "max_iter": 180,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 50,
+        "l2_regularization": 50.0
+      }
+    ],
+    "extra_trees_configs": [
+      {
+        "n_estimators": 160,
+        "min_samples_leaf": 2,
+        "max_features": 0.7
+      },
+      {
+        "n_estimators": 160,
+        "min_samples_leaf": 5,
+        "max_features": 0.7
+      }
+    ],
+    "selected_configs": {
+      "spatial_only_ridge": {
+        "alpha": 1.0
+      },
+      "spatial_causal_ridge": {
+        "alpha": 100.0
+      },
+      "spatial_causal_pls": {
+        "n_components": 16,
+        "scale": false
+      },
+      "station_target_delta_ridge": {
+        "alpha_by_station_and_target": {
+          "Aotizhongxin": {
+            "CO_ug_m3": 100.0,
+            "O3_ug_m3": 10.0,
+            "SO2_ug_m3": 1000.0,
+            "NO2_ug_m3": 100.0,
+            "PM2_5_ug_m3": 100.0,
+            "PM10_ug_m3": 100.0
+          },
+          "Changping": {
+            "CO_ug_m3": 1000.0,
+            "O3_ug_m3": 1000.0,
+            "SO2_ug_m3": 1000.0,
+            "NO2_ug_m3": 10.0,
+            "PM2_5_ug_m3": 1000.0,
+            "PM10_ug_m3": 100.0
+          },
+          "Dingling": {
+            "CO_ug_m3": 1000.0,
+            "O3_ug_m3": 100.0,
+            "SO2_ug_m3": 1000.0,
+            "NO2_ug_m3": 100.0,
+            "PM2_5_ug_m3": 0.01,
+            "PM10_ug_m3": 1000.0
+          },
+          "Dongsi": {
+            "CO_ug_m3": 1000.0,
+            "O3_ug_m3": 1000.0,
+            "SO2_ug_m3": 100.0,
+            "NO2_ug_m3": 100.0,
+            "PM2_5_ug_m3": 1000.0,
+            "PM10_ug_m3": 1000.0
+          },
+          "Guanyuan": {
+            "CO_ug_m3": 1.0,
+            "O3_ug_m3": 1000.0,
+            "SO2_ug_m3": 1000.0,
+            "NO2_ug_m3": 100.0,
+            "PM2_5_ug_m3": 10.0,
+            "PM10_ug_m3": 10.0
+          },
+          "Gucheng": {
+            "CO_ug_m3": 1000.0,
+            "O3_ug_m3": 10.0,
+            "SO2_ug_m3": 10000.0,
+            "NO2_ug_m3": 1000.0,
+            "PM2_5_ug_m3": 1000.0,
+            "PM10_ug_m3": 100.0
+          },
+          "Huairou": {
+            "CO_ug_m3": 10000.0,
+            "O3_ug_m3": 1000.0,
+            "SO2_ug_m3": 1000.0,
+            "NO2_ug_m3": 1000.0,
+            "PM2_5_ug_m3": 100.0,
+            "PM10_ug_m3": 10.0
+          },
+          "Nongzhanguan": {
+            "CO_ug_m3": 1.0,
+            "O3_ug_m3": 100.0,
+            "SO2_ug_m3": 1000.0,
+            "NO2_ug_m3": 100.0,
+            "PM2_5_ug_m3": 0.1,
+            "PM10_ug_m3": 10.0
+          },
+          "Shunyi": {
+            "CO_ug_m3": 1000.0,
+            "O3_ug_m3": 100.0,
+            "SO2_ug_m3": 1000.0,
+            "NO2_ug_m3": 100.0,
+            "PM2_5_ug_m3": 10.0,
+            "PM10_ug_m3": 10.0
+          },
+          "Tiantan": {
+            "CO_ug_m3": 100.0,
+            "O3_ug_m3": 10.0,
+            "SO2_ug_m3": 1000.0,
+            "NO2_ug_m3": 100.0,
+            "PM2_5_ug_m3": 10.0,
+            "PM10_ug_m3": 100.0
+          },
+          "Wanliu": {
+            "CO_ug_m3": 1000.0,
+            "O3_ug_m3": 1.0,
+            "SO2_ug_m3": 100.0,
+            "NO2_ug_m3": 1000.0,
+            "PM2_5_ug_m3": 1.0,
+            "PM10_ug_m3": 1000.0
+          },
+          "Wanshouxigong": {
+            "CO_ug_m3": 0.01,
+            "O3_ug_m3": 10.0,
+            "SO2_ug_m3": 100.0,
+            "NO2_ug_m3": 1000.0,
+            "PM2_5_ug_m3": 0.01,
+            "PM10_ug_m3": 1.0
+          }
+        }
+      },
+      "spatial_causal_histogram_boosting": {
+        "max_iter": 120,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 30,
+        "l2_regularization": 10.0,
+        "learning_rate": 0.05,
+        "early_stopping": true,
+        "fitted_iterations": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          120
+        ]
+      },
+      "spatial_causal_extra_trees": {
+        "n_estimators": 160,
+        "min_samples_leaf": 2,
+        "max_features": 0.7
+      },
+      "validation_selected_per_target_fusion": {
+        "selected_component_by_target": {
+          "CO": "station_target_delta_ridge",
+          "O3": "station_target_delta_ridge",
+          "SO2": "station_target_delta_ridge",
+          "NO2": "station_target_delta_ridge",
+          "PM2.5": "station_target_delta_ridge",
+          "PM10": "station_target_delta_ridge"
+        },
+        "candidate_order": [
+          "other_station_current_mean",
+          "one_hour_network_delta_transfer",
+          "spatial_only_ridge",
+          "spatial_causal_ridge",
+          "spatial_causal_pls",
+          "station_target_delta_ridge",
+          "spatial_causal_histogram_boosting",
+          "spatial_causal_extra_trees"
+        ]
+      }
+    },
+    "selected_model_by_validation": "station_target_delta_ridge"
+  },
+  "results": {
+    "target_achieved": false,
+    "selected_test_macro_normalized_rmse": 0.08888995864824067,
+    "selected_test_over_target_ratio": 1.1111244831030085,
+    "selected_test_mean_r2": 0.9245385158752094,
+    "candidate_results": {
+      "station_target_delta_ridge": {
+        "validation_macro_normalized_rmse": 0.07501239578587383,
+        "test_macro_normalized_rmse": 0.08888995864824067,
+        "test_mean_r2": 0.9245385158752094,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      },
+      "validation_selected_per_target_fusion": {
+        "validation_macro_normalized_rmse": 0.07501239578587383,
+        "test_macro_normalized_rmse": 0.08888995864824067,
+        "test_mean_r2": 0.9245385158752094,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      },
+      "one_hour_network_delta_transfer": {
+        "validation_macro_normalized_rmse": 0.08336423389134869,
+        "test_macro_normalized_rmse": 0.09477236224506856,
+        "test_mean_r2": 0.9158897595352019,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      },
+      "spatial_causal_histogram_boosting": {
+        "validation_macro_normalized_rmse": 0.08506813500481332,
+        "test_macro_normalized_rmse": 0.09344195028744466,
+        "test_mean_r2": 0.9185925077460318,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      },
+      "spatial_causal_ridge": {
+        "validation_macro_normalized_rmse": 0.0911668254095351,
+        "test_macro_normalized_rmse": 0.09738830716377768,
+        "test_mean_r2": 0.9100735413718586,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      },
+      "spatial_causal_extra_trees": {
+        "validation_macro_normalized_rmse": 0.11160123888731165,
+        "test_macro_normalized_rmse": 0.11434322715266947,
+        "test_mean_r2": 0.8748523152678219,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      },
+      "spatial_causal_pls": {
+        "validation_macro_normalized_rmse": 0.11686163580626359,
+        "test_macro_normalized_rmse": 0.12031241433970147,
+        "test_mean_r2": 0.8592415932181403,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      },
+      "spatial_only_ridge": {
+        "validation_macro_normalized_rmse": 0.1360697332221757,
+        "test_macro_normalized_rmse": 0.13307729180311162,
+        "test_mean_r2": 0.8293223661664064,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      },
+      "other_station_current_mean": {
+        "validation_macro_normalized_rmse": 0.14641574647789776,
+        "test_macro_normalized_rmse": 0.14378694185152788,
+        "test_mean_r2": 0.805821556650379,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      },
+      "training_period_mean": {
+        "validation_macro_normalized_rmse": 0.34893236181340676,
+        "test_macro_normalized_rmse": 0.3474788618078087,
+        "test_mean_r2": -0.08315658816367304,
+        "meets_target": false,
+        "outcome": "failed to reach macro normalized RMSE 0.08"
+      }
+    },
+    "information_limited_family_floor_diagnostic": {
+      "status": "empirical candidate family envelope, not a theoretical lower bound",
+      "uses_test_labels_only_for_posthoc_diagnosis": true,
+      "used_for_model_or_hyperparameter_selection": false,
+      "posthoc_best_available_candidate_by_target_macro_normalized_rmse": 0.08888995864824062,
+      "posthoc_best_available_candidate_by_target": {
+        "CO": 0.1355628336358032,
+        "O3": 0.0628100360648287,
+        "SO2": 0.0719449164324973,
+        "NO2": 0.0963317304600648,
+        "PM2.5": 0.0741846554284824,
+        "PM10": 0.0925055798677673
+      },
+      "validation_to_test_gap_for_selected_model": 0.0138775628623668,
+      "interpretation": "Every strict candidate family is above 0.08 on the frozen test period even under posthoc per target choice, supporting an information limited or temporal generalization floor near 0.089 for the attempted family but not proving a universal lower bound."
+    },
+    "paired_bootstrap_selected_minus_delta_transfer": {
+      "difference": -0.005882403596827887,
+      "confidence_lower": -0.007723527862174877,
+      "confidence_upper": -0.004307284332490787,
+      "probability_selected_better": 1.0,
+      "resamples": 1000
+    },
+    "conclusion": "The validation selected sensor fusion model did not reach macro normalized RMSE 0.08; contemporaneous donor sensors and exact causal lags improve reconstruction substantially but do not eliminate local station error."
+  },
+  "successes_and_failures": {
+    "successes": [
+      "Every query current pollutant value is excluded before pivot and aggregate construction.",
+      "The original deterministic query rows, chronological periods, and training denominators are preserved.",
+      "Contemporaneous cross station and exact causal lag information substantially improves over the training mean."
+    ],
+    "failures": [
+      "No validation selected headline model reached the requested 0.08 macro normalized RMSE.",
+      "Tree ensembles and latent or linear models remain limited by station specific local variation.",
+      "The result cannot be interpreted as THz sensing because it requires contemporaneous ground sensor pollutant measurements."
+    ],
+    "resolved_execution_failures": [
+      "The first benchmark run hit a Pandas RecursionError because self referential feature metadata was attached to a DataFrame; passing the feature bundle explicitly fixed it.",
+      "An exploratory oversized histogram boosting run exited unsuccessfully before the bounded final grid and was excluded.",
+      "An exploratory full period station model produced empty valid response rows because of an indexing mismatch and was excluded."
+    ]
+  },
+  "outputs": {
+    "metrics_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\spatial_fusion_metrics.csv",
+    "metrics_csv_sha256": "0f391b85ff49cc77ef85eb6a0ac4b91d0ce37c6450c92181c749d0a3f1911ffa",
+    "summary_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\spatial_fusion_summary.csv",
+    "summary_csv_sha256": "762e361f2cf5abe08e61990ee27876a04c7ac15c44e26860e46e20f420a4c32b",
+    "validation_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\spatial_fusion_validation.csv",
+    "validation_csv_sha256": "77843cbc928d6100c31223b26977490f41485611b6ed15ca9d60a4165250c1c2",
+    "predictions_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\spatial_fusion_predictions.csv",
+    "predictions_csv_sha256": "c359506fd618fb93f7ebafd31ce6ed2c1e523cd43a262293f0686aea7309eb0c"
+  },
+  "dependency_versions": {
+    "numpy": "2.4.4",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0"
+  },
+  "runtime_seconds": 390.9232447000031,
+  "limitations": [
+    "The donor network uses contemporaneous real pollutant measurements and is therefore not an independent remote sensing system.",
+    "The test period is the same previously reported chronological period, not a new pristine test window.",
+    "Station coordinates are unavailable in the processed table, so the benchmark learns station relationships rather than using physical distance.",
+    "Natural source missingness is retained and imputed using training rows only."
+  ]
+}

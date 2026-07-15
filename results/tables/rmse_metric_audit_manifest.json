@@ -1,0 +1,157 @@
+{
+  "audit_status": "reproducible metric and information sensitivity audit",
+  "metric_definition": {
+    "per_target": "RMSE divided by training Q95 minus training Q05",
+    "headline": "unweighted mean across six per target normalized RMSE values",
+    "targets": [
+      "CO",
+      "O3",
+      "SO2",
+      "NO2",
+      "PM2.5",
+      "PM10"
+    ],
+    "requested_target_macro_normalized_rmse": 0.0347443444
+  },
+  "inputs": {
+    "air_quality_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+    "air_quality_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "hitran_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv",
+    "hitran_sha256": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8",
+    "physical_config_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\physical_feasibility_config.json",
+    "physical_config_sha256": "95ae008e2210c0b07eef5692c1bf8bc3ab97e07b4ee0d2078b00ee3ba6ab9dcc",
+    "reported_metrics_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\physical_estimator_metrics.csv",
+    "reported_metrics_sha256": "330036dc9d0577d904e81fb400f006b0cd346ae23771337d5d5d0b06a3d8145e",
+    "reported_ridge_validation_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\physical_ridge_validation.csv",
+    "reported_ridge_validation_sha256": "0c3ca592bcd2d17c0743ad66dd492fc43351b33c01ddd37c1870b00129bc61c8"
+  },
+  "reproduction": {
+    "reported_ridge_macro_normalized_rmse": 0.34744344415083983,
+    "reproduced_ridge_macro_normalized_rmse": 0.34744344415084005,
+    "absolute_difference": 2.220446049250313e-16,
+    "tolerance": 1e-12,
+    "passed": true,
+    "shared_alpha": 100000.0,
+    "target_specific_alphas": {
+      "CO": 1000000.0,
+      "O3": 100000000.0,
+      "SO2": 100000.0,
+      "NO2": 1000000.0,
+      "PM2.5": 100000.0,
+      "PM10": 100000.0
+    }
+  },
+  "sample_and_split": {
+    "eligible_rows": 365943,
+    "excluded_pm_ordering_rows": 17642,
+    "sample_rows": 20000,
+    "unique_sample_indices": 20000,
+    "unique_sample_timestamps": 20000,
+    "minimum_sample_index_gap": 18,
+    "maximum_sample_index_gap": 19,
+    "train_rows": 12000,
+    "validation_rows": 4000,
+    "test_rows": 4000,
+    "train_end": "2015-09-10 01:00:00",
+    "validation_end": "2016-06-03 04:00:00",
+    "sampler_random_replicates": 20,
+    "random_sample_macro_normalized_rmse_mean": 0.34627078363674885,
+    "random_sample_macro_normalized_rmse_std": 0.005792049400333838
+  },
+  "paired_bootstrap": {
+    "comparison": "shared alpha Ridge minus training period mean",
+    "replicates": 2000,
+    "random_seed": 4401,
+    "confidence_level": 0.95,
+    "observed_difference": -3.54176569686282e-05,
+    "confidence_lower": -0.00015030702199506223,
+    "confidence_upper": 7.641462522024743e-05,
+    "probability_ridge_better": 0.7215,
+    "scope": "paired row resampling conditional on fixed split, fit, and noise"
+  },
+  "information_diagnostics": {
+    "tone_signal_std_to_noise_std_max": 0.011171064360912536,
+    "tone_signal_std_to_noise_std_median": 0.0006384416719945824,
+    "tone_signal_std_to_noise_std_q95": 0.0034311624287955795,
+    "tone_signal_std_to_noise_std_sum_squared": 0.0007972511935944349,
+    "prior_whitened_fisher_eigenvalues": [
+      2.118267474128394e-17,
+      8.118993749581574e-09,
+      3.158767769072916e-07,
+      3.5805697380652145e-06,
+      7.484336591340898e-05,
+      0.0007185032621722841
+    ]
+  },
+  "pilot_variance_sensitivity": {
+    "pilot_power_residual": {
+      "physics_lmmse_macro_normalized_rmse": 0.3474353276214875,
+      "gas_crb_1sigma_ug_m3": {
+        "CO": 83015.25370819312,
+        "O3": 28099.068670478267,
+        "SO2": 4307.559672121383,
+        "NO2": 64426.6145279961
+      }
+    },
+    "coherent_csi_residual": {
+      "physics_lmmse_macro_normalized_rmse": 0.34738221214034254,
+      "gas_crb_1sigma_ug_m3": {
+        "CO": 52618.68915634025,
+        "O3": 17948.072295521048,
+        "SO2": 2760.8760969411665,
+        "NO2": 41600.02303577023
+      }
+    },
+    "coherent_csi_zero_residual": {
+      "physics_lmmse_macro_normalized_rmse": 0.3456004080354493,
+      "gas_crb_1sigma_ug_m3": {
+        "CO": 11456.359247391667,
+        "O3": 3736.486033493735,
+        "SO2": 668.2165916992159,
+        "NO2": 8948.593300406623
+      }
+    }
+  },
+  "validation_selected_noise_requirement": {
+    "selection_split": "validation",
+    "evaluation_split": "test",
+    "lower_scale": 1e-07,
+    "upper_scale": 0.001,
+    "bisection_iterations": 60,
+    "selected_noise_std_factor": 2.477817558150257e-05,
+    "noise_std_reduction_factor": 40358.09645107693,
+    "ideal_independent_repeat_equivalent": 1628775949.1544285,
+    "ideal_pilot_symbol_equivalent": 48863278474.63286,
+    "validation_macro_normalized_rmse": 0.034744344399999766,
+    "test_macro_normalized_rmse": 0.03148583757180324,
+    "test_target_passed": true,
+    "caveat": "This scales every diagonal noise standard deviation and assumes exact forward physics. The repeat equivalent is valid only for independent, stationary errors and is not a hardware requirement."
+  },
+  "dependency_versions": {
+    "numpy": "2.4.4",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "hitran-api": "1.3.0.0"
+  },
+  "source_files": {
+    "audit_script": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\scripts\\run_rmse_metric_audit.py",
+    "audit_script_sha256": "f5f91a5a2edc3749676388b3b26f5f830df13c161289ec19d17e0c95ce47b71c",
+    "linear_gaussian_module": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\src\\thz_isac\\linear_gaussian.py",
+    "linear_gaussian_module_sha256": "d4a930d39c4e775d509876bb7f5c1b4d6181d45f2c00d1d16f1eb26ac8ca7b61"
+  },
+  "artifacts": {
+    "details_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\rmse_metric_audit_details.csv",
+    "details_csv_sha256": "3074cb31f52746277fdc69b1856cf3271635021e74343f08b9848a0bf7316aa1",
+    "summary_csv": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\results\\tables\\rmse_metric_audit_summary.csv",
+    "summary_csv_sha256": "4992322dd8506532febb22c61530909e1356894fdba9bc0d2857a3816f383e67"
+  },
+  "limitations": [
+    "All attenuation observations remain simulated.",
+    "The row bootstrap does not preserve temporal or station dependence.",
+    "Sampler sensitivity uses the training mean baseline rather than refitting Ridge.",
+    "The coherent CSI variance is a high SNR delta method sensitivity case.",
+    "The global noise requirement is an idealized information sensitivity test.",
+    "The target was chosen after the original test headline was already known."
+  ]
+}

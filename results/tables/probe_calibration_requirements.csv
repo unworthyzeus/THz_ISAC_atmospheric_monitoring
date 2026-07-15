@@ -1,0 +1,17 @@
+scenario,method,tone_count,target,criterion,ratio_at_zero_residual,ratio_at_2_db_residual,maximum_residual_std_db,status
+reference,d_optimal_equal,256,CO,one_sigma,9.12331238178172,24.20631777542155,,unattainable_even_at_zero_residual
+reference,d_optimal_equal,256,CO,three_sigma,27.369937145345162,72.61895332626466,,unattainable_even_at_zero_residual
+reference,d_optimal_equal,256,O3,one_sigma,147.61393052249872,377.98606075001595,,unattainable_even_at_zero_residual
+reference,d_optimal_equal,256,O3,three_sigma,442.84179156749616,1133.958182250048,,unattainable_even_at_zero_residual
+reference,d_optimal_equal,256,SO2,one_sigma,50.913943960672796,132.09251022275478,,unattainable_even_at_zero_residual
+reference,d_optimal_equal,256,SO2,three_sigma,152.7418318820184,396.2775306682644,,unattainable_even_at_zero_residual
+reference,d_optimal_equal,256,NO2,one_sigma,1339.3270903181296,3365.58514567322,,unattainable_even_at_zero_residual
+reference,d_optimal_equal,256,NO2,three_sigma,4017.981270954389,10096.75543701966,,unattainable_even_at_zero_residual
+optimistic_combined,d_optimal_equal,256,CO,one_sigma,0.3529440394184889,8.399936049880806,0.22279200514391556,finite_threshold
+optimistic_combined,d_optimal_equal,256,CO,three_sigma,1.0588321182554667,25.199808149642415,,unattainable_even_at_zero_residual
+optimistic_combined,d_optimal_equal,256,O3,one_sigma,5.925348208304019,138.91921513115642,,unattainable_even_at_zero_residual
+optimistic_combined,d_optimal_equal,256,O3,three_sigma,17.776044624912057,416.75764539346926,,unattainable_even_at_zero_residual
+optimistic_combined,d_optimal_equal,256,SO2,one_sigma,2.5944040313030996,53.9937037139088,,unattainable_even_at_zero_residual
+optimistic_combined,d_optimal_equal,256,SO2,three_sigma,7.783212093909299,161.98111114172642,,unattainable_even_at_zero_residual
+optimistic_combined,d_optimal_equal,256,NO2,one_sigma,55.67592750135534,1332.0426851900897,,unattainable_even_at_zero_residual
+optimistic_combined,d_optimal_equal,256,NO2,three_sigma,167.027782504066,3996.1280555702688,,unattainable_even_at_zero_residual

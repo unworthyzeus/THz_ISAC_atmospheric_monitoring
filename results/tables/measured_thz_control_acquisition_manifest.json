@@ -1,0 +1,135 @@
+{
+  "status": "success",
+  "retrieved_utc": "2026-07-15T15:02:39.104150+00:00",
+  "dataset": {
+    "id": "dpw4svmdr8",
+    "version": 1,
+    "doi": "10.17632/dpw4svmdr8.1",
+    "page": "https://data.mendeley.com/datasets/dpw4svmdr8/1",
+    "title": "Data for Terahertz spectroscopic study of liquid-liquid phase separation of protein solutions",
+    "contributor": "Toshiaki Hattori",
+    "licence": "CC BY 4.0",
+    "published": "2024-11-14"
+  },
+  "endpoint_attempts": [
+    {
+      "url": "https://api.mendeley.com/datasets/dpw4svmdr8?version=1",
+      "http_status": 401,
+      "outcome": "http_error"
+    },
+    {
+      "url": "https://api.data.mendeley.com/datasets/publics/dpw4svmdr8/files?version=1",
+      "http_status": 401,
+      "outcome": "http_error"
+    },
+    {
+      "url": "https://data.mendeley.com/public-api/datasets/dpw4svmdr8/files?folder_id=root&version=1",
+      "http_status": 200,
+      "outcome": "reachable"
+    }
+  ],
+  "successful_file_listing_endpoint": "https://data.mendeley.com/public-api/datasets/dpw4svmdr8/files?folder_id=root&version=1",
+  "file_count": 10,
+  "files": [
+    {
+      "filename": "Fig10.csv",
+      "file_id": "34cf111e-7fbe-4d5c-85d2-870ed1a50e57",
+      "bytes": 764,
+      "repository_sha256": "bef8c221311395457c6f51531fc9bd25c544908d6b6b45051d971244f84d077a",
+      "local_sha256": "bef8c221311395457c6f51531fc9bd25c544908d6b6b45051d971244f84d077a",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/34cf111e-7fbe-4d5c-85d2-870ed1a50e57/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig10.csv"
+    },
+    {
+      "filename": "Fig3.csv",
+      "file_id": "231df78e-45a4-4022-9cb7-8708311f8c97",
+      "bytes": 1622,
+      "repository_sha256": "5f682d876a4bbde288156f405073d3027370b4d251f914c6bd79f79ff32d6a94",
+      "local_sha256": "5f682d876a4bbde288156f405073d3027370b4d251f914c6bd79f79ff32d6a94",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/231df78e-45a4-4022-9cb7-8708311f8c97/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig3.csv"
+    },
+    {
+      "filename": "Fig4.csv",
+      "file_id": "7eb0d9c9-9771-4d27-a624-bee9494df6de",
+      "bytes": 1674,
+      "repository_sha256": "96fcb9df6a78a71080d1267d5b4d0cff0bb7982456f480fce8c557d983fe3d88",
+      "local_sha256": "96fcb9df6a78a71080d1267d5b4d0cff0bb7982456f480fce8c557d983fe3d88",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/7eb0d9c9-9771-4d27-a624-bee9494df6de/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig4.csv"
+    },
+    {
+      "filename": "Fig5a.csv",
+      "file_id": "b296e06d-f080-4ea7-a054-87732ff6fa05",
+      "bytes": 121777,
+      "repository_sha256": "9075acbe7518cc93faff583689c4ced58daa15fd9fe5ec958b9ab487964d91d8",
+      "local_sha256": "9075acbe7518cc93faff583689c4ced58daa15fd9fe5ec958b9ab487964d91d8",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/b296e06d-f080-4ea7-a054-87732ff6fa05/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig5a.csv"
+    },
+    {
+      "filename": "Fig5b.csv",
+      "file_id": "6dc05154-0d6e-41eb-904d-f7f355bfd631",
+      "bytes": 27409,
+      "repository_sha256": "caa19da18d5494260b304a99ec2cbed8a86c970603e75c28fd25718b01068cd7",
+      "local_sha256": "caa19da18d5494260b304a99ec2cbed8a86c970603e75c28fd25718b01068cd7",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/6dc05154-0d6e-41eb-904d-f7f355bfd631/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig5b.csv"
+    },
+    {
+      "filename": "Fig6a.csv",
+      "file_id": "3bc0dc43-7a12-4725-be85-ef0fa656e5cd",
+      "bytes": 1037,
+      "repository_sha256": "1cc6c77f296371c9babefee1f49d193a0f6f6c2a22e994b55e4fb2d768063c59",
+      "local_sha256": "1cc6c77f296371c9babefee1f49d193a0f6f6c2a22e994b55e4fb2d768063c59",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/3bc0dc43-7a12-4725-be85-ef0fa656e5cd/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig6a.csv"
+    },
+    {
+      "filename": "Fig7a.csv",
+      "file_id": "99f24497-8433-4b4f-8772-a4101709a84b",
+      "bytes": 1053,
+      "repository_sha256": "632012eec3a023f970b19b0fcf7ab563778c7bac8ac127138f787c13ed884048",
+      "local_sha256": "632012eec3a023f970b19b0fcf7ab563778c7bac8ac127138f787c13ed884048",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/99f24497-8433-4b4f-8772-a4101709a84b/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig7a.csv"
+    },
+    {
+      "filename": "Fig7b.csv",
+      "file_id": "eb86d584-45ed-444c-8ed4-36e8ff71a26f",
+      "bytes": 1037,
+      "repository_sha256": "5126de418277ca0bdad4f0630eda5658ae2bebf0489e4b09a66ed24020c44723",
+      "local_sha256": "5126de418277ca0bdad4f0630eda5658ae2bebf0489e4b09a66ed24020c44723",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/eb86d584-45ed-444c-8ed4-36e8ff71a26f/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig7b.csv"
+    },
+    {
+      "filename": "Fig8.csv",
+      "file_id": "e05ad9ba-07f6-48fe-bd3d-3b00deba21dc",
+      "bytes": 1652,
+      "repository_sha256": "9e6e596928db6884bedfecd60f1c5ebcef78f0fb8ca225f3f3c43aa4e54c392a",
+      "local_sha256": "9e6e596928db6884bedfecd60f1c5ebcef78f0fb8ca225f3f3c43aa4e54c392a",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/e05ad9ba-07f6-48fe-bd3d-3b00deba21dc/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig8.csv"
+    },
+    {
+      "filename": "Fig9.csv",
+      "file_id": "9065886a-800e-4483-a001-793e82dab999",
+      "bytes": 3025,
+      "repository_sha256": "4b06f7f810d95eb4e180b6658dd655b7ef1ad7a956362752833cd34ca95b55a5",
+      "local_sha256": "4b06f7f810d95eb4e180b6658dd655b7ef1ad7a956362752833cd34ca95b55a5",
+      "hash_verified": true,
+      "source_url": "https://data.mendeley.com/public-files/datasets/dpw4svmdr8/files/9065886a-800e-4483-a001-793e82dab999/file_downloaded",
+      "local_path": "data\\raw\\measured_thz_control\\Fig9.csv"
+    }
+  ]
+}

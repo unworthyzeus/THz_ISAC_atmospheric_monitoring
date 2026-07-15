@@ -1,0 +1,71 @@
+{
+  "study_status": "strong species positive control with modeled attenuation",
+  "inputs": {
+    "air_quality_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+    "air_quality_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "hitran_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv",
+    "hitran_sha256": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8",
+    "uci_rows": 383585,
+    "hitran_lines": 9340
+  },
+  "chronological_split": {
+    "train_rows": 224559,
+    "validation_rows": 79942,
+    "test_rows": 79084,
+    "train_end": "2015-07-26 19:00:00",
+    "validation_end": "2016-05-12 22:00:00"
+  },
+  "training_state": {
+    "reference_dew_point_c": 4.0,
+    "surface_temperature_k": 289.15,
+    "surface_pressure_pa": 100870.0,
+    "train_dew_point_q05_q95_range_c": 41.5,
+    "test_dew_point_q05_q95_range_c": 42.7
+  },
+  "observation": {
+    "elevation_deg": 45.0,
+    "n_pilots": 30,
+    "residual_error_std_db": 0.63,
+    "tone_counts": [
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "active_subcarriers_rule": "n_active_subcarriers equals tone_count in each result row",
+    "reference_hardware_with_256_tone_example": {
+      "satellite_altitude_km": 550.0,
+      "tx_power_dbm": 23.0,
+      "tx_aperture_diameter_m": 0.5,
+      "rx_aperture_diameter_m": 0.3,
+      "subcarrier_bandwidth_hz": 1000000.0,
+      "tx_aperture_efficiency": 0.65,
+      "rx_aperture_efficiency": 0.65,
+      "receiver_noise_figure_db": 6.0,
+      "receiver_noise_temperature_k": 290.0,
+      "implementation_loss_db": 5.0,
+      "earth_radius_km": 6371.0,
+      "n_active_subcarriers": 256
+    }
+  },
+  "spectroscopy": {
+    "candidate_count": 512,
+    "dew_point_step_c": 0.25,
+    "pollutant_scale_height_m": 1500.0,
+    "water_scale_height_m": 2000.0,
+    "pm_scale_height_m": 1000.0,
+    "n_layers": 24,
+    "top_altitude_m": 12000.0,
+    "partition_sum_version": 2025
+  },
+  "interpretation": "Local surface dew point parameterizes an assumed H2O column. It is not a direct measured column retrieval.",
+  "known_limitations": [
+    "No measured sub THz attenuation is used.",
+    "The water scale height is fixed rather than observed.",
+    "The local CRB conditions on training median temperature and pressure.",
+    "The diagnostic table separates local linearity from transfer to paired real meteorological states.",
+    "The stricter background scale nuisance can absorb part of the H2O response.",
+    "Candidate frequencies omit instrument bandpass and regulatory constraints."
+  ]
+}

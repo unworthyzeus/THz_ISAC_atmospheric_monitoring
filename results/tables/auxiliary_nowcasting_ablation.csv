@@ -1,0 +1,10 @@
+model,inference_class,uses_current_weather,uses_true_pollutant_lags,uses_simulated_thz,validation_mean_normalized_rmse,validation_mean_r2,test_mean_normalized_rmse,test_mean_r2
+training period mean,constant baseline,False,False,False,0.3489323618134079,-0.04344163217820792,0.34747886180780957,-0.0831565881636845
+seasonal month hour climatology,training only seasonal prior,False,False,False,0.34561267784149546,-0.05815921512825387,0.32316434014807477,0.0202188062907331
+calendar Ridge,calendar and station prior,False,False,False,0.33564424969682416,0.035727914288191685,0.3216720648311267,0.07884015161898378
+calendar and current weather Ridge,auxiliary context prior,True,False,False,0.27733938070344794,0.28157099645979655,0.275559547528781,0.22500528460784527
+calendar and current weather HGB,auxiliary context prior,True,False,False,0.2624496227019854,0.31790561366323716,0.2669789148109805,0.2132932731207453
+exact one hour persistence with true past labels,one hour forecast with ground truth lag,False,True,False,0.11687887724311781,0.8818019394724361,0.11646266301349951,0.8773058195811679
+multilag HGB with true past labels,auxiliary nowcast with ground truth lags,True,True,False,0.10156977608831318,0.9113015292726664,0.10450708754197802,0.8989661655240729
+simulated THz spectral Ridge,same time simulated THz inversion,False,False,True,0.3489118959733822,-0.0433083680983791,0.34744344415083983,-0.08292672564409186
+calendar weather Ridge plus simulated THz,context plus simulated THz ablation,True,False,True,0.27733911653188487,0.2815715607550697,0.27555981777510224,0.22500513909520503

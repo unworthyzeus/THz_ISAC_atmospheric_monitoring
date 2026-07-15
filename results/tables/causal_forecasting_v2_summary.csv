@@ -1,0 +1,5 @@
+model,split,mean_normalized_rmse,mean_r2
+causal one hour base,validation,0.09726567677874698,0.916455874301191
+causal one hour base,test,0.10479920823153403,0.8985196505717835
+v2 frozen target-specific composite,validation,0.08452717129484276,0.9382670171115396
+v2 frozen target-specific composite,test,0.09548456624292913,0.9151256053001967

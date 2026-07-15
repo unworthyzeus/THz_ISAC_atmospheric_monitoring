@@ -1,360 +1,287 @@
 # Research Task Completion Status
 
-Generated on 2026-07-06.
+Updated on 2026 07 15 after probe optimization, the H2O control, and the preliminary real column study.
 
-This document maps each research task from the project task list to the current repository state. The status labels are intentionally strict.
-
-## Status Legend
+## Status Rules
 
 | Status | Meaning |
 | --- | --- |
-| Completed | A working implementation or result exists in the repository and has been validated at least at the current project level. |
-| Completed for the current benchmark | The requested capability exists for the current external data driven benchmark, but it may need expansion before a final thesis or publication claim. |
-| Partially completed | A working first version exists, but the task is not complete at the physical, methodological, or validation level requested by the proposal. |
-| Not completed | No implementation or result currently satisfies the task. |
+| Completed for the current feasibility model | The implementation, tests, and study artifact exist, but the conclusion remains conditional on declared assumptions and simulated observations. |
+| Partially completed | A working implementation exists, but a material physical calibration or integration gap remains. |
+| Not completed | No implementation or evidence currently satisfies the task. |
 
 ## Overall Summary
 
-| Task | Status | Main evidence | Main remaining gap |
+| Task | Status | Current evidence | Main remaining gap |
 | --- | --- | --- | --- |
-| Task 1.1 | Partially completed | `src/thz_isac/atmosphere.py` | Tropospheric layers are not yet integrated through the external forward model with species density per layer. |
-| Task 1.2 | Completed for the current benchmark | `scripts/download_external_data.py`, `src/thz_isac/hitran_templates.py` | HITRAN line parameters are extracted, but full calibrated HAPI absorption coefficients are still future work. |
-| Task 1.3 | Partially completed | `src/thz_isac/hitran_templates.py`, `src/thz_isac/external_forward_model.py` | Lorentzian templates exist, but no Voigt profile or layer by layer absorption integration exists yet. |
-| Task 1.4 | Partially completed | `src/thz_isac/hitran_templates.py`, `src/thz_isac/external_forward_model.py` | PM is modeled with smooth Rayleigh type trends, not a calibrated aerosol scattering model. |
-| Task 2.1 | Partially completed | `src/thz_isac/constants.py`, `src/thz_isac/external_forward_model.py` | Frequency, subcarriers, elevation, and SNR exist, but no complete RF link budget exists. |
-| Task 2.2 | Partially completed | `src/thz_isac/external_forward_model.py` | Wideband CSI amplitudes are simulated with slant path attenuation and AWGN, but without full link budget or phase channel modeling. |
-| Task 3.1 | Completed for the current benchmark | `src/thz_isac/features.py`, `src/thz_isac/external_forward_model.py` | The method is still tied to simplified templates. |
-| Task 3.2 | Completed for the current benchmark | `src/thz_isac/estimators.py`, `scripts/run_real_data_benchmark.py`, `scripts/run_real_ridge_sweep.py` | Optimization based fitting and ratiometric inversion are not yet developed as separate methods. |
-| Task 4.1 | Not completed | No implementation yet | CRB or lower bound derivation is not implemented. |
-| Task 4.2 | Partially completed | `scripts/run_snr_sweep.py`, `scripts/run_real_data_benchmark.py` | Sensitivity exists only as toy SNR sweep and random SNR or elevation variation, not as full external data sensitivity plus lower bounds. |
-| Task 4.3 | Not completed | No implementation yet | Detection floors and environmental standard compliance are not quantified. |
+| 1.1 Layered atmosphere | Completed for the current feasibility model | `physical_spectroscopy.py`, 24 layer run | Pollutant profiles are assumed rather than measured |
+| 1.2 HITRAN extraction | Completed for the current feasibility model | 9,340 lines, HAPI validation table | Independent database and profile validation |
+| 1.3 Voigt slant integration | Completed for the current feasibility model | Voigt, TIPS 2025, pressure and temperature integration | Refraction, spherical atmosphere, and measured columns |
+| 1.4 PM Rayleigh model | Partially completed | Fine and coarse Rayleigh mass extinction | Particle properties and humidity response are not calibrated |
+| 1.5 Native satellite columns | Partially completed | Ten ESA CCI CO and NO2 months plus domain aware column HITRAN model | Full period, profiles, averaging kernels, and validated higher atmosphere |
+| 2.1 NTN link budget | Completed for the current feasibility model | Spherical Earth range, apertures, loss, noise | Real spectrum allocation and hardware validation |
+| 2.2 Wideband CSI | Partially completed | Complex line of sight and pilot CSI module plus analytical observation model | Main study is simulated and has no measured channel data |
+| 3.1 Spectral isolation | Completed for the current feasibility model | Gas design, background and PM nuisance projection, frequency ranking | No measured background or instrument response |
+| 3.2 Estimators | Completed for the current feasibility model | Mean, validation selected Ridge, joint and mismatched WLS | Constrained nonlinear and measured data evaluation |
+| 3.3 Probe design | Completed for the current feasibility model | D optimal placement, exact variance power allocation, calibration and stability sweeps | Hardware bands, fixed total resources, and correlated errors |
+| 4.1 Analytical lower bound | Completed for the current feasibility model | Fisher information and CRB implementation | Bound depends on an uncalibrated residual error scenario |
+| 4.2 Sensitivity | Completed for the current feasibility model | Elevation, pilots, power, probes, residual error sweeps | Atmosphere, instrument, and spectrum allocation sweeps |
+| 4.3 Detection floors | Completed for the current feasibility model | Mass density, gas ppm, WHO scale comparison | Unequal averaging periods and no legal compliance validation |
+| 4.4 Strong species control | Partially completed | Local H2O CRB with default and strict nuisance selections | Nonlinear held out retrieval and measured attenuation |
 
-## Task 1: Stratified Atmospheric Channel Modeling
+All proposal task groups now have a working feasibility implementation. Probe optimization improves the modeled bounds but does not change the negative reference conclusion. Native real CO and NO2 column variation also remains below the modeled floor. The local H2O bound is a positive information calculation control, not field validation.
 
-### Task 1.1: Develop a multi layer tropospheric profile where pressure, temperature, and molecular density vary with altitude based on standard atmospheric reference models.
+## Task 1.1: Multi Layer Tropospheric Profile
 
-**Status: Completed for the current benchmark**
+### What was done
 
-What has been completed:
+`build_layered_zenith_attenuation_design()` creates 24 layers from the surface to 12 km. Temperature and pressure vary by layer, water is derived from UCI median dew point, oxygen is included as background, and target pollutants use declared exponential scale heights.
 
-1. A coarse standard troposphere helper exists in `src/thz_isac/atmosphere.py`.
-2. It creates altitude layers from ground level to 12 km.
-3. Each layer includes temperature, pressure, and relative density.
-4. A slant path helper converts satellite elevation angle into an approximate tropospheric slant path.
+### Why it was done
 
-Evidence:
+Line strengths, broadening, molecular number density, and path length vary with altitude. A surface template scaled over 12 km cannot represent those effects.
 
-1. `standard_troposphere_layers()`
-2. `AtmosphereLayer`
-3. `slant_path_km()`
+### Result
 
-What is not completed:
+The physical feasibility run uses UCI median surface temperature 287.55 K, pressure 101,040 Pa, and dew point 2.9 degrees Celsius, then integrates layer contributions before applying the elevation slant factor.
 
-1. The external data forward model does not yet integrate absorption layer by layer.
-2. Molecular density is not separated by gas species.
-3. Humidity, pressure broadening by layer, and temperature dependence are not applied to HITRAN absorption.
-4. There is no validation against a named standard atmosphere table.
+### Remaining work, risks, and next step
 
-Next step:
+The pollutant scale heights of 1,500 m, water scale height of 2,000 m, and PM scale height of 1,000 m are assumptions. Surface station values are not column truth. Compare profiles with radiosondes, reanalysis, chemistry transport models, or bounded profile ensembles, and validate the standard atmosphere implementation against an independent reference.
 
-Implement a layer based propagation function that takes altitude, pressure, temperature, humidity, and gas concentration profiles, then integrates absorption along the slant path.
+## Task 1.2: HITRAN Line Data
 
-### Task 1.2: Use the HITRAN spectroscopic database to extract line positions, intensities, and broadening coefficients for target rotational gas transitions within the targeted frequency window.
+### What was done
 
-**Status: Partially completed**
+HAPI acquisition provides line positions, intensities, air and self broadening, temperature exponents, pressure shifts, lower state energy, isotopologue abundance, and molecular mass for CO, O3, SO2, NO2, H2O, and O2 between 60 and 400 GHz.
 
-What has been completed:
+### Why it was done
 
-1. HITRAN line data is downloaded through HAPI.
-2. The current frequency window is 60 to 400 GHz.
-3. The current target gases are CO, O3, SO2, and NO2.
-4. H2O and O2 are also downloaded as atmospheric background components.
-5. The processed HITRAN table includes line frequency, line intensity, and air broadening coefficient.
+Real spectroscopic parameters are required to replace invented peak losses and unit normalized templates.
 
-Evidence:
+### Result
 
-1. `scripts/download_external_data.py`
-2. `src/thz_isac/hitran_templates.py`
-3. `docs/18_external_data_acquisition.md`
+The processed table contains 9,340 lines: 15 CO, 1,301 O3, 6,406 SO2, 1,536 NO2, 37 H2O, and 45 O2 lines. Input SHA256 is recorded in the physical feasibility manifest.
 
-What is not completed:
+### Remaining work, risks, and next step
 
-1. Only the main isotopologue is currently downloaded for each molecule.
-2. HITRAN lines are converted into normalized templates, not calibrated absorption coefficients.
-3. The current implementation does not yet use HAPI absorption coefficient calculations with pressure and temperature profiles.
+The table and local calculation share HITRAN as their source, so agreement with HAPI is not independent spectroscopic validation. Confirm isotopologue policy, database version, units, and selected bands against an independent tool or published absorption cases.
 
-Next step:
+## Task 1.3: Voigt Profile and Slant Integration
 
-Replace normalized template generation with HAPI absorption coefficient generation for each gas across the stratified atmosphere.
+### What was done
 
-### Task 1.3: Implement an atmospheric line shape profile, Voigt or Lorentz, to integrate molecular absorption along a vertical slant path determined by the satellite elevation angle.
+The local model applies TIPS 2025 partition sums, temperature adjusted intensities, pressure broadening, pressure shifts, Doppler widths, and a Voigt profile using the complex error function. Cross sections are converted to attenuation per surface mass concentration and integrated over the layered zenith column. A plane parallel secant factor supplies elevation dependence.
 
-**Status: Partially completed**
+### Why it was done
 
-What has been completed:
+Normalized Lorentzian shapes cannot support concentration detection floors in physical units.
 
-1. Lorentzian line templates are implemented.
-2. HITRAN line intensity and air broadening are used to shape the spectral templates.
-3. Satellite elevation affects the attenuation through a slant path factor.
+### Result
 
-Evidence:
+CO, O3, SO2, NO2, H2O, and O2 all pass direct HAPI comparison on the reference grid. Peak relative errors are below `6.4e-7`, and normalized active grid RMSE values are below `1.6e-7`.
 
-1. `src/thz_isac/hitran_templates.py`
-2. `src/thz_isac/channel.py`
-3. `src/thz_isac/external_forward_model.py`
+### Remaining work, risks, and next step
 
-What is not completed:
+The HAPI check covers one surface condition and the same underlying database. The secant path omits refraction and spherical atmospheric curvature. Add profile case validation at multiple pressure and temperature states and compare path attenuation with independent software and ITU recommendations.
 
-1. Voigt line shape is not implemented.
-2. Layer by layer integration is not implemented.
-3. Pressure and temperature dependent broadening is not applied by altitude.
-4. The line shape output is normalized and used as a relative spectral template, not as a calibrated absorption coefficient.
+## Task 1.4: Particulate Matter Scattering
 
-Next step:
+### What was done
 
-Use HAPI or a verified local implementation to calculate pressure and temperature dependent absorption coefficients, then integrate them over the slant path.
+The model converts assumed fine and coarse particle modes into Rayleigh mass extinction using particle diameter, density, and complex refractive index assumptions, then integrates them through a PM scale height. PM10 is represented with a fixed UCI median fine fraction for its optimistic bound.
 
-### Task 1.4: Model the frequency dependent Rayleigh aerosol scattering baseline for particulate matter across the same stratified slant path.
+### Why it was done
 
-**Status: Partially completed**
+PM requires a frequency dependent physical coefficient rather than an arbitrary smooth power law.
 
-What has been completed:
+### Result
 
-1. PM2.5 and PM10 are included as target variables.
-2. Smooth frequency dependent Rayleigh type PM templates are implemented.
-3. PM attenuation is included in the same slant path attenuation model as gases.
+The implementation produces traceable attenuation in dB per microgram per cubic meter. It also reveals that fine and coarse spectral columns have correlation `0.999999995`. The UCI Q95 scaled joint design has singular value ratio `2.61e-7`, so joint PM separation is practically nonidentifiable.
 
-Evidence:
+### Remaining work, risks, and next step
 
-1. `rayleigh_pm_template()` in `src/thz_isac/hitran_templates.py`
-2. PM scaling in `src/thz_isac/external_forward_model.py`
+Refractive index, particle density, modal diameter, size distribution, shape, and humidity growth are not calibrated. The Rayleigh approximation may fail for large particles at the highest frequencies. Obtain aerosol optical properties, use Mie or distribution integrated scattering where required, and validate against laboratory or field attenuation data. Until then, PM results remain exploratory and optimistic.
 
-What is not completed:
+## Task 2.1: NTN Link Budget
 
-1. The PM model is not a calibrated aerosol scattering model.
-2. Particle size distribution, refractive index, humidity growth, and mass extinction efficiency are not included.
-3. PM scattering is not integrated layer by layer through the troposphere.
+### What was done
 
-Next step:
+`link_budget.py` implements spherical Earth LEO slant range, aperture gain, free space path loss, atmospheric loss, total transmit power divided across active probes, thermal noise, receiver noise figure, and implementation loss.
 
-Implement a physically grounded PM scattering coefficient using particle size assumptions or public aerosol optical property models.
+### Why it was done
 
-## Task 2: NTN Link Parameterization and CSI Synthesis
+An arbitrary SNR label cannot connect spectroscopy to pilot observation uncertainty.
 
-### Task 2.1: Define the link budget and physical parameters for a 6G sub THz satellite downlink, including carrier frequency, OFDM subcarrier spacing, transmit power, and high gain directional receiver antenna profile.
+### Result
 
-**Status: Partially completed**
+The reference link uses a 550 km satellite, 23 dBm total transmit power, 0.50 m transmit aperture, 0.30 m receive aperture, 1 MHz per probe, 6 dB receiver noise figure, and 5 dB implementation loss. At 45 degrees, slant range is 749.1 km and median SNR is 14.97 dB. Of 256 probes, 206 exceed 5 dB.
 
-What has been completed:
+### Remaining work, risks, and next step
 
-1. The current frequency range is defined as 60 to 400 GHz.
-2. The current benchmark uses 256 subcarriers by default.
-3. Satellite elevation is sampled from 15 to 80 degrees.
-4. SNR is sampled from 20 to 45 dB.
-5. These parameters are configurable in the external CSI dataset config.
+The 60 to 400 GHz samples are multiband feasibility probes, not one contiguous OFDM waveform. Pointing loss, polarization, regulatory masks, hardware bandwidth, Doppler tracking, phase noise, and rain or cloud loss are absent. Define realistic disjoint allocations and validate the budget with actual hardware and propagation constraints.
 
-Evidence:
+## Task 2.2: Wideband CSI and Noise
 
-1. `src/thz_isac/constants.py`
-2. `ExternalCSIDatasetConfig` in `src/thz_isac/external_forward_model.py`
-3. `scripts/run_real_data_benchmark.py`
+### What was done
 
-What is not completed:
+`pilot_csi.py` synthesizes a complex line of sight coefficient with Friis amplitude, atmospheric attenuation, aperture or supplied gain, and geometric phase. It transmits unit pilots through circular complex Gaussian noise, averages channel estimates, and can recover attenuation relative to a clear sky channel. The feasibility script uses an analytical pilot attenuation variance with SNR and an assumed independent residual per tone term.
 
-1. There is no full RF link budget.
-2. Transmit power is not modeled.
-3. Antenna gains and receiver antenna profile are not modeled.
-4. OFDM subcarrier spacing is not explicitly defined from total bandwidth.
-5. Free space path loss is not currently combined with atmospheric attenuation in the external benchmark.
+### Why it was done
 
-Next step:
+The project needs an auditable connection between a physical link coefficient, pilot averaging, and the attenuation observation used by estimators and bounds.
 
-Add a link budget module with transmit power, antenna gain, receiver noise figure, bandwidth, free space path loss, and OFDM subcarrier spacing.
+### Result
 
-### Task 2.2: Simulate the received wideband CSI, modeling a Line of Sight channel under integrated slant path atmospheric attenuation and Additive White Gaussian Noise.
+Tests confirm channel amplitude and phase, aperture gains, unbiased high SNR estimation, inverse pilot count variance scaling, and clear sky attenuation recovery. The main 20,000 record benchmark simulates attenuation observations from real UCI labels and calibrated physical columns.
 
-**Status: Partially completed**
+### Remaining work, risks, and next step
 
-What has been completed:
+No measured CSI is used. The main CRB run assumes independent tone errors and a 0.63 dB residual standard deviation scenario borrowed from adjacent literature; it is not calibrated for this link. Integrate the complex simulator into a Monte Carlo study, include correlated calibration and phase errors, and validate against measured clear sky and polluted cases.
 
-1. Wideband CSI amplitude spectra are simulated.
-2. Atmospheric attenuation is frequency dependent.
-3. The attenuation includes gases, PM, H2O and O2 background, elevation dependent slant path scaling, and AWGN.
-4. The target labels come from real UCI pollutant records.
-5. Gas spectral shapes come from external HITRAN line data.
+## Task 3.1: Spectral Isolation
 
-Evidence:
+### What was done
 
-1. `generate_external_csi_dataset()` in `src/thz_isac/external_forward_model.py`
-2. `scripts/run_real_data_benchmark.py`
-3. `docs/22_real_data_results.md`
+The physical design separates four gas columns from H2O and O2 background and two PM columns. CRB calculations project background and PM nuisance subspaces while jointly estimating gases. Single target Fisher contributions rank informative frequencies.
 
-What is not completed:
+### Why it was done
 
-1. CSI is simulated rather than measured.
-2. The channel is amplitude only.
-3. Phase, delay, Doppler, antenna pattern, and free space loss are not modeled.
-4. Slant path integration is simplified to a scalar path factor.
+Gas lines must be distinguished from smooth PM and strong atmospheric background rather than inferred only through label correlations.
 
-Next step:
+### Result
 
-Extend CSI synthesis to include the full link budget, phase response, and a physically calibrated atmospheric attenuation model.
+The gas target design has full rank four in the reference CRB. The leading single target frequencies are near 345.33 GHz for CO, 358.67 GHz for O3, 357.33 GHz for SO2, and 396.00 GHz for NO2. PM peaks at 400 GHz in the current grid but its two modes are nearly collinear.
 
-## Task 3: Feature Inversion and Parameter Extraction
+### Remaining work, risks, and next step
 
-### Task 3.1: Design an estimation pipeline to isolate the spectral notches from gas lines from the broad frequency dependent attenuation caused by PM.
+The nuisance model is deterministic and does not include instrument response or uncertain atmospheric states. Test frequency subsets under realistic allocations and include profile, line, calibration, and background covariance.
 
-**Status: Completed for the current benchmark**
+## Task 3.2: Estimator Evaluation
 
-What has been completed:
+### What was done
 
-1. Path normalized spectral features are implemented.
-2. Mean removed path normalized features are implemented.
-3. HITRAN template projection features are implemented.
-4. Hybrid spectrum plus template features are implemented.
-5. Template projection separates gas line like components from smoother PM and background components.
+The feasibility benchmark compares a training period mean, Ridge selected only on validation data, joint physical weighted least squares, oracle gas weighted least squares after removing true PM, and a deliberately mismatched gas design. It uses a chronological timestamp grouped 60%, 20%, and 20% split. The follow up audit adds target specific Ridge, training prior LMMSE, paired bootstrap uncertainty, ten receiver noise seed stability, nonlinear and multitask candidates, exact causal lags, and context plus spectrum ablations.
 
-Evidence:
+### Why it was done
 
-1. `src/thz_isac/features.py`
-2. `template_projection_features()` in `src/thz_isac/external_forward_model.py`
-3. `scripts/run_real_data_benchmark.py`
-4. `results/tables/real_data_model_benchmark_summary.csv`
+The old random split and test selected model comparison overstated performance. A chronological validation protocol and independent mismatch case are required to judge whether the physical signal carries information.
 
-Current result:
+### Result
 
-The best current feature set is `template_projection`.
+The first Ridge grid selected alpha `10,000` at its upper boundary and was rejected as incomplete. The expanded grid selects alpha `100,000` on validation data. The originally held out test macro normalized RMSE is `0.347443` with mean R2 `-0.08293`, effectively the same as the training period mean at `0.347479` and `-0.08316`. The exact audit reproduces the Ridge value within `2.22e-16`, and the conditional paired row bootstrap interval for Ridge minus the mean includes zero. A training prior LMMSE reaches only `0.347435`. Frozen multitask ElasticNet and histogram boosting are worse than Ridge across ten receiver noise seeds. Physical WLS errors are orders of magnitude larger and about half its predictions are negative. Follow up diagnostics reuse the test period, while full period atmosphere and PM medians make the reference scenario transductive rather than strictly leakage free.
 
-What remains:
+### Remaining work, risks, and next step
 
-1. The separation method relies on simplified templates.
-2. A physically calibrated absorption model may change which features are optimal.
-3. The current method has not been tested on measured CSI.
+The deterministic 20,000 row sample retains one station at each selected timestamp, so repeated station and time stratified samples, all row evaluation, station holdout, and fresh time windows remain. Bayesian linear inference is now evaluated and does not rescue the result. Estimator complexity should not be used to hide a signal below the bound. First validate the forward and error model, then evaluate constrained inference under independent measured or mismatched data.
 
-Next step:
+## Task 3.3: Tenfold RMSE Reduction Investigation
 
-Repeat the feature comparison after replacing normalized HITRAN templates with calibrated absorption coefficients.
+### What was done
 
-### Task 3.2: Formulate and evaluate algorithmic approaches, such as optimization based curve fitting, statistical ratiometric inversion, or machine learning estimators, to extract gas concentration and PM density values from the CSI.
+The requested target was fixed at `0.0347443444`, one tenth of the reported Ridge metric. Spectral only estimators, receiver noise seed stability, causal context models, and an idealized global noise sensitivity were evaluated without changing the metric denominator or chronological split.
 
-**Status: Completed for the current benchmark**
+### Why it was done
 
-What has been completed:
+A lower numerical error is useful only if it comes from additional measurement information rather than leakage, changed normalization, test tuning, removed targets, or a different inference task.
 
-1. Linear regression was evaluated.
-2. Ridge regression was evaluated.
-3. Partial least squares was evaluated.
-4. k nearest neighbors was evaluated.
-5. Random forest was evaluated.
-6. Extra trees was evaluated.
-7. A template least squares estimator was evaluated.
-8. A focused Ridge alpha sweep was run.
+### Result
 
-Evidence:
+No reference spectral model reaches the target. The ten seed Ridge mean is `0.347476`; frozen multitask ElasticNet and histogram boosting reach `0.347741` and `0.347583`. A multilag forecast with true past ground measurements reaches `0.104507`, but it is not satellite only THz inversion. Context plus simulated spectrum is slightly worse than context alone.
 
-1. `src/thz_isac/estimators.py`
-2. `src/thz_isac/physics_estimator.py`
-3. `scripts/run_real_data_benchmark.py`
-4. `scripts/run_real_ridge_sweep.py`
-5. `results/tables/real_data_model_benchmark_summary.csv`
-6. `results/tables/real_data_ridge_alpha_sweep.csv`
-7. `docs/22_real_data_results.md`
+Within the frozen exact physics, diagonal noise, training prior LMMSE sensitivity, the target threshold appears only after validation selects a global noise standard deviation multiplier of `2.4778e-5`. This is a reduction by a factor of `40,358` and corresponds to `1.629 billion` ideal independent repeated spectra. The resulting idealized numerical test point is `0.031486`. This is not a realizable sensor result or the current RMSE.
 
-Current best result:
+### Remaining work, risks, and next step
 
-| Feature set | Model | Mean normalized RMSE | Mean R2 | Max target normalized RMSE |
-| --- | --- | ---: | ---: | ---: |
-| `template_projection` | Ridge, alpha 17.78 | 0.07793 | 0.94523 | 0.09460 |
+Resolve pilot power versus coherent CSI variance, repeat the study with better sampling and fresh time blocks, and obtain measured radiances. NASA CMR resolves a paired Aura MLS Level 1 radiance and Level 2 CO and O3 path, but granule access is blocked pending Earthdata authentication. Aura MLS would be a limb profile control rather than Beijing surface truth.
 
-What remains:
+## Task 3.4: Multi Method 0.08 Information Study
 
-1. Optimization based curve fitting has not been developed as a separate estimator.
-2. Statistical ratiometric inversion has not been developed as a separate estimator.
-3. The current result is simulation based because CSI is generated from external data and a simplified forward model.
+### What was done
 
-Next step:
+The same six targets, sample, chronological periods, and training quantile denominators were retained while separating five inference classes: same time simulated THz inversion, strictly causal forecasting, all channel station reconstruction, single channel repair, and a measured laboratory THz positive control.
 
-Add curve fitting and ratiometric inversion baselines, then compare them against Ridge and template projection under the same external data driven benchmark.
+### Why it was done
 
-## Task 4: Performance Bounding and Sensitivity Evaluation
+The revised objective accepts `0.08` or a defensible information limit. Reaching the number is useful only when the information available at inference is explicit and the result is not relabeled as a different sensing task.
 
-### Task 4.1: Derive the analytical lower bound of estimation variance given the link SNR.
+### Result
 
-**Status: Not completed**
+The declared advanced THz result remains `0.347466`, while an optimistic context assisted unbounded power sensitivity reaches `0.239100`. The declared exact model needs at least a 5,918 fold noise standard deviation reduction to target `0.08`.
 
-What has been completed:
+The causal v2 forecast reaches `0.095485`. Strict reconstruction with all six current query channels hidden reaches an empirical attempted family floor near `0.088890`. Single channel repair reaches `0.074855` and meets the revised objective because the other five current query channels remain available. The real measured Mendeley THz protein control is strongly monotonic but reaches `0.199270` macro on its separate leave one concentration out task.
 
-1. No analytical lower bound has been implemented yet.
-2. No CRB or BCRB derivation is currently present in the codebase or paper draft.
+### Remaining work, risks, and next step
 
-Evidence:
+Confirm the learned alternatives on a fresh city or untouched future window. Single channel repair depends on healthy colocated channels and a functioning donor network. It does not rescue atmospheric THz inversion. The measured protein control has only six or seven concentration levels and is neither gas phase nor atmospheric.
 
-1. `docs/22_real_data_results.md` lists CRB or BCRB as a future step.
-2. `docs/24_validation_and_repo_state.md` lists estimation bounds as remaining work.
+## Task 4.1: Analytical Estimation Bound
 
-What is not completed:
+### What was done
 
-1. Fisher information matrix derivation.
-2. CRB or BCRB implementation.
-3. Bound comparison against empirical estimator error.
+`estimation_bounds.py` implements pilot averaged attenuation variance, weighted Fisher information, nuisance projection, CRB covariance, rank and conditioning diagnostics, one sigma floors, weighted least squares, and gas mass concentration to ppm conversion.
 
-Next step:
+### Why it was done
 
-Derive the observation model likelihood for the calibrated CSI forward model, compute the Fisher information matrix, and compare estimator RMSE against the lower bound over SNR.
+An analytical bound tests detectability without relying on a particular learned estimator and exposes nonidentifiability before model tuning.
 
-### Task 4.2: Conduct sensitivity analyses to evaluate estimation error and lower bounds as a function of changing satellite elevation angles and varying atmospheric noise levels.
+### Result
 
-**Status: Partially completed**
+All four gas parameters are algebraically identifiable in the reference joint gas model, but their one sigma floors are much larger than UCI ambient concentrations and WHO health guideline comparison levels. PM joint retrieval is practically nonidentifiable.
 
-What has been completed:
+### Remaining work, risks, and next step
 
-1. A toy SNR sweep exists for early engineering validation.
-2. The external data benchmark samples SNR and satellite elevation ranges.
-3. The external dataset metadata stores elevation, SNR, and path factor.
+The bound is conditional on a linear design, independent tone errors, and the declared residual scenario. Add correlated nuisance covariance, profile priors, instrument calibration parameters, and BCRB analysis only after those distributions are justified.
 
-Evidence:
+## Task 4.2: Sensitivity Analysis
 
-1. `scripts/run_snr_sweep.py`
-2. `scripts/run_real_data_benchmark.py`
-3. `data/processed/real_data_csi/real_data_csi_metadata.csv.gz`, generated locally and ignored by Git
+### What was done
 
-What is not completed:
+The study sweeps elevations 15, 30, 45, 60, and 80 degrees; 30, 300, and 3,000 pilots; 13, 23, and 33 dBm total transmit power; 64, 128, and 256 active probes; and residual per tone standard deviations 0, 0.10, and 0.63 dB.
 
-1. There is no systematic external data driven SNR sweep.
-2. There is no systematic elevation sweep.
-3. Lower bounds are not computed, so sensitivity cannot yet include bound comparison.
-4. Atmospheric noise variation is not modeled beyond AWGN level.
+### Why it was done
 
-Next step:
+The feasibility conclusion must be tested against controllable link and observation variables rather than one arbitrary operating point.
 
-Add `scripts/run_real_sensitivity_sweep.py` to sweep SNR, elevation, bandwidth, and subcarrier count using the external data pipeline, then add lower bounds after Task 4.1 is implemented.
+### Result
 
-### Task 4.3: Quantify the exact parts per million and mass density detection floors of the developed estimator to verify compliance with environmental sensing standards.
+No one factor scenario reaches a floor to guideline ratio of one. Lower elevation improves pollutant path sensitivity more than its SNR loss in this model. More pilots and power saturate because of the residual term. Even with that residual set to zero while other reference settings remain fixed, the CO ratio is 16.39 and the other targets are worse.
 
-**Status: Not completed**
+An optimistic combined stress test uses 15 degrees elevation, 3,000 pilots, zero residual per tone error, 33 dBm total power, and 256 probes. Its one sigma ratios are 0.649 for CO, 9.190 for O3, 4.350 for SO2, 88.204 for NO2, 3,538.135 for PM2.5, and 1,232.290 for PM10. Only CO crosses the health guideline concentration scale at one sigma. Its three sigma ratio is 1.948, so it is not a robust detection success. This prevents a universal impossibility conclusion, but the scenario is not a proposed deployment or compliance test.
 
-What has been completed:
+### Remaining work, risks, and next step
 
-1. Regression error metrics are available for pollutant mass concentration targets.
-2. Results are reported for CO, O3, SO2, NO2, PM2.5, and PM10.
+Frequency windows, allocation constraints, weather, profile uncertainty, instrument response, and error correlation are not swept. Expand the study only with defensible ranges and preserve the total power accounting across probe counts.
 
-Evidence:
+## Task 4.3: Detection Floors and Health Guideline Scale
 
-1. `results/tables/real_data_model_benchmark_metrics.csv`
-2. `results/tables/real_data_ridge_alpha_sweep.csv`
-3. `docs/22_real_data_results.md`
+### What was done
 
-What is not completed:
+The reference CRB is reported in micrograms per cubic meter for all targets and ppm for gases. Values are compared with WHO 2021 health guideline levels and their 8 h or 24 h averaging periods.
 
-1. Detection floors are not calculated.
-2. Gas results are currently handled in mass concentration units from the UCI dataset, not converted to ppm detection floors.
-3. Environmental sensing standards are not mapped to target thresholds.
-4. Compliance is not verified.
+### Why it was done
 
-Next step:
+Dimensionless regression scores do not show whether an instrument can resolve environmentally relevant concentration changes.
 
-Define target standards, convert gas concentration units where needed, estimate detection floors from calibrated sensitivity curves, and compare those floors with environmental threshold requirements.
+### Result
+
+| Target | One sigma floor, micrograms per cubic meter | Floor divided by WHO guideline |
+| --- | ---: | ---: |
+| CO | 83,015 | 20.8 |
+| O3 | 28,099 | 281.0 |
+| SO2 | 4,308 | 107.7 |
+| NO2 | 64,427 | 2,577.1 |
+| PM2.5 | 1,513,315 | 100,887.7 |
+| PM10 | 1,581,204 | 35,137.9 |
+
+### Remaining work, risks, and next step
+
+The bound describes one pilot burst, while WHO values use 8 h or 24 h averages. The ratios are scale comparisons, not compliance tests and not equivalent averaging period performance. Calibrate temporal averaging, drift, correlation, and field accuracy before discussing environmental compliance.
 
 ## Final Assessment
 
-The project currently has a defensible external data driven benchmark and an IEEE style draft. The strongest completed area is Task 3, especially feature inversion and machine learning estimation. Tasks 1 and 2 have working first versions but still need physically calibrated atmospheric and link models. Task 4 remains the largest open block because analytical bounds, sensitivity sweeps, and detection floors are not yet implemented.
+The repository now implements every proposal task at least to the level required for a transparent physical feasibility study. Optimized pollutant signatures remain too weak under the declared link and observation assumptions, the declared advanced THz estimate remains at `0.347466`, real CO and NO2 column variation remains below the modeled floor, and PM modes are practically nonidentifiable. The exact declared model requires at least a 5,918 fold modeled noise standard deviation reduction to target `0.08`.
+
+Real ground sensor methods are useful but answer different questions. The causal forecast reaches `0.095485`, strict station reconstruction reaches `0.088890`, and single channel repair reaches `0.074855` when five current colocated channels are still healthy. The measured THz protein control confirms a real monotonic spectral response but not atmospheric retrieval.
+
+The project is complete as a documented feasibility and signal processing study, including a compiled IEEE paper, reproducible artifacts, successful and failed attempts, and explicit claim boundaries. It is not complete as a validated atmospheric sensing system. That next phase requires paired measured channel evidence, independent atmosphere and link validation, real vertical profiles, calibrated aerosol physics, realistic spectrum allocations, and uncertainty models.

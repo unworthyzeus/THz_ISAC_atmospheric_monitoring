@@ -1,0 +1,40 @@
+result,value,unit,status,notes
+reported_ridge_macro_normalized_rmse,0.34744344415083983,dimensionless,verified,Mean of the six rows in physical_estimator_metrics.csv.
+reproduced_ridge_macro_normalized_rmse,0.34744344415084005,dimensionless,verified,Rebuilt from the hashed UCI and HITRAN inputs.
+ridge_reproduction_absolute_difference,2.220446049250313e-16,dimensionless,verified,Required tolerance is 1e-12.
+training_period_mean_macro_normalized_rmse,0.3474788618078087,dimensionless,diagnostic,All methods use the original fixed chronological test rows.
+training_period_mean_mean_r2,-0.08315658816367304,dimensionless,diagnostic,Unweighted mean across six target R2 values.
+ridge_shared_validation_alpha_macro_normalized_rmse,0.34744344415084005,dimensionless,diagnostic,All methods use the original fixed chronological test rows.
+ridge_shared_validation_alpha_mean_r2,-0.08292672564408592,dimensionless,diagnostic,Unweighted mean across six target R2 values.
+ridge_target_specific_validation_alpha_macro_normalized_rmse,0.34743773256876825,dimensionless,diagnostic,All methods use the original fixed chronological test rows.
+ridge_target_specific_validation_alpha_mean_r2,-0.08285101641990293,dimensionless,diagnostic,Unweighted mean across six target R2 values.
+physics_lmmse_pilot_power_macro_normalized_rmse,0.3474353276214875,dimensionless,diagnostic,All methods use the original fixed chronological test rows.
+physics_lmmse_pilot_power_mean_r2,-0.08292803074069467,dimensionless,diagnostic,Unweighted mean across six target R2 values.
+ridge_refit_train_validation_macro_normalized_rmse,0.3448325997867445,dimensionless,diagnostic,All methods use the original fixed chronological test rows.
+ridge_refit_train_validation_mean_r2,-0.0569752814537788,dimensionless,diagnostic,Unweighted mean across six target R2 values.
+validation_period_mean_no_thz_macro_normalized_rmse,0.3404175417767516,dimensionless,diagnostic,All methods use the original fixed chronological test rows.
+validation_period_mean_no_thz_mean_r2,-0.012079814165201283,dimensionless,diagnostic,Unweighted mean across six target R2 values.
+physics_lmmse_coherent_csi_residual_macro_normalized_rmse,0.34738221214034254,dimensionless,diagnostic,All methods use the original fixed chronological test rows.
+physics_lmmse_coherent_csi_residual_mean_r2,-0.08270028491565883,dimensionless,diagnostic,Unweighted mean across six target R2 values.
+physics_lmmse_coherent_csi_zero_residual_macro_normalized_rmse,0.3456004080354493,dimensionless,diagnostic,All methods use the original fixed chronological test rows.
+physics_lmmse_coherent_csi_zero_residual_mean_r2,-0.07519181649714572,dimensionless,diagnostic,Unweighted mean across six target R2 values.
+reported_training_mean_macro_normalized_rmse,0.34747886180780957,dimensionless,verified,Controlling baseline from the original metric artifact.
+ridge_minus_training_mean_macro_normalized_rmse,-3.54176569686282e-05,dimensionless,diagnostic,Negative favors Ridge.
+paired_bootstrap_95pct_lower,-0.00015030702199506223,dimensionless,diagnostic,Percentile interval from paired test row resampling.
+paired_bootstrap_95pct_upper,7.641462522024743e-05,dimensionless,diagnostic,Interval includes zero when the apparent gain is not resolved.
+paired_bootstrap_probability_ridge_better,0.7215,probability,diagnostic,"Conditional on the fixed split, fit, and simulated noise realization."
+deterministic_sampler_training_mean_macro_normalized_rmse,0.3474788618078087,dimensionless,verified,The current sample retains one row per selected timestamp.
+all_eligible_rows_training_mean_macro_normalized_rmse,0.34053206621579585,dimensionless,diagnostic,Uses every row satisfying PM10 greater than or equal to PM2.5.
+random_sampler_macro_normalized_rmse_mean,0.34627078363674885,dimensionless,diagnostic,"Across 20 random 20,000 row samples."
+random_sampler_macro_normalized_rmse_std,0.005792049400333838,dimensionless,diagnostic,"Across 20 random 20,000 row samples."
+random_sampler_macro_normalized_rmse_min,0.33079264113088563,dimensionless,diagnostic,"Across 20 random 20,000 row samples."
+random_sampler_macro_normalized_rmse_max,0.35358480782760293,dimensionless,diagnostic,"Across 20 random 20,000 row samples."
+maximum_tone_signal_std_to_noise_std,0.011171064360912536,ratio,diagnostic,Training excess attenuation standard deviation divided by declared noise.
+prior_whitened_fisher_maximum_eigenvalue,0.0007185032621722841,dimensionless,diagnostic,Values much smaller than one imply little measurement information versus the prior.
+requested_target_macro_normalized_rmse,0.0347443444,dimensionless,diagnostic,Tenfold target supplied for the audit.
+validation_selected_global_noise_std_factor,2.477817558150257e-05,factor,diagnostic,Selected using validation labels only after the target was fixed.
+validation_selected_noise_std_reduction,40358.09645107693,factor,diagnostic,Reciprocal of the selected global standard deviation factor.
+ideal_independent_repeat_equivalent,1628775949.1544285,repeats,diagnostic,Valid only if every observation error component averages independently.
+ideal_pilot_symbol_equivalent,48863278474.63286,pilot_symbols,diagnostic,Independent repeat equivalent multiplied by 30 pilots.
+selected_noise_validation_macro_normalized_rmse,0.034744344399999766,dimensionless,diagnostic,The selection boundary on validation.
+selected_noise_test_macro_normalized_rmse,0.03148583757180324,dimensionless,diagnostic,Test evaluated once at the validation selected scale.

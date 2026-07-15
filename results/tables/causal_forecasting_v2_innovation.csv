@@ -1,0 +1,13 @@
+split,target,exact_lag_coverage,available_one_hour_innovation_rmse_ug_m3,available_one_hour_innovation_normalized_rmse,frozen_model_normalized_rmse,interpretation
+validation,CO,0.98025,356.3609322043176,0.11878697740143919,0.11083893807152717,"innovation scale diagnostic, not a theoretical lower bound"
+validation,O3,0.98025,13.570731516366903,0.07335530549387516,0.05373847666833886,"innovation scale diagnostic, not a theoretical lower bound"
+validation,SO2,0.98025,4.304496679089292,0.06424621909088495,0.06200428351742135,"innovation scale diagnostic, not a theoretical lower bound"
+validation,NO2,0.98025,11.065246664857696,0.10341352023231491,0.08821857986807208,"innovation scale diagnostic, not a theoretical lower bound"
+validation,PM2.5,0.98025,19.789738929460388,0.09034347833581581,0.08965558496299662,"innovation scale diagnostic, not a theoretical lower bound"
+validation,PM10,0.98025,28.352118830576252,0.10739438950975853,0.1027071646807004,"innovation scale diagnostic, not a theoretical lower bound"
+test,CO,0.978,417.71850875468425,0.1392395029182281,0.14092098492040522,"innovation scale diagnostic, not a theoretical lower bound"
+test,O3,0.978,16.450380867166775,0.08892097766036094,0.07064591509784383,"innovation scale diagnostic, not a theoretical lower bound"
+test,SO2,0.978,5.049904330017678,0.0753717064181743,0.0728501830028498,"innovation scale diagnostic, not a theoretical lower bound"
+test,NO2,0.978,11.863174878606864,0.11087079325800808,0.10099266192926296,"innovation scale diagnostic, not a theoretical lower bound"
+test,PM2.5,0.978,19.8167989713877,0.09046701196707495,0.08513744583355803,"innovation scale diagnostic, not a theoretical lower bound"
+test,PM10,0.978,28.54528565863956,0.10812608204030137,0.1023602066736549,"innovation scale diagnostic, not a theoretical lower bound"
