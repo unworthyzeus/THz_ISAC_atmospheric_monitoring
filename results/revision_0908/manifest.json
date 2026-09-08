@@ -1,0 +1,195 @@
+{
+  "protocol": {
+    "config": {
+      "study_status": "physical feasibility study with simulated attenuation observations",
+      "inputs": {
+        "air_quality_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz",
+        "air_quality_sha256": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+        "hitran_path": "C:\\Research\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv",
+        "hitran_sha256": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8",
+        "uci_rows": 383585,
+        "hitran_lines": 9340
+      },
+      "surface_conditions_from_uci_medians": {
+        "temperature_k": 290.34999999999997,
+        "pressure_pa": 100800.0,
+        "dew_point_c": 5.4
+      },
+      "atmosphere": {
+        "n_layers": 24,
+        "top_altitude_m": 12000.0,
+        "pollutant_scale_height_m": 1500.0,
+        "water_scale_height_m": 2000.0,
+        "pm_scale_height_m": 1000.0,
+        "partition_sum_version": 2025,
+        "frequency_min_ghz": 60.0,
+        "frequency_max_ghz": 400.0,
+        "frequency_count": 256
+      },
+      "reference_link": {
+        "satellite_altitude_km": 550.0,
+        "tx_power_dbm": 23.0,
+        "tx_aperture_diameter_m": 0.5,
+        "rx_aperture_diameter_m": 0.3,
+        "subcarrier_bandwidth_hz": 1000000.0,
+        "tx_aperture_efficiency": 0.65,
+        "rx_aperture_efficiency": 0.65,
+        "receiver_noise_figure_db": 6.0,
+        "receiver_noise_temperature_k": 290.0,
+        "implementation_loss_db": 5.0,
+        "earth_radius_km": 6371.0,
+        "n_active_subcarriers": 256
+      },
+      "observation": {
+        "elevation_deg": 45.0,
+        "n_pilots": 30,
+        "residual_error_std_db": 0.63,
+        "residual_error_assumption": "independent between tones; borrowed scenario value, not calibrated for this link",
+        "variance_model": "(10/ln(10))^2 / Np * (1 + 1/SNR)^2 + sigma_residual^2"
+      },
+      "sensitivity_design": {
+        "primary_sweeps": "one factor at a time around the reference link",
+        "optimistic_combined_scenario": {
+          "elevation_deg": 15.0,
+          "n_pilots": 3000,
+          "residual_error_std_db": 0.0,
+          "tx_power_dbm": 33.0,
+          "tone_count": 256,
+          "interpretation": "optimistic stress test, not a proposed deployment"
+        }
+      },
+      "pm_model": {
+        "status": "exploratory Rayleigh model with assumed particle properties",
+        "uci_median_fine_fraction_of_pm10": 0.7272727272727273,
+        "fine_coarse_signature_correlation": 0.999999994983261,
+        "q95_scaled_design_smallest_to_largest_singular_ratio": 2.60533582689667e-07,
+        "joint_pm_interpretation": "practically nonidentifiable"
+      },
+      "who_comparison": {
+        "status": "health guideline comparison, not legal compliance verification",
+        "guidelines_ug_m3": {
+          "CO": 4000.0,
+          "O3": 100.0,
+          "SO2": 40.0,
+          "NO2": 25.0,
+          "PM2.5": 15.0,
+          "PM10": 45.0
+        },
+        "averaging_periods": {
+          "CO": "24 h",
+          "O3": "8 h",
+          "SO2": "24 h",
+          "NO2": "24 h",
+          "PM2.5": "24 h",
+          "PM10": "24 h"
+        }
+      },
+      "link_diagnostics": {
+        "slant_range_km": 749.1087736298641,
+        "snr_median_db": 14.973941727146226,
+        "snr_q05_db": -70.80003193565044,
+        "snr_q95_db": 20.639047159449355,
+        "tones_above_5_db": 206,
+        "tone_count": 256,
+        "gas_target_rank": 4,
+        "gas_target_count": 4
+      },
+      "estimator_benchmark": {
+        "simulated_observation_rows": 20000,
+        "excluded_pm_ordering_rows": 17642,
+        "train_rows": 12000,
+        "validation_rows": 4000,
+        "test_rows": 4000,
+        "train_end": "2015-09-10 01:00:00",
+        "validation_end": "2016-06-03 04:00:00",
+        "ridge_alpha_selected_on_validation": 100000.0,
+        "random_seed": 20260715,
+        "observation_status": "simulated attenuation generated from HITRAN and real UCI labels"
+      },
+      "dependency_versions": {
+        "numpy": "2.4.4",
+        "pandas": "2.2.3",
+        "scipy": "1.17.0",
+        "scikit-learn": "1.8.0",
+        "matplotlib": "3.9.0",
+        "hitran-api": "1.3.0.0"
+      },
+      "known_limitations": [
+        "No measured sub THz CSI is used.",
+        "Pollutant vertical profiles are exponential scale height assumptions.",
+        "The frequency samples are multiband probes, not one contiguous OFDM allocation.",
+        "PM refractive index, density, and modal diameter are exploratory assumptions.",
+        "The UCI station measurements are surface point observations, not column retrieval truth."
+      ]
+    },
+    "models": [
+      "power",
+      "coherent"
+    ],
+    "pilots": [
+      30,
+      300,
+      3000,
+      30000
+    ],
+    "residual_std_db": [
+      0.0,
+      0.001,
+      0.01
+    ],
+    "correlations": [
+      0.0,
+      0.9
+    ],
+    "correlation_length_ghz": 10.0,
+    "model_scenarios": [
+      "matched",
+      "temperature_plus_5K",
+      "pressure_minus_2000Pa",
+      "height_1200m",
+      "combined"
+    ],
+    "concentration_quantiles": [
+      0.5,
+      0.95
+    ],
+    "noise_seed": 908200,
+    "noise_draws": 10000,
+    "boundary": "Known fixed covariance conditional Gaussian model. GLS is unconstrained and attains its efficient covariance only for a correct mean model. Physical mismatch scenarios are sensitivity assumptions, not calibrated error bounds. The existing real-label split is reused. Calibration allowances concern arbitrary deterministic per-probe bias and are distinct from independent random residual standard deviations."
+  },
+  "wall_seconds": 9.222026399998867,
+  "sampled_peak_rss_bytes": 453079040,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "torch": "2.4.1",
+    "scikit-learn": "1.8.0",
+    "sympy": "1.14.0",
+    "cvxpy": "1.8.2"
+  },
+  "command": [
+    "scripts/run_attainability_0908.py"
+  ],
+  "failures": [],
+  "code_sha256": "6fa127e02755e2bffb38c4cd07fe4293d14ce6ff2477f538992fd85a0184890a",
+  "outputs": {
+    "attainability.csv": "3da047d71f934b31948299c739b1c12a12f495d93a7668c500d33a9391c6c9b6",
+    "identities.csv": "3ffc01e5f5eb090fdb3681b5bacae231cd57fc0f67cea8d905a42a52317af993",
+    "inputs.npz": "dd9601c34780ace018a94229b5ab4e6df6aaf82316bb998dc2f4de30ce89a731",
+    "physical_mismatch.csv": "cc2ff55ababafcb4960f275a51760f802f7c259428e2eab0d20178340bef1622",
+    "protocol.json": "e5c1111b051244f346eba4fdadb26da2e5332631aff1e9d8a860a05d2b525d06"
+  },
+  "retained_probes": 202,
+  "input_hashes": {
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\review\\protocol.json": "c3457c693f711757bacd22cb938ba02d2c64bd6254853e06a7907abd90beb7cf"
+  },
+  "estimator_code_sha256": "3c112f151e627d42947ae4d8f73180d10ce1ecbdcffea6717ccb74d8c8c9d31d"
+}

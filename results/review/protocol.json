@@ -1,0 +1,27 @@
+{
+  "surface_conditions": {
+    "temperature_k": 290.34999999999997,
+    "pressure_pa": 100800.0,
+    "dew_point_c": 5.4
+  },
+  "pm_fine_fraction": 0.7272727272727273,
+  "alphas": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0,
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0,
+    100000000.0
+  ],
+  "blocks_days": [
+    7,
+    30
+  ],
+  "bootstrap_seed": 609050,
+  "scope": "Diagnostic replay; same previously explored test period. No fresh independent confirmation is claimed."
+}

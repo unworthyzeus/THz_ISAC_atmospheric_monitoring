@@ -1,0 +1,46 @@
+{
+  "project": "important_research_because_its_for_n3cat/THz_ISAC_atmospheric_monitoring",
+  "tests": {
+    "returncode": 0,
+    "command": [
+      "C:\\Users\\guill\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe",
+      "-m",
+      "pytest",
+      "tests",
+      "-q",
+      "-o",
+      "addopts="
+    ],
+    "seconds": 5.769304999999804,
+    "log": "C:\\Research\\00_research_portfolio\\results\\revision_0908\\tests\\THz_ISAC_atmospheric_monitoring.log",
+    "passed": 143
+  },
+  "build": {
+    "returncode": 0,
+    "command": [
+      "C:\\Users\\guill\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe",
+      "C:\\Users\\guill\\.codex\\plugins\\cache\\openai-bundled\\latex\\0.2.6\\scripts\\compile_latex.py",
+      "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\paper\\main.tex",
+      "--compiler",
+      "tectonic",
+      "--output-directory",
+      "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\paper\\build",
+      "--json"
+    ],
+    "seconds": 1.4702560999994603,
+    "log": "C:\\Research\\00_research_portfolio\\results\\revision_0908\\build\\THz_ISAC_atmospheric_monitoring.log",
+    "passed": null
+  },
+  "pdf": "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\paper\\build\\main.pdf",
+  "pdf_sha256": "993404f6e8daa464c2414d73e69132919218d85d043bb90f339ff2f07bc68d85",
+  "qa": {
+    "pages": 11,
+    "issues": [],
+    "overfull": [],
+    "sheets": [
+      "C:\\Research\\00_research_portfolio\\results\\revision_0908\\pdf_qa\\THz_ISAC_atmospheric_monitoring_sheet1.png",
+      "C:\\Research\\00_research_portfolio\\results\\revision_0908\\pdf_qa\\THz_ISAC_atmospheric_monitoring_sheet2.png",
+      "C:\\Research\\00_research_portfolio\\results\\revision_0908\\pdf_qa\\THz_ISAC_atmospheric_monitoring_sheet3.png"
+    ]
+  }
+}

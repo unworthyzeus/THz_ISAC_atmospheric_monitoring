@@ -1,4 +1,5 @@
 \documentclass[conference]{IEEEtran}
+\usepackage[T1]{fontenc}
 
 \usepackage{cite}
 \usepackage{amsmath,amssymb}
@@ -10,8 +11,7 @@
 \newcommand{\pmfive}{PM$_{2.5}$}
 \newcommand{\pmten}{PM$_{10}$}
 
-\title{Estimation Limits for Ambient Pollutant Sensing From Simulated Sub THz NTN Attenuation}
-
+\title{Sub THz Pollutant Sensing: Attainable Model Error and Calibration Requirements}
 \author{
 \IEEEauthorblockN{Guillem Moreno Garcia}
 \IEEEauthorblockA{
@@ -23,34 +23,130 @@ Email: guillem.moreno.garcia@estudiantat.upc.edu}
 \maketitle
 
 \begin{abstract}
-Under the declared simulated forward and noise model, pollutant induced sub THz attenuation is not resolved. We combine 9,340 HITRAN line records, 383,585 UCI Beijing station hours, ten monthly ESA Climate Change Initiative CO and NO$_2$ column pairs, and a small real measured THz protein control; all atmospheric link observations remain simulated. A layered Voigt model, a 550 km low Earth orbit link budget, and nuisance aware Fisher information quantify local estimation floors. For a $45^\circ$, 23 dBm, 30 pilot reference case with an assumed independent 0.63 dB residual per tone, D optimal selection improves gas floors by factors of 1.52 to 1.81, but their reference ratios remain 11.55 to 1,664.56 times WHO concentration scales. Native column reference floors remain 82.9 and 5,476 times observed CO and tropospheric NO$_2$ spans. A modeled H$_2$O control gives a 0.290$^\circ$C local dew point floor, and fine and coarse PM columns are practically collinear. Chronological spectral Ridge macro training Q05 to Q95 normalized RMSE is 0.34744 versus 0.34748 for the training mean. A 216 case diagnostic leaves the declared residual retaining THz update at 0.34747; its most optimistic zero residual, context assisted, unbounded power sensitivity reaches 0.23910. On real ground data, a strictly causal forecast reaches 0.09548, all channel station reconstruction reaches 0.08889, and single channel repair reaches 0.07486 only when the other five current channels remain available. Under the frozen exact physics LMMSE, the declared design needs at least a 5,918 fold modeled noise standard deviation reduction to target 0.08. The measured protein spectra show strong monotonicity but only 0.19927 leave one concentration out macro normalized RMSE. The evidence supports a negative atmospheric feasibility result for the declared link, while showing that a separately labeled real sensor repair task can meet 0.08.
+Atmospheric sensing claims based on a small Cram\'er--Rao bound require an attainable estimator and a credible error model. We construct the efficient linear Gaussian estimator for a layered HITRAN absorption model with four pollutant targets and atmospheric nuisance components. Real Beijing records set concentration scenarios and a training-only reference atmosphere; attenuation remains simulated. On 202 probes above 5 dB modeled SNR, explicit estimation reproduces the predicted noise error. However, systematic calibration and physical mismatch impose separate limits. At 300 coherent pilots, CO has normalized noise RMSE 0.994, leaving only 0.000740 dB tolerance to arbitrary bounded per-probe bias. At 30,000 pilots, SO$_2$ has matched-model RMSE 0.582 but reaches 3.918 under a declared combined temperature, pressure and vertical-profile mismatch. We provide exact conditional bias and variance formulas, noise simulations, covariance sensitivity and explicit resource accounting. These results establish attainability only within the stated Gaussian model and quantify why receiver calibration remains necessary for a physical sensing claim.
 \end{abstract}
-
 \begin{IEEEkeywords}
-Atmospheric sensing, Cram\'er--Rao bound, HITRAN, integrated sensing and communication, non terrestrial networks, sub THz, air quality.
+Atmospheric sensing, calibration, generalized least squares, HITRAN, integrated sensing and communication.
 \end{IEEEkeywords}
 
-\section{Introduction}
+\section{Question and contribution}
+Shared communication and absorption sensing has a precedent for atmospheric water vapour \cite{aliaga2024dar}; multi-medium propagation models motivate treating molecular and particle attenuation jointly \cite{yang2024attenuation}. Ambient pollutant retrieval additionally requires separating a weak target spectrum from background uncertainty. A small local lower bound alone cannot establish an achievable measurement error.
 
-Frequencies above conventional microwave bands offer wide communication bandwidths but also interact strongly with atmospheric molecules and particles. In a non terrestrial link, the received spectrum therefore contains both a communication impairment and, in principle, information about the traversed medium. Integrated sensing and communication (ISAC) seeks to reuse that information without deploying a separate sensor payload. The central question is not whether a pollutant can be inserted into a channel simulator and recovered with the same template. It is whether its physically dimensioned spectral perturbation is large enough relative to link and calibration uncertainty to support an identifiable estimate.
+We ask which error requirements follow when that missing estimator is supplied. Our contribution is a reproducible conditional analysis: an explicit nuisance-eliminating estimator, its attainable covariance, its sensitivity to deterministic spectral bias, and an experiment in which a physically perturbed forward model differs from the estimator model. Generalized least squares and Fisher information are established methods \cite{kay1993}; this work applies them to the declared spectroscopy and link rather than claiming a new estimation principle. Earlier probe-selection, satellite-column and regression studies are retained in the appendix as supporting diagnostics.
 
-Prior satellite sub THz work has shown that communication and differential absorption radar can share a waveform for water vapour sensing \cite{aliaga2024dar}. General space air ground propagation models also show why molecular absorption, particle extinction, altitude, and geometry must be treated jointly \cite{yang2024attenuation}. These results motivate pollutant sensing, but they do not validate the six target retrieval problem studied here. In particular, urban monitoring stations measure surface concentration, whereas a satellite observes path integrated attenuation.
+\section{Evidence and fixed physical model}
+The primary spectroscopy input is the archived 9,340-line HITRAN table, checked against HAPI using the same line records \cite{gordon2026hitran,kochanov2016hapi}. Real UCI Beijing records provide measured surface concentrations and weather \cite{chen2017beijing}. They do not provide vertical profiles or synchronized radio attenuation. The chronological split and concentration-order exclusions are unchanged. All current atmospheric summaries use training rows only; both training quantile scenarios and reused test-period regressions are explicitly separate from independent field validation.
 
-This paper answers a deliberately narrower feasibility question: under an explicit mapping from real surface records to assumed vertical profiles, what estimation floors follow from a line by line absorption model and a declared LEO pilot link? The answer is negative at the WHO guideline concentration scale for the reference configuration. This is useful because it identifies the signal processing bottleneck before a more complex learned estimator is treated as evidence.
+Four reported errors are normalized by fixed concentration magnitudes: CO 4,000, O$_3$ 100, SO$_2$ 40 and NO$_2$ 25 \ugm. These numbers originate in WHO guideline values \cite{who2021aqg}; they are magnitude references, not detection probabilities, instantaneous compliance thresholds or a common averaging-period specification. Simulated estimates are not treated as health measurements.
 
-The contributions are fivefold.
+The 24-layer atmosphere extends from 0 to 12 km. Line intensities, partition sums, pressure and Doppler broadening enter a Voigt absorption calculation with physical number-density units. The source surface concentration is mapped to an exponential gas profile with 1.5 km scale height. Water uses a 2 km profile; PM uses 1 km and the previously declared exploratory optical parameters. These profiles are assumptions. Reference temperature, pressure and dew point are taken from the training-only protocol. The explicit equations, line exclusions and prior implementation checks appear in the appendix.
 
-\begin{enumerate}
-\item We construct an auditable semi synthetic study from real UCI concentration and meteorological records, HITRAN spectroscopic parameters, measurement derived ESA CCI monthly CO and NO$_2$ columns, and a measured THz aqueous protein positive control. Data quality, hashes, and the boundary between real and simulated evidence are stated explicitly.
-\item We implement a 24 layer, temperature and pressure dependent Voigt model in calibrated units, with H$_2$O and O$_2$ background absorption. Direct comparison with HAPI verifies the numerical cross section implementation for all six molecules.
-\item We add a domain aware column design that keeps total CO and tropospheric NO$_2$ distinct, normalizes their declared vertical shapes to real satellite columns, and reports floors against observed column spread and retrieval uncertainty.
-\item We combine a frequency dependent LEO link budget, a pilot averaged attenuation likelihood, nuisance elimination, and Fisher information with greedy D optimal probe selection and constrained power allocation. Uniform and optimized results are compared under fixed total transmit power.
-\item We audit mean, Ridge, nonlinear, linear Gaussian, and weighted least squares (WLS) estimators with disjoint chronological periods, then separate THz inversion, causal forecasting, full station reconstruction, and single channel repair. The outcomes distinguish a formal model information bound from empirical model plateaus and expose PM nonidentifiability.
-\end{enumerate}
+The fixed receiver model retains the original 256 conceptual frequencies from 60 to 400 GHz, 550 km altitude, $45^\circ$ elevation, 23 dBm total transmitted power, 0.5/0.3 m transmit/receive apertures, 1 MHz per probe, 6 dB noise figure and 5 dB implementation loss. Only 202 probes with reference SNR at least 5 dB enter the present estimator. Their power is not redistributed after masking. Thus the current study does not silently improve the link when opaque probes are removed. The frequency grid is a multiband modeling device, not a demonstrated contiguous waveform.
 
-No measured sub THz channel state information (CSI) is used. In this paper, a ``channel observation'' means a simulated pilot derived attenuation magnitude; phase, Doppler, multipath, and a complex channel sounder record are absent.
+\section{Attainable estimation under declared noise}
+After subtracting the reference background, use
+\begin{equation}
+y=D\theta+N\beta+n,\qquad n\sim\mathcal N(0,\Sigma).
+\end{equation}
+Columns of $D$ contain the four magnitude-normalized gas spectra. $N$ contains an offset, reference background scale and both PM spectra. The covariance is fixed and known in this conditional model; SNR is evaluated at the reference background, not re-estimated from unknown target values. A parameter-dependent physical noise model would require a different likelihood and Fisher calculation.
 
-\section{Related Work and Scope}
+For linear SNR $\gamma_i$, $c=(10/\ln10)^2$ and $N_p$ pilots, the two declared thermal terms are
+\begin{align}
+v_i^{\rm power}&=c(1+\gamma_i^{-1})^2/N_p,\\
+v_i^{\rm coherent}&=2c/(N_p\gamma_i).
+\end{align}
+The power approximation is motivated by the pilot model in \cite{dong2026rain}; neither observation law has been calibrated for this receiver. Residual covariance is added as $\Sigma=\operatorname{diag}(v)+\sigma_r^2 C$. We test $C=I$ and $C_{ij}=(1-\rho)1\{i=j\}+\rho e^{-|f_i-f_j|/10\,\mathrm{GHz}}$ with $\rho=0.9$. Correlation direction and nuisance alignment can increase or decrease information. An independent residual standard deviation is not a systematic calibration specification.
+
+Let $L L^T=\Sigma$, $\widetilde D=L^{-1}D$, and let $Q$ be an orthonormal basis for $L^{-1}N$. Set $P=I-QQ^T$ and
+\begin{equation}
+H=(\widetilde D^TP\widetilde D)^{-1}\widetilde D^TP L^{-1}.
+\label{eq:attainable}
+\end{equation}
+If $P\widetilde D$ has full target rank, $HD=I$, $HN=0$ and
+\begin{equation}
+\widehat\theta=Hy,\quad \mathbb E\widehat\theta=\theta,\quad
+V=H\Sigma H^T=(\widetilde D^TP\widetilde D)^{-1}.
+\end{equation}
+These identities follow by substitution and $P^2=P=P^T$. They attain the efficient Gaussian information bound in this unconstrained linear model \cite{kay1993}. They do not guarantee a nonnegative estimate or transfer to a misspecified nonlinear receiver. Our implementation uses Cholesky whitening and an SVD solve, not explicit normal-matrix inversion. Normalized nuisance and target rank tests use tolerance $10^{-12}$; a target absorbed by nuisance is rejected rather than assigned a finite precision.
+
+\section{Systematic calibration and forward-model bias}
+If the actual mean differs by $b$, the same estimator obeys exactly
+\begin{equation}
+\operatorname{bias}(\widehat\theta)=Hb,\qquad
+\operatorname{MSE}_j=V_{jj}+(h_j^Tb)^2,
+\label{eq:bias}
+\end{equation}
+where $h_j^T$ is row $j$ of $H$. When the fitted covariance is wrong, replace $V$ by $H\Sigma_{\rm true}H^T$. This sandwich calculation is included in the covariance experiment.
+
+For an arbitrary persistent spectral error $\|b\|_\infty\le\epsilon$, the exact targetwise worst case is
+\begin{equation}
+\sup_b\operatorname{MSE}_j=V_{jj}+\epsilon^2\|h_j\|_1^2.
+\end{equation}
+The upper bound follows from the triangle inequality and is attained by $b_i=\epsilon\operatorname{sign}(h_{ji})$. Different targets may attain their maxima at different bias vectors. For normalized RMSE at most one, the allowable deterministic error is therefore
+\begin{equation}
+\epsilon_j=\frac{\sqrt{1-V_{jj}}}{\|h_j\|_1},\qquad V_{jj}\le1.
+\label{eq:allowance}
+\end{equation}
+No allowance exists if thermal/residual noise already exceeds the target. An offset or modeled background-scale bias lies in $\operatorname{col}(N)$ and is removed; this worst case concerns arbitrary bias shapes outside that nuisance model. Equations (\ref{eq:bias})--(\ref{eq:allowance}) are self-derived conditional sensitivity results, not measured calibration bounds.
+
+\begin{figure*}[t]\centering
+\includegraphics[width=.9\textwidth]{../results/revision_0908/calibration_and_mismatch.pdf}
+\caption{Coherent estimation with zero random residual. Left: attainable matched-model error and combined physical mean mismatch at median concentrations. Right: exact targetwise allowance for arbitrary bounded systematic spectral error. Missing points already fail the noise target.}
+\end{figure*}
+\section{Frozen computation and results}
+The grid contains two likelihoods, four pilot counts (30, 300, 3,000, 30,000), three independent marginal residual scales (0, 0.001, 0.01 dB) and two covariance shapes. For each configuration, 10,000 new Gaussian observation-noise draws validate the actual linear estimator against its predicted covariance. Common standard-normal draws pair the configurations; they are not independent replications of physical data. We also evaluate deterministic physical mismatch at componentwise training concentration medians and 95th percentiles. These quantile vectors are declared scenarios, not necessarily jointly observed atmospheric states.
+
+\begin{table}[t]\centering\scriptsize
+\caption{Coherent matched-model estimation, zero random residual. Error is divided by the gas reference magnitude. The final column bounds arbitrary systematic error per probe.}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{rlrrr}\toprule
+$N_p$ & Gas & Predicted & Simulated & $\epsilon_j$ (dB)\\\midrule
+300 & CO & 0.994 & 0.981 & 0.000740\\
+3,000 & CO & 0.314 & 0.310 & 0.006530\\
+30,000 & CO & 0.099 & 0.098 & 0.006845\\
+30,000 & SO2 & 0.582 & 0.575 & 0.000703\\
+30,000 & O3 & 1.250 & 1.246 & None\\
+30,000 & NO2 & 12.133 & 12.191 & None\\
+\bottomrule\end{tabular}\label{tab:attainable}
+\end{table}
+
+Across all configurations the maximum empirical-to-predicted RMSE discrepancy is 1.57 percent. This is a simulation consistency check, not an uncertainty interval for receiver performance. Earlier independent-noise calculations allowed CO at 300 pilots only below 0.00490 dB random residual. Under zero random residual, the separate worst-case systematic allowance is only 0.000740 dB. These numbers answer different questions and cannot be substituted for one another.
+
+The mismatch experiment holds the estimator and its nominal covariance fixed. The true forward mean uses $T+5$ K, $p-2$ kPa, gas height 1.2 km, or all three together, including their background change. Temperature and pressure are not supplied to the estimator as corrected values. Noise covariance remains the declared nominal one so that this experiment isolates mean-model error; it is not a complete altered-link simulation. The exact bias formula evaluates the result without Monte Carlo uncertainty.
+
+\begin{table}[t]\centering\scriptsize
+\caption{Normalized RMSE at 30,000 coherent pilots, zero random residual and median concentration scenario. Perturbation amplitudes are assumptions, not measured receiver errors.}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}\toprule
+Actual forward model & CO & O$_3$ & SO$_2$ & NO$_2$\\\midrule
+Matched & 0.099 & 1.250 & 0.582 & 12.133\\
+$T+5$ K & 0.420 & 2.130 & 2.992 & 13.311\\
+$p-2$ kPa & 0.102 & 1.503 & 1.162 & 12.434\\
+1.2 km gas height & 0.112 & 1.255 & 0.584 & 12.137\\
+Combined & 0.484 & 1.472 & 3.918 & 14.745\\
+\bottomrule\end{tabular}\label{tab:mismatch}
+\end{table}
+
+Matched-model SO$_2$ falls below its reference error, but a 5 K temperature mismatch alone increases its ratio from 0.582 to 2.992; the combined mismatch gives 3.918. More pilots reduce noise but do not remove this persistent model bias. CO retains more margin at 30,000 pilots, while its 300-pilot result is fragile because its noise error already nearly reaches the target. Neither the chosen perturbations nor the worst-case spectral envelope constitute a calibrated uncertainty set for a real receiver.
+
+
+
+\section{Resource accounting and validation boundary}
+For a declared pilot duration $T_s$, the idealized simultaneous-probe observation duration is $N_pT_s$ and total transmitted energy is $P_{\rm total}N_pT_s$. At the illustrative $T_s=1\,\mu$s and 23 dBm, 300 pilots require 0.3 ms and 0.0599 mJ; 30,000 require 30 ms and 5.99 mJ. Retuning, coherent synchronization, guards and frequency-window access are excluded. The broad grid does not demonstrate that these probes can be acquired simultaneously with one front end. The larger budgets are therefore explicit resource scenarios, not free information gains.
+
+A physical validation must supply paired attenuation and concentration/column truth, independent calibration recordings that estimate covariance and persistent bias across frequency and time, measured atmospheric profiles or justified uncertainty bounds, and a realizable frequency/power/timing allocation. The calibration data must be separated from the final evaluation period. A future acceptance criterion must specify the concentration averaging period and required estimation error before that evaluation. These are missing inputs, not completed experiments.
+
+\section{Conclusion}
+An explicit efficient estimator now closes the gap between a local Gaussian lower bound and achievable error within the declared linear model. It does not close the physical calibration gap. Systematic bias has a different scaling from independent noise, and physically motivated mean perturbations can destroy the apparent SO$_2$ margin even at high pilot counts. The supported result is a conditional estimation and calibration analysis using externally sourced spectroscopy and concentration scenarios. Successful atmospheric retrieval remains unestablished.
+
+\section*{Reproducibility}
+The new estimator, four analytical regression tests, frozen grid, observation-noise seed, coefficient arrays, physical mismatch scenarios, software, CPU timing, sampled memory and hashes are stored under \texttt{results/revision\_0908}. The first confounding test exposed a floating-point residual rank issue; the implementation now compares projected target size with its preprojection size before normalization. This retained correction prevents a nuisance-confounded target from appearing identifiable. All primary tables are generated from the recorded CSV files.
+
+\clearpage
+\appendices
+\section{Supporting physics and earlier experiments}
+The following diagnostics document earlier questions and parameter conventions. Their full-period reference atmosphere, 256-probe low-SNR extrapolation and historical comparisons do not replace the training-only, 202-probe primary protocol above. Old results are retained to disclose their limitations and the evidence motivating the current question.
+\subsection{Related Work and Scope}
 
 Aliaga \emph{et al.} integrated differential absorption radar with beyond 100 GHz satellite communications and evaluated communication and water vapour sensing tradeoffs using atmospheric models \cite{aliaga2024dar}. Their work supports the shared sensing and communication premise, but it neither uses the UCI pollutants nor demonstrates their retrieval. Yang \emph{et al.} model molecular and particulate attenuation across space air ground media and compare gaseous attenuation with ITU recommendations \cite{yang2024attenuation}. Their decomposition motivates our layered gas and particle treatment, while also highlighting that particle composition and size cannot be replaced by an arbitrary spectral trend.
 
@@ -58,9 +154,9 @@ ITU-R P.676-13 describes gaseous attenuation and ITU-R P.835-7 supplies referenc
 
 Dong \emph{et al.} derive CRB and Bayesian CRB limits for Ku band rain sensing from satellite pilot attenuation \cite{dong2026rain}. Their pilot power variance model is methodologically relevant, but their rain coefficients and validation data are not transferred to sub THz pollutants. The 0.63 dB residual value used below is borrowed only as a scenario value. It is not calibrated for the present frequency range or hardware. The gap addressed here is thus an estimation limit study for multiple ambient pollutants using public surface records and line data, with simulated rather than measured link attenuation.
 
-\section{Real Data, Provenance, and Quality}
+\subsection{Real Data, Provenance, and Quality}
 
-\subsection{Evidence Boundary}
+\subsubsection{Evidence Boundary}
 
 Table \ref{tab:evidence} distinguishes external evidence from generated quantities. The Beijing data contain hourly measurements from 12 sites from March 2013 through February 2017 \cite{chen2017beijing}. The ESA CCI records provide monthly total CO and tropospheric NO$_2$ columns at the same $39.5^\circ$N, $116.5^\circ$E grid cell from March through December 2013 \cite{esacciCO,esacciNO2}. A CC BY Mendeley dataset supplies measured 0.9 to 1.3 THz aqueous protein spectra at 13 concentration levels across two proteins \cite{hattori2024data}. HITRAN parameters, UCI surface concentrations, satellite retrievals, and the laboratory spectra are real public data. The vertical shapes, LEO observations, receiver errors, and atmospheric estimator inputs are generated by the declared model. WHO values are health guideline concentration scales, not labels and not legal limits \cite{who2021aqg}.
 
@@ -70,7 +166,7 @@ Table \ref{tab:evidence} distinguishes external evidence from generated quantiti
 \centering
 \scriptsize
 \setlength{\tabcolsep}{2.0pt}
-\begin{tabular}{@{}p{0.95cm}p{1.35cm}p{0.90cm}p{3.05cm}@{}}
+\begin{tabular}{@{}p{0.95cm}p{1.35cm}p{0.96cm}p{2.99cm}@{}}
 \toprule
 Item & Source & Count & Role \\
 \midrule
@@ -86,7 +182,7 @@ Sim. obs. & This study & 20,000 rows & Simulated receiver observations \\
 
 The processed HITRAN table spans 60 to 400 GHz and contains the main isotopologue for CO (15 lines), H$_2$O (37), O$_2$ (45), O$_3$ (1,301), NO$_2$ (1,536), and SO$_2$ (6,406). Its SHA256 is \texttt{7d063e4036da3d3e5...}. The cleaned UCI file SHA256 is \texttt{39d6ceee9d66824bcc...}. Full hashes, absolute input paths, package versions, and experiment assumptions are stored in the generated manifest.
 
-\subsection{Air Quality Audit}
+\subsubsection{Air Quality Audit}
 
 The original UCI record contains 420,768 station hour rows. Complete case processing retains 383,585 rows, or 91.163\%. The retained table has no exact duplicate rows, no duplicate timestamp and station keys, no nonpositive target values, and no dew point above temperature. Station retention ranges from 86.704\% to 94.616\%.
 
@@ -94,13 +190,13 @@ The important failures are analytical rather than syntactic. In 17,642 rows (4.5
 
 The complete case concentration fifth percentile, median, and ninety fifth percentile are respectively 200, 900, and 3,500 \ugm\ for CO; 2, 45, and 177 \ugm\ for O$_3$; 2, 7, and 59 \ugm\ for SO$_2$; 8, 43, and 117 \ugm\ for NO$_2$; 6, 55, and 242 \ugm\ for \pmfive; and 11, 82, and 279 \ugm\ for \pmten. These records define realistic surface scenarios, not measured atmospheric columns.
 
-\subsection{Satellite Column Audit}
+\subsubsection{Satellite Column Audit}
 
 The column experiment uses ten monthly files for each gas from March through December 2013. All 20 official objects downloaded anonymously, passed the declared NetCDF coordinate and variable checks, and retained valid values at the Beijing cell. CO source flags are 3 in every month and NO$_2$ quality flags are 1. The CO median is $3.317\times10^{18}$ molecule cm$^{-2}$, its sample fifth to ninety fifth quantile span is $1.361\times10^{18}$, and the median reported uncertainty is $1.411\times10^{17}$. For tropospheric NO$_2$, the corresponding values are $1.304\times10^{16}$, $1.863\times10^{16}$, and $1.657\times10^{15}$ molecule cm$^{-2}$. With only ten samples, the spans describe these available months rather than a stable population distribution. The products are coarse satellite retrievals with instrument and prior dependence; they are closer to path quantities than station concentrations, but they are not direct atmospheric truth.
 
-\section{Layered Atmospheric Forward Model}
+\subsection{Layered Atmospheric Forward Model}
 
-\subsection{Line by Line Gas Absorption}
+\subsubsection{Line by Line Gas Absorption}
 
 Let $\tilde{\nu}_k$ denote wavenumber and let $T_0=296$ K. The HITRAN reference intensity $S_\ell(T_0)$ is adjusted in layer $j$ as
 
@@ -150,7 +246,7 @@ This is adequate for a controlled sensitivity study but not an Earth curved ray 
 
 At the UCI median surface state, direct comparison with HAPI 1.3.0.0 gives peak cross section relative errors from $4.44\times10^{-8}$ to $6.38\times10^{-7}$ across the six molecules. Normalized RMSE over the active grid is below $1.58\times10^{-7}$ for every molecule. This validates the implemented Voigt arithmetic against HAPI; it does not validate the assumed atmospheric profiles against measured columns.
 
-\subsection{Native Column Design}
+\subsubsection{Native Column Design}
 
 The satellite experiment does not convert columns into surface concentrations. For target $g$, let $N_g^{\mathrm{col}}$ be the retrieved column in molecule cm$^{-2}$ and let nonnegative profile weights $w_{gj}$ sum to one over the modeled layers. The zenith attenuation coefficient per unit column is
 
@@ -163,7 +259,7 @@ so the zenith target contribution is $a_{kg}N_g^{\mathrm{col}}$. At elevation $e
 
 The column atmosphere uses 40 layers from 0 to 20 km at the March to December UCI medians $T_s=290.85$ K, $p_s=100.75$ kPa, and dew point $6.9^\circ$C. CO is a total column with an 8 km reference scale height, while NO$_2$ is tropospheric with a 1.5 km scale height. The model forces the reported total CO column into a normalized 0 to 20 km profile and therefore omits its true upper atmospheric distribution. The resulting line shape bias has unknown sign; CO scale heights of 4, 8, and 12 km test it only partially. Floors are compared with the real monthly column span and reported retrieval uncertainty, never with a surface WHO concentration scale.
 
-\subsection{Exploratory PM Extinction}
+\subsubsection{Exploratory PM Extinction}
 
 For a spherical particle of radius $r$, complex refractive index $m$, wave number $k_0$, and density $\rho_p$, the Rayleigh approximation uses \cite{bohren1983}
 
@@ -178,9 +274,9 @@ C_{\mathrm{sca}}=\frac{8\pi}{3}k_0^4r^6|\Phi|^2,\\
 
 The fine mode assumes diameter 1 $\mu$m, density 1,500 kg m$^{-3}$, and $m=1.50+0.01\mathrm{i}$. The coarse mode uses 6 $\mu$m, 1,800 kg m$^{-3}$, and $m=1.53+0.01\mathrm{i}$. Both remain within the configured Rayleigh size parameter limit of 0.3 over the grid. Mass decays with an assumed 1 km scale height. In the benchmark, fine mass is \pmfive\ and coarse mass is $\max(\mathrm{PM}_{10}-\mathrm{PM}_{2.5},0)$. For a one parameter \pmten\ bound, the fine fraction is fixed to the median valid UCI ratio, 0.7681. These particle properties are exploratory, not calibrated Beijing aerosol optics.
 
-\section{LEO Link and Pilot Observation}
+\subsection{LEO Link and Pilot Observation}
 
-\subsection{Reference Link}
+\subsubsection{Reference Link}
 
 The conceptual probe grid contains 256 equally spaced frequencies from 60 to 400 GHz, a spacing of 1.333 GHz. It samples possible multiband sensing locations; it is not a proposed 340 GHz wide waveform. The received power on probe $k$ is
 
@@ -214,7 +310,7 @@ Pilot symbols & 30 & Residual std. & 0.63 dB \\
 
 At $45^\circ$, median background limited SNR is 14.97 dB, the fifth to ninety fifth percentile interval is $[-70.80,20.64]$ dB, and 206 of 256 probes exceed 5 dB. Very opaque probes receive negligible Fisher weight.
 
-\subsection{Pilot Attenuation Likelihood}
+\subsubsection{Pilot Attenuation Likelihood}
 
 Following the pilot power argument in \cite{dong2026rain}, the background referenced attenuation observation is
 
@@ -231,13 +327,13 @@ where $\boldsymbol\theta$ is the target parameter vector, either surface concent
 \qquad c_0=\left(\frac{10}{\ln 10}\right)^2.
 \label{eq:variance}
 \end{equation}
-Here $\gamma_k$ is linear SNR, $N_p$ is pilot count, $\sigma_k^2=\operatorname{var}(n_k)$, and $\sigma_r=0.63$ dB is an assumed independent residual per probe. Calling this term independent is an optimistic convenience: real gain and atmospheric calibration errors can be correlated across frequency. Equation \eqref{eq:variance} is derived for moderate to high SNR. We extrapolate it only to assign very large variance, hence nearly zero weight, to opaque probes.
+Here $\gamma_k$ is linear SNR, $N_p$ is pilot count, $\sigma_k^2=\operatorname{var}(n_k)$, and $\sigma_r=0.63$ dB is an assumed independent residual per probe. Independence is a declared scenario: real gain and atmospheric calibration errors can be correlated across frequency. At fixed marginal variance, correlation has no universal direction of effect after nuisance elimination, as the new covariance sensitivity demonstrates. Equation \eqref{eq:variance} is derived for moderate to high SNR. We extrapolate it only to assign very large variance, hence nearly zero weight, to opaque probes.
 
-As an observation model sensitivity, a deterministic coherently averaged complex channel gives the high SNR delta method term $2c_0/(N_p\gamma_k)$ before adding the same residual variance. Unlike \eqref{eq:variance}, it has no pilot power high SNR floor. Neither likelihood has been calibrated against a sub THz receiver, and neither approaches the requested empirical target under the reference link.
+As an observation model sensitivity, a deterministic coherently averaged complex channel gives the high SNR delta method term $2c_0/(N_p\gamma_k)$ before adding the same residual variance. Unlike \eqref{eq:variance}, it has no pilot power high SNR floor. Neither likelihood has been calibrated against a sub THz receiver; both remain declared observation scenarios.
 
-\section{Fisher Bounds and Evaluation Protocol}
+\subsection{Fisher Bounds and Evaluation Protocol}
 
-\subsection{Nuisance Aware CRB}
+\subsubsection{Nuisance Aware CRB}
 
 For the surface gas result, let $\boldsymbol D$ contain the four gas design columns and $\boldsymbol N$ contain normalized nuisance columns for offset, H$_2$O/O$_2$ background, fine PM, and coarse PM. With $\boldsymbol X=[\boldsymbol D\ \boldsymbol N]$ and $\boldsymbol W=\operatorname{diag}(1/\sigma_k^2)$, the Fisher information is \cite{kay1993}
 
@@ -260,7 +356,7 @@ The reference gas block has rank four and condition number 775.4. We define the 
 
 Joint PM retrieval is not reported as identifiable. The fine and coarse design columns have correlation 0.999999995, and the smallest to largest singular value ratio of the concentration scaled six column design is $2.61\times10^{-7}$. Instead, we show two optimistic one dimensional bounds: fine PM alone and fixed composition total \pmten. These are best case references, not evidence that both PM fractions can be recovered.
 
-\subsection{Probe Selection and Power Allocation}
+\subsubsection{Probe Selection and Power Allocation}
 
 For a selected set $\mathcal{S}$, the regularized design objective is \cite{atkinson2007}
 
@@ -274,11 +370,11 @@ where $\widetilde{\boldsymbol x}_k$ is the transposed design row after variance 
 
 Uniform and D optimal designs use the same total transmit power, divided equally among the active probes, and the link variance is recomputed for every tone count. For 32 selected probes, a separate guideline scaled allocator maximizes $\log\det(\boldsymbol J_{\mathrm{eff}})$ under the exact variance model. It scales the four gas parameters by their WHO concentrations, constrains power fractions to sum to one, and gives each probe at least $10^{-3}$ of its equal power fraction. This separates frequency placement from power redistribution. Increasing the nominal probe count also increases occupied bandwidth and the number of assumed independent residual samples in this experiment; it is therefore a design comparison, not a hardware scaling law.
 
-\subsection{H$_2$O Local Control}
+\subsubsection{H$_2$O Local Control}
 
 The H$_2$O control parameterizes an assumed 2 km water column by surface dew point. A centered finite difference with endpoints $\pm0.25^\circ$C around the training only median produces the local attenuation derivative on 512 candidate frequencies. The default D optimal design contains this derivative, an offset, four pollutant gas columns, and two PM columns. The strict design also contains the H$_2$O/O$_2$ background scale. Both use the same fixed total power and variance rule as the pollutant experiment. Bounds are evaluated for target only, offset plus pollutant nuisance, and the same set plus background scale. Endpoint forward evaluations check local nonlinearity, while paired training states at low and high humidity test transfer away from the reference temperature and pressure.
 
-\subsection{Chronological Empirical Protocol}
+\subsubsection{Chronological Empirical Protocol}
 
 After excluding the 17,642 PM ordering failures, 20,000 rows are selected deterministically over the sorted station hour table. A single median atmosphere generates attenuation from the real concentration vector, and Gaussian noise follows \eqref{eq:variance}. Complete timestamp groups form 60\% training, 20\% validation, and 20\% final test periods: 12,000, 4,000, and 4,000 rows. Training ends at 2015-09-10 01:00 and validation at 2016-06-03 04:00. The same 12 stations remain represented, so this tests temporal transfer but not unseen station or city transfer.
 
@@ -286,11 +382,11 @@ The training period mean is the data baseline. Ridge standardizes observations u
 
 A post hoc metric audit fixes these rows, periods, training denominators, and targets. It adds a training prior LMMSE reference and a paired row bootstrap. The LMMSE uses only the training label mean and covariance as a Gaussian prior, then computes the posterior mean under the exact forward design and diagonal modeled noise covariance. It is therefore prior assisted and distinct from both supervised Ridge and label free physical WLS. Spectral model stability is tested over ten receiver noise seeds while holding real labels, forward signals, geometry, and the split fixed. Multitask ElasticNet and targetwise histogram gradient boosting configurations are frozen before this stability check.
 
-The advanced diagnostic freezes 216 combinations of training or context prior, likelihood, probe objective, tone count, power allocation, nuisance projection, and nonnegative posterior estimation. Validation alone selects every reported case. A second causal task uses 189 calendar, weather, station, and pollutant features whose target offsets are at least one hour. Station network reconstruction masks all six current query pollutant values before donor aggregation. Single channel repair instead masks only target $j$ and permits the other five current query channels. Sentinel mutation tests enforce both masking contracts. These are ground sensor tasks and are not counted as THz inversion. The measured THz control fixes the 0.9 to 1.3 THz band without labels, averages five frequencies, and evaluates ordinary least squares by leaving one measured concentration level out; its metric is not directly comparable with the Beijing chronological split.
+The historical advanced diagnostic freezes 216 combinations of training or context prior, likelihood, probe objective, tone count, power allocation, nuisance projection, and nonnegative posterior estimation. Validation alone selects every reported case. A second causal task uses 189 calendar, weather, station, and pollutant features whose target offsets are at least one hour. Station network reconstruction masks all six current query pollutant values before donor aggregation. Single channel repair instead masks only target $j$ and permits the other five current query channels. Sentinel mutation tests enforce both masking contracts. These are ground sensor tasks and are not counted as THz inversion. The measured THz control fixes the 0.9 to 1.3 THz band without labels, averages five frequencies, and evaluates ordinary least squares by leaving one measured concentration level out; its metric is not directly comparable with the Beijing chronological split.
 
-\section{Results}
+\subsection{Results}
 
-\subsection{Signal Magnitude}
+\subsubsection{Signal Magnitude}
 
 Fig. \ref{fig:signatures} shows excess attenuation at the UCI ninety fifth percentile concentration and $45^\circ$ elevation. The strongest gas peak is only 0.03186 dB for CO. O$_3$, SO$_2$, and NO$_2$ peak at 0.00484, 0.01517, and 0.00113 dB. Exploratory PM peaks are approximately $1.2\times10^{-4}$ dB. Every value is far below the assumed 0.63 dB residual component, while total pilot error is larger still because of the first term in \eqref{eq:variance}.
 
@@ -303,7 +399,7 @@ Fig. \ref{fig:signatures} shows excess attenuation at the UCI ninety fifth perce
 
 The most informative individual probes agree with the line structure: CO information is concentrated near 345.33 GHz, O$_3$ near 358.67 GHz, SO$_2$ near 357.33 GHz, and NO$_2$ near 396 GHz, with additional NO$_2$ information in lower loss windows. Strong cross section alone is not sufficient because H$_2$O/O$_2$ background can also suppress SNR.
 
-\subsection{Reference Detection Floors}
+\subsubsection{Reference Detection Floors}
 
 Table \ref{tab:floors} gives the main result. All reference one sigma bounds exceed the corresponding WHO concentration scales. The closest gas is CO at 20.8 times; NO$_2$ is 2,577 times. Three sigma ratios are exactly threefold larger. The PM values are already optimistic one mode bounds; joint fine and coarse retrieval is practically nonidentifiable.
 
@@ -329,7 +425,7 @@ NO$_2$ & 0.00113 & 64,427 & 25 & 2,577.1 & 7,731.2 \\
 
 The comparison is intentionally only a scale test. WHO values are health guidelines averaged over 8 h for O$_3$ and 24 h for the other targets, while the CRB describes one simulated attenuation burst and an assumed vertical mapping. The ratios do not establish a regulatory limit of detection, temporal averaging performance, or compliance classification.
 
-\subsection{Sensitivity and Optimistic Stress Test}
+\subsubsection{Sensitivity and Optimistic Stress Test}
 
 The elevation sweep has a sensing optimum at the lowest tested elevation. At $15^\circ$, the longer assumed pollutant path outweighs the lower link SNR, reducing one sigma gas ratios to 10.4 for CO, 135 for O$_3$, 71.9 for SO$_2$, and 1,294 for NO$_2$. The result is conditional on the plane parallel profile; it is not a general claim that the lowest elevation is operationally optimal.
 
@@ -337,7 +433,7 @@ Increasing pilots from 30 to 3,000 at $45^\circ$ reduces the CO ratio from 20.8 
 
 We also combine every optimistic setting evaluated: $15^\circ$, 3,000 pilots, zero residual, 33 dBm total power, and all 256 probes. This is a stress test, not a proposed deployment. Its one sigma floor to guideline ratios are 0.649 for CO, 9.19 for O$_3$, 4.35 for SO$_2$, 88.2 for NO$_2$, 3,538 for \pmfive, and 1,232 for \pmten. Only CO crosses the guideline concentration scale at one sigma, and its three sigma ratio is 1.95. The combined case therefore does not provide a robust multi pollutant detection success.
 
-\subsection{Optimized Probes and H$_2$O Control}
+\subsubsection{Optimized Probes and H$_2$O Control}
 
 Table \ref{tab:optimized} applies greedy D optimal selection to the denser 1,024 point candidate grid. At 256 probes, the reference gas ratios improve by factors of 1.52 to 1.81 over the matched uniform selection, yet none approaches one. In the combined optimistic case, optimized CO reaches 0.353 at one sigma but remains 1.059 at three sigma. The other three gases remain above their guideline scales even at one sigma.
 
@@ -359,11 +455,11 @@ NO$_2$ & 2,579.94 & 1,664.56 & 55.676 & 167.028 \\
 \end{tabular}
 \end{table}
 
-Exact power optimization on the 32 selected probes adds only 0.2\% to 4.3\% improvement over equal power D optimal selection. Changing the regularizer from $10^{-6}$ to $10^{-12}$ leaves the 256 selected frequencies and floors unchanged. For optimistic CO, a one sigma ratio of one would require the independent residual to be at most 0.223 dB; a three sigma ratio of one is unattainable in this scenario even at zero residual. Reference case gases remain above one even at zero residual.
+Numerical power optimization under the stated variance model on the 32 selected probes adds only 0.2\% to 4.3\% improvement over equal power D optimal selection. Changing the regularizer from $10^{-6}$ to $10^{-12}$ leaves the 256 selected frequencies and floors unchanged. For optimistic CO, a one sigma ratio of one would require the independent residual to be at most 0.223 dB; a three sigma ratio of one is unattainable in this scenario even at zero residual. Reference case gases remain above one even at zero residual.
 
 H$_2$O provides a modeled strong species control. Around the training only median state of $4.0^\circ$C dew point, $16.0^\circ$C temperature, and 1008.7 hPa, the 256 probe default design gives a local dew point floor of 0.290$^\circ$C with offset, pollutant gas, and PM nuisance columns. When a background scale nuisance is added after that selection, the floor degrades to 2.541$^\circ$C. A strict design that includes this nuisance during selection reduces the floor to 0.848$^\circ$C, or 2.543$^\circ$C at three sigma. Across pseudoinverse cutoffs from $10^{-10}$ to $10^{-15}$ the strict floor changes by less than 0.2\%. Fixed temperature and pressure nonlinear checks remain within 8.2\% relative error at the strict three sigma scale. Transfer to paired low and high humidity meteorological states produces 35\% to 97\% relative error, so this is a local information control rather than a global dew point estimator or measured retrieval.
 
-\subsection{Real Satellite Column Stress Test}
+\subsubsection{Real Satellite Column Stress Test}
 
 Across the ten available months, the CO sample fifth to ninety fifth quantile span produces only 0.00597 dB peak zenith attenuation, while the tropospheric NO$_2$ span produces $6.54\times10^{-5}$ dB. Table \ref{tab:columns} compares optimized local floors with each observed span $\Delta q$ and the median retrieval uncertainty $u$. Even without nuisance parameters, the reference floor ratios are 76.96 for CO and 2,772.99 for NO$_2$. Declared nuisance columns increase them to 82.89 and 5,476.27. The combined optimistic scenario still gives one sigma ratios of 2.696 and 179.97, with three sigma ratios of 8.09 and 539.91.
 
@@ -385,68 +481,85 @@ NO$_2$ trop. & $6.54\!\times\!10^{-5}$ & 5,476.27 & 179.97 & 61,559 \\
 
 Changing the CO scale height from 4 to 12 km changes its reference nuisance ratio from 107.1 to 74.7, which is material but does not change the conclusion. The native column result removes the surface concentration to column unit mismatch for these two species. It does not supply measured THz attenuation, and the ten monthly retrievals are too few and too coarse for an empirical sensing model.
 
-\subsection{Empirical Estimation and Information Classes}
+\subsubsection{Empirical Estimation and Information Classes}
 
 Validation originally selects Ridge $\alpha=10^5$. On the chronological test period, its macro training Q05 to Q95 normalized RMSE is 0.34744 versus 0.34748 for the training period mean; mean $R^2$ is $-0.08293$ versus $-0.08316$. Thus the apparent learned estimate is numerically a mean predictor, not evidence that the simulated spectrum carries usable target information.
 
 The audit reproduces the Ridge score to $2.22\times10^{-16}$. The paired bootstrap difference, Ridge minus mean, has a 95\% interval of $[-1.50\times10^{-4},\,7.64\times10^{-5}]$, so no difference is resolved under this conditional row bootstrap. The training prior LMMSE reference is 0.347435. Across the ten fixed noise realizations, Ridge is $0.347476\pm0.000011$, where the latter value is the sample standard deviation across modeled noise seeds, not a confidence interval. Multitask ElasticNet is 0.347741 and histogram gradient boosting is 0.347583. The frozen candidates beat Ridge on zero and one of ten seeds, respectively, so neither passes the predeclared eight seed stability rule. The alternative coherent CSI delta method sensitivity reaches only 0.345600 even after its independent residual is removed.
 
-Table \ref{tab:methods} separates results that share the Beijing rows and denominators but use different inference information. Under the declared likelihood, the advanced training prior update is slightly worse than Ridge. Coherent CSI, zero residual error, and bounded power improve the training prior result to 0.30833; adding current context reaches 0.25693. These are optimistic sensitivities, not achieved receiver performance. Unbounded power further reaches 0.23910 by concentrating almost all power on one tone and exploiting training covariance.
-
-\begin{table}[t]
-\caption{Beijing Macro Normalized RMSE by Information Class}
-\label{tab:methods}
-\centering
-\small
-\setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{lcc}
-\toprule
-Method & Validation & Test \\
-\midrule
-Declared training prior THz & 0.348927 & 0.347466 \\
-Context plus optimistic bounded THz & 0.255780 & 0.256928 \\
-Strictly causal forecast v2 & 0.084527 & 0.095485 \\
-All six current channels masked & 0.075012 & 0.088890 \\
-Single channel repair & 0.062929 & \textbf{0.074855} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The causal v2 score improves the earlier multilag forecast of 0.104507 by 8.63\% but misses 0.08 after a validation to test shift. Strict station reconstruction also misses, and a post hoc oracle over every attempted candidate remains at 0.088890; this is an empirical model plateau, not a formal lower bound. Single channel repair crosses 0.08 because it permits the other five current query pollutant channels, exact past labels, donor stations, and weather. Its test target scores range from 0.056464 for O$_3$ to 0.114947 for CO. It is a useful fault repair result, not full station recovery or THz inversion.
-
-Within the frozen exact physics LMMSE, the minimum declared design that targets 0.08 on validation needs a modeled noise standard deviation reduction of 5,918, corresponding only under independent stationary averaging to 35.0 million repeats or 1.05 billion pilot symbols; its diagnostic test score is 0.07540. Targeting 0.03 raises these values to 63,393, 4.02 billion repeats, and 120.6 billion pilot symbols. Even the zero residual optimistic class needs a 478.5 fold reduction for 0.08. These are information gap calculations, not current RMSE or hardware performance.
-
-The independent measured THz control has absolute Spearman correlations of 0.893 for lysozyme and 1.000 for ovalbumin in the fixed high band, but leave one concentration out normalized RMSEs of 0.272 and 0.127 give a macro value of 0.199. This small aqueous sample confirms real measured spectral monotonicity without supplying atmospheric pollutant or link validation.
+Previously explored forecasting, station reconstruction, single-channel repair and aqueous-protein controls are retained in the archived experiment notes. Their inputs and tasks differ from atmospheric THz inversion, so their scores are not used as sensing evidence here.
 
 For the joint physical WLS, test RMSEs are 84,522 \ugm\ for CO, 27,845 for O$_3$, 4,223 for SO$_2$, and 58,383 for NO$_2$, close to the reference CRB scale in Table \ref{tab:floors}. Approximately half of unconstrained WLS predictions are negative, as expected when noise dominates a zero centred linear inversion. Joint PM WLS is numerically unstable, with RMSEs of $6.36\times10^9$ and $1.45\times10^9$ \ugm\ for \pmfive\ and \pmten. The optimistic one parameter PM bounds must not be read as joint retrieval performance.
 
 In the gas only oracle test, changing temperature, pressure, and scale height in the inverse model increases each gas RMSE by 31.5\% to 32.6\%. This controlled mismatch confirms that even the already poor matched inversion is optimistic. A constrained estimator could remove negative outputs, but it cannot create absent Fisher information.
 
-\section{Limitations and Claim Boundaries}
+\subsubsection{Training-only and calendar-block review replay}
+The historical atmosphere used medians from the entire observation period. The review recomputes temperature, pressure, dew point, and the declared PM composition summary using training rows only. A mutation test verifies that changing future weather cannot alter the training atmosphere. The same frozen likelihood and Ridge validation grid are retained; the new run evaluates the selected model on the existing test period, which has already been inspected in earlier work. This is repaired computation on reused data, not an untouched confirmation set.
 
-The principal limitation is the absence of measured, synchronized sub THz CSI and pollutant truth. Real UCI labels and HITRAN parameters improve the input evidence but do not turn generated attenuation into field validation. The measured aqueous protein control is above the atmospheric band, has only six or seven concentration levels per protein, and does not close this gap. The link model simulates attenuation magnitudes, not complex CSI, phase, Doppler, beam tracking, oscillator drift, multipath, or atmospheric emission.
+For the uncertainty calculation, all selected station rows inside each complete calendar block are resampled together. Seven-day and thirty-day partitions test sensitivity to the assumed dependence horizon. The estimand remains the paired difference in macro training-range normalized RMSE. The block intervals account for within-block station and temporal dependence, but cannot account for arbitrary dependence across blocks or variation between cities. The thirty-day analysis has only ten observed blocks and is particularly limited.
 
-The conceptual 60 to 400 GHz grid spans different regulatory and hardware windows and is not one contiguous OFDM band. Fixed apertures and the 23 dBm total power are scenario assumptions. Greedy D optimal selection uses ideal point probes and does not impose bandpass, synthesizer, front end, or regulatory constraints. Its tone count comparison also assumes that occupied bandwidth and the number of independent residual samples grow with probe count. A realizable system must select disjoint windows, enforce per band power limits, and calibrate each path.
+The training-only replay gives Ridge 0.34744429 and mean 0.34747886. The thirty-day paired difference interval is $[-1.0382\times10^{-4},3.2635\times10^{-5}]$; the seven-day interval also includes zero. The historical replay with calendar blocks likewise resolves no difference. The earlier row-bootstrap interval is retained above only as historical methodology and does not serve as the revised uncertainty claim. Raw predictions, test row indices, both block lengths, selected alpha, input hashes and training atmosphere are stored under \texttt{results/review}.
 
-UCI stations measure local surface air. Exponential scale heights of 1.5 km for gases, 2 km for water, and 1 km for PM are not observed profiles. A single median surface atmosphere is used for every record. The plane parallel geometry becomes less credible at low elevation, and only the main HITRAN isotopologue is included. Line parameter uncertainty and record specific humidity are omitted. The H$_2$O control is a finite difference local bound and its poor transfer to paired meteorological states prevents a global retrieval claim.
+\subsubsection{Training-atmosphere correlated-noise sensitivity}
+Independence is not a universal optimistic assumption when marginal noise variances are fixed. A correlated component aligned with an eliminated offset can be less damaging than independent errors of the same marginal variance, whereas a component aligned with a target spectral signature can be more damaging. For example, with two probes, target column $(1,-1)^T$, an unknown common offset, unit marginal variance and a common residual variance 0.4, the target variance bound is 0.3, compared with 0.5 for independent noise. A separate numerical test verifies this elementary counterexample.
 
-The ESA CCI extension contains only ten monthly Beijing grid cells. CO is a total column and NO$_2$ is tropospheric, so their domains remain distinct. The forced normalized 0 to 20 km CO profile replaces the unknown upper atmospheric distribution, and the resulting bias has unknown sign. Satellite retrieval uncertainty, averaging kernels, cloud screening, and one degree spatial averaging prevent these products from acting as synchronized truth for the UCI stations. They validate data units and real column variability, not the simulated THz channel.
+The new physical sensitivity uses only the training-derived atmosphere of the repaired spectral replay: 290.35 K, 100,800 Pa and $5.4^\circ$C dew point. A check recomputes these quantities from training rows. The PM fine fraction is likewise training-derived. Let $v_k$ denote the original total marginal variance and let $\sigma_r=0.63$ dB remain the declared residual scenario. We keep every marginal variance unchanged and use
+\[
+\Sigma=\operatorname{diag}(v_k-\sigma_r^2)+\sigma_r^2R,
+\quad R=(1-r)I+r\big[e^{-|f_k-f_l|/\ell}\big]_{kl},
+\]
+with $r\in\{0,0.5,0.9\}$ and $\ell\in\{1,10,100\}$ GHz. All nine covariance scenarios are frozen and retained. Whitening by the full covariance precedes nuisance elimination. We include an offset, background and both PM nuisance directions with a declared $10^{-12}$ relative SVD cutoff after column normalization; the nuisance rank is four in every case.
 
-The PM model is especially provisional. Monodisperse spherical particles, fixed complex refractive indices, densities, and no hygroscopic growth cannot represent Beijing aerosol diversity. Fine and coarse spectra are practically collinear even under these favourable assumptions. The defensible next target is one calibrated aerosol loading parameter, not separate \pmfive\ and \pmten\ retrieval.
+\begin{table}[t]\centering\small
+\caption{Training-atmosphere one-sigma bounds divided by the stated WHO reference concentration scales. Ranges cover the declared covariance grid only.}
+\begin{tabular}{lrrr}\toprule
+Gas & Independent & Minimum & Maximum\\\midrule
+CO & 21.20 & 19.39 & 23.59\\
+O3 & 289.41 & 279.95 & 352.09\\
+SO2 & 111.17 & 103.92 & 125.72\\
+NO2 & 2706.19 & 2489.12 & 2878.15\\
+\bottomrule\end{tabular}\end{table}
 
-Equation \eqref{eq:variance} assumes independent frequency errors. Calibration drift and atmospheric nuisance errors may be correlated, making the present CRB optimistic. Its low SNR use only suppresses opaque probes and should not be treated as an accurate likelihood there. CRBs apply to locally unbiased estimators under the stated model and do not include prior knowledge. The 0.63 dB value comes from a different Ku band rain study and is not a measured sub THz receiver floor. The spectroscopy uses main isotopologue lines whose centers fall inside 60 to 400 GHz; it omits minor isotopologues, out of band wings, line mixing, and continua and was not validated end to end against ITU-R P.676.
+The fixed-marginal covariance changes can raise or lower the bound; for CO the range is 19.39--23.59 times the reference concentration scale, versus 21.20 under independence. No target approaches its reference scale in this grid. This reinforces the negative result only for the stated scenarios. It supplies neither a calibrated hardware covariance nor a worst-case envelope over all correlated errors. The reference atmosphere here differs from the historical full-period atmosphere in the earlier physical tables; those tables remain a declared historical scenario, not a prospective training-only calculation. Full configuration, input hashes and bounds are in \path{results/repair_correlated}.
 
-Finally, the empirical test covers one city and one chronological split. All stations occur in all periods, complete case filtering may be nonrandom, and the deterministic sampler retains exactly one row per selected timestamp. The forward scenario uses full period medians and the PM design uses a full data median composition ratio. These choices do not overlap split rows or tune the estimator, but they introduce lookahead and prevent a strict leakage free inductive claim. Random 20,000 row samples change the mean baseline with standard deviation 0.00579, which is much larger than the Ridge advantage. The ten seed study varies only simulated receiver noise, not years, cities, real labels, atmosphere, geometry, or split. Repeated model exploration has reused the test period, and the tenfold target was defined after its original score was known; these later comparisons are diagnostic rather than confirmatory. The paired row bootstrap also ignores station and temporal dependence. WHO comparisons juxtapose a one burst model bound with 8 h or 24 h health guidelines. They are useful magnitude references only, not compliance, exposure, or legal claims. The accompanying repository includes the acquisition manifests, hashes, scripts, tests, and generated result tables used here.
 
-\section{Conclusion}
 
-This study replaces label normalized spectral templates with physically dimensioned HITRAN line strengths, explicit surface and column mappings, a LEO link budget, and nuisance aware Fisher bounds. Under the reference $45^\circ$ link, uniform one sigma concentration floors exceed WHO 2021 guideline scales by at least 20.8 times for gases and by more than $3.5\times10^4$ for even optimistic one mode PM. D optimal probe placement gives meaningful 1.52 to 1.81 fold gas improvements, but its reference ratios remain 11.55 to 1,664.56. Native ESA CCI columns provide a unit consistent negative stress test under the declared profiles: optimized reference CO and NO$_2$ floors are 82.9 and 5,476 times the ten month sample spans, and the combined optimistic ratios remain 2.70 and 180. The local H$_2$O control shows that the same model can assign much stronger information to an abundant absorber, while also showing sensitivity to nuisance choice and atmospheric state.
+\subsubsection{Conditional Receiver Requirements}
+The preceding negative grids do not rule out all receiver/noise/resource combinations. We therefore compute explicit requirements rather than extrapolate a single borrowed residual value. The training-only atmosphere and reference link are retained. Both likelihoods now use the same 202 probes whose modeled SNR is at least 5 dB, avoiding low-SNR extrapolation in this comparison. With $c=(10/\log 10)^2$, linear SNR $\gamma_i$, pilot count $N_p$ and independent residual standard deviation $\sigma_r$, the declared alternatives are
+\begin{align}
+v_i^{\rm power}&=\frac{c}{N_p}(1+\gamma_i^{-1})^2+\sigma_r^2,\\
+v_i^{\rm coherent}&=\frac{2c}{N_p\gamma_i}+\sigma_r^2.
+\end{align}
+These are conditional likelihood scenarios, not measured receivers. Whitening and nuisance projection include an offset, background scale and both PM columns, with normalized nuisance SVD cutoff $10^{-12}$. The four gas concentration columns are scaled by the same magnitude references as before. The resulting ratios are local one-sigma model bounds, not detection probabilities or compliance criteria.
 
-A chronological Ridge model with validation selected $\alpha=10^5$ remains numerically close to the training period mean, and the conditional paired row bootstrap interval for their difference includes zero. Frozen ElasticNet and histogram boosting candidates do not improve robustly over ten receiver noise seeds, and the declared advanced THz update remains at 0.347466. The exact model requires at least a 5,918 fold noise standard deviation reduction to target 0.08. Real ground data do contain useful information: causal forecasting reaches 0.095485, strict station reconstruction reaches an empirical attempted family floor near 0.088890, and single channel repair reaches 0.074855. The last result meets 0.08 only because five current query channels remain available. The measured protein control is monotonic but reaches only 0.19927 on its separate small sample metric. These controls clarify which information solves which task without relabeling a sensor network result as THz retrieval.
+The frozen grid uses 30, 300, 3,000 and 30,000 pilots and residual standard deviations 0, .001, .01, .1 and .63 dB. For each model and target, bisection reports the maximum independent residual in $[0,.63]$ dB for which the local floor is no larger than its reference scale. ``None'' means the target already fails at zero residual within that row's resources.
+\begin{table}[t]\centering\footnotesize
+\caption{Conditional one-sigma requirements. Zero-residual ratio and maximum independent residual (dB). All four gases at the largest coherent pilot count are shown.}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrlrr}\toprule
+Model & $N_p$ & Gas & Ratio & Max. $\sigma_r$\\\midrule
+Power & 30 & CO & 16.894 & None\\
+Power & 300 & CO & 5.342 & None\\
+Power & 3000 & CO & 1.689 & None\\
+Power & 30000 & CO & 0.534 & 0.04055\\
+Coherent & 30 & CO & 3.144 & None\\
+Coherent & 300 & CO & 0.994 & 0.00490\\
+Coherent & 3000 & CO & 0.314 & 0.04511\\
+Coherent & 30000 & CO & 0.099 & 0.04769\\
+Coherent & 30000 & O3 & 1.250 & None\\
+Coherent & 30000 & SO2 & 0.582 & 0.00662\\
+Coherent & 30000 & NO2 & 12.133 & None\\
+\bottomrule\end{tabular}
+\end{table}
 
-The conclusion is scoped to the declared frequency probes, link budget, median atmosphere, residual model, and assumed profiles. It is not proof that atmospheric sensing from every sub THz NTN architecture is impossible. The next evidence gate is measured or laboratory calibrated attenuation, record specific profiles, realizable sensing windows, correlated calibration errors, and a reduced identifiable target set. Until those data exist, the correct claim is a negative semi synthetic feasibility result rather than demonstrated ambient pollutant retrieval.
+Coherent CO crosses the one-sigma scale at 300 pilots only with a residual below .00490 dB; 3,000 pilots allow .04511 dB. At 30,000 pilots, coherent SO$_2$ also crosses, but requires residual below .00662 dB. O$_3$ and NO$_2$ still fail even at zero residual in the largest coherent row. Power-domain CO requires 30,000 pilots in this grid. Increasing pilot count increases observation time and total pilot energy at fixed per-pilot power; these rows are not equal-resource alternatives. The boundary is conditional on independent residuals and does not override the earlier covariance sensitivity.
 
-\IEEEtriggeratref{10}
+The results in \path{results/resolution_noise_requirements} replace a blanket negative reading with explicit receiver requirements. They do not supply measured synchronized atmospheric attenuation, validate the physical profiles or turn a local bound into successful pollutant retrieval.
+
+
+
+
+
 \begin{thebibliography}{99}
 
 \bibitem{aliaga2024dar}

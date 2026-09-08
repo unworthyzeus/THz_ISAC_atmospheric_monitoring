@@ -1,0 +1,33 @@
+{
+  "source_manifest_sha256": "dab5d38f9b289a7a3a3716c26b5c83da9389c0ee83dd73095df839bda20ea15c",
+  "scope": "THz result from the independent portfolio verification; historical execution paths are preserved as provenance.",
+  "checks": {
+    "thz": {
+      "independent_gls_max_relative_error": 1.0115241977359801e-12,
+      "co_systematic_allowance_db": 0.0007395329394383734
+    }
+  },
+  "source_metadata": {
+    "wall_seconds": 39.46315380000124,
+    "sampled_peak_rss_bytes": 686309376,
+    "memory_sampling_seconds": 0.1,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+    "cpu_only": true,
+    "software": {
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "pandas": "2.2.3",
+      "torch": "2.4.1",
+      "scikit-learn": "1.8.0",
+      "sympy": "1.14.0",
+      "cvxpy": "1.8.2"
+    },
+    "command": [
+      "00_research_portfolio/scripts/verify_revision_0908.py"
+    ],
+    "failures": [],
+    "code_sha256": "a874b45de632fc982018557d86dcfcc6d9903d268e9ae9c2b5883d5e2afb8023"
+  }
+}

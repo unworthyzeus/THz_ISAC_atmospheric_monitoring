@@ -1,0 +1,27 @@
+{
+  "review_method": "Agent inspection of every rendered page via numbered contact sheets; altered DAS pages and the PIM final page were inspected again after the final edits.",
+  "record": {
+    "project": "important_research_because_its_for_n3cat/THz_ISAC_atmospheric_monitoring",
+    "pdf_sha256": "993404f6e8daa464c2414d73e69132919218d85d043bb90f339ff2f07bc68d85",
+    "pages_reviewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "status": "passed",
+    "issues": [],
+    "sheet_sha256": {
+      "THz_ISAC_atmospheric_monitoring_sheet1.png": "9aa926430748e5a2b49e20a07474b7526a9b25f72c112ed3a0cdc0c8a1f5e2e4",
+      "THz_ISAC_atmospheric_monitoring_sheet2.png": "5ca700066e8bbe0a2596f147b5b4e8e29dd3457ba0614d1d3a02dcbb435182e9",
+      "THz_ISAC_atmospheric_monitoring_sheet3.png": "a5b92638ef1db5b5e0639f67d7f2cfde8ed13c4c13e0e939fbe6ae59affd93b7"
+    }
+  }
+}

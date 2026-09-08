@@ -1,0 +1,16 @@
+[
+  {
+    "project": "THz",
+    "stage": "estimator regression",
+    "status": "corrected",
+    "finding": "An exactly nuisance-confounded target left a floating-point residual that appeared full rank after column normalization.",
+    "resolution": "Compare projected target norm with the original whitened target norm before normalization. The four analytical tests and full 143-test THz suite pass."
+  },
+  {
+    "project": "THz",
+    "stage": "manuscript builder",
+    "status": "corrected",
+    "finding": "Attribute access collided with the pandas quantile method.",
+    "resolution": "Use explicit column indexing; the regenerated tables, figure and PDF compile and pass visual inspection."
+  }
+]

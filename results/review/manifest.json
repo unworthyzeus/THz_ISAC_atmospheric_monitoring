@@ -1,0 +1,45 @@
+{
+  "protocol": {
+    "surface_conditions": {
+      "temperature_k": 290.34999999999997,
+      "pressure_pa": 100800.0,
+      "dew_point_c": 5.4
+    },
+    "pm_fine_fraction": 0.7272727272727273,
+    "alphas": [
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0,
+      10000.0,
+      100000.0,
+      1000000.0,
+      10000000.0,
+      100000000.0
+    ],
+    "blocks_days": [
+      7,
+      30
+    ],
+    "bootstrap_seed": 609050,
+    "scope": "Diagnostic replay; same previously explored test period. No fresh independent confirmation is claimed."
+  },
+  "wall_seconds": 4.514575399998648,
+  "python": "3.12.10",
+  "numpy": "2.3.5",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "cpu_only": true,
+  "failures": [],
+  "inputs": {
+    "data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "data\\processed\\hitran\\hitran_60_400GHz_lines.csv": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8"
+  },
+  "code_sha256": "e7076ece26e62cc276045d8331b251d60d52ea2c8162ced4846ef39a752ffc1a",
+  "outputs": {
+    "historical_predictions.npz": "109715a2eaa627ec2ef7494b954141daa3abcf846721b6c86806f218e12a3ded",
+    "spectral_replay.csv": "a4213a83badf2c1cb1cd7250c33ee9f97c455181b0b8f14d1ceb69a161680ce7",
+    "training_only_predictions.npz": "9c4fb9f378db507e1f317cdd5316a864eb2573e3fc3f5cd8819a88a2ba833b54"
+  }
+}

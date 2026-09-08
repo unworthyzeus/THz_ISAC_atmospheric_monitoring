@@ -1,0 +1,227 @@
+[
+  {
+    "path": "paper/main.tex",
+    "snapshot": "results/revision_0908_validation/before/paper/main.tex",
+    "sha256": "fb79fe83267d20eac531dd46f8acedafad5ee32ea76fe663a43871a7e18dd053"
+  },
+  {
+    "path": "paper/README.md",
+    "snapshot": "results/revision_0908_validation/before/paper/README.md",
+    "sha256": "decec0855a3e0e27eac37a7d22c67800e0f835bf133a745c5b19f5067def32ed"
+  },
+  {
+    "path": "paper/repair_results.tex",
+    "snapshot": "results/revision_0908_validation/before/paper/repair_results.tex",
+    "sha256": "5d4e646152e96a6885a2a4868971871941ec1c28a83b449d589c013ab681ee99"
+  },
+  {
+    "path": "paper/resolution_results.tex",
+    "snapshot": "results/revision_0908_validation/before/paper/resolution_results.tex",
+    "sha256": "1f3353f13d7232c567776ec10ad83112f4a67aedef78948cf28beb11889744ec"
+  },
+  {
+    "path": "paper/build/main.pdf",
+    "snapshot": "results/revision_0908_validation/before/paper/build/main.pdf",
+    "sha256": "c1b7229ca173e479ce6cbcb3def7a16eef4ff15944af4fb1f09eecce73fdcd22"
+  },
+  {
+    "path": "docs/00_project_summary.md",
+    "snapshot": "results/revision_0908_validation/before/docs/00_project_summary.md",
+    "sha256": "0b7593e7f4b2e3d0298e0ad4225372703d336921dfdf94a756e30a6f7dc3c908"
+  },
+  {
+    "path": "docs/01_work_plan.md",
+    "snapshot": "results/revision_0908_validation/before/docs/01_work_plan.md",
+    "sha256": "69e6118d2e7ded53b875a14e8fd3fc3aab554c0cb2254836df65c0ef30580604"
+  },
+  {
+    "path": "docs/02_literature_map.md",
+    "snapshot": "results/revision_0908_validation/before/docs/02_literature_map.md",
+    "sha256": "b04a2a55ea895a7146741b26496c6cde55b2c43b710ec3f3aaf44a7f0f8d3987"
+  },
+  {
+    "path": "docs/03_physical_model.md",
+    "snapshot": "results/revision_0908_validation/before/docs/03_physical_model.md",
+    "sha256": "4d1b25c023f0fdff2e22bfc43d6d1862f90549e8c20e5e2784fbb54a57608b32"
+  },
+  {
+    "path": "docs/04_data_and_sources.md",
+    "snapshot": "results/revision_0908_validation/before/docs/04_data_and_sources.md",
+    "sha256": "94eb516050cb7868cfc21ae8d216c0dfd800c1d535f466c3d468c7e35cb0e939"
+  },
+  {
+    "path": "docs/05_ml_estimators.md",
+    "snapshot": "results/revision_0908_validation/before/docs/05_ml_estimators.md",
+    "sha256": "c8e6774f607278b16c419261ebbca853c6c06d861bf42abd07b17676dc331289"
+  },
+  {
+    "path": "docs/06_experiments.md",
+    "snapshot": "results/revision_0908_validation/before/docs/06_experiments.md",
+    "sha256": "d738b3cd2b441e7659d239c7d53c72f4b89bc3cc54979de57d900f5f48682e49"
+  },
+  {
+    "path": "docs/07_metrics.md",
+    "snapshot": "results/revision_0908_validation/before/docs/07_metrics.md",
+    "sha256": "0ac87aacfa223cde3649a92e79110a5bdf76e8b9ec1f2d52ded7871f4834a2c6"
+  },
+  {
+    "path": "docs/08_risks.md",
+    "snapshot": "results/revision_0908_validation/before/docs/08_risks.md",
+    "sha256": "f74c609511a14cf45f3640e536af93ee2cc86bb6a5b73edf25ee683d7b1d5292"
+  },
+  {
+    "path": "docs/09_logbook.md",
+    "snapshot": "results/revision_0908_validation/before/docs/09_logbook.md",
+    "sha256": "21f85d1098c1c8ba2491d199c7d08fa997416d30827d451c7cc39851a712d0a5"
+  },
+  {
+    "path": "docs/10_open_questions.md",
+    "snapshot": "results/revision_0908_validation/before/docs/10_open_questions.md",
+    "sha256": "9b6078721c0d30cbb8c6ed23a52b819ec2b0ccccbf2a715587a13c060703d067"
+  },
+  {
+    "path": "docs/11_week_1_milestones.md",
+    "snapshot": "results/revision_0908_validation/before/docs/11_week_1_milestones.md",
+    "sha256": "b720535293754456b2d6a95aae369ee12546d352f413ccf6b4c1986b6d34270c"
+  },
+  {
+    "path": "docs/12_tasks.md",
+    "snapshot": "results/revision_0908_validation/before/docs/12_tasks.md",
+    "sha256": "e61f78fdb5acc0891fdbb017d56d55794b0a3cc2c2d97b88b05c09f9401ad8c2"
+  },
+  {
+    "path": "docs/13_baseline_0_result.md",
+    "snapshot": "results/revision_0908_validation/before/docs/13_baseline_0_result.md",
+    "sha256": "18752afd06175a089ba43f3c85303c18623882b23b8750c576614c1b9a8262ea"
+  },
+  {
+    "path": "docs/14_snr_sweep_experiment.md",
+    "snapshot": "results/revision_0908_validation/before/docs/14_snr_sweep_experiment.md",
+    "sha256": "096f320776ebc169fb63706240ad5fce5e8a7c9e892f18fed8bbae090b4461e3"
+  },
+  {
+    "path": "docs/15_error_optimization_plan.md",
+    "snapshot": "results/revision_0908_validation/before/docs/15_error_optimization_plan.md",
+    "sha256": "0ee6dee226dddcfd4b7631d220a802844198553797593cef355ae72e5aed40d0"
+  },
+  {
+    "path": "docs/16_pivot_to_real_data.md",
+    "snapshot": "results/revision_0908_validation/before/docs/16_pivot_to_real_data.md",
+    "sha256": "9fb79c2413d597f37592f81c272493ae1be307f584e2af07443a9031caeda391"
+  },
+  {
+    "path": "docs/17_language_and_data_rules.md",
+    "snapshot": "results/revision_0908_validation/before/docs/17_language_and_data_rules.md",
+    "sha256": "99e583f35ca87c3cea6d9b99d0e8e5f971e6c044a9c0c94842462ff7476c4a13"
+  },
+  {
+    "path": "docs/18_external_data_acquisition.md",
+    "snapshot": "results/revision_0908_validation/before/docs/18_external_data_acquisition.md",
+    "sha256": "7e26b6394061438125b22e16f74a06e4924ececf7c98371fac5d4342fbed763e"
+  },
+  {
+    "path": "docs/19_real_data_benchmark_plan.md",
+    "snapshot": "results/revision_0908_validation/before/docs/19_real_data_benchmark_plan.md",
+    "sha256": "343b7ec77feba1317448f0a1c90c183a1e23198fa81f71e12e8d8fea5c6ffcf8"
+  },
+  {
+    "path": "docs/20_real_data_benchmark_iteration.md",
+    "snapshot": "results/revision_0908_validation/before/docs/20_real_data_benchmark_iteration.md",
+    "sha256": "4d19d24314c94746594c8ca47cc626bb996dc31648ad088002c74fe252a4b3a4"
+  },
+  {
+    "path": "docs/21_ridge_alpha_sweep_plan.md",
+    "snapshot": "results/revision_0908_validation/before/docs/21_ridge_alpha_sweep_plan.md",
+    "sha256": "c0fe88eebd63ed552b596044530acef3b8868415d3922c514c4d6abdc9e01421"
+  },
+  {
+    "path": "docs/22_real_data_results.md",
+    "snapshot": "results/revision_0908_validation/before/docs/22_real_data_results.md",
+    "sha256": "f9dd4c074f935909c47b6612ac5ac098aead6a4040e38f7f5b3ee1aeb4405bdb"
+  },
+  {
+    "path": "docs/23_ieee_paper_draft_log.md",
+    "snapshot": "results/revision_0908_validation/before/docs/23_ieee_paper_draft_log.md",
+    "sha256": "a30d9ef680f8e46f5729df0dd3914a69d10911615b403552556a076564413a50"
+  },
+  {
+    "path": "docs/24_validation_and_repo_state.md",
+    "snapshot": "results/revision_0908_validation/before/docs/24_validation_and_repo_state.md",
+    "sha256": "16cbc6512a45a473e32073030bd26345cc34ed2e5c4838465148d519db4b09a6"
+  },
+  {
+    "path": "docs/25_research_task_completion_status.md",
+    "snapshot": "results/revision_0908_validation/before/docs/25_research_task_completion_status.md",
+    "sha256": "03f0b8c523a9537ed31cb4b5e9e44a27d24701a355e154140eaa1c36206ec41f"
+  },
+  {
+    "path": "docs/26_scientific_audit_and_paper_rebuild.md",
+    "snapshot": "results/revision_0908_validation/before/docs/26_scientific_audit_and_paper_rebuild.md",
+    "sha256": "e392a9dd9fb042d09895caf4593a9e44481c512fa79f571903cbf8b5938e5cf4"
+  },
+  {
+    "path": "docs/27_data_quality_audit.md",
+    "snapshot": "results/revision_0908_validation/before/docs/27_data_quality_audit.md",
+    "sha256": "e98326481cdc8e2cf03e072209d2d354c62563f2e9f3310ef13622a3200421c8"
+  },
+  {
+    "path": "docs/28_physical_feasibility_results.md",
+    "snapshot": "results/revision_0908_validation/before/docs/28_physical_feasibility_results.md",
+    "sha256": "3481765316e7df1585d07f06f34c74612e816efdf6e8ac362ffd44ee6753e5ee"
+  },
+  {
+    "path": "docs/29_ieee_paper_build_and_visual_validation.md",
+    "snapshot": "results/revision_0908_validation/before/docs/29_ieee_paper_build_and_visual_validation.md",
+    "sha256": "e5ec3981b6271e573fc8d78cf472b27877c3d1f10178fad4318fbdc321bdce36"
+  },
+  {
+    "path": "docs/30_real_column_dataset_options.md",
+    "snapshot": "results/revision_0908_validation/before/docs/30_real_column_dataset_options.md",
+    "sha256": "68e2ea0d1018c843d54f6e6c5028aa894f30c53eafd734b6f268f54ee300bf79"
+  },
+  {
+    "path": "docs/31_probe_optimization_and_h2o_positive_control.md",
+    "snapshot": "results/revision_0908_validation/before/docs/31_probe_optimization_and_h2o_positive_control.md",
+    "sha256": "137b44e82a68ce2174c10615ed61e1ca0c749bfc62ab1611a5057c7fab76890f"
+  },
+  {
+    "path": "docs/32_real_satellite_column_feasibility.md",
+    "snapshot": "results/revision_0908_validation/before/docs/32_real_satellite_column_feasibility.md",
+    "sha256": "1a2800b5d23849b651c4e9805221dad78627cbea8b693947b9180398003c120e"
+  },
+  {
+    "path": "docs/33_tenfold_rmse_reduction_study.md",
+    "snapshot": "results/revision_0908_validation/before/docs/33_tenfold_rmse_reduction_study.md",
+    "sha256": "a34578e42aa45ab91d5d5ea086d74ee9e0b146cf48443576910eba802525fdd8"
+  },
+  {
+    "path": "docs/34_multi_method_information_floor_study.md",
+    "snapshot": "results/revision_0908_validation/before/docs/34_multi_method_information_floor_study.md",
+    "sha256": "f337927e670e24e0ec14e81415f85a63dd70b59e48e456ddd9c630ed69c01e10"
+  },
+  {
+    "path": "docs/35_data_provenance_and_synthetic_evidence_audit.md",
+    "snapshot": "results/revision_0908_validation/before/docs/35_data_provenance_and_synthetic_evidence_audit.md",
+    "sha256": "4849d10af486ae21b320724cc50d7e5f5417ce16e237c0cbbe928d58e19b6cd5"
+  },
+  {
+    "path": "docs/revision_review.md",
+    "snapshot": "results/revision_0908_validation/before/docs/revision_review.md",
+    "sha256": "3e436a8745cfc6f0381dc89e58dc312387618a2dc08cc4faf683755abebab3b5"
+  },
+  {
+    "path": "docs/scientific_repair.md",
+    "snapshot": "results/revision_0908_validation/before/docs/scientific_repair.md",
+    "sha256": "ff4888c3a41293cef6285cf0776657399ffcf31091e62e40a07043914713be5f"
+  },
+  {
+    "path": "docs/scientific_resolution.md",
+    "snapshot": "results/revision_0908_validation/before/docs/scientific_resolution.md",
+    "sha256": "0889dd4e4b6125674432392526d32b3e0124f677ef14192de7d5941b336ae1a7"
+  },
+  {
+    "path": "docs/source_map.md",
+    "snapshot": "results/revision_0908_validation/before/docs/source_map.md",
+    "sha256": "a769301444fab255175e0c05e2aee76ebedac2adec39c0ed85d097bf0915c755"
+  }
+]

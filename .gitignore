@@ -4,6 +4,7 @@ __pycache__/
 data/raw/
 data/processed/
 results/tmp/
+tmp/
 *.aux
 *.log
 *.out

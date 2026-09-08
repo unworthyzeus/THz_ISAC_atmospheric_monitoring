@@ -1,0 +1,7 @@
+{
+  "result_hashes_and_snapshot_files_verified_against_git_index": 55,
+  "pdf_sha256": "993404f6e8daa464c2414d73e69132919218d85d043bb90f339ff2f07bc68d85",
+  "passed_tests": 143,
+  "local_script_import_checks": 3,
+  "scientific_data_and_pdf_changed_by_packaging": false
+}

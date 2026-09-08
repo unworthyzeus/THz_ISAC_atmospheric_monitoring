@@ -4,3 +4,11 @@
 *.jpg binary
 *.jpeg binary
 *.webp binary
+*.npz binary
+
+# Preserve the exact bytes bound by research provenance hashes.
+results/review/** -text
+results/repair_correlated/** -text
+results/resolution_noise_requirements/** -text
+results/revision_0908/** -text
+results/revision_0908_validation/** -text

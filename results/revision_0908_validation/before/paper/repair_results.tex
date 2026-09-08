@@ -1,0 +1,22 @@
+\section{Training-atmosphere correlated-noise sensitivity}
+Independence is not a universal optimistic assumption when marginal noise variances are fixed. A correlated component aligned with an eliminated offset can be less damaging than independent errors of the same marginal variance, whereas a component aligned with a target spectral signature can be more damaging. For example, with two probes, target column $(1,-1)^T$, an unknown common offset, unit marginal variance and a common residual variance 0.4, the target variance bound is 0.3, compared with 0.5 for independent noise. A separate numerical test verifies this elementary counterexample.
+
+The new physical sensitivity uses only the training-derived atmosphere of the repaired spectral replay: 290.35 K, 100,800 Pa and $5.4^\circ$C dew point. A check recomputes these quantities from training rows. The PM fine fraction is likewise training-derived. Let $v_k$ denote the original total marginal variance and let $\sigma_r=0.63$ dB remain the declared residual scenario. We keep every marginal variance unchanged and use
+\[
+\Sigma=\operatorname{diag}(v_k-\sigma_r^2)+\sigma_r^2R,
+\quad R=(1-r)I+r\big[e^{-|f_k-f_l|/\ell}\big]_{kl},
+\]
+with $r\in\{0,0.5,0.9\}$ and $\ell\in\{1,10,100\}$ GHz. All nine covariance scenarios are frozen and retained. Whitening by the full covariance precedes nuisance elimination. We include an offset, background and both PM nuisance directions with a declared $10^{-12}$ relative SVD cutoff after column normalization; the nuisance rank is four in every case.
+
+\begin{table}[t]\centering\small
+\caption{Training-atmosphere one-sigma bounds divided by the stated WHO reference concentration scales. Ranges cover the declared covariance grid only.}
+\begin{tabular}{lrrr}\toprule
+Gas & Independent & Minimum & Maximum\\\midrule
+CO & 21.20 & 19.39 & 23.59\\
+O3 & 289.41 & 279.95 & 352.09\\
+SO2 & 111.17 & 103.92 & 125.72\\
+NO2 & 2706.19 & 2489.12 & 2878.15\\
+\bottomrule\end{tabular}\end{table}
+
+The fixed-marginal covariance changes can raise or lower the bound; for CO the range is 19.39--23.59 times the reference concentration scale, versus 21.20 under independence. No target approaches its reference scale in this grid. This reinforces the negative result only for the stated scenarios. It supplies neither a calibrated hardware covariance nor a worst-case envelope over all correlated errors. The reference atmosphere here differs from the historical full-period atmosphere in the earlier physical tables; those tables remain a declared historical scenario, not a prospective training-only calculation. Full configuration, input hashes and bounds are in \path{results/repair_correlated}.
+

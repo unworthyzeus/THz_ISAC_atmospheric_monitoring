@@ -1,0 +1,32 @@
+\section{Conditional Receiver Requirements}
+The preceding negative grids do not rule out all receiver/noise/resource combinations. We therefore compute explicit requirements rather than extrapolate a single borrowed residual value. The training-only atmosphere and reference link are retained. Both likelihoods now use the same 202 probes whose modeled SNR is at least 5 dB, avoiding low-SNR extrapolation in this comparison. With $c=(10/\log 10)^2$, linear SNR $\gamma_i$, pilot count $N_p$ and independent residual standard deviation $\sigma_r$, the declared alternatives are
+\begin{align}
+v_i^{\rm power}&=\frac{c}{N_p}(1+\gamma_i^{-1})^2+\sigma_r^2,\\
+v_i^{\rm coherent}&=\frac{2c}{N_p\gamma_i}+\sigma_r^2.
+\end{align}
+These are conditional likelihood scenarios, not measured receivers. Whitening and nuisance projection include an offset, background scale and both PM columns, with normalized nuisance SVD cutoff $10^{-12}$. The four gas concentration columns are scaled by the same magnitude references as before. The resulting ratios are local one-sigma model bounds, not detection probabilities or compliance criteria.
+
+The frozen grid uses 30, 300, 3,000 and 30,000 pilots and residual standard deviations 0, .001, .01, .1 and .63 dB. For each model and target, bisection reports the maximum independent residual in $[0,.63]$ dB for which the local floor is no larger than its reference scale. ``None'' means the target already fails at zero residual within that row's resources.
+\begin{table}[t]\centering\footnotesize
+\caption{Conditional one-sigma requirements. Zero-residual ratio and maximum independent residual (dB). All four gases at the largest coherent pilot count are shown.}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrlrr}\toprule
+Model & $N_p$ & Gas & Ratio & Max. $\sigma_r$\\\midrule
+Power & 30 & CO & 16.894 & None\\
+Power & 300 & CO & 5.342 & None\\
+Power & 3000 & CO & 1.689 & None\\
+Power & 30000 & CO & 0.534 & 0.04055\\
+Coherent & 30 & CO & 3.144 & None\\
+Coherent & 300 & CO & 0.994 & 0.00490\\
+Coherent & 3000 & CO & 0.314 & 0.04511\\
+Coherent & 30000 & CO & 0.099 & 0.04769\\
+Coherent & 30000 & O3 & 1.250 & None\\
+Coherent & 30000 & SO2 & 0.582 & 0.00662\\
+Coherent & 30000 & NO2 & 12.133 & None\\
+\bottomrule\end{tabular}
+\end{table}
+
+Coherent CO crosses the one-sigma scale at 300 pilots only with a residual below .00490 dB; 3,000 pilots allow .04511 dB. At 30,000 pilots, coherent SO$_2$ also crosses, but requires residual below .00662 dB. O$_3$ and NO$_2$ still fail even at zero residual in the largest coherent row. Power-domain CO requires 30,000 pilots in this grid. Increasing pilot count increases observation time and total pilot energy at fixed per-pilot power; these rows are not equal-resource alternatives. The boundary is conditional on independent residuals and does not override the earlier covariance sensitivity.
+
+The results in \path{results/resolution_noise_requirements} replace a blanket negative reading with explicit receiver requirements. They do not supply measured synchronized atmospheric attenuation, validate the physical profiles or turn a local bound into successful pollutant retrieval.
+
