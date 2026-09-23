@@ -1,0 +1,5 @@
+quantity,relative_rms,acceptance_threshold,passed
+gas,3.8110148029007264e-05,0.001,True
+pm,0.0002246456593417,0.001,True
+background_db,1.995302225133391e-05,0.001,True
+sky_temperature_k,3.185543878285148e-05,0.001,True

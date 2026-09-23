@@ -1,0 +1,108 @@
+{
+  "protocol": {
+    "source": "results\\task_1_3\\refracted45_inputs.npz",
+    "source_sha256": "e006199e7b78fd0ceb876357c09089fb16eb6c408df2e20cae973e36d525659c",
+    "geometry": "Full task 1.3 refracted path at 45 degree geometric elevation",
+    "background": "ITU P.676-12; pure HITRAN background remains a failed sensitivity control",
+    "frequency_bounds_ghz": [
+      60,
+      400
+    ],
+    "frames": [
+      1,
+      10,
+      1000
+    ],
+    "elapsed_s": [
+      0.01,
+      0.1,
+      10.0
+    ],
+    "residual_std_db": [
+      0,
+      0.001
+    ],
+    "positive_draws": 5000,
+    "null_draws": 5000,
+    "seed": 20260923,
+    "target_positive_truth_ug_m3": [
+      1.0,
+      1.0,
+      1.0,
+      49.0,
+      41.0,
+      90.0
+    ],
+    "positive_prevalence_pct": 50,
+    "pm_source": {
+      "file": "results\\tables\\single_channel_repair_predictions.csv",
+      "sha256": "28da43c0f944c4b09f7a1b3598b64975566a509163acfbdee381236885401f74",
+      "station": "Dingling",
+      "datetime": "2016-06-03 06:00:00"
+    },
+    "detector": "Signed GLS estimate / conditional standard error; fixed one-sided per-target null alpha=1%",
+    "z_threshold": 2.3263478740408408,
+    "threshold_tuned_on_test": false,
+    "scope": "Complex-pilot response controls; no environmental VOC labels, no field precision/recall claim",
+    "error_percentage_denominator": "Known positive control concentration; percentages undefined for zero truth",
+    "added_pilots": 0,
+    "rate": {
+      "reference_bps": 814055917.3008088,
+      "candidate_bps": 814055917.3008088,
+      "relative_loss": 0.0,
+      "within_power_budget": true,
+      "accepted": true
+    },
+    "sensing_tones": 173,
+    "comparison": "Shared underlying noise across duration/residual scenarios; independent null and positive draws"
+  },
+  "wall_seconds": 4.853039699955843,
+  "sampled_peak_rss_bytes": 303980544,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.13.9",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "pandas": "2.3.3",
+    "torch": "2.6.0+cu124",
+    "scikit-learn": "1.7.2",
+    "sympy": "1.13.1"
+  },
+  "command": [
+    "scripts/evaluate_retrieval_metrics.py"
+  ],
+  "failures": [],
+  "code_sha256": "7f81c4e1f28a6930f4ae7464ec26cd2ef93ff95bd03ad5a10146d49366308f7a",
+  "outputs": {
+    "absolute_and_percentage_errors.png": "6c5cc60a9782fb014bc607b52dabe6411bac2a24a527f8d18bcd69a2dab29fab",
+    "absolute_and_percentage_errors.svg": "f9434fdd195708e3c2efda0bdff68d5e6127fedf139ab0b22fb35a4beadca8c7",
+    "communication_allocation.npz": "4f59024c0ed3512b91dee52c8ff52f2ff0c76e1770db74917e9a77a1aef0084b",
+    "concentration_errors.csv": "2130a5b7cc6ec37759a0ee40fb8d27167b07ad464f5696fa3286aee28c94c009",
+    "conditional_detection_curves.csv": "997fd5fd6db13079df9de8333227d042867d6e976df19fe5f92d7a76c5a8b438",
+    "conditional_detection_curves.png": "d75ee28b20c76fe26142e4ac63e30408d3e110d7e8de6e716207818a7e06422b",
+    "conditional_detection_curves.svg": "ce293dded0ce31d520ff96d9b6147a55d70593dd1c6ef87bed7482afcc9c4871",
+    "confusion_matrices.png": "51c1887359338927e01095f84b705b98f73fba6d05ec289e722062d8e1f24a80",
+    "confusion_matrices.svg": "c56ba9fc42f5d2fbdcf58e5af04a0fc0348b1c556940470da6f955201ecac1cf",
+    "control_estimates.npz": "ce2e56943af6f06f5f34ac4df65c79156fc389d4d01fcede78271831f42a51b4",
+    "detection_metrics.csv": "c1a33fb828404ca369894b389cae5f947f86af258ae7f4d9dcff3ef9fa048a61",
+    "detection_vs_time.png": "d9bd3ed69b2753d9143b942b06cdc700a7f5476bab665bd7d66eede1e89d0109",
+    "detection_vs_time.svg": "cc1b1582f885f429ffe04fac8b17a534908efd7bdea778858cd2ca89dc582c3f",
+    "precision_recall.png": "6ec348bf777c58099fe9e7c7b15795e12aac4228e548d0ab664260de2a937921",
+    "precision_recall.svg": "4ce8680b19c2edfa787684ca24b44630f8c95ae6aa5b54564efc400ba016b7b9",
+    "precision_recall_curves.csv": "b1b44003c9bcad6bd0acdec53738c7cec73abe0c14daaf51880328bb9c262f03",
+    "protocol.json": "bb5f4fb68b3639b9d4c23f8d857a3e4f932ace243cb0c646909baf9ca7ce3411",
+    "summary.json": "3926666644db0d8679fa4130306a9b47c71c050ca63f9e666cdacee3bd407461"
+  },
+  "input_hashes": {
+    "results\\task_1_3\\refracted45_inputs.npz": "e006199e7b78fd0ceb876357c09089fb16eb6c408df2e20cae973e36d525659c",
+    "results\\task_1_3\\manifest.json": "706401c940e4a5a580b6f61624294cfdb76b21fe68ad6f09a3ba73d8ac8e0718"
+  },
+  "code_hashes": {
+    "src\\thz_isac\\retrieval_metrics.py": "171f1c8bfc5cd3e4d1a42fe3dc01d7cf4445506df6b4abe3ea2836eb58735df3",
+    "src\\thz_isac\\joint_voc_pm.py": "095f8539f729854c6c1ff00e0a1f5bec4c0f9c8dd59f04d4c7248e0ba39a9f74",
+    "src\\thz_isac\\communication_capacity.py": "be725c3de5321b622d7aab94bf20a8f9005b61df4afa95615baac64c9a670a52"
+  }
+}

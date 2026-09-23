@@ -1,0 +1,1514 @@
+[
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.0,
+    "pilots": 300,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      0.40329523437337844,
+      0.20829835952179668,
+      0.12426048399606031,
+      0.00584272668002934,
+      0.005841884565758714
+    ],
+    "singular_values": [
+      1.465650904056601,
+      1.0365563189434055,
+      0.9657078000588447,
+      0.9191446214235555,
+      0.0001868427601829014
+    ],
+    "weakest_normalized_combination": [
+      0.00011447229112686668,
+      -4.621210049900279e-06,
+      3.0257338985217858e-05,
+      0.7070928934885782,
+      -0.7071206586836386
+    ],
+    "whitened_column_norms": [
+      0.00968780357539762,
+      0.0035137752738818463,
+      0.036896812831595356,
+      3.570658639457134e-06,
+      2.909487607036424e-06
+    ],
+    "condition_number": 7844.301286396472,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.001,
+    "pilots": 300,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      0.40362066591145845,
+      0.20865117300310268,
+      0.12452404022020168,
+      0.005852505810835876,
+      0.005851664077268489
+    ],
+    "singular_values": [
+      1.4656754175026625,
+      1.036520715175018,
+      0.9657006120018993,
+      0.9191532356466962,
+      0.00018687116442536064
+    ],
+    "weakest_normalized_combination": [
+      0.0001144457276901842,
+      -4.6178528425671835e-06,
+      3.0266240376329245e-05,
+      0.7070928877866356,
+      -0.7071206643892978
+    ],
+    "whitened_column_norms": [
+      0.009682920679322898,
+      0.0035123996237203465,
+      0.03689144939502196,
+      3.5682768300227333e-06,
+      2.9075473503228065e-06
+    ],
+    "condition_number": 7843.240138250848,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.0,
+    "pilots": 30000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      0.4032952343733781,
+      0.2082983595217965,
+      0.12426048399606031,
+      0.005842726680029331,
+      0.005841884565758712
+    ],
+    "singular_values": [
+      1.4656509040566015,
+      1.0365563189434057,
+      0.9657078000588449,
+      0.9191446214235564,
+      0.00018684276018317603
+    ],
+    "weakest_normalized_combination": [
+      0.00011447229112678381,
+      -4.621210050079932e-06,
+      3.025733898566654e-05,
+      0.707092893488578,
+      -0.7071206586836388
+    ],
+    "whitened_column_norms": [
+      0.09687803575397617,
+      0.03513775273881845,
+      0.3689681283159535,
+      3.5706586394571314e-05,
+      2.9094876070364232e-05
+    ],
+    "condition_number": 7844.301286384944,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.001,
+    "pilots": 30000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      0.4310849238526401,
+      0.23952631483546996,
+      0.14846140094798713,
+      0.006718942120942628,
+      0.0067181567877443085
+    ],
+    "singular_values": [
+      1.4677275102946112,
+      1.0352166066953263,
+      0.9636199797115562,
+      0.9195319633925647,
+      0.00018906800196405416
+    ],
+    "weakest_normalized_combination": [
+      0.00011168634805749172,
+      -4.255615595126028e-06,
+      3.09650418895635e-05,
+      0.7070924783072631,
+      -0.7071210742655801
+    ],
+    "whitened_column_norms": [
+      0.0924337027082852,
+      0.03388140299810239,
+      0.3638927308547527,
+      3.3638384799050316e-05,
+      2.7410071136248608e-05
+    ],
+    "condition_number": 7762.960919075335,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.0,
+    "pilots": 5400000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      0.4032952343733783,
+      0.20829835952179662,
+      0.12426048399606031,
+      0.005842726680029331,
+      0.005841884565758712
+    ],
+    "singular_values": [
+      1.465650904056602,
+      1.0365563189434057,
+      0.9657078000588454,
+      0.9191446214235565,
+      0.00018684276018317509
+    ],
+    "weakest_normalized_combination": [
+      0.00011447229112668748,
+      -4.621210050630435e-06,
+      3.0257338985674714e-05,
+      0.7070928934885781,
+      -0.7071206586836386
+    ],
+    "whitened_column_norms": [
+      1.299755240835275,
+      0.4714224222034649,
+      4.950226898672023,
+      0.00047905412653638356,
+      0.0003903487241415983
+    ],
+    "condition_number": 7844.301286384987,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.001,
+    "pilots": 5400000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      0.760353846874524,
+      0.6120834421812326,
+      0.5341559862166249,
+      0.02763669346388893,
+      0.02764098239028442
+    ],
+    "singular_values": [
+      1.4795741802542317,
+      1.1145967874540887,
+      0.9009368532970524,
+      0.8699695438261984,
+      0.00016033740794287258
+    ],
+    "weakest_normalized_combination": [
+      3.3799676427227605e-05,
+      6.783732797596955e-06,
+      3.115611634155846e-05,
+      0.7070998147345906,
+      -0.7071137460431431
+    ],
+    "whitened_column_norms": [
+      0.41916868978122235,
+      0.17234165946651978,
+      2.454322296005625,
+      0.0001537291236116535,
+      0.00012528453575811623
+    ],
+    "condition_number": 9227.878878903897,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.0,
+    "pilots": 300,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 10,
+    "retained_information_fraction": [
+      0.30797158756672693,
+      0.204831354685418,
+      0.11520952806203685,
+      0.0013419599481052044,
+      0.0013408933706926672
+    ],
+    "singular_values": [
+      1.4758358468359067,
+      1.0537918235792865,
+      0.9394134568422685,
+      0.9104579619294707,
+      4.9137329809068464e-05
+    ],
+    "weakest_normalized_combination": [
+      -1.7415841195947614e-05,
+      6.194395166765076e-07,
+      5.412824210581869e-06,
+      -0.7071096861752525,
+      0.7071038759504448
+    ],
+    "whitened_column_norms": [
+      0.00846582146722864,
+      0.003484410198887771,
+      0.03552765407364961,
+      1.711237641423773e-06,
+      1.3939177484372224e-06
+    ],
+    "condition_number": 30034.92156717755,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.001,
+    "pilots": 300,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 10,
+    "retained_information_fraction": [
+      0.308257824726509,
+      0.20518763853903435,
+      0.11545451941940191,
+      0.0013438950983454966,
+      0.0013428269086751272
+    ],
+    "singular_values": [
+      1.475830675108058,
+      1.053800420166971,
+      0.9394307991150065,
+      0.9104385010121734,
+      4.9141184139467145e-05
+    ],
+    "weakest_normalized_combination": [
+      -1.7423813961614522e-05,
+      6.269204261201652e-07,
+      5.407671122336138e-06,
+      -0.7071096873301033,
+      0.7071038747954209
+    ],
+    "whitened_column_norms": [
+      0.008462072299917673,
+      0.0034831253441658635,
+      0.035522586917530165,
+      1.7098983692827693e-06,
+      1.392826818257583e-06
+    ],
+    "condition_number": 30032.460571554737,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.0,
+    "pilots": 30000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 10,
+    "retained_information_fraction": [
+      0.30797158756672716,
+      0.2048313546854178,
+      0.1152095280620369,
+      0.0013419599481052024,
+      0.0013408933706926642
+    ],
+    "singular_values": [
+      1.4758358468359059,
+      1.0537918235792858,
+      0.939413456842268,
+      0.9104579619294717,
+      4.913732980925133e-05
+    ],
+    "weakest_normalized_combination": [
+      -1.7415841195723858e-05,
+      6.19439516165889e-07,
+      5.412824209933199e-06,
+      -0.7071096861752525,
+      0.7071038759504449
+    ],
+    "whitened_column_norms": [
+      0.08465821467228642,
+      0.0348441019888777,
+      0.35527654073649617,
+      1.711237641423772e-05,
+      1.3939177484372209e-05
+    ],
+    "condition_number": 30034.921567065758,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.001,
+    "pilots": 30000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 10,
+    "retained_information_fraction": [
+      0.3327873359696136,
+      0.23641460815844698,
+      0.13770810540013995,
+      0.0015065114863044183,
+      0.0015053074223963043
+    ],
+    "singular_values": [
+      1.4753172259729794,
+      1.054830868306449,
+      0.9407149532396194,
+      0.9087498535334839,
+      4.9694102745207716e-05
+    ],
+    "weakest_normalized_combination": [
+      -1.8147401203045647e-05,
+      1.2496700055144018e-06,
+      5.00860039437418e-06,
+      -0.707109786942954,
+      0.7071037751656502
+    ],
+    "whitened_column_norms": [
+      0.08121426692609778,
+      0.033660605463604665,
+      0.3504663734378257,
+      1.5928354323720328e-05,
+      1.2974711104409728e-05
+    ],
+    "condition_number": 29687.973913871552,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.0,
+    "pilots": 5400000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 10,
+    "retained_information_fraction": [
+      0.30797158756672705,
+      0.20483135468541785,
+      0.11520952806203685,
+      0.0013419599481052035,
+      0.0013408933706926653
+    ],
+    "singular_values": [
+      1.4758358468359059,
+      1.0537918235792858,
+      0.9394134568422685,
+      0.9104579619294714,
+      4.913732980880729e-05
+    ],
+    "weakest_normalized_combination": [
+      -1.7415841196349267e-05,
+      6.194395156999531e-07,
+      5.412824209368612e-06,
+      -0.7071096861752525,
+      0.7071038759504445
+    ],
+    "whitened_column_norms": [
+      1.1358091371660148,
+      0.46748268397239695,
+      4.766534975386672,
+      0.00022958662151279795,
+      0.00018701369043294474
+    ],
+    "condition_number": 30034.921567337173,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.001,
+    "pilots": 5400000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 10,
+    "retained_information_fraction": [
+      0.6852246125222541,
+      0.5890024890695527,
+      0.47532424146216884,
+      0.0030633069762869853,
+      0.0030610137205918002
+    ],
+    "singular_values": [
+      1.4328629094372702,
+      1.1384512256746189,
+      0.926091652891802,
+      0.8906104250163234,
+      0.00010399659344565314
+    ],
+    "weakest_normalized_combination": [
+      -2.9995662217598384e-05,
+      1.1741535279169495e-05,
+      1.5100779671142218e-05,
+      -0.7071096246766942,
+      0.7071039367900221
+    ],
+    "whitened_column_norms": [
+      0.3979215305217782,
+      0.16906103359360275,
+      2.3152213820254235,
+      5.118095326791607e-05,
+      4.169206143498967e-05
+    ],
+    "condition_number": 13777.979277619897,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.0,
+    "pilots": 300,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 12,
+    "retained_information_fraction": [
+      0.24994551706142185,
+      0.20411961874307177,
+      0.11250863060666426,
+      1.6326431131625762e-15,
+      8.994758130743895e-13
+    ],
+    "singular_values": [
+      1.4181900898305642,
+      1.0517359911378426,
+      0.9989523035595959,
+      0.9405756584475687,
+      7.596402953626284e-07
+    ],
+    "weakest_normalized_combination": [
+      -4.52751603207349e-07,
+      3.9652438346260574e-08,
+      3.842957412124265e-08,
+      -0.7071067692139272,
+      0.7071067931590205
+    ],
+    "whitened_column_norms": [
+      0.007626696347606434,
+      0.003478351219164238,
+      0.03510874068950575,
+      1.8874965998339546e-12,
+      3.610229169888983e-11
+    ],
+    "condition_number": 1866923.1983718884,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.001,
+    "pilots": 300,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 12,
+    "retained_information_fraction": [
+      0.2501515990965577,
+      0.20447805977621142,
+      0.11275060110850943,
+      1.636924198205728e-15,
+      9.018343464169304e-13
+    ],
+    "singular_values": [
+      1.4181825597908697,
+      1.051764165378958,
+      0.9989508701300327,
+      0.9405570299538433,
+      7.588811523729633e-07
+    ],
+    "weakest_normalized_combination": [
+      -4.5437434237070554e-07,
+      3.960261112178116e-08,
+      3.897376464154369e-08,
+      -0.7071067691949859,
+      0.7071067931779608
+    ],
+    "whitened_column_norms": [
+      0.007622919238706912,
+      0.003477097465806648,
+      0.035104157109779974,
+      1.88713034257781e-12,
+      3.609528608759975e-11
+    ],
+    "condition_number": 1868780.8431614377,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.0,
+    "pilots": 30000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 12,
+    "retained_information_fraction": [
+      0.24994551706142185,
+      0.20411961874307152,
+      0.11250863060666441,
+      1.6326431390533701e-15,
+      8.994758136796815e-13
+    ],
+    "singular_values": [
+      1.4181900898581206,
+      1.0517359911034454,
+      0.9989523035602003,
+      0.9405756584438397,
+      7.590872188662431e-07
+    ],
+    "weakest_normalized_combination": [
+      -4.527871479599897e-07,
+      3.9204524404739745e-08,
+      3.863607883528168e-08,
+      -0.7071067692258829,
+      0.7071067931470647
+    ],
+    "whitened_column_norms": [
+      0.07626696347606433,
+      0.034783512191642364,
+      0.3510874068950577,
+      1.8874966148001112e-11,
+      3.6102291711037144e-10
+    ],
+    "condition_number": 1868283.4522972207,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.001,
+    "pilots": 30000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 12,
+    "retained_information_fraction": [
+      0.26780759793788966,
+      0.23587979638971016,
+      0.13472862603995903,
+      2.0368598732114e-15,
+      1.1221670359646891e-12
+    ],
+    "singular_values": [
+      1.4175306041218263,
+      1.0551940713996417,
+      0.9980311862475273,
+      0.9386725783455288,
+      7.509309621123071e-07
+    ],
+    "weakest_normalized_combination": [
+      -4.181358384565123e-07,
+      4.514221781909689e-08,
+      4.337530229831586e-08,
+      -0.70710677129544,
+      0.7071067910775285
+    ],
+    "whitened_column_norms": [
+      0.07285517069771408,
+      0.03362251077775638,
+      0.3466542614612674,
+      1.8521035346233083e-11,
+      3.5425325434164743e-10
+    ],
+    "condition_number": 1887697.6388540822,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.0,
+    "pilots": 5400000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 12,
+    "retained_information_fraction": [
+      0.24994551706142196,
+      0.20411961874307158,
+      0.11250863060666433,
+      1.6326431231457155e-15,
+      8.994758133114969e-13
+    ],
+    "singular_values": [
+      1.4181900898322903,
+      1.051735991118685,
+      0.9989523035921,
+      0.9405756584318664,
+      7.599026477228156e-07
+    ],
+    "weakest_normalized_combination": [
+      -4.5304852320091477e-07,
+      3.8997103653592795e-08,
+      3.806089531466218e-08,
+      -0.7071067692153099,
+      0.7071067931576376
+    ],
+    "whitened_column_norms": [
+      1.0232286886198412,
+      0.46666978654023017,
+      4.710331847168863,
+      2.5323424304593346e-10,
+      4.843630703573048e-09
+    ],
+    "condition_number": 1866278.65303819,
+    "status": "evaluated"
+  },
+  {
+    "band": "multiband_reference",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.001,
+    "pilots": 5400000,
+    "sensing_tones": 170,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 12,
+    "retained_information_fraction": [
+      0.6150259642403904,
+      0.5862513690962357,
+      0.45737870474709524,
+      1.0545133839279453e-14,
+      5.809435738468467e-12
+    ],
+    "singular_values": [
+      1.4196071666721424,
+      1.1501144499910092,
+      0.9517762430902281,
+      0.8695252885014837,
+      6.592829151609199e-07
+    ],
+    "weakest_normalized_combination": [
+      2.7708796537792575e-08,
+      -1.0976195245979303e-07,
+      -1.578546873115488e-07,
+      0.7071067896779889,
+      -0.7071067726950794
+    ],
+    "whitened_column_norms": [
+      0.3769881392002558,
+      0.16866574531041797,
+      2.2710961073668656,
+      9.49596616830387e-11,
+      1.8163005186374303e-09
+    ],
+    "condition_number": 2153259.4490570715,
+    "status": "evaluated"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.0,
+    "pilots": 270,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 5,
+    "retained_information_fraction": [
+      2.7142787576361206e-18,
+      1.3775526604926046e-19,
+      1.7380245256241853e-16,
+      1.268973710191442e-22,
+      1.2690003717793191e-22
+    ],
+    "singular_values": [
+      1.9828043483344273,
+      1.0165516635065512,
+      0.185964092876043,
+      0.022956197764612357,
+      2.816267765060977e-05
+    ],
+    "weakest_normalized_combination": [
+      -5.2613212094219106e-05,
+      -3.926726291928832e-05,
+      -1.162319543216659e-05,
+      -0.7071516135796229,
+      0.707061942807396
+    ],
+    "whitened_column_norms": [
+      1.2680202155970175e-12,
+      8.66364862647553e-14,
+      5.145888510533199e-11,
+      1.2894890689922797e-16,
+      1.0506644070688571e-16
+    ],
+    "condition_number": 70405.3915942718,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.001,
+    "pilots": 270,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 5,
+    "retained_information_fraction": [
+      2.753972386601632e-18,
+      1.397697847719889e-19,
+      1.7634435654016454e-16,
+      1.2875467013577706e-22,
+      1.2875631874753184e-22
+    ],
+    "singular_values": [
+      1.9828041633507167,
+      1.0165519132853214,
+      0.18596396560076492,
+      0.022962013108316186,
+      8.274703451532483e-05
+    ],
+    "weakest_normalized_combination": [
+      -1.5919010109048545e-05,
+      1.7233579349253158e-05,
+      2.2618697606361877e-06,
+      -0.7071046787636758,
+      0.7071088832103521
+    ],
+    "whitened_column_norms": [
+      1.268018184268643e-12,
+      8.663634306906997e-14,
+      5.1458825403031594e-11,
+      1.2894945423830207e-16,
+      1.0506645558918649e-16
+    ],
+    "condition_number": 23962.238344426707,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.0,
+    "pilots": 28230,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 5,
+    "retained_information_fraction": [
+      2.7142786547035113e-18,
+      1.377552772907512e-19,
+      1.7380245198343592e-16,
+      1.2689752363519689e-22,
+      1.2690006046270678e-22
+    ],
+    "singular_values": [
+      1.9828043465572684,
+      1.0165516621172128,
+      0.1859640928384426,
+      0.02295637929751437,
+      4.842175386277857e-05
+    ],
+    "weakest_normalized_combination": [
+      3.845514011957704e-05,
+      1.900253530280608e-05,
+      5.623796655346947e-06,
+      0.7071341198823052,
+      -0.7070794401103432
+    ],
+    "whitened_column_norms": [
+      1.2965812178455024e-11,
+      8.858789962702266e-13,
+      5.261795060689012e-10,
+      1.3185344555235941e-15,
+      1.074329786323121e-15
+    ],
+    "condition_number": 40948.62718472152,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.001,
+    "pilots": 28230,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 5,
+    "retained_information_fraction": [
+      6.863159997333405e-18,
+      3.4829481397508605e-19,
+      4.395077960211229e-16,
+      3.2086458082128326e-22,
+      3.2086956178478886e-22
+    ],
+    "singular_values": [
+      1.9827962547536329,
+      1.0165652500811824,
+      0.18597526068997272,
+      0.0229631385468853,
+      3.3789472105243135e-05
+    ],
+    "weakest_normalized_combination": [
+      -4.9153006578771025e-05,
+      -2.7228626853204612e-05,
+      -1.1103276200543141e-05,
+      -0.7071440504275697,
+      0.7070695076611577
+    ],
+    "whitened_column_norms": [
+      1.2963874886534208e-11,
+      8.857153914370648e-13,
+      5.261164212225217e-10,
+      1.31831158994782e-15,
+      1.0741457981565359e-15
+    ],
+    "condition_number": 58680.88878624301,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.0,
+    "pilots": 5082330,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 5,
+    "retained_information_fraction": [
+      2.7142785629620695e-18,
+      1.3775524235530544e-19,
+      1.7380245296032707e-16,
+      1.2689822351221057e-22,
+      1.2690083881356713e-22
+    ],
+    "singular_values": [
+      1.9828042730232684,
+      1.016551746664602,
+      0.18596403603961006,
+      0.02295949034485841,
+      1.8351723591195382e-05
+    ],
+    "weakest_normalized_combination": [
+      3.6247445907106785e-05,
+      1.8054680885655976e-05,
+      5.1180105495796035e-06,
+      0.7071325802502952,
+      -0.7070809800033634
+    ],
+    "whitened_column_norms": [
+      1.739705394436287e-10,
+      1.1886400003628909e-11,
+      7.060084864668833e-09,
+      1.769166356776617e-14,
+      1.4415009737921247e-14
+    ],
+    "condition_number": 108044.58029078858,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "reference_calibration",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.001,
+    "pilots": 5082330,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": true,
+    "target_rank": 5,
+    "nuisance_rank": 5,
+    "retained_information_fraction": [
+      7.095447644760012e-16,
+      3.557042970591372e-17,
+      4.6013086019905855e-14,
+      3.3004950804218145e-20,
+      3.3005700806770184e-20
+    ],
+    "singular_values": [
+      1.9814597710896995,
+      1.0188075263815386,
+      0.18787255419285862,
+      0.023501119110966907,
+      2.287086857367443e-05
+    ],
+    "weakest_normalized_combination": [
+      -4.849751136104399e-05,
+      -2.4293859739457333e-05,
+      -7.110422740141956e-06,
+      -0.7071413778530815,
+      0.7070721807109138
+    ],
+    "whitened_column_norms": [
+      1.6951119935077816e-10,
+      1.1511287195814065e-11,
+      6.913462666362499e-09,
+      1.7170865311130357e-14,
+      1.3990682791163143e-14
+    ],
+    "condition_number": 86636.83955450925,
+    "status": "evaluated"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.0,
+    "pilots": 270,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      7.332773592790757e-20,
+      3.7829123753141663e-20,
+      1.699950180970009e-16,
+      3.310385322383412e-24,
+      3.309726810986325e-24
+    ],
+    "singular_values": [
+      2.209832486484467,
+      0.33807338920315616,
+      0.048265651355601846,
+      0.004140285157226323,
+      0.00022389419117407183
+    ],
+    "weakest_normalized_combination": [
+      -0.0012012722364948064,
+      -6.000174675564697e-05,
+      0.00013663439877085228,
+      0.7064687802758173,
+      -0.707743171758968
+    ],
+    "whitened_column_norms": [
+      2.08416976557692e-13,
+      4.5400419538384644e-14,
+      5.089211728870988e-11,
+      2.0827187481877808e-17,
+      1.696794389271954e-17
+    ],
+    "condition_number": 9869.985795059687,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.001,
+    "pilots": 270,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      7.440007880048964e-20,
+      3.838232692507449e-20,
+      1.7248125251222171e-16,
+      3.358812656286497e-24,
+      3.358167611286177e-24
+    ],
+    "singular_values": [
+      2.2098331671416,
+      0.33807311921992295,
+      0.048234823732352806,
+      0.0041398896010816375,
+      0.00045006159354427387
+    ],
+    "weakest_normalized_combination": [
+      -0.002266941298155143,
+      -8.830125475144525e-05,
+      0.0003092948430150561,
+      0.7058643424507437,
+      -0.7083433401771481
+    ],
+    "whitened_column_norms": [
+      2.0841663934524982e-13,
+      4.540034094448602e-14,
+      5.089206047327109e-11,
+      2.082720077171782e-17,
+      1.696801307869813e-17
+    ],
+    "condition_number": 4910.068308070842,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.0,
+    "pilots": 28230,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      7.332773156899924e-20,
+      3.7829126814129326e-20,
+      1.6999501862279316e-16,
+      3.310399024833524e-24,
+      3.309720437835875e-24
+    ],
+    "singular_values": [
+      2.209832759689587,
+      0.3380731852115433,
+      0.04825490218734492,
+      0.004138815119639752,
+      0.00017397678434482612
+    ],
+    "weakest_normalized_combination": [
+      0.0010330869571743987,
+      9.98044070658978e-05,
+      -5.789189112235057e-05,
+      0.7076019064186407,
+      -0.7066105443960297
+    ],
+    "whitened_column_norms": [
+      2.1311137713190006e-12,
+      4.642302546083853e-13,
+      5.203841701773454e-10,
+      2.1296345419068912e-16,
+      1.7350115023075377e-16
+    ],
+    "condition_number": 12701.883001295424,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.001,
+    "pilots": 28230,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      1.8541812938832587e-19,
+      9.565409320373827e-20,
+      4.2988248843845994e-16,
+      8.36991638416188e-24,
+      8.368372130185179e-24
+    ],
+    "singular_values": [
+      2.209831608894955,
+      0.3380823959543599,
+      0.04824289127436446,
+      0.004139423937057084,
+      0.0002061199959071818
+    ],
+    "weakest_normalized_combination": [
+      -0.001096658766222795,
+      -2.9393868485831274e-05,
+      0.00018646720195979207,
+      0.7064821272178523,
+      -0.7077300089916153
+    ],
+    "whitened_column_norms": [
+      2.1308303157643446e-12,
+      4.641650827661099e-13,
+      5.20323502333494e-10,
+      2.129206288602766e-16,
+      1.7346803764053327e-16
+    ],
+    "condition_number": 10721.092823473891,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.0,
+    "pilots": 5082330,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      7.33277113182417e-20,
+      3.7829136155111243e-20,
+      1.6999501865258173e-16,
+      3.31045803090931e-24,
+      3.3098221355146214e-24
+    ],
+    "singular_values": [
+      2.2098331438323995,
+      0.33807319122904317,
+      0.04823732431453904,
+      0.004136458311767691,
+      0.00020987528103760532
+    ],
+    "weakest_normalized_combination": [
+      -0.0015642940573178648,
+      -0.00016584420395294075,
+      0.00010139171256305711,
+      -0.7078555561709308,
+      0.7063554535766432
+    ],
+    "whitened_column_norms": [
+      2.8594503944692653e-11,
+      6.228873135343886e-12,
+      6.982325140572908e-09,
+      2.8574914794803437e-15,
+      2.3280109663494077e-15
+    ],
+    "condition_number": 10529.268301189042,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "weather_uncertainty",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.001,
+    "pilots": 5082330,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      1.927155526854604e-17,
+      9.91604951208458e-18,
+      4.5053970940244366e-14,
+      8.62842587624701e-22,
+      8.626238666494145e-22
+    ],
+    "singular_values": [
+      2.2095673815385397,
+      0.33968697759726346,
+      0.049061446667804015,
+      0.004207006167178957,
+      0.00013871455741030033
+    ],
+    "weakest_normalized_combination": [
+      0.0015047936132086407,
+      0.0001145976086023131,
+      -0.00012415212149657922,
+      0.7078618285493498,
+      -0.7063493036257565
+    ],
+    "whitened_column_norms": [
+      2.7936170921081828e-11,
+      6.077831795122136e-12,
+      6.841029739649e-09,
+      2.7763129767803098e-15,
+      2.261805030510455e-15
+    ],
+    "condition_number": 15928.878863109627,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.0,
+    "pilots": 270,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      7.205088622909096e-20,
+      3.9042222215686816e-20,
+      1.7033512197479067e-16,
+      2.4151383120933526e-23,
+      2.414955341428332e-23
+    ],
+    "singular_values": [
+      2.210181736480196,
+      0.33562049739719146,
+      0.0494874842889895,
+      0.002560893503447705,
+      6.464872799974655e-05
+    ],
+    "weakest_normalized_combination": [
+      0.001602259208780684,
+      3.157001639950065e-05,
+      -0.0001331470155391655,
+      -0.7062556235164212,
+      0.7079550891773189
+    ],
+    "whitened_column_norms": [
+      2.0659443412846677e-13,
+      4.612262215523656e-14,
+      5.0943001008952874e-11,
+      5.625515896721075e-17,
+      4.5833993350907816e-17
+    ],
+    "condition_number": 34187.551787389544,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 0.1,
+    "residual_std_db": 0.001,
+    "pilots": 270,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      7.310456233404244e-20,
+      3.961318085957102e-20,
+      1.7282632798051863e-16,
+      2.4504813584118804e-23,
+      2.4503349784850114e-23
+    ],
+    "singular_values": [
+      2.2101820423067227,
+      0.33562042675440906,
+      0.04947423581534144,
+      0.0025610835456226617,
+      9.925537918186615e-05
+    ],
+    "weakest_normalized_combination": [
+      0.0010032528333199183,
+      -1.232200592378766e-05,
+      -9.877703537856941e-05,
+      0.707661353902695,
+      -0.7065510539002986
+    ],
+    "whitened_column_norms": [
+      2.0659410812897593e-13,
+      4.612255129887065e-14,
+      5.0942943761872377e-11,
+      5.625533492010453e-17,
+      4.583450397525663e-17
+    ],
+    "condition_number": 22267.62983049004,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.0,
+    "pilots": 28230,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      7.205086260551418e-20,
+      3.904224241320248e-20,
+      1.7033512331043577e-16,
+      2.415172400083048e-23,
+      2.4150066041148677e-23
+    ],
+    "singular_values": [
+      2.2101817855358754,
+      0.33562050546967004,
+      0.049485146734640745,
+      0.002559968230134259,
+      0.00013419778557391155
+    ],
+    "weakest_normalized_combination": [
+      0.0012189676475868746,
+      5.5084476690559696e-05,
+      -8.32021139133405e-05,
+      -0.7064834069261663,
+      0.7077285495859125
+    ],
+    "whitened_column_norms": [
+      2.112477552593355e-12,
+      4.716150536960375e-13,
+      5.209044697224089e-10,
+      5.752266229831812e-16,
+      4.686686067710113e-16
+    ],
+    "condition_number": 16469.584621562797,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 10.0,
+    "residual_std_db": 0.001,
+    "pilots": 28230,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": true,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      1.821945288773085e-19,
+      9.872380548373139e-20,
+      4.307416225713276e-16,
+      6.107128143618221e-23,
+      6.106692471705939e-23
+    ],
+    "singular_values": [
+      2.21018062649805,
+      0.33562837730554285,
+      0.04948352499674155,
+      0.0025623677193850653,
+      7.500336295475203e-05
+    ],
+    "weakest_normalized_combination": [
+      -0.0013850578270778314,
+      -3.7603313809791614e-05,
+      0.0001253649289414395,
+      0.7063712444266363,
+      -0.7078401864344847
+    ],
+    "whitened_column_norms": [
+      2.1122262471204587e-12,
+      4.715542153717828e-13,
+      5.208431845327843e-10,
+      5.75142812540903e-16,
+      4.685996913852098e-16
+    ],
+    "condition_number": 29467.75370367601,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.0,
+    "pilots": 5082330,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 6,
+    "retained_information_fraction": [
+      7.205085939705773e-20,
+      3.90422370963917e-20,
+      1.7033512321531275e-16,
+      2.4151696932156867e-23,
+      2.4149929264384488e-23
+    ],
+    "singular_values": [
+      2.210182040741993,
+      0.33562053016074556,
+      0.0494737107274143,
+      0.00255964506754924,
+      8.173228547268622e-05
+    ],
+    "weakest_normalized_combination": [
+      -0.0006074376673368875,
+      -7.38467833899636e-05,
+      5.856219077202173e-06,
+      -0.7073770160210787,
+      0.7068361781466423
+    ],
+    "whitened_column_norms": [
+      2.834445327120023e-11,
+      6.327958478183167e-12,
+      6.989306327680594e-09,
+      7.718176859045762e-15,
+      6.288406750413404e-15
+    ],
+    "condition_number": 27041.725652962497,
+    "status": "unidentifiable"
+  },
+  {
+    "band": "eband_73p5GHz",
+    "nuisance_policy": "smooth_calibration",
+    "elapsed_s": 1800.0,
+    "residual_std_db": 0.001,
+    "pilots": 5082330,
+    "sensing_tones": 256,
+    "within_ideal_pass_above_45deg": false,
+    "identifiable": false,
+    "target_rank": 5,
+    "nuisance_rank": 7,
+    "retained_information_fraction": [
+      8.176268384667796e-21,
+      4.781920170426067e-19,
+      3.209221382617555e-15,
+      2.6350169960351915e-25,
+      2.6358437861037003e-25
+    ],
+    "singular_values": [
+      2.197836586464307,
+      0.38998843717981935,
+      0.10665764603721271,
+      0.07735017228446082,
+      0.008028415431016445
+    ],
+    "weakest_normalized_combination": [
+      0.004495578276372472,
+      0.002202699172938159,
+      0.005716211972233608,
+      -0.7110999030589813,
+      0.7030499204768538
+    ],
+    "whitened_column_norms": [
+      5.75421475189377e-13,
+      1.3346902696033996e-12,
+      1.825806629687054e-09,
+      4.85170456098113e-17,
+      3.9537050261734205e-17
+    ],
+    "condition_number": 273.75720717855876,
+    "status": "unidentifiable"
+  }
+]

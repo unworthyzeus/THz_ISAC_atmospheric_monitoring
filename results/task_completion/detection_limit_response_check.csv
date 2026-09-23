@@ -1,0 +1,4 @@
+band,target,injected_ug_m3,predicted_power_pct,observed_recall_pct,local_prediction_passed,max_target_attenuation_db
+multiband_reference,H2CO,56.21016020123617,95.0,95.16,True,0.022805405814554782
+multiband_reference,CH3OH,131.24012908100437,95.0,95.39999999999999,True,0.019619634112732355
+multiband_reference,CH3CN,12.94119461260843,95.0,94.92,True,0.02843000662833712

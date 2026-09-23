@@ -1,0 +1,562 @@
+{
+  "dataset_doi": "doi:10.57745/DLJEFW",
+  "dataset_version": "1.0",
+  "acquired_date": "2026-09-23",
+  "metadata": {
+    "url": "https://entrepot.recherche.data.gouv.fr/api/datasets/:persistentId/?persistentId=doi:10.57745/DLJEFW",
+    "file": "results\\five_task_closure\\calcite_dataset_metadata.json",
+    "bytes": 35112,
+    "sha256": "07299aa2953de4f1ec985feb57a6c53a8ac4d39035ef13bb3d44e5a02ff95fe4",
+    "status": "acquired"
+  },
+  "records": [
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758284",
+      "file": "data\\raw\\five_task_closure\\calcite\\758284.h5",
+      "bytes": 15767984,
+      "sha256": "d2a32c168e352e3b713ca28945e75f0703579f7a98d7952d3c79627c40b24c1a",
+      "status": "acquired",
+      "original_filename": "calcite-1-11092023.h5",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "bf8ebb5641cea0e33370255b75010401"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758311",
+      "file": "data\\raw\\five_task_closure\\calcite\\758311.txt",
+      "bytes": 63201,
+      "sha256": "913f48bfd047011cee110e4334ff8fb2afea71d83a29d24748fa91f4bc43a047",
+      "status": "acquired",
+      "original_filename": "corrected_mean_calcite-1.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "b920d8e9c543421f4b934d9a8ce246d8"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758302",
+      "file": "data\\raw\\five_task_closure\\calcite\\758302.txt",
+      "bytes": 63207,
+      "sha256": "1934a87e3e2f42825b60a3affcb71389a2b96e9124bf647c74f395e627a611f0",
+      "status": "acquired",
+      "original_filename": "corrected_mean_calcite-2.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "bd0b3d1d1cf2e6fd757177c68310d52c"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758324",
+      "file": "data\\raw\\five_task_closure\\calcite\\758324.txt",
+      "bytes": 63208,
+      "sha256": "869fecc4778442d3925229c2fbf3e8b5d1eb4c55aeb1a5dc9cf014dda11bc621",
+      "status": "acquired",
+      "original_filename": "corrected_mean_calcite-3.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "c3f5d63243d1c04b7ecf2e860bb3b226"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758297",
+      "file": "data\\raw\\five_task_closure\\calcite\\758297.txt",
+      "bytes": 63207,
+      "sha256": "e2621b262cb14d2d03593a13ff3996af288255421c8733ce9798fd5ed0de4343",
+      "status": "acquired",
+      "original_filename": "corrected_mean_calcite-4.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "9aa4962916f4a281c3ff34b8a63ac2a3"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758296",
+      "file": "data\\raw\\five_task_closure\\calcite\\758296.txt",
+      "bytes": 63210,
+      "sha256": "b29603a40dac1eebf3821d1ef3b09d36bb77a955bb7479bbce1092298ffae8b2",
+      "status": "acquired",
+      "original_filename": "corrected_mean_calcite-5.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "70da4faef758209c838d30f020a248da"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758312",
+      "file": "data\\raw\\five_task_closure\\calcite\\758312.txt",
+      "bytes": 63208,
+      "sha256": "c08d271c1735f45b92f0487a658f98935d50b4e6c98a6f57d2a784d538f64703",
+      "status": "acquired",
+      "original_filename": "corrected_mean_calcite-6.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "d858897015ee9d2f8bdec30a0d716bfb"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758291",
+      "file": "data\\raw\\five_task_closure\\calcite\\758291.txt",
+      "bytes": 63213,
+      "sha256": "0b228f7db637206288fffca1b5fc94ef99c10e6d72abca8bed3495c659daec8d",
+      "status": "acquired",
+      "original_filename": "corrected_mean_calcite-7.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "f492d37d25d5abd31124d56b700e3037"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758285",
+      "file": "data\\raw\\five_task_closure\\calcite\\758285.txt",
+      "bytes": 63207,
+      "sha256": "0f80abf633a084ade7cfee5376dffe1a1e48456970129394f579820aa962ba24",
+      "status": "acquired",
+      "original_filename": "corrected_mean_calcite-8.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "3a514e9435ad66089ff0673266ca4a7c"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758322",
+      "file": "data\\raw\\five_task_closure\\calcite\\758322.txt",
+      "bytes": 63203,
+      "sha256": "80aea14e1a1a48b2dd84176d0170fbe2362f2e599a43c26fd9cc486e5adef4a6",
+      "status": "acquired",
+      "original_filename": "corrected_mean_ref-apr\u00e8s11.09.23-1.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "d57a83d27d900026abc534af641e9d92"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758281",
+      "file": "data\\raw\\five_task_closure\\calcite\\758281.txt",
+      "bytes": 63210,
+      "sha256": "f3536a178b3fb2226d4b32352d65f3d24414a41d1730427bdc07af752e145b6e",
+      "status": "acquired",
+      "original_filename": "corrected_mean_ref-apr\u00e8s11.09.23-2.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "b09579ad371fcaa1b3882c2686c9d74f"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758301",
+      "file": "data\\raw\\five_task_closure\\calcite\\758301.txt",
+      "bytes": 63211,
+      "sha256": "9b50f016b41914c2085db84a2b589c2e4102bfb8a2127267ba9728a881f320ff",
+      "status": "acquired",
+      "original_filename": "corrected_mean_ref-avant-11.09.23-1.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "f714ed9542cb419981c6a04dd8e174fa"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758305",
+      "file": "data\\raw\\five_task_closure\\calcite\\758305.txt",
+      "bytes": 63213,
+      "sha256": "e4c8695ab1930ef1e5f77faf9ca38fe90a3a1126b8828b64054e7a409e6f794c",
+      "status": "acquired",
+      "original_filename": "corrected_mean_ref-avant-11.09.23-2.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "2f91332b8ec8c7a7e8ed2ce61785ae88"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758318",
+      "file": "data\\raw\\five_task_closure\\calcite\\758318.txt",
+      "bytes": 30846,
+      "sha256": "0d6d05fb14cf7cce579d8234662d47f54392de1cca399c1a8c132b8d463c655f",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_calcite-1.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "af66cb6b3f11ff488c509d39a560b25d"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758278",
+      "file": "data\\raw\\five_task_closure\\calcite\\758278.txt",
+      "bytes": 30846,
+      "sha256": "000a61386d3902d72e334a94a2d950dce6b2874d6e6b97d8c20c2dba0ae9010a",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_calcite-2.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "cf03750ec6e834973df1dc3603dc6898"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758279",
+      "file": "data\\raw\\five_task_closure\\calcite\\758279.txt",
+      "bytes": 30846,
+      "sha256": "6faa7a9dad3e086919701e9f37e3dbe157bf9c6e4685a18c0287b8d294148031",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_calcite-3.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "419e3cdb44f929671e11dac95c737fa4"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758319",
+      "file": "data\\raw\\five_task_closure\\calcite\\758319.txt",
+      "bytes": 30846,
+      "sha256": "69b786abab913cfe6fe4e2a27546592a9d85a621c04b9c2e92413a1f5fa55ce1",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_calcite-4.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "ff8e6acf94e1664c8c809cf01b279b66"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758313",
+      "file": "data\\raw\\five_task_closure\\calcite\\758313.txt",
+      "bytes": 30846,
+      "sha256": "6883683979dba5fa90bfc996b6f8e5d60ceac9a64522f358cc67babd72bbedcf",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_calcite-5.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "154beff01a9036478de9bfadd66e3ee1"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758300",
+      "file": "data\\raw\\five_task_closure\\calcite\\758300.txt",
+      "bytes": 30846,
+      "sha256": "9c3427cd8f66bc1f5182d203418bce414f014edda0d6b5fc3d57d9b4ef0aba74",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_calcite-6.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "60505c4f5968a4e7601851475eae9ddd"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758286",
+      "file": "data\\raw\\five_task_closure\\calcite\\758286.txt",
+      "bytes": 30846,
+      "sha256": "7637e22fe1ce3891a34e81fb06e4dd63f2ba34f975d5c5fabb1a4c5e248dfd28",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_calcite-7.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "e37389938ae885de9c3f65b21225bcff"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758323",
+      "file": "data\\raw\\five_task_closure\\calcite\\758323.txt",
+      "bytes": 30846,
+      "sha256": "7db4cd3387f42108d9bd9a448808dc925b3470419323063a09a71a2cfd9834aa",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_calcite-8.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "8bbdb06014b6a01b44e385fb36e7bfbb"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758321",
+      "file": "data\\raw\\five_task_closure\\calcite\\758321.txt",
+      "bytes": 30846,
+      "sha256": "6d254a2c6307508bd615709764621614a2d6f8261ebcf8e4977a2c6a98f0d661",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_ref-apr\u00e8s11.09.23-1.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "8e759567cf769c3058d77f574bfe2b52"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758306",
+      "file": "data\\raw\\five_task_closure\\calcite\\758306.txt",
+      "bytes": 30846,
+      "sha256": "6b39607aa3b2b749a33ff95a42629dec0e1298d89def428db3a8302a24807966",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_ref-apr\u00e8s11.09.23-2.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "c6709de933132ccdf4cc059c60eba0cb"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758309",
+      "file": "data\\raw\\five_task_closure\\calcite\\758309.txt",
+      "bytes": 30846,
+      "sha256": "f145db4b0426ca92d4a769ef9159affdfcaa27a00f885bf772b0d496cf2d6980",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_ref-avant-11.09.23-1.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "b987eef9419798d2b92c25911aa907bb"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758287",
+      "file": "data\\raw\\five_task_closure\\calcite\\758287.txt",
+      "bytes": 30846,
+      "sha256": "619daf46086b6ad68d89a5c1048af2291e9bad38d567739c4e0ffe19ce26bf61",
+      "status": "acquired",
+      "original_filename": "corrected_std_freq_ref-avant-11.09.23-2.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "e106d688e91a29291f0d0f0ecd3f4b2a"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758280",
+      "file": "data\\raw\\five_task_closure\\calcite\\758280.txt",
+      "bytes": 62594,
+      "sha256": "4dd86a5faa5e540a5a0ac4bc6e31fc55a6b4f5d74d5ed5a99cb29bfaae12784c",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_calcite-1.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "6a360de51aef15c62b87c39e416f6faf"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758315",
+      "file": "data\\raw\\five_task_closure\\calcite\\758315.txt",
+      "bytes": 62594,
+      "sha256": "73ab08e41a9cd43f2333e0171bb6c2e2a0a9aaa2c55c0c70fda2e3f028ec70d8",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_calcite-2.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "ad0e39da84de830ca68f4d84db11d6ae"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758290",
+      "file": "data\\raw\\five_task_closure\\calcite\\758290.txt",
+      "bytes": 62594,
+      "sha256": "33f7bfac6b6a2da0ec0eddd6dcd7c79e6c5ed2bac7917162d1716cbf9b2b1248",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_calcite-3.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "80b2636e8120a664eb7d5b02386cd204"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758292",
+      "file": "data\\raw\\five_task_closure\\calcite\\758292.txt",
+      "bytes": 62594,
+      "sha256": "c7396b52b652f5fcb74a01ac6879fb00b0e78a023c5ee4738099e5c1dc9534cd",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_calcite-4.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "b8a1a26cf185d2490e7f3871b15d89bc"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758283",
+      "file": "data\\raw\\five_task_closure\\calcite\\758283.txt",
+      "bytes": 62594,
+      "sha256": "b16307b16b5fe405565b9b74f189200f483b8c384aebab7f262e3946e3c5c473",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_calcite-5.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "8b13b163d8b0d23dfbdd8ba6bc2360f8"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758316",
+      "file": "data\\raw\\five_task_closure\\calcite\\758316.txt",
+      "bytes": 62594,
+      "sha256": "174dcfbd0ad6aabbc9547b77ab3344a3dcd4323617511c63e1116fd7ba188300",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_calcite-6.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "1657e1421b0bb11c66c3cdc4010755e4"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758298",
+      "file": "data\\raw\\five_task_closure\\calcite\\758298.txt",
+      "bytes": 62594,
+      "sha256": "918f76e5d6afec9f6a41928c03990ef61a32c78f2524da9feb68bf384586d794",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_calcite-7.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "f2b6f9cbbd82bcf8b8de73200aec826b"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758307",
+      "file": "data\\raw\\five_task_closure\\calcite\\758307.txt",
+      "bytes": 62594,
+      "sha256": "8e01b85d85f208e1a102b4078fc3a18ea757ca02d12a70caac230550cbd739ec",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_calcite-8.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "fbaf5e3f665bb690ad6bbeab6fc68e8b"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758294",
+      "file": "data\\raw\\five_task_closure\\calcite\\758294.txt",
+      "bytes": 62594,
+      "sha256": "dccd03aa87d42ba2424ab2aafff9da51dc2c672f453756dcb8a1270d6098238b",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_ref-apr\u00e8s11.09.23-1.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "0a5a8409e4a0ae7c680920dde1d1680e"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758310",
+      "file": "data\\raw\\five_task_closure\\calcite\\758310.txt",
+      "bytes": 62594,
+      "sha256": "72dabd5041001dfc16659588b3656b280e893c1f86fdc78efc589a1d2ecff6da",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_ref-apr\u00e8s11.09.23-2.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "60faa9bf69d2ef0b4be3d734d092b41d"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758317",
+      "file": "data\\raw\\five_task_closure\\calcite\\758317.txt",
+      "bytes": 62594,
+      "sha256": "97b811e504d9b9a220c42179c8a8cc7fe8257707fba1a774113c727cf4c13896",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_ref-avant-11.09.23-1.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "875bf2ef990a1743f0c0d862e16aa1e2"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758282",
+      "file": "data\\raw\\five_task_closure\\calcite\\758282.txt",
+      "bytes": 62594,
+      "sha256": "1a411ff8abd69c8a2e74841e08e27203196c1a21e9908bb9c1ea602f1a91eaed",
+      "status": "acquired",
+      "original_filename": "corrected_std_time_ref-avant-11.09.23-2.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "f83af66026d43d82b6071c2ee2642612"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/761247",
+      "file": "data\\raw\\five_task_closure\\calcite\\761247.txt",
+      "bytes": 2797,
+      "sha256": "737a7c1b26b6e1cd9119991c782eba406b8344c6ad7bef4dca734e35797824be",
+      "status": "acquired",
+      "original_filename": "README.txt",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "d12ec88e300931721e4f5ecbcd921d54"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758288",
+      "file": "data\\raw\\five_task_closure\\calcite\\758288.h5",
+      "bytes": 15783728,
+      "sha256": "3035a6f5eb7470f5f2ca3cf4433cb4910fecbda58e663add3f619f0fd36b5e1c",
+      "status": "acquired",
+      "original_filename": "ref-apr\u00e8s11.09.23-1.h5",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "2ea92cb175bd2c748a1163de5a35e774"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://entrepot.recherche.data.gouv.fr/api/access/datafile/758289",
+      "file": "data\\raw\\five_task_closure\\calcite\\758289.h5",
+      "bytes": 15767984,
+      "sha256": "e8cbed86cc61422c755ef1eaa9cbc4f38383974245815a9baa81ab7152bdf1ea",
+      "status": "acquired",
+      "original_filename": "ref-avant-11.09.23-1.h5",
+      "source_checksum": {
+        "type": "MD5",
+        "value": "957966cdf013d80f3393237f64040a07"
+      },
+      "source_checksum_verified": true
+    },
+    {
+      "url": "https://www.nature.com/articles/s41598-023-47586-8",
+      "file": "data\\raw\\five_task_closure\\taleb2023.html",
+      "bytes": 426808,
+      "sha256": "6024b47ad1fc4fe35828444dc5195621d203cce34c378240a15397be5ae14cef",
+      "status": "acquired"
+    },
+    {
+      "url": "https://www.who.int/news-room/questions-and-answers/item/who-global-air-quality-guidelines",
+      "status": "unavailable",
+      "reason": "HTTPSConnectionPool(host='www.who.int', port=443): Read timed out. (read timeout=90)"
+    },
+    {
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK138711/",
+      "file": "data\\raw\\five_task_closure\\who_indoor_formaldehyde.html",
+      "bytes": 21187,
+      "sha256": "134db11022c116e345046b18c5ac0849233fc392c23fff23b6b4177e4f28fdaa",
+      "status": "unavailable",
+      "reason": "Downloaded response is a browser-check interstitial, not the WHO chapter; retained as failed acquisition evidence"
+    },
+    {
+      "url": "https://vadiodes.com/wp-content/uploads/2012/01/VDI-956_VNA-X_Typical_Performance_2022.03.17.pdf",
+      "file": "data\\raw\\five_task_closure\\vdi_vnax_specs.pdf",
+      "bytes": 187344,
+      "sha256": "862c1e00161fd13c3dcf876cb16da4a22d50af15693be9bbe6eabc6d8ac137fa",
+      "status": "acquired"
+    }
+  ],
+  "scope": "Measured calcite transmission and source documents; no atmospheric VOC/PM calibration claim"
+}

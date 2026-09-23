@@ -1,0 +1,22 @@
+{
+  "scope": "Presentation correction only; stored experimental samples unchanged",
+  "review": "Show signed oxygen line-mixing term; label duration beyond ideal pass; add existing recall confidence intervals",
+  "source_sha256": "efabc49f9a168a20b09ec3cdb7ef8820576610adad54d5b7078a99137f847dc3",
+  "inputs": {
+    "detection_metrics.csv": "920c485d06df5797710a7d244492155966ada3bc5fea277c244ebec0b9a397d5",
+    "detection_limits.csv": "d6ac1493cd59a60221dd44588d24e51edf108ca5afbe790392bd6483bc805b95",
+    "link_resources.csv": "bb7704bdc246a4d4368e3e6aad3cc83e7a83dc6df70c4c225de63e4b32df7e1e",
+    "physics_order4.npz": "3f1627248d6bf3ddffb499cc7f4b2720ab99ecbaf06d6317281daefd5feb8e11",
+    "measured_weather_attenuation.csv": "94cad3513c6e78471c4495d3da4a1a58e10faaa7205d3450d9f089c8fb6c4e17"
+  },
+  "outputs": {
+    "background_and_weather.png": "97c7e253113005c90cceca0d0484513a39932ee5aeab8c8525b23e377dc4db68",
+    "detection_limits_by_nuisance.png": "eb9175c19632086f1c4045792f4e03a0f396715e7445e701b71c20889c5a9398",
+    "voc_detection_duration.png": "89db266a314c6b2ac97676a06302e184e68c1bdae558838db09f84c5a76b43ad",
+    "waveform_capacity_and_pointing.png": "82f860aa35dfe456b680fbbafe96ec1aaaa02180b36c9c99949a8acdd31af681",
+    "background_and_weather.svg": "59fa0a171054735252d883079cb5e7f34580af83abe1252de4b2c0055b672620",
+    "detection_limits_by_nuisance.svg": "2d2131f3db606865170474160e1c1c34746c5b772d96fb675b47c03966289698",
+    "voc_detection_duration.svg": "2daa21b070e24384ec964fd98af333c2a3ad16f35c0b7b8a5439b6dfa6c86314",
+    "waveform_capacity_and_pointing.svg": "9ebc20673a7723ff65ce44921321d9f714bceb44dda3615ebd418cacbf851ed8"
+  }
+}

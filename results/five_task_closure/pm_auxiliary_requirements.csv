@@ -1,0 +1,11 @@
+case,auxiliary_sigma_ug_m3,fine_std_ug_m3,coarse_std_ug_m3,total_std_ug_m3,source
+THz joint only,,105986821.78853105,130077069.29727486,24090269.088726927,Conditional THz model with unknown gas/background
+independent fine measurement,1.0,0.9999999999999998,35721.9953366415,35721.995316281646,"Hypothetical independent calibrated mass observation; requirement sensitivity, not acquired data"
+independent total measurement,1.0,157161.41397136953,157161.4140025449,1.0,"Hypothetical independent calibrated mass observation; requirement sensitivity, not acquired data"
+independent fine and total measurements,1.0,0.9999999999797571,1.414213562207666,0.9999999996081692,"Hypothetical independent calibrated mass observation; requirement sensitivity, not acquired data"
+independent fine measurement,5.0,4.999999999999994,35721.99584263303,35721.99533363662,"Hypothetical independent calibrated mass observation; requirement sensitivity, not acquired data"
+independent total measurement,5.0,157161.4154489832,157161.41622836742,5.0,"Hypothetical independent calibrated mass observation; requirement sensitivity, not acquired data"
+independent fine and total measurements,5.0,4.999999997469606,7.0710677911868585,4.999999951021147,"Hypothetical independent calibrated mass observation; requirement sensitivity, not acquired data"
+independent fine measurement,10.0,9.999999999999957,35721.99742385651,35721.99538787093,"Hypothetical independent calibrated mass observation; requirement sensitivity, not acquired data"
+independent total measurement,10.0,157161.42006746054,157161.4231849972,10.0,"Hypothetical independent calibrated mass observation; requirement sensitivity, not acquired data"
+independent fine and total measurements,10.0,9.999999979756845,14.14213545830203,9.99999960816921,"Hypothetical independent calibrated mass observation; requirement sensitivity, not acquired data"

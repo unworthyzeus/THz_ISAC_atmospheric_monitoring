@@ -1,0 +1,44 @@
+[
+  {
+    "target": "PM2.5",
+    "guideline_ug_m3": 15,
+    "averaging_s": 86400,
+    "domain": "ambient surface air",
+    "source": "https://www.who.int/news-room/questions-and-answers/item/who-global-air-quality-guidelines",
+    "compliance_demonstrated": false,
+    "reason": "No paired calibrated measurements; slant column is not an independently measured surface/indoor concentration",
+    "continuous_coverage_demonstrated": false
+  },
+  {
+    "target": "PM10",
+    "guideline_ug_m3": 45,
+    "averaging_s": 86400,
+    "domain": "ambient surface air",
+    "source": "https://www.who.int/news-room/questions-and-answers/item/who-global-air-quality-guidelines",
+    "compliance_demonstrated": false,
+    "reason": "No paired calibrated measurements; slant column is not an independently measured surface/indoor concentration",
+    "continuous_coverage_demonstrated": false
+  },
+  {
+    "target": "H2CO",
+    "guideline_ug_m3": 100,
+    "averaging_s": 1800,
+    "domain": "indoor air",
+    "source": "https://www.who.int/publications/i/item/9789289002134",
+    "compliance_demonstrated": false,
+    "reason": "No paired calibrated measurements; slant column is not an independently measured surface/indoor concentration",
+    "continuous_coverage_demonstrated": false
+  },
+  {
+    "target": "CH3OH",
+    "guideline_ug_m3": null,
+    "compliance_demonstrated": false,
+    "reason": "No applicable ambient guideline established in the cited WHO documents; occupational limits not substituted"
+  },
+  {
+    "target": "CH3CN",
+    "guideline_ug_m3": null,
+    "compliance_demonstrated": false,
+    "reason": "No applicable ambient guideline established in the cited WHO documents; occupational limits not substituted"
+  }
+]

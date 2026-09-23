@@ -1,0 +1,17 @@
+{
+  "status": "insufficient_sensing_tones",
+  "retained_sensing_probes": 0,
+  "maximum_per_tone_snr_db": 1.1139117999255872,
+  "capacity": {
+    "policy": "reuse_existing_pilots",
+    "pilots_per_frame": 30,
+    "total_power_w": 0.19952623149688795,
+    "reference_bps": 110728693.76094975,
+    "candidate_bps": 110728693.76094975,
+    "relative_loss": 0.0,
+    "within_power_budget": true,
+    "accepted": true
+  },
+  "reason": "Too few tones pass the predeclared per-pilot 5 dB threshold for joint targets and nuisance. No precision or estimates claimed.",
+  "background_model": "hitran"
+}

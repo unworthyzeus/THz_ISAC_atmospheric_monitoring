@@ -1,0 +1,128 @@
+{
+  "protocol": {
+    "voc_targets": [
+      "H2CO",
+      "CH3OH",
+      "CH3CN"
+    ],
+    "pm_parameters": [
+      "PM2.5",
+      "PM10-PM2.5"
+    ],
+    "line_center_window_ghz": [
+      0,
+      3000
+    ],
+    "frequency_window_ghz": [
+      60,
+      400
+    ],
+    "tones": 256,
+    "background_model": "hitran",
+    "surface": {
+      "temperature_k": 290.34999999999997,
+      "pressure_pa": 100800.0,
+      "dew_point_c": 5.4
+    },
+    "atmosphere": {
+      "n_layers": 24,
+      "top_altitude_m": 12000.0,
+      "pollutant_scale_height_m": 1500.0,
+      "water_scale_height_m": 2000.0,
+      "pm_scale_height_m": 1000.0,
+      "partition_sum_version": 2025,
+      "frequency_min_ghz": 60.0,
+      "frequency_max_ghz": 400.0,
+      "frequency_count": 256
+    },
+    "reference_link": {
+      "satellite_altitude_km": 550.0,
+      "tx_power_dbm": 23.0,
+      "tx_aperture_diameter_m": 0.5,
+      "rx_aperture_diameter_m": 0.3,
+      "subcarrier_bandwidth_hz": 1000000.0,
+      "tx_aperture_efficiency": 0.65,
+      "rx_aperture_efficiency": 0.65,
+      "receiver_noise_figure_db": 6.0,
+      "receiver_noise_temperature_k": 290.0,
+      "implementation_loss_db": 5.0,
+      "earth_radius_km": 6371.0,
+      "n_active_subcarriers": 256
+    },
+    "frame_symbols": 10000,
+    "baseline_pilots_per_frame": 30,
+    "added_sensing_pilots": 0,
+    "symbol_time_s": 1e-06,
+    "maximum_relative_capacity_loss": 0.0,
+    "frames_accumulated": [
+      1,
+      10,
+      1000
+    ],
+    "residual_std_db": [
+      0.0,
+      0.001
+    ],
+    "noise_draws": 5000,
+    "seed": 20260922,
+    "observation": "Coherent existing pilots. Exact complex pilot averages checked separately from Gaussian dB approximation.",
+    "pm_optics": "Existing exploratory Rayleigh modes; uncalibrated optical parameters retained explicitly.",
+    "voc_abundance": "No measured VOC labels. Zero and 1 ug/m3 injections are response controls, not environmental populations.",
+    "communication": "Same reference atmosphere, bands, power and pilot overhead on both sides. Shannon upper bound with known channel. No coded-throughput or deployable multiband-hardware claim.",
+    "accumulation": "Requires unchanged concentrations and channel over accumulated frames; residual floor does not average down."
+  },
+  "wall_seconds": 50.02442119998159,
+  "sampled_peak_rss_bytes": 330747904,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.13.9",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "pandas": "2.3.3",
+    "torch": "2.6.0+cu124",
+    "scikit-learn": "1.7.2",
+    "sympy": "1.13.1"
+  },
+  "command": [
+    "scripts/run_voc_pm_capacity.py",
+    "--background",
+    "hitran",
+    "--line-window-ghz",
+    "3000"
+  ],
+  "failures": [
+    "Too few tones pass the predeclared per-pilot 5 dB threshold for joint targets and nuisance. No precision or estimates claimed."
+  ],
+  "code_sha256": "e1bc34cb0ebfd3f63168acb2204467b2e71b4a72f7c547f2b98baf975d2b5f64",
+  "outputs": {
+    "background_spectrum.csv": "9f0da5773e918defa2ea75bf1717a3368722f4a72e0d468f6c5fcc1d447315ed",
+    "capacity_contract.csv": "079c4bad2a587d0b2c9b5c7b12f9f35fbf3c354a35a8765f0e3685553fcbc3e8",
+    "hapi_validation.txt": "2eee11cc675f8fce6a4eeaed88adcdfaec47415a1b2086792bfe0867cb8e44c2",
+    "physical_inputs.npz": "b794953bca59927f23f88a9bed6e09398ddab08237f3ffa74edcfb92a50656d9",
+    "protocol.json": "ef7181e656d0aa7c1ffa2e1f0573bae1123c6a3e6d05258443fb5144fd40c724",
+    "spectral_sensitivity.csv": "73cc76b5e686186d1448d83b381d297d79e332210ca7ded23694300d81442304",
+    "spectroscopy_validation.csv": "ce19c3a3c3c228ce3de6d640d5dd96522fac5cb48176f8b4573745476d49e4f9",
+    "summary.json": "11d2b3caf58fdb88cdcd94f5380c0e7ab3cfa2cfd740d18ccdd57c2ae9a710d5"
+  },
+  "summary": {
+    "status": "insufficient_sensing_tones",
+    "retained_sensing_probes": 0,
+    "maximum_per_tone_snr_db": 1.1139117999255872,
+    "capacity": {
+      "policy": "reuse_existing_pilots",
+      "pilots_per_frame": 30,
+      "total_power_w": 0.19952623149688795,
+      "reference_bps": 110728693.76094975,
+      "candidate_bps": 110728693.76094975,
+      "relative_loss": 0.0,
+      "within_power_budget": true,
+      "accepted": true
+    },
+    "reason": "Too few tones pass the predeclared per-pilot 5 dB threshold for joint targets and nuisance. No precision or estimates claimed.",
+    "background_model": "hitran"
+  },
+  "input_sha256": "bab6119da5565dcdc51fc1b7102e732aeba57aa80da88d9e1ecf70edf1bf0c23"
+}

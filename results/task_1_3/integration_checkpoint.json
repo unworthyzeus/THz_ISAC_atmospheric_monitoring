@@ -1,0 +1,17 @@
+{
+  "input_sha256": "bab6119da5565dcdc51fc1b7102e732aeba57aa80da88d9e1ecf70edf1bf0c23",
+  "integration_source_sha256": "f6ba0be5cdb7f0377d4c5b26e9ea95df54f228844abbb2ca081a6f5846718707",
+  "code_hashes": {
+    "src\\thz_isac\\physical_spectroscopy.py": "3fb91507fcd0946c178910870246d666b46e61639808bb352582a2f575405a80",
+    "src\\thz_isac\\slant_path.py": "1f4f6ef6f01a74d7f9814fb965a627a503396a2c8af92647fbab8df049306eb3",
+    "src\\thz_isac\\stratified_absorption.py": "fed2952e783367c99cc7ee79b0662912f7718893447bc7df2bd15bd01b916b9a"
+  },
+  "outputs": {
+    "refracted45_inputs.npz": "e006199e7b78fd0ceb876357c09089fb16eb6c408df2e20cae973e36d525659c",
+    "reference_path.csv": "55b9c9859264efb49577aebd213f59a1aafee6c569fc21d37dc064e580fc1610",
+    "elevation_geometry.csv": "8c7ec09dbed7fa7b48d297a0fda42851672e537dfbb98c3016ecf99405445ca0",
+    "quadrature_convergence.csv": "56e120acc5de151cd72c6bf9d20e52dbf4d72363985e750d8d9bcd25e84f0ea1",
+    "line_shape_comparison.csv": "38495837576dea44589aac1497691e450717931a1a60706a8da81714947cae00"
+  },
+  "note": "Completed integrations from the initial run; only the later HAPI Lorentz pressure-shift reference check failed."
+}

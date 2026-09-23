@@ -1,0 +1,9 @@
+{
+  "doi": "10.1073/pnas.2612145123",
+  "title": "Global monitoring of methane point sources using deep learning on hyperspectral radiance measurements from EMIT",
+  "url": "https://www.pnas.org/doi/10.1073/pnas.2612145123",
+  "retrieved_from": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13552665/fullTextXML",
+  "retrieved_date": "2026-09-22",
+  "xml_sha256": "4cfaa53edc8068556ba899c0901ace6ac63e2f8445abedba22a32033754a1338",
+  "role": "Methodological inspiration: physical spectral fit checks and separation of synthetic response tests from measured validation. No EMIT model transfer or data use in the radio experiment."
+}

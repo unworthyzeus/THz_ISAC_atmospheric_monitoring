@@ -1,0 +1,14 @@
+{
+  "voc_unit_injection_ug_m3": 1.0,
+  "interpretation": "Unit response control, not a measured VOC abundance or population benchmark.",
+  "pm_source": "results/tables/single_channel_repair_predictions.csv first row",
+  "datetime": "2016-06-03 06:00:00",
+  "station": "Dingling",
+  "target_values": [
+    1.0,
+    1.0,
+    1.0,
+    49.0,
+    41.0
+  ]
+}

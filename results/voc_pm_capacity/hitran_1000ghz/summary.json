@@ -1,0 +1,20 @@
+{
+  "retained_sensing_probes": 173,
+  "communication_active_probes": 197,
+  "background_model": "hitran",
+  "line_center_window_ghz": 1000,
+  "capacity": {
+    "policy": "reuse_existing_pilots",
+    "pilots_per_frame": 30,
+    "total_power_w": 0.19952623149688797,
+    "reference_bps": 751672859.3251325,
+    "candidate_bps": 751672859.3251325,
+    "relative_loss": 0.0,
+    "within_power_budget": true,
+    "accepted": true
+  },
+  "pm_signature_correlation": 0.9999999981147485,
+  "formaldehyde_methane_peak_sensitivity_ratio": 11092948.739994746,
+  "main_conclusion": "Existing-pilot reuse preserves the declared communication rate exactly. Joint VOC/PM estimates have large conditional errors; smooth calibration uncertainty makes joint PM unidentifiable.",
+  "field_validation": false
+}

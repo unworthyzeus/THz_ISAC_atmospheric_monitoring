@@ -1,0 +1,47 @@
+[
+  {
+    "payload_bits": 5104640,
+    "bit_errors": 12700,
+    "uncoded_ber": 0.002487932547642929,
+    "identical_decisions": true,
+    "pilot_symbols": 30,
+    "frame_symbols": 10000,
+    "cp_samples": 16,
+    "sensing_channels": 256,
+    "seed": 20260923,
+    "normalized_cfo": 0.0,
+    "assumptions": "Static LOS, ideal timing/common-phase tracking; no FEC or measured RF response",
+    "uncoded_payload_rate_bps": 480436705.8823529,
+    "incremental_pilot_reuse_loss_pct": 0.0
+  },
+  {
+    "payload_bits": 5104640,
+    "bit_errors": 12891,
+    "uncoded_ber": 0.0025253494859578734,
+    "identical_decisions": true,
+    "pilot_symbols": 30,
+    "frame_symbols": 10000,
+    "cp_samples": 16,
+    "sensing_channels": 256,
+    "seed": 20260923,
+    "normalized_cfo": 0.01,
+    "assumptions": "Static LOS, ideal timing/common-phase tracking; no FEC or measured RF response",
+    "uncoded_payload_rate_bps": 480436705.8823529,
+    "incremental_pilot_reuse_loss_pct": 0.0
+  },
+  {
+    "payload_bits": 5104640,
+    "bit_errors": 34540,
+    "uncoded_ber": 0.006766392928786359,
+    "identical_decisions": true,
+    "pilot_symbols": 30,
+    "frame_symbols": 10000,
+    "cp_samples": 16,
+    "sensing_channels": 256,
+    "seed": 20260923,
+    "normalized_cfo": 0.1,
+    "assumptions": "Static LOS, ideal timing/common-phase tracking; no FEC or measured RF response",
+    "uncoded_payload_rate_bps": 480436705.8823529,
+    "incremental_pilot_reuse_loss_pct": 0.0
+  }
+]

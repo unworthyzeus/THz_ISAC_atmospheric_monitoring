@@ -1,0 +1,20 @@
+{
+  "source": "https://doi.org/10.1038/s41598-023-47586-8",
+  "source_locator": "Figure 8 and experimental methods",
+  "frequency_ghz": 380.197353,
+  "published_vna_slope": 0.033,
+  "published_vna_reported_plus_minus": 0.009,
+  "published_tds_slope": 0.027,
+  "published_tds_reported_plus_minus": 0.009,
+  "units": "(dB/m)/(g/m3)",
+  "raw_measurements_available": false,
+  "observed_scope": "Aggregate published water-vapour measurement, not VOC/PM or satellite validation",
+  "errorbar_interpretation": "Reported plus/minus values; no confidence-level interpretation imposed",
+  "model_slope_min": 0.02997753646161042,
+  "model_slope_max": 0.03803024427922133,
+  "fitting": "Separate linear slope per declared state over physically unsaturated humidity envelope",
+  "vna_model_mean_slope": 0.03280072317377109,
+  "vna_within_reported_range": true,
+  "tds_model_mean_slope": 0.03412529829407172,
+  "tds_within_reported_range": false
+}

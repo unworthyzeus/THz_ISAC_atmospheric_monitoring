@@ -1,0 +1,13 @@
+{
+  "matched": {
+    "chi_square": 142.8811002135051,
+    "degrees_of_freedom": 162,
+    "p_value": 0.8576129061838246
+  },
+  "deliberately_mismatched_response": {
+    "chi_square": 21043.821883382698,
+    "degrees_of_freedom": 162,
+    "p_value": 0.0
+  },
+  "boundary": "A deliberately large shape-mismatch unit test; fit p-values are conditional on known Gaussian covariance and do not certify a VOC detection."
+}

@@ -1,0 +1,7 @@
+band,pointing_error_deg,rate_bps,min_sky_temperature_k,max_sky_temperature_k,max_orbital_doppler_hz,relative_loss,within_power_budget,accepted,occupied_bandwidth_hz,simultaneous_rf_chains,limitation,cyclic_prefix_fraction
+multiband_reference,0.0,783511695.385152,61.36916110844288,285.3354314728362,10140348.494023822,0.0,True,True,256000000.0,,256 ideal separated probe channels; no hardware band plan or CP claimed,
+multiband_reference,0.01,780454435.6825832,61.36916110844288,285.3354314728362,10140348.494023822,0.0,True,True,256000000.0,,256 ideal separated probe channels; no hardware band plan or CP claimed,
+multiband_reference,0.05,710035265.9043449,61.36916110844288,285.3354314728362,10140348.494023822,0.0,True,True,256000000.0,,256 ideal separated probe channels; no hardware band plan or CP claimed,
+eband_73p5GHz,0.0,763440052.0215942,84.7161271917996,86.30609070066699,1866521.2718593474,0.0,,True,256000000.0,1.0,,0.0625
+eband_73p5GHz,0.01,762966531.0498285,84.7161271917996,86.30609070066699,1866521.2718593474,0.0,,True,256000000.0,1.0,,0.0625
+eband_73p5GHz,0.05,751604177.6920223,84.7161271917996,86.30609070066699,1866521.2718593474,0.0,,True,256000000.0,1.0,,0.0625

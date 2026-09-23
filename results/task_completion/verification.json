@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "output_hashes": 58,
+  "code_hashes": 80,
+  "external_inputs": 5,
+  "detection_rows": 114,
+  "error_rows": 228,
+  "decision_limit_rows": 342,
+  "rare_isotope_reference_cases": 12,
+  "measured_weather_convergence": 0.0005304451044772331,
+  "thermal_threshold_changed": false,
+  "thermal_transfer_replay_passed": true,
+  "documentation_hashes": 3
+}

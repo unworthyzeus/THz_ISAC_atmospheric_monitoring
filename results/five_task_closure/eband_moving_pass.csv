@@ -1,0 +1,18 @@
+time_from_zenith_s,elevation_deg,range_km,central_doppler_hz,modeled_rate_bps,incremental_sensing_loss_pct,pilot_reuse
+-69.86671525982315,45.00000000000027,749.108773629861,1211085.6476254165,763440055.4185866,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+-61.13337585234526,49.06122573916028,707.5042721209577,1122272.5203075672,807989450.0805868,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+-52.40003644486737,53.57447133607143,669.3501428160797,1016982.6869725124,851159737.2112727,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+-43.66669703738947,58.5707295087976,635.2721684798892,893097.5013854965,891787123.2519889,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+-34.933357629911576,64.06224149636607,605.9618100191396,749140.3406106239,928447426.0843192,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+-26.200018222433684,70.03141010487481,582.1425181553349,584907.04152495,959514188.2377949,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+-17.466678814955785,76.42026511133571,564.512100826803,402147.0112455425,983300950.3202909,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+-8.733339407477892,83.12492610055833,553.6637704400908,205022.6833881902,998291621.9765267,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+0.0,90.0,550.0,-0.0,1003417542.2190613,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+8.7333394074779,83.12492610055833,553.6637704400908,-205022.68338819034,998291621.9765267,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+17.466678814955785,76.42026511133571,564.512100826803,-402147.0112455425,983300950.3202909,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+26.200018222433684,70.03141010487481,582.1425181553349,-584907.04152495,959514188.2377949,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+34.93335762991158,64.06224149636607,605.9618100191396,-749140.340610624,928447426.0843192,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+43.66669703738947,58.5707295087976,635.2721684798892,-893097.5013854965,891787123.2519889,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+52.40003644486737,53.57447133607143,669.3501428160797,-1016982.6869725124,851159737.2112727,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+61.13337585234525,49.06122573916028,707.5042721209577,-1122272.5203075672,807989450.0805868,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking
+69.86671525982315,45.00000000000027,749.108773629861,-1211085.6476254165,763440055.4185866,0.0,Identical existing pilots/power under same channel; instantaneous waterfilling assumes tracking

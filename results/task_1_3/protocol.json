@@ -1,0 +1,34 @@
+{
+  "task": "Proposal 1.3: line shape and elevation-dependent molecular path absorption",
+  "atmosphere": {
+    "surface_temperature_k": 290.34999999999997,
+    "surface_pressure_pa": 100800.0,
+    "surface_dew_point_c": 5.4,
+    "water_scale_height_m": 2000.0
+  },
+  "frequency_bounds_ghz": [
+    60,
+    400
+  ],
+  "frequency_count": 256,
+  "top_altitude_m": 20000,
+  "satellite_altitude_m": 550000,
+  "earth_radius_m": 6371000,
+  "geometry": "Spherical refractive boundary-value ray connecting ground and satellite",
+  "layer_count": 40,
+  "quadrature_order": 2,
+  "convergence_orders": [
+    1,
+    2,
+    4
+  ],
+  "self_broadening": "Local H2O and O2 fractions; trace-gas derivative at zero abundance",
+  "missing_parameters": "n_self falls back to n_air; delta_self=0 for standard HITRAN records",
+  "refractivity": "ITU P.453 radio formula, nondispersive, spherical symmetry; vacuum above 20 km",
+  "profiles": [
+    "voigt",
+    "lorentz"
+  ],
+  "background_comparator": "ITU P.676-12; not version 13",
+  "scope": "Complete numerical task under declared stratification; independent field validation absent"
+}

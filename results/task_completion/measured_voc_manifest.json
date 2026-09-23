@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "september_order1_vs2_relative_rms": 0.0005304451044772331,
+  "source_sha256": "9517cacf64426dc3cb1f93c67c71ee0c5b3c82fb6e3548a8ccbdf076f10b09e5",
+  "weather_input_hashes": {
+    "igra_01_measured.csv": "3ca25abd869964a349117b59fd884abf04cc58c500325f54b0367bdd4759725e",
+    "igra_04_measured.csv": "bf7521b8b5c331bf1bf0dc75be23c8bd16126d52c270e020c353addc70197181",
+    "igra_07_measured.csv": "9226c8860c628482db05a1bb10c70102dc65a13497cb7548cfa12731aa0d2e0b",
+    "igra_09_measured.csv": "9711a8e60d51a697af19c98cb2205de2636008611d047ee317ed3a50fa858191"
+  },
+  "wall_seconds": 765.3418272999697,
+  "profile": "Measured weather plus explicit P.835 upper continuation; VOC mass profile exp(-z/1500m) still assumed",
+  "output_sha256": "e17e60c88538ef605b0bbe968a152f678bd7a306738f2ed8a7638ea3f5091f49"
+}

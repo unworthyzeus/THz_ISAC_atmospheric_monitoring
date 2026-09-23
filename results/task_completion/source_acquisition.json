@@ -1,0 +1,33 @@
+{
+  "acquired_utc": "2026-09-23T09:04:07.646356+00:00",
+  "records": [
+    {
+      "file": "data\\raw\\task_completion\\P676-13.pdf",
+      "url": "https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.676-13-202208-I!!PDF-E.pdf",
+      "status": "acquired",
+      "sha256": "8c09b2d2c120bdae33f60c2a7abff873374d54075ce0dc71060de8a5507bbe2f",
+      "bytes": 6471559
+    },
+    {
+      "file": "data\\raw\\task_completion\\P835-7.pdf",
+      "url": "https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.835-7-202408-I!!PDF-E.pdf",
+      "status": "acquired",
+      "sha256": "0c355e9471dd382592b46b35cd16346172700fb2e472b95dea9fd1229b087df3",
+      "bytes": 485115
+    },
+    {
+      "file": "data\\raw\\task_completion\\igra-format.txt",
+      "url": "https://www.ncei.noaa.gov/pub/data/igra/data/igra2-data-format.txt",
+      "status": "acquired",
+      "sha256": "dfd7b4d2dd18a255477455a7caefd12cb21c30549a1e70cbc3a51db9f41c1dfe",
+      "bytes": 13740
+    },
+    {
+      "file": "data\\raw\\task_completion\\beijing-2026.zip",
+      "url": "https://www.ncei.noaa.gov/pub/data/igra/data/data-y2d/CHM00054511-data-beg2026.txt.zip",
+      "status": "acquired",
+      "sha256": "e82226d74c59f3d37bfa9b014d98247645b52b039a63144d1922c1e5ea9be02f",
+      "bytes": 2071138
+    }
+  ]
+}

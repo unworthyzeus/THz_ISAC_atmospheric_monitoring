@@ -10,3 +10,4 @@ tmp/
 *.out
 *.synctex.gz
 paper/build/*.png
+paper/build/closure_build_stdout.txt

@@ -1,0 +1,57 @@
+{
+  "source": "results\\task_1_3\\refracted45_inputs.npz",
+  "source_sha256": "e006199e7b78fd0ceb876357c09089fb16eb6c408df2e20cae973e36d525659c",
+  "geometry": "Full task 1.3 refracted path at 45 degree geometric elevation",
+  "background": "ITU P.676-12; pure HITRAN background remains a failed sensitivity control",
+  "frequency_bounds_ghz": [
+    60,
+    400
+  ],
+  "frames": [
+    1,
+    10,
+    1000
+  ],
+  "elapsed_s": [
+    0.01,
+    0.1,
+    10.0
+  ],
+  "residual_std_db": [
+    0,
+    0.001
+  ],
+  "positive_draws": 5000,
+  "null_draws": 5000,
+  "seed": 20260923,
+  "target_positive_truth_ug_m3": [
+    1.0,
+    1.0,
+    1.0,
+    49.0,
+    41.0,
+    90.0
+  ],
+  "positive_prevalence_pct": 50,
+  "pm_source": {
+    "file": "results\\tables\\single_channel_repair_predictions.csv",
+    "sha256": "28da43c0f944c4b09f7a1b3598b64975566a509163acfbdee381236885401f74",
+    "station": "Dingling",
+    "datetime": "2016-06-03 06:00:00"
+  },
+  "detector": "Signed GLS estimate / conditional standard error; fixed one-sided per-target null alpha=1%",
+  "z_threshold": 2.3263478740408408,
+  "threshold_tuned_on_test": false,
+  "scope": "Complex-pilot response controls; no environmental VOC labels, no field precision/recall claim",
+  "error_percentage_denominator": "Known positive control concentration; percentages undefined for zero truth",
+  "added_pilots": 0,
+  "rate": {
+    "reference_bps": 814055917.3008088,
+    "candidate_bps": 814055917.3008088,
+    "relative_loss": 0.0,
+    "within_power_budget": true,
+    "accepted": true
+  },
+  "sensing_tones": 173,
+  "comparison": "Shared underlying noise across duration/residual scenarios; independent null and positive draws"
+}

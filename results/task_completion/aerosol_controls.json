@@ -1,0 +1,47 @@
+{
+  "scope": "Uncalibrated material/size controls; dry PM mass and aerodynamic cuts explicit",
+  "modes": [
+    {
+      "mode": "fine",
+      "density_kg_m3": 1500.0,
+      "number_median_um": 0.5,
+      "geometric_sd": 1.7,
+      "aerodynamic_cut_um": [
+        0.03,
+        2.5
+      ],
+      "physical_bounds_um": [
+        0.02052780223323215,
+        2.026561490088394
+      ],
+      "refractive_index": [
+        1.5,
+        0.01
+      ],
+      "maximum_size_parameter": 0.0084811731225377,
+      "quadrature_relative_rms": 1.5245266873956552e-16,
+      "rayleigh_relative_rms": 8.565639477162295e-06
+    },
+    {
+      "mode": "coarse",
+      "density_kg_m3": 1800.0,
+      "number_median_um": 4.0,
+      "geometric_sd": 1.6,
+      "aerodynamic_cut_um": [
+        2.5,
+        10.0
+      ],
+      "physical_bounds_um": [
+        1.8430584814431963,
+        7.432637659973883
+      ],
+      "refractive_index": [
+        1.53,
+        0.01
+      ],
+      "maximum_size_parameter": 0.031140220822133014,
+      "quadrature_relative_rms": 1.6464076883953086e-16,
+      "rayleigh_relative_rms": 0.00020098702776083467
+    }
+  ]
+}

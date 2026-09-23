@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "checked_hashes": 99,
+  "runs": [
+    {
+      "run": "hitran_1000ghz",
+      "rate_bps": 751672859.3251324,
+      "sensing_tones": 173,
+      "all_frequencies_in_60_400_ghz": true,
+      "capacity_contract_passed": true,
+      "retrieval_status": "conditional_only",
+      "independent_full_model_svd_max_relative_sd_difference": 1.0397238625614591e-11,
+      "maximum_monte_carlo_relative_rmse_difference": 0.01992516850387016
+    },
+    {
+      "run": "hitran_3000ghz",
+      "rate_bps": 110728693.76094972,
+      "sensing_tones": 0,
+      "all_frequencies_in_60_400_ghz": true,
+      "capacity_contract_passed": true,
+      "retrieval_status": "explicitly_unavailable"
+    },
+    {
+      "run": "itu676-12_3000ghz",
+      "rate_bps": 816936081.4662765,
+      "sensing_tones": 173,
+      "all_frequencies_in_60_400_ghz": true,
+      "capacity_contract_passed": true,
+      "retrieval_status": "conditional_only",
+      "independent_full_model_svd_max_relative_sd_difference": 6.131428698097352e-12,
+      "maximum_monte_carlo_relative_rmse_difference": 0.014748282323739259
+    }
+  ],
+  "scope": "Numerical and provenance verification; no physical receiver or field validation.",
+  "verifier_sha256": "5875431ec02acd74ab16dadf0f11956a510f3e6794a991e2b807127bf9b8339c"
+}

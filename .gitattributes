@@ -12,3 +12,9 @@ results/repair_correlated/** -text
 results/resolution_noise_requirements/** -text
 results/revision_0908/** -text
 results/revision_0908_validation/** -text
+results/voc_pm_capacity/** -text
+results/task_1_3/** -text
+results/task_1_3_metrics/** -text
+results/task_completion/** -text
+results/five_task_closure/** -text
+src/thz_isac/data/** -text

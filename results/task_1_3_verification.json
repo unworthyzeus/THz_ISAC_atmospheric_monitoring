@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "hashes_checked": 45,
+  "detection_rows_checked": 36,
+  "error_rows_checked": 72,
+  "hapi_cases_checked": 54,
+  "rate_bps": 814055917.3008087,
+  "frequency_bounds_verified": [
+    60,
+    400
+  ],
+  "percentage_denominators_verified": true,
+  "verifier_sha256": "01d80e57f2d11a62c653fae12c302cd8d3b4e00afb8e637d56ea55b36b1bc8e9",
+  "scope": "Numerical verification; no field accuracy claim"
+}

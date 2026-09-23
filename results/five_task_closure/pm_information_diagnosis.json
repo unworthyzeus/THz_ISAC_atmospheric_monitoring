@@ -1,0 +1,28 @@
+{
+  "projected_fine_coarse_correlation": 0.9999999622914407,
+  "physical_singular_values": [
+    4.431764647771644e-05,
+    5.959855536224068e-09
+  ],
+  "fine_and_coarse_std_ug_m3": [
+    105986821.78853105,
+    130077069.29727486
+  ],
+  "other_pm_known_std_ug_m3": [
+    29106.288847792795,
+    35721.99531555853
+  ],
+  "truth_ug_m3": [
+    49.0,
+    41.0
+  ],
+  "alternative_ug_m3": [
+    2.450000000000003,
+    98.13057076087165
+  ],
+  "optimized_nuisance_separation_in_noise_sd": 4.392055526195856e-07,
+  "gaussian_kl_divergence": 9.645075872593779e-14,
+  "gaussian_optimal_equal_prior_error": 0.49999991239116764,
+  "assumption": "10 s broad reference, zero residual and bias, assumed particle constants; best nuisance adjustment allowed",
+  "implication": "Additional constraints can supply information, but improvement supplied by external mass observations is not THz retrieval"
+}

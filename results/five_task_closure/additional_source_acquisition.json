@@ -1,0 +1,21 @@
+[
+  {
+    "url": "https://iris.who.int/bitstream/handle/10665/345334/9789240034433-eng.pdf",
+    "status": "unavailable",
+    "reason": "403 Client Error: Forbidden for url: https://iris.who.int/bitstream/handle/10665/345334/9789240034433-eng.pdf"
+  },
+  {
+    "url": "https://www.itu.int/dms_pub/itu-r/md/00/ca/cir/R00-CA-CIR-0251!!PDF-E.pdf",
+    "file": "data\\raw\\five_task_closure\\itu_resolution178.pdf",
+    "sha256": "05c9c5065619df44a3db5e43e4eaf48dd95e1954a8f2aba8a561b152677113ab",
+    "bytes": 1205354,
+    "status": "acquired"
+  },
+  {
+    "url": "https://hal.science/hal-05294637v1/document",
+    "file": "data\\raw\\five_task_closure\\gudz2025.pdf",
+    "sha256": "6520d4e1ba106c5680b041ebcf60fd55596ecf7d4d3aae73b88e82d20539b205",
+    "bytes": 6995251,
+    "status": "acquired"
+  }
+]

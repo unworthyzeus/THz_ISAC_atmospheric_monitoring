@@ -1,0 +1,25 @@
+band,residual_cfo_hz,phase_rms_rad,coherent_power_fraction,communication_rate_bps,sensing_reuse_rate_bps,incremental_sensing_loss_pct,allocation
+multiband_reference,0.0,0.0,1.0,783511695.3851519,783511695.3851519,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,0.0,0.03,0.9991004048785274,778235148.5665389,778235148.5665389,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,0.0,0.1,0.9900498337491681,731209390.4165902,731209390.4165902,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,1000.0,0.0,0.9999967101361957,783492162.7181144,783492162.7181144,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,1000.0,0.03,0.9990971179742685,778216102.8127346,778216102.8127346,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,1000.0,0.1,0.9900465766200557,731194142.6407411,731194142.6407411,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,10000.0,0.0,0.9996710564765076,781567354.7130129,781567354.7130129,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,10000.0,0.03,0.9987717572710239,776339036.9988734,776339036.9988734,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,10000.0,0.1,0.9897241632684215,729689932.8011509,729689932.8011509,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,100000.0,0.0,0.967531209275079,644621362.0850096,644621362.0850096,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,100000.0,0.03,0.9666608229193426,641848918.63805,641848918.63805,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+multiband_reference,100000.0,0.1,0.9579041128899235,615646253.6870098,615646253.6870098,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,0.0,0.0,1.0,763440052.021594,763440052.021594,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,0.0,0.03,0.9991004048785274,760938978.0404474,760938978.0404474,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,0.0,0.1,0.9900498337491681,736732410.5031817,736732410.5031817,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,1000.0,0.0,0.9999967101361957,763430872.5069324,763430872.5069324,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,1000.0,0.03,0.9990971179742685,760929872.7338351,760929872.7338351,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,1000.0,0.1,0.9900465766200557,736723996.4061105,736723996.4061105,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,10000.0,0.0,0.9996710564765076,762523421.3004059,762523421.3004059,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,10000.0,0.03,0.9987717572710239,760029747.8315581,760029747.8315581,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,10000.0,0.1,0.9897241632684215,735892119.7503711,735892119.7503711,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,100000.0,0.0,0.967531209275079,682956415.9892522,682956415.9892522,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,100000.0,0.03,0.9666608229193426,681036442.6108184,681036442.6108184,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI
+eband_73p5GHz,100000.0,0.1,0.9579041128899235,662289852.4763364,662289852.4763364,0.0,Same ideal communication allocation held fixed for impairment sensitivity; not reoptimized for ICI

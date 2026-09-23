@@ -1,0 +1,131 @@
+{
+  "acquired_utc": "2026-09-22T17:08:07.466267+00:00",
+  "source": "https://hitran.org",
+  "molecule_metadata": "https://hitran.org/docs/molec-meta/",
+  "isotopologue_metadata": "https://hitran.org/docs/iso-meta/",
+  "hapi_version": "1.3.0.0",
+  "download_line_center_window_ghz": [
+    0.0,
+    1000.0
+  ],
+  "analysis_window_ghz": [
+    60.0,
+    400.0
+  ],
+  "release": "HITRANonline response at acquisition time; raw hashes pin exact returned data",
+  "records": [
+    {
+      "molecule": "H2CO",
+      "molecule_id": 20,
+      "isotopologue_id": 1,
+      "role": "voc",
+      "status": "acquired",
+      "lines": 2050,
+      "lines_60_400ghz": 294,
+      "data_sha256": "c489287aa1256c908a9cce81f14ebefdfa67aa542c70815c74881567343595f2",
+      "header_sha256": "91844ff893b110f00e9a340b937a7978c314004a3a7b04bc323579e447934214"
+    },
+    {
+      "molecule": "CH3OH",
+      "molecule_id": 39,
+      "isotopologue_id": 1,
+      "role": "voc",
+      "status": "acquired",
+      "lines": 4663,
+      "lines_60_400ghz": 1372,
+      "data_sha256": "aaefefac2baff5d3a25f9069fa0e48b71aa059540ed51763c758f46b1a6702ce",
+      "header_sha256": "3214dac2ce04e6f139a4421e02fcaf9a2ed7aa29f1898fc9e62fd33b97037c12"
+    },
+    {
+      "molecule": "CH3CN",
+      "molecule_id": 41,
+      "isotopologue_id": 1,
+      "role": "voc",
+      "status": "acquired",
+      "lines": 11112,
+      "lines_60_400ghz": 2825,
+      "data_sha256": "af9a56a6d03c907328fc818aeaa7399956591a77cb62f480ab1bf38ab623f775",
+      "header_sha256": "4b1fbe8db166c790aea48725b2bf64c57c25446d8963025ad5e7f88bdc6b23f0"
+    },
+    {
+      "molecule": "CH4",
+      "molecule_id": 6,
+      "isotopologue_id": 1,
+      "role": "methane_band_control",
+      "status": "acquired",
+      "lines": 930,
+      "lines_60_400ghz": 164,
+      "data_sha256": "f62c45f2df7676c6a51cc95fb38d53d0cd74c9f18c9269a5dd8165bfff95fe4f",
+      "header_sha256": "49a090259b027151804504983817d0e74f72c6cc72ee5823827a9cc8668c1c85"
+    },
+    {
+      "molecule": "CO",
+      "molecule_id": 5,
+      "isotopologue_id": 1,
+      "role": "interferent",
+      "status": "acquired",
+      "lines": 45,
+      "lines_60_400ghz": 15,
+      "data_sha256": "c06845ae5b9abc3b7a6891d4f013cec58b294f0f4b9083260adef38bf89d246e",
+      "header_sha256": "d06a728a0c38519ee1ceb9063ce00c3c918bd1950320787c636fb92e0ac94103"
+    },
+    {
+      "molecule": "O3",
+      "molecule_id": 3,
+      "isotopologue_id": 1,
+      "role": "interferent",
+      "status": "acquired",
+      "lines": 4964,
+      "lines_60_400ghz": 1301,
+      "data_sha256": "fbbe1910229355931c885038219c99d61be682797ec75157d9393cb7e9a4d8ff",
+      "header_sha256": "e9dec43ebbbf1f759b9e33096f8539c161a3651aa7ce803ec372398024c303f7"
+    },
+    {
+      "molecule": "SO2",
+      "molecule_id": 9,
+      "isotopologue_id": 1,
+      "role": "interferent",
+      "status": "acquired",
+      "lines": 23810,
+      "lines_60_400ghz": 6406,
+      "data_sha256": "2675ce4666afbcd478586e0fbd4274517bc8fc5f90a1f2d32f84a2efdbd371a6",
+      "header_sha256": "049e6e39e7e5d692a5b14e387105451ca6a784caf93c884592fcf40adfc977b4"
+    },
+    {
+      "molecule": "NO2",
+      "molecule_id": 10,
+      "isotopologue_id": 1,
+      "role": "interferent",
+      "status": "acquired",
+      "lines": 5547,
+      "lines_60_400ghz": 1536,
+      "data_sha256": "5d2f2d0b138586e867267e6ee8f508a55d634a9610bb95e12670d8b1669f3272",
+      "header_sha256": "ebd45eefc091c5770c038faeee9b850f050c8e5d719b203528f1a4ec8c2317d8"
+    },
+    {
+      "molecule": "H2O",
+      "molecule_id": 1,
+      "isotopologue_id": 1,
+      "role": "background",
+      "status": "acquired",
+      "lines": 142,
+      "lines_60_400ghz": 37,
+      "data_sha256": "86a1224be6547611b7b0eee402a32b3943a3500b2e1e5d0015b84824419e6a29",
+      "header_sha256": "bc8881331a100ce2ebdab03dce651dc6beab653589d4702f5cb650118bd73e45"
+    },
+    {
+      "molecule": "O2",
+      "molecule_id": 7,
+      "isotopologue_id": 1,
+      "role": "background",
+      "status": "acquired",
+      "lines": 187,
+      "lines_60_400ghz": 45,
+      "data_sha256": "904051937f7a2690b2877c1d2c79046eb6648eba446dfd587b79eb0a89829eef",
+      "header_sha256": "d65fbc454f232273644c9959be9508300fae33b32b7e1acbbc254687255e08bc"
+    }
+  ],
+  "wall_seconds": 30.32278749998659,
+  "processed_file": "data\\processed\\voc_hitran_20260922\\lines_0_1000GHz.csv",
+  "processed_sha256": "73d25be9b22e18c98eded6428c2ce11fa76a2a660abc48c59fb6595ae4422299"
+}

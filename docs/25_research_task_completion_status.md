@@ -1,4 +1,4 @@
-The current September 8 evidence and limitations are in the [revision ledger](revision_0908.md). The task-completion record below is historical wherever superseded by that ledger.
+The current September 23 status of all **11 proposal tasks** is in the [five-task results and completion assessment](40_five_task_closure.md), with the updated manuscript and remaining measurement protocol. Computational assessments are complete within their declared scope; measured atmospheric VOC/PM retrieval and environmental compliance are not established. The [full model report](38_full_model_completion.md), [thermal audit](39_thermal_convergence_audit.md), [task 1.3 report](37_task_1_3_and_detection_metrics.md) and [September 8 ledger](revision_0908.md) preserve earlier evidence. All statements below are historical where superseded; optional tasks 1.5, 3.3 and 4.4 are not original proposal items.
 
 <!-- review-2026-09-05 -->
 # Current interpretation: September 5, 2026

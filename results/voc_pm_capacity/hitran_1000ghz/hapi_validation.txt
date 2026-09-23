@@ -1,0 +1,30 @@
+Using C:\Research\THz_ISAC_atmospheric_monitoring\data\raw\voc_hitran_20260922
+
+CH3CN_main_0_1000GHz
+                     Lines parsed: 11112
+CH3OH_main_0_1000GHz
+                     Lines parsed: 4663
+CH4_main_0_1000GHz
+                     Lines parsed: 930
+CO_main_0_1000GHz
+                     Lines parsed: 45
+H2CO_main_0_1000GHz
+                     Lines parsed: 2050
+H2O_main_0_1000GHz
+                     Lines parsed: 142
+NO2_main_0_1000GHz
+                     Lines parsed: 5547
+O2_main_0_1000GHz
+                     Lines parsed: 187
+O3_main_0_1000GHz
+                     Lines parsed: 4964
+SO2_main_0_1000GHz
+                     Lines parsed: 23810
+{'air': 1.0}
+0.664901 seconds elapsed for abscoef; nlines = 2050
+{'air': 1.0}
+1.495047 seconds elapsed for abscoef; nlines = 4663
+{'air': 1.0}
+3.744696 seconds elapsed for abscoef; nlines = 11112
+{'air': 1.0}
+0.342535 seconds elapsed for abscoef; nlines = 930

@@ -1,0 +1,5 @@
+# Install together with requirements.txt for the September 22 exploratory study.
+# Version 0.4.0 implements ITU-R P.676-12; it is not P.676-13 certification.
+hitran-api==1.3.0.0
+itur==0.4.0
+miepython==3.0.2

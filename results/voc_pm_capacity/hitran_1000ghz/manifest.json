@@ -1,0 +1,153 @@
+{
+  "protocol": {
+    "voc_targets": [
+      "H2CO",
+      "CH3OH",
+      "CH3CN"
+    ],
+    "pm_parameters": [
+      "PM2.5",
+      "PM10-PM2.5"
+    ],
+    "line_center_window_ghz": [
+      0,
+      1000
+    ],
+    "frequency_window_ghz": [
+      60,
+      400
+    ],
+    "tones": 256,
+    "background_model": "hitran",
+    "surface": {
+      "temperature_k": 290.34999999999997,
+      "pressure_pa": 100800.0,
+      "dew_point_c": 5.4
+    },
+    "atmosphere": {
+      "n_layers": 24,
+      "top_altitude_m": 12000.0,
+      "pollutant_scale_height_m": 1500.0,
+      "water_scale_height_m": 2000.0,
+      "pm_scale_height_m": 1000.0,
+      "partition_sum_version": 2025,
+      "frequency_min_ghz": 60.0,
+      "frequency_max_ghz": 400.0,
+      "frequency_count": 256
+    },
+    "reference_link": {
+      "satellite_altitude_km": 550.0,
+      "tx_power_dbm": 23.0,
+      "tx_aperture_diameter_m": 0.5,
+      "rx_aperture_diameter_m": 0.3,
+      "subcarrier_bandwidth_hz": 1000000.0,
+      "tx_aperture_efficiency": 0.65,
+      "rx_aperture_efficiency": 0.65,
+      "receiver_noise_figure_db": 6.0,
+      "receiver_noise_temperature_k": 290.0,
+      "implementation_loss_db": 5.0,
+      "earth_radius_km": 6371.0,
+      "n_active_subcarriers": 256
+    },
+    "frame_symbols": 10000,
+    "baseline_pilots_per_frame": 30,
+    "added_sensing_pilots": 0,
+    "symbol_time_s": 1e-06,
+    "maximum_relative_capacity_loss": 0.0,
+    "frames_accumulated": [
+      1,
+      10,
+      1000
+    ],
+    "residual_std_db": [
+      0.0,
+      0.001
+    ],
+    "noise_draws": 5000,
+    "seed": 20260922,
+    "observation": "Coherent existing pilots. Exact complex pilot averages checked separately from Gaussian dB approximation.",
+    "pm_optics": "Existing exploratory Rayleigh modes; uncalibrated optical parameters retained explicitly.",
+    "voc_abundance": "No measured VOC labels. Zero and 1 ug/m3 injections are response controls, not environmental populations.",
+    "communication": "Same reference atmosphere, bands, power and pilot overhead on both sides. Shannon upper bound with known channel. No coded-throughput or deployable multiband-hardware claim.",
+    "accumulation": "Requires unchanged concentrations and channel over accumulated frames; residual floor does not average down."
+  },
+  "wall_seconds": 24.040631800016854,
+  "sampled_peak_rss_bytes": 294014976,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.13.9",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "pandas": "2.3.3",
+    "torch": "2.6.0+cu124",
+    "scikit-learn": "1.7.2",
+    "sympy": "1.13.1"
+  },
+  "command": [
+    "scripts/run_voc_pm_capacity.py",
+    "--background",
+    "hitran",
+    "--line-window-ghz",
+    "1000"
+  ],
+  "failures": [],
+  "code_sha256": "e1bc34cb0ebfd3f63168acb2204467b2e71b4a72f7c547f2b98baf975d2b5f64",
+  "outputs": {
+    "background_spectrum.csv": "09751b130aba1c9996c339ae9b29b85a907350de0d28c86cf1cacad4f6d96e03",
+    "capacity_contract.csv": "562327b958896939f756f18222472409585b7e744be6a2cf8304590a32552da7",
+    "complex_pilot_response_controls.csv": "a5cef3518af2e4461044c508c21d14763e710b7d8642eba1d801350c887a2e1e",
+    "hapi_validation.txt": "fc7f010da0e3faa1c208c05c91d99ee2e48d8c27e7cfac508e87ddf81f8f40ac",
+    "identifiability_failures.csv": "f1c7f0a6aefae0ebee5875add2212e3b15e528481572ff407588a63d30492986",
+    "joint_precision.csv": "5b6fe5c4692119db5b072ef1c637f284aae99aaecba7881db6e102a5dbc133c5",
+    "nonnegative_response_controls.csv": "dc86cc75ea56fec377a89c944f01ac5bdd08539b6f0182a9d14f3377a770132c",
+    "physical_inputs.npz": "127c596cb153fbd2f7f11680e15a97390af32e33715a547bf229aec6047d94bd",
+    "protocol.json": "09ce08f63b0f93a4bff17bb4fabdba748ea0d41d4475e5b3660417da9238e84d",
+    "response_control.json": "976b6f6bd9746704c2dd21af37917b551c02b8d6952ab8bc6c2bad7078d72612",
+    "spectral_fit_checks.json": "cd766ed37576fa5cd36a1be4675788949958392916801f696ae23193698c736e",
+    "spectral_sensitivity.csv": "1e6de0d924ccdd3357902fbbfca6e0711df4f5d4b15fd54f3a7f4a2b9a9b02b2",
+    "spectroscopy_validation.csv": "ed7be571a03057c335b896e928fb2053a60dde65dda2390087904bebfbd59af0",
+    "summary.json": "49b988a18cf8ddb7fd82317c850991b5134e51a584535aa20b15fc90f3611c00",
+    "voc_pm_capacity.png": "2bd55105abf83e200f63581cd99c3c91f94cfa40bb6cd75b50ce81bc398f2173"
+  },
+  "input_hashes": {
+    "data\\processed\\voc_hitran_20260922\\lines_0_1000GHz.csv": "73d25be9b22e18c98eded6428c2ce11fa76a2a660abc48c59fb6595ae4422299",
+    "results\\review\\protocol.json": "c3457c693f711757bacd22cb938ba02d2c64bd6254853e06a7907abd90beb7cf",
+    "results\\tables\\physical_feasibility_config.json": "95ae008e2210c0b07eef5692c1bf8bc3ab97e07b4ee0d2078b00ee3ba6ab9dcc",
+    "results\\tables\\single_channel_repair_predictions.csv": "28da43c0f944c4b09f7a1b3598b64975566a509163acfbdee381236885401f74"
+  },
+  "code_hashes": {
+    "src\\thz_isac\\physical_spectroscopy.py": "3fb91507fcd0946c178910870246d666b46e61639808bb352582a2f575405a80",
+    "src\\thz_isac\\communication_capacity.py": "be725c3de5321b622d7aab94bf20a8f9005b61df4afa95615baac64c9a670a52",
+    "src\\thz_isac\\joint_voc_pm.py": "095f8539f729854c6c1ff00e0a1f5bec4c0f9c8dd59f04d4c7248e0ba39a9f74",
+    "src\\thz_isac\\itu_background.py": "6fa15cb04265a87998a21797739456ac62428def92380fe692aa68e208967b34"
+  },
+  "additional_software": {
+    "hitran-api": "1.3.0.0",
+    "matplotlib": "3.10.6",
+    "psutil": "7.0.0",
+    "itur": "0.4.0"
+  },
+  "summary": {
+    "retained_sensing_probes": 173,
+    "communication_active_probes": 197,
+    "background_model": "hitran",
+    "line_center_window_ghz": 1000,
+    "capacity": {
+      "policy": "reuse_existing_pilots",
+      "pilots_per_frame": 30,
+      "total_power_w": 0.19952623149688797,
+      "reference_bps": 751672859.3251325,
+      "candidate_bps": 751672859.3251325,
+      "relative_loss": 0.0,
+      "within_power_budget": true,
+      "accepted": true
+    },
+    "pm_signature_correlation": 0.9999999981147485,
+    "formaldehyde_methane_peak_sensitivity_ratio": 11092948.739994746,
+    "main_conclusion": "Existing-pilot reuse preserves the declared communication rate exactly. Joint VOC/PM estimates have large conditional errors; smooth calibration uncertainty makes joint PM unidentifiable.",
+    "field_validation": false
+  }
+}

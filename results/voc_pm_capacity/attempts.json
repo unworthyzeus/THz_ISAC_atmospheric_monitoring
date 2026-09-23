@@ -1,0 +1,13 @@
+[
+  {
+    "stage": "initial_1000GHz_line_window",
+    "status": "completed",
+    "note": "Initial same-pilot capacity calculation: 751672859.3251325 bps, zero relative loss. Summary retained in initial_1000ghz_summary.json."
+  },
+  {
+    "stage": "3000GHz_line_window_first_attempt",
+    "status": "failed",
+    "reason": "No sensing tones exceeded the unchanged 5 dB per-pilot threshold. Maximum per-tone SNR 1.1139 dB. The first script did not handle an empty sensing mask; it has been corrected to emit an explicit unavailable result.",
+    "note": "This broader catalog range contributes line wings within 60-400 GHz; it does not extend sensing frequencies."
+  }
+]

@@ -1,0 +1,17 @@
+band,target,draw,concentration_ug_m3,cost,deviance_from_grid_minimum,success,minimum_at_grid_boundary
+multiband_reference,H2CO,0,0.0,163.99614954684276,0.0,True,True
+multiband_reference,H2CO,0,1.0,163.99675001061073,0.0012009275359332605,True,True
+multiband_reference,H2CO,0,3.0,164.02593155156487,0.059564009444216026,True,True
+multiband_reference,H2CO,0,10.0,164.42152636196178,0.8507536302380458,True,True
+multiband_reference,H2CO,0,30.0,168.04920300455987,8.106106915434225,True,True
+multiband_reference,H2CO,0,100.0,210.0849948868476,92.17769068000968,True,True
+multiband_reference,H2CO,0,300.0,581.1424458503038,834.2925926069222,True,True
+multiband_reference,H2CO,0,1000.0,4792.951511118403,9257.91072314312,True,True
+multiband_reference,PM2.5,0,0.0,164.00068698957645,0.010844853028004309,True,True
+multiband_reference,PM2.5,0,1.0,164.0006809776817,0.010832829238495378,True,True
+multiband_reference,PM2.5,0,3.0,164.0006689574349,0.010808788744895992,True,True
+multiband_reference,PM2.5,0,10.0,164.00062692374397,0.01072472136303304,True,True
+multiband_reference,PM2.5,0,30.0,164.00050714611032,0.0104851660957479,True,True
+multiband_reference,PM2.5,0,100.0,164.00009164174733,0.00965415736976638,True,True
+multiband_reference,PM2.5,0,300.0,163.99893634949387,0.007343572862851033,True,True
+multiband_reference,PM2.5,0,1000.0,163.99526456306245,0.0,True,True

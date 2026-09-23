@@ -19,7 +19,7 @@ from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
-from hapi import partitionSum
+from hapi import partitionSum, molecularMass
 from scipy.constants import Avogadro, Boltzmann, speed_of_light
 from scipy.special import wofz
 
@@ -43,6 +43,11 @@ MOLAR_MASS_G_MOL = {
     "O3": 47.984745,
     "NO2": 45.992904,
     "SO2": 63.961901,
+    # HITRAN main isotopologue masses (molecules 20, 39, 41 and 6).
+    "H2CO": 30.010565,
+    "CH3OH": 32.026215,
+    "CH3CN": 41.026549,
+    "CH4": 16.031300,
 }
 
 REQUIRED_HITRAN_COLUMNS = {
@@ -193,12 +198,17 @@ def molecular_cross_section_cm2_per_molecule(
     pressure_pa: float,
     partition_sum_version: int = 2025,
     chunk_size: int = 256,
+    self_mole_fraction: float = 0.0,
+    line_shape: str = "voigt",
+    wing_cutoff_ghz: float | None = None,
 ) -> np.ndarray:
     """Evaluate a molecule's Voigt cross section on a frequency grid.
 
-    Air broadening is used for all species. Self broadening is omitted, which
-    is appropriate for trace pollutants and is a first order approximation
-    for the water background.
+    The default retains the historical trace-gas air-broadening calculation.
+    A nonzero self fraction mixes air/self widths and weights the available
+    air shift by air partial pressure. HITRAN standard records do not include
+    n_self or delta_self: n_air is used for both widths and self shift is zero,
+    matching HAPI's documented/default parameter fallback for these records.
     """
 
     _validate_hitran_table(hitran_lines)
@@ -211,6 +221,14 @@ def molecular_cross_section_cm2_per_molecule(
         raise ValueError("Pressure must be finite and nonnegative.")
     if chunk_size < 1:
         raise ValueError("Chunk size must be positive.")
+    if not np.isfinite(self_mole_fraction) or not 0 <= self_mole_fraction <= 1:
+        raise ValueError("Self mole fraction must lie in [0, 1].")
+    if line_shape not in {"voigt", "lorentz"}:
+        raise ValueError("Line shape must be voigt or lorentz.")
+    if line_shape == "lorentz" and pressure_pa == 0:
+        raise ValueError("Lorentz evaluation requires positive pressure.")
+    if wing_cutoff_ghz is not None and (not np.isfinite(wing_cutoff_ghz) or wing_cutoff_ghz<=0):
+        raise ValueError('Wing cutoff must be positive or None for unlimited wings.')
 
     selected = hitran_lines.loc[hitran_lines["molecule"] == molecule].copy()
     if selected.empty:
@@ -219,12 +237,13 @@ def molecular_cross_section_cm2_per_molecule(
     grid_cm_1 = frequency / GHZ_PER_WAVENUMBER
     cross_section = np.zeros_like(grid_cm_1)
     pressure_atm = pressure_pa / REFERENCE_PRESSURE_PA
-    mass_kg_per_molecule = MOLAR_MASS_G_MOL[molecule] * 1.0e-3 / Avogadro
 
     grouped = selected.groupby(["molecule_id", "isotopologue_id"], sort=False)
     for (molecule_id, isotopologue_id), group in grouped:
-        numeric = group[
-            [
+        # Every isotopologue has its own mass and partition function. HITRAN
+        # intensities already contain natural abundance; do not apply it twice.
+        mass_kg_per_molecule = molecularMass(int(molecule_id),int(isotopologue_id))*1e-3/Avogadro
+        columns = [
                 "wavenumber_cm_1",
                 "line_intensity",
                 "gamma_air",
@@ -232,7 +251,11 @@ def molecular_cross_section_cm2_per_molecule(
                 "temperature_exponent",
                 "air_pressure_shift",
             ]
-        ].apply(pd.to_numeric, errors="coerce")
+        if self_mole_fraction:
+            if 'gamma_self' not in group or not np.isfinite(group.gamma_self).all() or (group.gamma_self<0).any():
+                raise ValueError('Finite nonnegative gamma_self is required for self broadening.')
+            columns.append('gamma_self')
+        numeric = group[columns].apply(pd.to_numeric, errors="coerce")
         numeric = numeric.replace([np.inf, -np.inf], np.nan).dropna()
         numeric = numeric.loc[
             (numeric["wavenumber_cm_1"] > 0.0)
@@ -286,9 +309,12 @@ def molecular_cross_section_cm2_per_molecule(
             * (stimulated_temperature / stimulated_reference)
         )
 
-        shifted_center = nu + pressure_shift * pressure_atm
+        shifted_center = nu + pressure_shift * pressure_atm * (1-self_mole_fraction)
+        gamma_mixture = gamma_air*(1-self_mole_fraction)
+        if self_mole_fraction:
+            gamma_mixture = gamma_mixture + numeric['gamma_self'].to_numpy(dtype=float)*self_mole_fraction
         lorentz_hwhm = (
-            gamma_air
+            gamma_mixture
             * pressure_atm
             * (REFERENCE_TEMPERATURE_K / temperature_k) ** temperature_exponent
         )
@@ -299,12 +325,17 @@ def molecular_cross_section_cm2_per_molecule(
 
         for start in range(0, len(numeric), chunk_size):
             stop = min(start + chunk_size, len(numeric))
-            profile = voigt_profile_wavenumber(
-                grid_cm_1[None, :],
-                shifted_center[start:stop, None],
-                doppler_sigma[start:stop, None],
-                lorentz_hwhm[start:stop, None],
-            )
+            if line_shape == 'voigt':
+                profile = voigt_profile_wavenumber(
+                    grid_cm_1[None, :], shifted_center[start:stop, None],
+                    doppler_sigma[start:stop, None], lorentz_hwhm[start:stop, None])
+            else:
+                width=lorentz_hwhm[start:stop,None]
+                if np.any(width<=0):
+                    raise ValueError('Lorentz widths must be positive.')
+                profile=width/(np.pi*((grid_cm_1[None,:]-shifted_center[start:stop,None])**2+width**2))
+            if wing_cutoff_ghz is not None:
+                profile=np.where(np.abs(grid_cm_1[None,:]-shifted_center[start:stop,None])<=wing_cutoff_ghz/GHZ_PER_WAVENUMBER,profile,0.)
             cross_section += np.sum(intensity_temperature[start:stop, None] * profile, axis=0)
 
     if not np.isfinite(cross_section).all():
@@ -446,10 +477,16 @@ def build_layered_zenith_attenuation_design(
     fine_pm_mode: PMMode = DEFAULT_FINE_PM_MODE,
     coarse_pm_mode: PMMode = DEFAULT_COARSE_PM_MODE,
     partition_sum_version: int = 2025,
+    target_gases: tuple[str, ...] = TARGET_GASES,
 ) -> ZenithAttenuationDesign:
     """Build vertical gas, background, and PM attenuation design columns."""
 
     _validate_hitran_table(hitran_lines)
+    target_gases = tuple(target_gases)
+    if not target_gases or len(set(target_gases)) != len(target_gases):
+        raise ValueError("Target gases must be nonempty and unique.")
+    if any(gas not in MOLAR_MASS_G_MOL or gas in BACKGROUND_GASES for gas in target_gases):
+        raise ValueError("Target gases must have configured masses and exclude background gases.")
     frequency = _positive_frequency_grid(frequency_ghz)
     atmosphere = standard_troposphere_profile(
         n_layers=n_layers,
@@ -460,11 +497,11 @@ def build_layered_zenith_attenuation_design(
     water_scale = _positive_scalar(water_scale_height_m, "Water scale height")
     pm_scale = _positive_scalar(pm_scale_height_m, "PM scale height")
     pollutant_scales = {
-        gas: _pollutant_scale_height(gas, pollutant_scale_height_m) for gas in TARGET_GASES
+        gas: _pollutant_scale_height(gas, pollutant_scale_height_m) for gas in target_gases
     }
 
     cross_sections: dict[str, np.ndarray] = {}
-    for molecule in TARGET_GASES + BACKGROUND_GASES:
+    for molecule in target_gases + BACKGROUND_GASES:
         cross_sections[molecule] = np.vstack(
             [
                 molecular_cross_section_cm2_per_molecule(
@@ -485,7 +522,7 @@ def build_layered_zenith_attenuation_design(
 
     dz_cm = atmosphere.layer_thickness_m * 100.0
     gas_columns = []
-    for gas in TARGET_GASES:
+    for gas in target_gases:
         surface_number_density_per_ug_m3 = float(
             concentration_ug_m3_to_number_density_cm3(1.0, MOLAR_MASS_G_MOL[gas])
         )
@@ -544,7 +581,7 @@ def build_layered_zenith_attenuation_design(
 
     return ZenithAttenuationDesign(
         frequency_ghz=frequency,
-        gas_names=TARGET_GASES,
+        gas_names=target_gases,
         gas_db_per_ug_m3=np.column_stack(gas_columns),
         background_db=DB_PER_NEPER * background_optical_depth,
         pm_names=("PM2_5_ug_m3", "PM10_minus_PM2_5_ug_m3"),

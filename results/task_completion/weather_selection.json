@@ -1,0 +1,42 @@
+{
+  "raw_sha256": "e8fff4114b93026bec88e47f81146ca6908b54e687a7bbc36a5853f56e019a28",
+  "retained_rows": 103322,
+  "soundings": 521,
+  "selection": "First complete >=20 km sounding in January/April/July/September 2026, before spectroscopy evaluation",
+  "selected": [
+    {
+      "datetime": "2026-01-01T00:00:00Z",
+      "measured_levels": 226,
+      "measured_top_m": 36970.162672561455,
+      "ground_altitude_m": 34.00018185444974,
+      "extended_to_m": 100000,
+      "apparent_elevation_deg": 45.01759129405396
+    },
+    {
+      "datetime": "2026-04-01T00:00:00Z",
+      "measured_levels": 160,
+      "measured_top_m": 28760.8463906007,
+      "ground_altitude_m": 34.00018185444974,
+      "extended_to_m": 100000,
+      "apparent_elevation_deg": 45.01679052746705
+    },
+    {
+      "datetime": "2026-07-01T00:00:00Z",
+      "measured_levels": 203,
+      "measured_top_m": 32344.08128921259,
+      "ground_altitude_m": 34.00018185444974,
+      "extended_to_m": 100000,
+      "apparent_elevation_deg": 45.020584920560054
+    },
+    {
+      "datetime": "2026-09-01T00:00:00Z",
+      "measured_levels": 189,
+      "measured_top_m": 34954.527364231275,
+      "ground_altitude_m": 34.00018185444974,
+      "extended_to_m": 100000,
+      "apparent_elevation_deg": 45.01893425452732
+    }
+  ],
+  "rejected": [],
+  "limitation": "Weather soundings are not VOC/PM labels or paired radio observations"
+}

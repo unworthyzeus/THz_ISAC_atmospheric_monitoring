@@ -1,0 +1,130 @@
+Using C:\Research\THz_ISAC_atmospheric_monitoring\data\raw\voc_hitran_20260922_0_3000
+
+CH3CN_main_0_3000GHz
+                     Lines parsed: 17880
+CH3OH_main_0_3000GHz
+                     Lines parsed: 4663
+CH4_main_0_3000GHz
+                     Lines parsed: 5354
+CO_main_0_3000GHz
+                     Lines parsed: 146
+H2CO_main_0_3000GHz
+                     Lines parsed: 8522
+H2O_main_0_3000GHz
+                     Lines parsed: 761
+NO2_main_0_3000GHz
+                     Lines parsed: 20170
+O2_main_0_3000GHz
+                     Lines parsed: 241
+O3_main_0_3000GHz
+                     Lines parsed: 17401
+SO2_main_0_3000GHz
+                     Lines parsed: 68274
+{'air': 1.0, 'self': 0.0}
+3.244889 seconds elapsed for abscoef; nlines = 8522
+{'air': 1.0, 'self': 0.0}
+1.875619 seconds elapsed for abscoef; nlines = 8522
+{'air': 1.0, 'self': 0.0}
+1.989397 seconds elapsed for abscoef; nlines = 4663
+{'air': 1.0, 'self': 0.0}
+1.334364 seconds elapsed for abscoef; nlines = 4663
+{'air': 1.0, 'self': 0.0}
+6.669922 seconds elapsed for abscoef; nlines = 17880
+{'air': 1.0, 'self': 0.0}
+4.662825 seconds elapsed for abscoef; nlines = 17880
+{'air': 1.0, 'self': 0.0}
+0.061121 seconds elapsed for abscoef; nlines = 146
+{'air': 1.0, 'self': 0.0}
+0.063735 seconds elapsed for abscoef; nlines = 146
+{'air': 1.0, 'self': 0.0}
+8.531977 seconds elapsed for abscoef; nlines = 17401
+{'air': 1.0, 'self': 0.0}
+3.744270 seconds elapsed for abscoef; nlines = 17401
+{'air': 1.0, 'self': 0.0}
+30.777345 seconds elapsed for abscoef; nlines = 68274
+{'air': 1.0, 'self': 0.0}
+27.532871 seconds elapsed for abscoef; nlines = 68274
+{'air': 1.0, 'self': 0.0}
+10.637061 seconds elapsed for abscoef; nlines = 20170
+{'air': 1.0, 'self': 0.0}
+6.132672 seconds elapsed for abscoef; nlines = 20170
+{'air': 0.9911004278334392, 'self': 0.008899572166560779}
+0.382605 seconds elapsed for abscoef; nlines = 761
+{'air': 0.9911004278334392, 'self': 0.008899572166560779}
+0.268898 seconds elapsed for abscoef; nlines = 761
+{'air': 0.7924041043860078, 'self': 0.2075958956139922}
+0.150022 seconds elapsed for abscoef; nlines = 241
+{'air': 0.7924041043860078, 'self': 0.2075958956139922}
+0.094333 seconds elapsed for abscoef; nlines = 241
+{'air': 1.0, 'self': 0.0}
+4.029379 seconds elapsed for abscoef; nlines = 8522
+{'air': 1.0, 'self': 0.0}
+2.779668 seconds elapsed for abscoef; nlines = 8522
+{'air': 1.0, 'self': 0.0}
+2.625350 seconds elapsed for abscoef; nlines = 4663
+{'air': 1.0, 'self': 0.0}
+1.453786 seconds elapsed for abscoef; nlines = 4663
+{'air': 1.0, 'self': 0.0}
+9.194664 seconds elapsed for abscoef; nlines = 17880
+{'air': 1.0, 'self': 0.0}
+9.728834 seconds elapsed for abscoef; nlines = 17880
+{'air': 1.0, 'self': 0.0}
+0.154582 seconds elapsed for abscoef; nlines = 146
+{'air': 1.0, 'self': 0.0}
+0.107293 seconds elapsed for abscoef; nlines = 146
+{'air': 1.0, 'self': 0.0}
+11.116963 seconds elapsed for abscoef; nlines = 17401
+{'air': 1.0, 'self': 0.0}
+6.973070 seconds elapsed for abscoef; nlines = 17401
+{'air': 1.0, 'self': 0.0}
+33.768871 seconds elapsed for abscoef; nlines = 68274
+{'air': 1.0, 'self': 0.0}
+20.425103 seconds elapsed for abscoef; nlines = 68274
+{'air': 1.0, 'self': 0.0}
+6.877676 seconds elapsed for abscoef; nlines = 20170
+{'air': 1.0, 'self': 0.0}
+5.897273 seconds elapsed for abscoef; nlines = 20170
+{'air': 0.9991813832412125, 'self': 0.0008186167587875224}
+0.261325 seconds elapsed for abscoef; nlines = 761
+{'air': 0.9991813832412125, 'self': 0.0008186167587875224}
+0.169835 seconds elapsed for abscoef; nlines = 761
+{'air': 0.7907114674662956, 'self': 0.20928853253370439}
+0.094522 seconds elapsed for abscoef; nlines = 241
+{'air': 0.7907114674662956, 'self': 0.20928853253370439}
+0.078874 seconds elapsed for abscoef; nlines = 241
+{'air': 1.0, 'self': 0.0}
+2.820308 seconds elapsed for abscoef; nlines = 8522
+{'air': 1.0, 'self': 0.0}
+1.774910 seconds elapsed for abscoef; nlines = 8522
+{'air': 1.0, 'self': 0.0}
+1.766916 seconds elapsed for abscoef; nlines = 4663
+{'air': 1.0, 'self': 0.0}
+1.228405 seconds elapsed for abscoef; nlines = 4663
+{'air': 1.0, 'self': 0.0}
+6.242989 seconds elapsed for abscoef; nlines = 17880
+{'air': 1.0, 'self': 0.0}
+4.422965 seconds elapsed for abscoef; nlines = 17880
+{'air': 1.0, 'self': 0.0}
+0.063872 seconds elapsed for abscoef; nlines = 146
+{'air': 1.0, 'self': 0.0}
+0.058369 seconds elapsed for abscoef; nlines = 146
+{'air': 1.0, 'self': 0.0}
+4.984030 seconds elapsed for abscoef; nlines = 17401
+{'air': 1.0, 'self': 0.0}
+3.269819 seconds elapsed for abscoef; nlines = 17401
+{'air': 1.0, 'self': 0.0}
+22.611573 seconds elapsed for abscoef; nlines = 68274
+{'air': 1.0, 'self': 0.0}
+16.226258 seconds elapsed for abscoef; nlines = 68274
+{'air': 1.0, 'self': 0.0}
+7.920233 seconds elapsed for abscoef; nlines = 20170
+{'air': 1.0, 'self': 0.0}
+5.040249 seconds elapsed for abscoef; nlines = 20170
+{'air': 0.9999890911391655, 'self': 1.0908860834586493e-05}
+0.256477 seconds elapsed for abscoef; nlines = 761
+{'air': 0.9999890911391655, 'self': 1.0908860834586493e-05}
+0.173306 seconds elapsed for abscoef; nlines = 761
+{'air': 0.7905422849699903, 'self': 0.2094577150300096}
+0.075925 seconds elapsed for abscoef; nlines = 241
+{'air': 0.7905422849699903, 'self': 0.2094577150300096}
+0.052352 seconds elapsed for abscoef; nlines = 241

@@ -1,0 +1,73 @@
+{
+  "requirement_rows": 7,
+  "pm": {
+    "projected_fine_coarse_correlation": 0.9999999622914407,
+    "physical_singular_values": [
+      4.431764647771644e-05,
+      5.959855536224068e-09
+    ],
+    "fine_and_coarse_std_ug_m3": [
+      105986821.78853105,
+      130077069.29727486
+    ],
+    "other_pm_known_std_ug_m3": [
+      29106.288847792795,
+      35721.99531555853
+    ],
+    "truth_ug_m3": [
+      49.0,
+      41.0
+    ],
+    "alternative_ug_m3": [
+      2.450000000000003,
+      98.13057076087165
+    ],
+    "optimized_nuisance_separation_in_noise_sd": 4.392055526195856e-07,
+    "gaussian_kl_divergence": 9.645075872593779e-14,
+    "gaussian_optimal_equal_prior_error": 0.49999991239116764,
+    "assumption": "10 s broad reference, zero residual and bias, assumed particle constants; best nuisance adjustment allowed",
+    "implication": "Additional constraints can supply information, but improvement supplied by external mass observations is not THz retrieval"
+  },
+  "radio": {
+    "plan": {
+      "centers_ghz": [
+        73.5
+      ],
+      "subcarriers_per_block": 256,
+      "spacing_hz": 1000000.0,
+      "cyclic_prefix_fraction": 0.0625,
+      "frame_symbols": 10000,
+      "pilot_symbols": 30,
+      "simultaneous_rf_chains": 1
+    },
+    "occupied_band_edges_ghz": [
+      73.372,
+      73.628
+    ],
+    "band_selection": "71-76 GHz space-to-Earth reference; no licensing or coordination determination",
+    "decision": "Communication engineering reference retained; current E-band joint VOC/PM sensing rejected",
+    "hardware_reference": "VDI WR12 VNA extenders cover 60-90 GHz; laboratory measurement equipment, not a flight modem",
+    "hardware_source": "https://vadiodes.com/wp-content/uploads/2012/01/VDI-956_VNA-X_Typical_Performance_2022.03.17.pdf",
+    "hardware_spec_magnitude_stability_db": 0.1,
+    "hardware_spec_phase_stability_deg": 1.5,
+    "hardware_spec_scope": "Typical WR12 values; one hour after warm-up with ideal cables and stable laboratory environment; not a measured stochastic covariance",
+    "one_percent_rate_loss_cfo_limit_hz": 29014.241914072354,
+    "one_percent_rate_loss_phase_rms_rad": 0.0526333042592423,
+    "limits_scope": "Separate one-impairment-at-a-time conditional limits, not a jointly allocated error budget",
+    "pass_duration_s": 139.7334305196463,
+    "pass_average_rate_bps": 912989911.9977005,
+    "pass_information_bits": 127575212433.26868,
+    "maximum_sampled_absolute_doppler_hz": 1211085.6476254165,
+    "maximum_sampled_absolute_doppler_rate_hz_s": 23475.86344951167,
+    "waveform_scope": "Uncoded QPSK control; Shannon rate is separate and not demonstrated modem throughput",
+    "measured_hardware_validation": false,
+    "remaining": [
+      "Measured amplitude/phase response and drift",
+      "Acquisition/phase tracking during a real pass",
+      "FEC and target BER/availability",
+      "Rain/cloud losses",
+      "Actual spectrum coordination",
+      "A sensing band design with useful VOC/PM information"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+frames,residual_std_db,case,status,reason
+1,0.0,unknown_linear_and_quartic_spectral_calibration,unidentifiable,Target is unidentifiable after nuisance elimination
+1,0.001,unknown_linear_and_quartic_spectral_calibration,unidentifiable,Target is unidentifiable after nuisance elimination
+10,0.0,unknown_linear_and_quartic_spectral_calibration,unidentifiable,Target is unidentifiable after nuisance elimination
+10,0.001,unknown_linear_and_quartic_spectral_calibration,unidentifiable,Target is unidentifiable after nuisance elimination
+1000,0.0,unknown_linear_and_quartic_spectral_calibration,unidentifiable,Target is unidentifiable after nuisance elimination
+1000,0.001,unknown_linear_and_quartic_spectral_calibration,unidentifiable,Target is unidentifiable after nuisance elimination

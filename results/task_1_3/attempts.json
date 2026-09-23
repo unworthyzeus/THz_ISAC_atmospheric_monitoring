@@ -1,0 +1,6 @@
+[
+  {
+    "status": "reference_comparison_failed",
+    "reason": "Unmodified HAPI PROFILE_LORENTZ centers at Nu-Delta0, while PROFILE_VOIGT and HITRAN pressure-shift convention center at Nu+Delta0. Six CO/H2O Lorentz comparisons failed. Integration outputs are retained with a checkpoint; no local absorption formula is changed to fit that reference."
+  }
+]

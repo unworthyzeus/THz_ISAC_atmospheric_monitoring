@@ -1,0 +1,12 @@
+{
+  "status": "numerical_task_implemented_and_verified",
+  "frequency_range_ghz": [
+    60,
+    400
+  ],
+  "apparent_elevation_for_geometric_45": 45.01742210817304,
+  "atmospheric_path_km": 28.23713121419223,
+  "max_hapi_peak_normalized_error": 6.751117503851705e-06,
+  "max_fine_quadrature_relative_difference": 1.4359538539766165e-05,
+  "unresolved": "HITRAN far-wing/continuum background differs from ITU; measured profiles, dispersion and field validation absent."
+}

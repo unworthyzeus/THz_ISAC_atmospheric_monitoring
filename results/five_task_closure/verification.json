@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "acquired_source_hashes": 45,
+  "dataset_repository_checksums": 40,
+  "unavailable_downloads": 3,
+  "historical_scientific_hashes_preserved": 145,
+  "historical_documentation_superseded": [
+    "README.md"
+  ],
+  "native_bins": 4,
+  "measured_rows": 64,
+  "negative_values_retained": 42,
+  "independent_pm_projection": true,
+  "auxiliary_information_cases": 10,
+  "requirement_cases": 7,
+  "moving_pass_snapshots": 17,
+  "waveform_replays": 3,
+  "published_water_states": 12,
+  "tds_discrepancy_retained": true,
+  "pdf_pages": 6,
+  "test_count": 198,
+  "empty_measurement_schema": true,
+  "snapshot_files": 282,
+  "seal_created": false,
+  "scope": "Numerical replay, provenance and artifact checks; no experimental-validation claim"
+}

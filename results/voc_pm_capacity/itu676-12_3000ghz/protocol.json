@@ -1,0 +1,72 @@
+{
+  "voc_targets": [
+    "H2CO",
+    "CH3OH",
+    "CH3CN"
+  ],
+  "pm_parameters": [
+    "PM2.5",
+    "PM10-PM2.5"
+  ],
+  "line_center_window_ghz": [
+    0,
+    3000
+  ],
+  "frequency_window_ghz": [
+    60,
+    400
+  ],
+  "tones": 256,
+  "background_model": "itu676-12",
+  "surface": {
+    "temperature_k": 290.34999999999997,
+    "pressure_pa": 100800.0,
+    "dew_point_c": 5.4
+  },
+  "atmosphere": {
+    "n_layers": 24,
+    "top_altitude_m": 12000.0,
+    "pollutant_scale_height_m": 1500.0,
+    "water_scale_height_m": 2000.0,
+    "pm_scale_height_m": 1000.0,
+    "partition_sum_version": 2025,
+    "frequency_min_ghz": 60.0,
+    "frequency_max_ghz": 400.0,
+    "frequency_count": 256
+  },
+  "reference_link": {
+    "satellite_altitude_km": 550.0,
+    "tx_power_dbm": 23.0,
+    "tx_aperture_diameter_m": 0.5,
+    "rx_aperture_diameter_m": 0.3,
+    "subcarrier_bandwidth_hz": 1000000.0,
+    "tx_aperture_efficiency": 0.65,
+    "rx_aperture_efficiency": 0.65,
+    "receiver_noise_figure_db": 6.0,
+    "receiver_noise_temperature_k": 290.0,
+    "implementation_loss_db": 5.0,
+    "earth_radius_km": 6371.0,
+    "n_active_subcarriers": 256
+  },
+  "frame_symbols": 10000,
+  "baseline_pilots_per_frame": 30,
+  "added_sensing_pilots": 0,
+  "symbol_time_s": 1e-06,
+  "maximum_relative_capacity_loss": 0.0,
+  "frames_accumulated": [
+    1,
+    10,
+    1000
+  ],
+  "residual_std_db": [
+    0.0,
+    0.001
+  ],
+  "noise_draws": 5000,
+  "seed": 20260922,
+  "observation": "Coherent existing pilots. Exact complex pilot averages checked separately from Gaussian dB approximation.",
+  "pm_optics": "Existing exploratory Rayleigh modes; uncalibrated optical parameters retained explicitly.",
+  "voc_abundance": "No measured VOC labels. Zero and 1 ug/m3 injections are response controls, not environmental populations.",
+  "communication": "Same reference atmosphere, bands, power and pilot overhead on both sides. Shannon upper bound with known channel. No coded-throughput or deployable multiband-hardware claim.",
+  "accumulation": "Requires unchanged concentrations and channel over accumulated frames; residual floor does not average down."
+}

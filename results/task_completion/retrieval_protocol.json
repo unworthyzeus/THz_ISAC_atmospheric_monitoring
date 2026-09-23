@@ -1,0 +1,86 @@
+{
+  "analysis_window_ghz": [
+    60,
+    400
+  ],
+  "positive_controls": 5000,
+  "absent_controls": 5000,
+  "seed": 20260924,
+  "presence_prevalence_pct": 50,
+  "truth_ug_m3": [
+    1.0,
+    1.0,
+    1.0,
+    49.0,
+    41.0,
+    90.0
+  ],
+  "pm_truth_source": "results\\tables\\single_channel_repair_predictions.csv",
+  "pm_truth_sha256": "28da43c0f944c4b09f7a1b3598b64975566a509163acfbdee381236885401f74",
+  "pm_station": "Dingling",
+  "pm_datetime": "2016-06-03 06:00:00",
+  "durations_s": [
+    0.1,
+    10.0,
+    1800.0
+  ],
+  "residual_std_db": [
+    0.0,
+    0.001
+  ],
+  "residual_frequency_correlation_scale_ghz": 10.0,
+  "alpha_family": 0.01,
+  "targets_in_family": 6,
+  "required_detection_power": 0.95,
+  "persistent_bias_bound_db": [
+    0.0,
+    0.0001,
+    0.001
+  ],
+  "scope": "Physical instrument-response controls, no measured VOC labels or radio observations",
+  "nonlinear_scope": "Exact Beer-Lambert complex-amplitude fit, declared bounds, same stored pilot samples",
+  "nonlinear_upper_bounds_ug_m3": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+  ],
+  "no_extra_pilots": true,
+  "background": "ITU P.676-13 Annex 1",
+  "optical_inputs": "Uncalibrated Mie distributions: aerosol_controls.json",
+  "waveform": {
+    "centers_ghz": [
+      73.5
+    ],
+    "subcarriers_per_block": 256,
+    "spacing_hz": 1000000.0,
+    "cyclic_prefix_fraction": 0.0625,
+    "frame_symbols": 10000,
+    "pilot_symbols": 30,
+    "simultaneous_rf_chains": 1
+  },
+  "noise": "Sky emission plus receiver equivalent noise; residual covariance is a sensitivity scenario",
+  "mass_concentration_convention": {
+    "source": "CIAAW abridged standard atomic weights 2024",
+    "url": "https://ciaaw.org/abridged-atomic-weights.htm",
+    "molar_mass_g_mol": {
+      "H2CO": 30.026,
+      "CH3OH": 32.042,
+      "CH3CN": 41.053,
+      "CH4": 16.043,
+      "CO": 28.01,
+      "O3": 47.997,
+      "SO2": 64.058,
+      "NO2": 46.005,
+      "H2O": 18.015,
+      "O2": 31.998
+    },
+    "operation": "Stored linear spectra use historical main-isotope mass convention; multiply each gas column by old_mass/natural_mass before inference. Isotope-specific Doppler masses unchanged."
+  },
+  "pass_geometry": {
+    "ideal_overhead_pass_above_45deg_s": 139.7334305196463,
+    "ideal_overhead_pass_above_5deg_s": 589.0727069435793,
+    "duration_1800s": "Stationary sensitivity control only; exceeds one ideal 550 km pass and requires a separately modeled revisit/constellation strategy"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "threshold_changed": false,
+  "acceptance_relative_rms": 0.001,
+  "acceptance_percent": 0.1,
+  "initial_relative_rms": 0.0011595778605235367,
+  "initial_percent": 0.11595778605235367,
+  "refined_relative_rms": 3.185543878285148e-05,
+  "refined_percent": 0.0031855438782851485,
+  "reduction_factor": 36.401252182649706,
+  "all_other_physics_arrays_unchanged": true,
+  "independent_transfer_replay_passed": true,
+  "grids": [
+    {
+      "order": 2,
+      "initial_nodes": 66,
+      "refined_nodes": 734,
+      "maximum_brightness_change_k": 1.232872285015162
+    },
+    {
+      "order": 4,
+      "initial_nodes": 132,
+      "refined_nodes": 1468,
+      "maximum_brightness_change_k": 0.37332331651128925
+    }
+  ],
+  "link_impact": [
+    {
+      "band": "multiband_reference",
+      "initial_rate_bps": 783513812.9447205,
+      "refined_rate_bps": 783511695.3851519,
+      "rate_change_pct": -0.0002702644846364066,
+      "maximum_absolute_noise_change_pct": 0.03265635728859628,
+      "comparison": "Order 4 before/after; refined power allocation held fixed in both; thermal noise change only"
+    },
+    {
+      "band": "eband_73p5GHz",
+      "initial_rate_bps": 763440182.8300647,
+      "refined_rate_bps": 763440052.0215942,
+      "rate_change_pct": -1.7134082463954314e-05,
+      "maximum_absolute_noise_change_pct": 4.313403902944657e-05,
+      "comparison": "Order 4 before/after; refined power allocation held fixed in both; thermal noise change only"
+    }
+  ],
+  "interpretation": "Numerical stability of the declared model; not atmospheric measurement error or field validation"
+}

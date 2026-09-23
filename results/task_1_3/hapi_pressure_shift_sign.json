@@ -1,0 +1,9 @@
+{
+  "package_source_sha256": "3b3a18a8b173eda3b3b1c972e2c51dcc9c39054f50f90b7553f93be29cde0b20",
+  "package_source_file": "hapi.py",
+  "expected_center_cm_1": 10.02,
+  "unmodified_hapi_lorentz_center_on_probe_grid_cm_1": 9.98,
+  "adapted_center_on_probe_grid_cm_1": 10.02,
+  "reference": "https://hitran.org/docs/definitions-and-units/",
+  "note": "HITRAN nu*=nu+delta*p. HAPI 1.3 PROFILE_LORENTZ uses WnGrid+Delta0-Nu. The comparison adapter negates Delta0; the research forward model is unchanged."
+}
