@@ -115,7 +115,7 @@ for(let i=0;i<content.length;i++){
   }
   text(slide,String(number).padStart(2,'0'),1520,866,48,26,18,muted);
  }
- const sourceNotes=s.sources.map(q=>q.startsWith('http')?q:`https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/461a3ba/${q.replaceAll(' ','%20')}`).join('\n');
+ const sourceNotes=s.sources.map(q=>q.startsWith('http')?q:`https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/${q.startsWith('docs/53_')||q.startsWith('results/presentation_source_audit/')?'main':'461a3ba'}/${q.replaceAll(' ','%20')}`).join('\n');
  slide.speakerNotes.textFrame.setText(`${s.notes}\n\n${s.latex?'LaTeX equation source\n'+s.latex:''}\n\n${s.legend?'Notation legend\n'+s.legend.join('\n'):''}\n\nSources\n${sourceNotes}\n\nResearch snapshot 461a3ba. Predictions and simulations remain distinct from measured field performance.`);
 }
 const candidate=path.join(TMP,'candidate-detailed.pptx');

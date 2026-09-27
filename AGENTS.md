@@ -1,5 +1,7 @@
 # Repository Instructions
 
+Commit completed changes and push to `main` by default, unless the user explicitly requests otherwise.
+
 All project facing text must be written in English.
 
 This includes:

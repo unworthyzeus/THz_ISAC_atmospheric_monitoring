@@ -131,7 +131,7 @@ Sources: I2R_proposal_THz_ISAC (1).pdf, docs/49_completion_audit_and_fixes.md
 
 ## Slide 5: Evidence and operating conditions
 
-
+Exact dataset subsets and their roles are documented on slides 40–44.
 
 
 Evidence | What it supports | What it cannot establish
@@ -1542,3 +1542,132 @@ M2M4: Gianmarco Romano, 2021, doi:10.3390/s21154950. See full references in curr
 
 
 Sources: paper/current_study.tex
+
+
+## Slide 40: Datasets · Exact HITRAN subset in the current receiver
+
+HITRAN2024 via HAPI. The current nine gases use two retained input tables and isotope-specific profiles.
+
+
+Gas and role | HITRAN isotope IDs | Acquired lines, 0–3000 GHz | Centres in 220–330 GHz
+H2CO · target | 1, 2, 3 | 12,147 | 151
+CH3OH · target | 1 | 4,663 | 467
+CH3CN · target | 1 | 17,880 | 1,078
+CH3Cl · target | 1, 2 | 12,824 | 670
+HCOOH · target | 1, 2 | 18,440 | 401
+CO · interferent | 1, 2, 3, 4, 5, 6 | 773 | 27
+O3 · interferent | 1, 2, 3, 4, 5 | 93,018 | 3,199
+SO2 · interferent | 1, 2, 3, 4 | 139,086 | 5,562
+NO2 · interferent | 1 | 20,170 | 706
+
+
+Additional evidence: Acquired line pool = 319,001; Isotope tables = 25; Centres in receiver window = 12,261
+
+
+
+All acquired line wings enter the calculation. H₂O/O₂ background uses ITU-R P.676; these are parameters, not measured radio data.
+
+Input file hashes were checked against the current physics manifest. The two pools contain 287,737 and 31,264 rows. The molecular cross section function uses no wing cutoff by default. Centre counts in 220–330 GHz are descriptive and do not define a filter. HITRAN supplies line positions, strengths, air broadening, lower state energy, temperature exponents and pressure shifts. HAPI provides isotope masses and TIPS partition sums. Earlier 34-table acquisition totals belong to a broader historical catalog.
+
+
+Sources: docs/53_dataset_subsets_and_roles.md, results/presentation_source_audit/dataset_subsets.json, results/payload_bounds/spectroscopy_acquisition.json, results/receiver_design/voc_pm_extension/acquisition.json, scripts/joint_receiver_support.py, src/thz_isac/physical_spectroscopy.py, https://hitran.org
+
+
+## Slide 41: Datasets · NOAA IGRA weather profiles actually used
+
+Beijing station CHM00054511, 2026 year to date archive acquired on 23 September 2026.
+
+
+Sounding, UTC | Measured levels | Measured top above station | Where it was used
+2026-01-01 00:00 | 226 | 36.97 km | Current global grid and earlier tests
+2026-04-01 00:00 | 160 | 28.76 km | Earlier seasonal sensitivity tests
+2026-07-01 00:00 | 203 | 32.34 km | Earlier seasonal sensitivity tests
+2026-09-01 00:00 | 189 | 34.95 km | Earlier seasonal sensitivity tests
+
+
+Additional evidence: Retained levels = 103,322; Retained soundings = 521; Selected profiles = 4 earlier / 1 current
+
+Current global comparisons use the January sounding and the ITU standard atmosphere.
+
+Measured weather provides no VOC/PM concentration labels. Above the measured top, the atmosphere is extended by a model to 100 km.
+
+The retained parser output contains 103,322 levels across 521 soundings. The declared selection was the first complete sounding reaching at least 20 km in January, April, July and September, before spectroscopy evaluation. Temperature, pressure and water profiles drive propagation. A model continues above the measured profile. The current receiver uses January as a weather check; band selection uses the standard atmosphere. The archive is a frozen year to date snapshot, not a complete year or global weather sample.
+
+
+Sources: docs/53_dataset_subsets_and_roles.md, results/task_completion/weather_selection.json, results/task_completion/source_acquisition.json, scripts/receiver_design_physics.py, https://www.ncei.noaa.gov/pub/data/igra/data/data-y2d/CHM00054511-data-beg2026.txt.zip
+
+
+## Slide 42: Datasets · Independent water and aerosol checks
+
+These are external physical checks. Neither dataset supplies the current five VOC and PM recall labels.
+
+
+Source | Exact part used | What was checked | Important boundary
+Water vapour paper (2023)
+Scientific Reports, Figure 8 | Figure 8 aggregate slopes at 380.197353 GHz: VNA 0.033 ± 0.009 and TDS 0.027 ± 0.009 | Absorption slope in (dB/m)/(g/m³), compared with declared model states | Published aggregates only. No raw measurement series or VOC labels.
+Calcite THz-TDS
+DOI 10.57745/DLJEFW, v1.0 | 8 sample and 4 blank recordings, 1 m path. Four native bins near 300, 325, 350 and 375 GHz. | Native FFT transmission with before/after blanks. 64 transmission rows. | No mass concentration or size labels. Cannot calibrate PM mass extinction.
+
+
+Additional evidence: Calcite observations = 8 samples + 4 blanks; Native frequency resolution = About 25 GHz; Paired PM mass truth = Unavailable
+
+
+
+Calcite reference RMS difference is 0.0472 dB. This is a separate laboratory diagnostic, not the current receiver’s calibration covariance.
+
+Calcite particles were resuspended in dry nitrogen. All 12 recordings were analyzed with native FFT resolution around 25 GHz and no synthetic frequency refinement. Two blanks per reference phase were combined geometrically. Published calcite data have no concentration or size distribution labels. Water slopes are copied from the retained Figure 8 audit; their reported plus/minus values are not reinterpreted as confidence intervals. VNA comparison lies within the reported range, while the mean TDS comparison does not.
+
+
+Sources: docs/53_dataset_subsets_and_roles.md, results/five_task_closure/published_water_validation.json, results/five_task_closure/calcite_validation.json, https://doi.org/10.1038/s41598-023-47586-8, https://doi.org/10.57745/DLJEFW
+
+
+## Slide 43: Datasets · Earlier Beijing benchmark and its filters
+
+Historical pollution inversion and ground sensor branches. These rows do not label the current five VOC recall experiments.
+
+
+Stage | Exact retained subset or procedure
+UCI Beijing Multi Site Air Quality | DOI 10.24432/C5RK5G. 12 sites, 1 March 2013 to 28 February 2017.
+Raw measurements | 420,768 station hours. Six pollutants: CO, O₃, SO₂, NO₂, PM2.5 and PM10.
+Complete case filter | 383,585 rows with required pollutants, temperature, pressure, dew point, rain and wind speed.
+Particle consistency filter | Removed 17,642 rows where PM10 < PM2.5. Retained 365,943 physically ordered rows.
+Modeling sample | Sort by timestamp and station. Select 20,000 deterministic evenly spaced rows.
+Chronological evaluation | 12,000 train / 4,000 validation / 4,000 test. Normalize by the training Q95 − Q05 span.
+
+
+Additional evidence: Complete case retention = 91.163%; Physically ordered rows = 365,943; Scored modeling sample = 20,000
+
+
+
+Beijing concentrations are measured. The atmospheric THz spectra generated from them are simulated; later work reused the known test period.
+
+This slide describes the principal physically filtered Beijing benchmark contract documented in the historical data provenance audit. The original cleaner excludes source wind direction. Complete case filtering may bias station and episode representation. Ground sensor forecasting and artificial channel masking are separate tasks from THz inversion. The current five VOC experiment uses controlled concentration scenarios, not these six pollutant rows.
+
+
+Sources: docs/53_dataset_subsets_and_roles.md, docs/35_data_provenance_and_synthetic_evidence_audit.md, scripts/download_external_data.py, https://doi.org/10.24432/C5RK5G
+
+
+## Slide 44: Datasets · Other historical controls and unused sources
+
+These sources support separate controls and historical studies, not a measured atmospheric VOC/PM receiver demonstration.
+
+
+Source / branch | Part actually used | Role and evidence boundary
+ESA CCI CO and NO₂ columns | March–December 2013, ten paired monthly rows. Grid centre 39.5° N, 116.5° E. | IASI/MOPITT CO total columns and OMI NO₂ tropospheric columns. Retrievals used for modeled feasibility.
+Mendeley protein THz-TDS
+DOI 10.17632/dpw4svmdr8.1 | Fig3.csv: 7 lysozyme levels. Fig4.csv: 6 ovalbumin levels. Five bins from 0.9 to 1.3 THz. | Laboratory concentration control. Means and SDs only, with one concentration level held out at a time.
+UCI Air Quality, Italy
+DOI 10.24432/C59K5F | 6,941 complete rows after removing −200 missing values. Split 4,164 / 1,388 / 1,389. | Four analyzer targets, five metal oxide sensors and weather. Earlier field calibration task, not THz.
+NASA Aura MLS | Metadata resolved; no granules acquired or scored. | Investigated option only. It must not be counted as an evaluated measurement dataset.
+
+
+Additional evidence: ESA extract = 10 months / 20 files; Protein files scored = 2 of 10 downloaded; Current paired radio / truth set = None
+
+
+
+The Italian branch has a weaker reproduction record. WHO and ITU documents supply benchmarks or models, rather than observation datasets.
+
+ESA extraction used 20 files, two species across ten months, with quality and coordinate checks. Mendeley acquisition downloaded ten files but only Fig3.csv and Fig4.csv fed the reported concentration score; no pseudo replicates were generated. The Italian source contains 9,358 raw hourly rows from March 2004 to February 2005, in an unnamed city, but the detailed historical audit reports no dedicated committed downloader or scoring manifest for that branch. Source and branch limitations are preserved.
+
+
+Sources: docs/53_dataset_subsets_and_roles.md, docs/35_data_provenance_and_synthetic_evidence_audit.md, results/tables/real_column_feasibility_manifest.json, results/tables/measured_thz_control_manifest.json, https://doi.org/10.17632/dpw4svmdr8.1, https://doi.org/10.24432/C59K5F

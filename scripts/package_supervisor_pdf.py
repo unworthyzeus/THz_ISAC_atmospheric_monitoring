@@ -15,10 +15,10 @@ document.set_metadata({'title': 'Sub-THz atmospheric sensing: supervisor researc
                        'author': 'Guillem Moreno Garcia',
                        'subject': 'All eleven tasks, methods, conditional results and remaining problems',
                        'keywords': 'ISAC, VOC, PM2.5, PM10, calibration, recall'})
-target = ROOT / 'output/presentations/sub_thz_isac_supervisor_review_legends.pdf'
+target = ROOT / 'output/presentations/sub_thz_isac_supervisor_review_datasets.pdf'
 document.save(target, deflate=True)
 document.close()
 with fitz.open(target) as check:
-    assert len(check) == len(slides) == 39
-    assert len(check.get_toc()) == 39
-print(f'Created PDF reading copy with 39 bookmarked slides: {target}')
+    assert len(check) == len(slides) == 44
+    assert len(check.get_toc()) == len(slides)
+print(f'Created PDF reading copy with {len(slides)} bookmarked slides: {target}')

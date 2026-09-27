@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 import pandas as pd
 from supervisor_formula_legends import LEGENDS
+from supervisor_dataset_slides import append_dataset_slides
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'tmp/supervisor_deck'
@@ -169,6 +170,8 @@ for index, slide in enumerate(slides, 1):
     if slide.get('latex'):
         slide['legend'] = LEGENDS[index]
 assert set(LEGENDS) == {i for i, s in enumerate(slides, 1) if s.get('latex')}
+append_dataset_slides(add, slides, ROOT)
+slides[4]['subtitle'] = 'Exact dataset subsets and their roles are documented on slides 40–44.'
 OUT.mkdir(parents=True,exist_ok=True)
 (OUT/'slides.json').write_text(json.dumps(slides,ensure_ascii=False,indent=2),encoding='utf-8')
 md=['# Supervisor presentation notes','Research snapshot: 461a3ba. Each task has method and result slides.']
@@ -180,4 +183,4 @@ for i,s in enumerate(slides,1):
     if s.get('legend'):md += ['\nNotation legend:\n\n'+'\n\n'.join(s['legend'])]
     md += [s.get('result') or '',s.get('limit') or '',s['notes'],'\nSources: '+', '.join(s['sources'])]
 (ROOT/'output/presentations/supervisor_presenter_notes.md').write_text('\n\n'.join(md),encoding='utf-8')
-print(f'Prepared {len(slides)} slides with all eleven original tasks')
+print(f'Prepared {len(slides)} slides with all eleven original tasks and dataset provenance')

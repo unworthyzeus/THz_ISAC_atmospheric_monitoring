@@ -1,0 +1,155 @@
+{
+  "research_snapshot": "461a3ba",
+  "spectroscopy": {
+    "source": "https://hitran.org",
+    "input_sha256": {
+      "data/raw/payload_bounds/lines.csv": "a418ae82e9f2fb1dc2f403e0e703b0314ce5cd5bdd83ff223b6118a067fbf8e6",
+      "results/receiver_design/voc_pm_extension/lines.csv": "68fbbf4a0ace0a6e06a3a4df468d3248ae9777ba254e0a8c43a5492a8f97dbe6"
+    },
+    "acquired_window_ghz": [
+      0,
+      3000
+    ],
+    "acquired_line_count": 319001,
+    "isotope_table_count": 25,
+    "centre_count_220_330_ghz": 12261,
+    "records": [
+      {
+        "molecule": "H2CO",
+        "isotopologue_ids": [
+          1,
+          2,
+          3
+        ],
+        "acquired_lines": 12147,
+        "centres_220_330_ghz": 151
+      },
+      {
+        "molecule": "CH3OH",
+        "isotopologue_ids": [
+          1
+        ],
+        "acquired_lines": 4663,
+        "centres_220_330_ghz": 467
+      },
+      {
+        "molecule": "CH3CN",
+        "isotopologue_ids": [
+          1
+        ],
+        "acquired_lines": 17880,
+        "centres_220_330_ghz": 1078
+      },
+      {
+        "molecule": "CH3Cl",
+        "isotopologue_ids": [
+          1,
+          2
+        ],
+        "acquired_lines": 12824,
+        "centres_220_330_ghz": 670
+      },
+      {
+        "molecule": "HCOOH",
+        "isotopologue_ids": [
+          1,
+          2
+        ],
+        "acquired_lines": 18440,
+        "centres_220_330_ghz": 401
+      },
+      {
+        "molecule": "CO",
+        "isotopologue_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "acquired_lines": 773,
+        "centres_220_330_ghz": 27
+      },
+      {
+        "molecule": "O3",
+        "isotopologue_ids": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "acquired_lines": 93018,
+        "centres_220_330_ghz": 3199
+      },
+      {
+        "molecule": "SO2",
+        "isotopologue_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "acquired_lines": 139086,
+        "centres_220_330_ghz": 5562
+      },
+      {
+        "molecule": "NO2",
+        "isotopologue_ids": [
+          1
+        ],
+        "acquired_lines": 20170,
+        "centres_220_330_ghz": 706
+      }
+    ],
+    "scope": "All acquired lines enter the gas profiles with unlimited wings. Counts of centres in 220–330 GHz are descriptive, not a line selection filter."
+  },
+  "weather": {
+    "station": "CHM00054511",
+    "archive": "Beijing 2026 year to date snapshot",
+    "source": "https://www.ncei.noaa.gov/pub/data/igra/data/data-y2d/CHM00054511-data-beg2026.txt.zip",
+    "provenance_file": "results/task_completion/weather_selection.json",
+    "raw_sha256": "e8fff4114b93026bec88e47f81146ca6908b54e687a7bbc36a5853f56e019a28",
+    "retained_rows": 103322,
+    "soundings": 521,
+    "selection": "First complete >=20 km sounding in January/April/July/September 2026, before spectroscopy evaluation",
+    "selected": [
+      {
+        "datetime": "2026-01-01T00:00:00Z",
+        "measured_levels": 226,
+        "measured_top_m": 36970.162672561455,
+        "ground_altitude_m": 34.00018185444974,
+        "extended_to_m": 100000,
+        "apparent_elevation_deg": 45.01759129405396
+      },
+      {
+        "datetime": "2026-04-01T00:00:00Z",
+        "measured_levels": 160,
+        "measured_top_m": 28760.8463906007,
+        "ground_altitude_m": 34.00018185444974,
+        "extended_to_m": 100000,
+        "apparent_elevation_deg": 45.01679052746705
+      },
+      {
+        "datetime": "2026-07-01T00:00:00Z",
+        "measured_levels": 203,
+        "measured_top_m": 32344.08128921259,
+        "ground_altitude_m": 34.00018185444974,
+        "extended_to_m": 100000,
+        "apparent_elevation_deg": 45.020584920560054
+      },
+      {
+        "datetime": "2026-09-01T00:00:00Z",
+        "measured_levels": 189,
+        "measured_top_m": 34954.527364231275,
+        "ground_altitude_m": 34.00018185444974,
+        "extended_to_m": 100000,
+        "apparent_elevation_deg": 45.01893425452732
+      }
+    ],
+    "rejected": [],
+    "limitation": "Weather soundings are not VOC/PM labels or paired radio observations"
+  },
+  "current_data_boundary": "Current five VOC response experiments use controlled concentration scenarios, HITRAN and modeled/IGRA weather. UCI Beijing labels belong to earlier branches. No paired atmospheric THz and concentration dataset validates current recall."
+}
