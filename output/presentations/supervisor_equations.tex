@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage[paperwidth=20in,paperheight=3in,margin=0.2in]{geometry}
+\usepackage{amsmath,amssymb,xcolor}
+\definecolor{eqcolor}{HTML}{126B76}
+\pagestyle{empty}
+\begin{document}
+\color{eqcolor}\fontsize{24}{32}\selectfont
+% Slide 2
+\[\displaystyle \underbrace{\mathbf a}_{\text{observation}}=\underbrace{\mathbf D\mathbf c}_{\text{pollutants}}+\underbrace{\mathbf N\boldsymbol\beta}_{\text{background and instrument}}+\underbrace{\mathbf e}_{\text{noise}}\]
+
+\newpage
+% Slide 6
+\[\displaystyle \begin{aligned}n_s(z)&=\frac{c_{s,0}N_A}{M_s}\exp\!\left(-\frac{z}{H_s}\right),\\[4pt] \text{local spectrum}&\;\text{depends on }P(z),\;T(z),\;\rho_{\mathrm{H_2O}}(z)\end{aligned}\]
+
+\newpage
+% Slide 7
+\[\displaystyle c(z)=c_0\exp\!\left(-\frac{z}{H}\right)\qquad\Longrightarrow\qquad\widehat c_0\text{ depends on the assumed }H\]
+
+\newpage
+% Slide 8
+\[\displaystyle \sigma_s(\nu,z)=\sum_{\ell\in s}S_\ell\!\left(T(z)\right)\,V_\ell\!\left[\nu-\nu_\ell-\delta_\ell P(z);\,T(z),P(z)\right]\]
+
+\newpage
+% Slide 10
+\[\displaystyle \begin{aligned}A_s(\nu)&=\frac{10}{\ln 10}\int_{\mathrm{ray}}n_s(z)\,\sigma_s(\nu,z)\,\mathrm ds,\\[4pt]\frac{P_{\mathrm{out}}}{P_{\mathrm{in}}}&=10^{-A/10},\qquad b=n(r)\,r\sin\zeta\end{aligned}\]
+
+\newpage
+% Slide 11
+\[\displaystyle T_{\mathrm{sky}}=\sum_i J_\nu(T_i)\left(1-e^{-\tau_i}\right)e^{-\sum_{j<i}\tau_j}+J_\nu(T_{\mathrm{space}})e^{-\sum_i\tau_i}\]
+
+\newpage
+% Slide 12
+\[\displaystyle \begin{aligned}\kappa_{\mathrm{ext}}&=\frac{\int C_{\mathrm{ext}}(r)\,p(r)\,\mathrm dr}{\int \frac{4\pi}{3}\rho r^3p(r)\,\mathrm dr},\\[4pt]\kappa_{\mathrm{abs}}&\simeq\frac{3k\,\mathrm{Im}(q)}{\rho},\qquad\kappa_{\mathrm{sca}}\simeq\frac{2k^4r^3|q|^2}{\rho}\end{aligned}\]
+
+\newpage
+% Slide 13
+\[\displaystyle \mathrm{Var}(\mathrm{PM}_{10})=\mathrm{Var}(c_{\mathrm{fine}})+\mathrm{Var}(c_{\mathrm{coarse}})+2\,\mathrm{Cov}(c_{\mathrm{fine}},c_{\mathrm{coarse}})\]
+
+\newpage
+% Slide 14
+\[\displaystyle \begin{aligned}P_r(\nu)&=\frac{P_t(\nu)G_t(\nu)G_r(\nu)}{L_{\mathrm{impl}}}\left(\frac{\lambda}{4\pi R}\right)^2 10^{-A(\nu)/10},\\[4pt]\mathrm{SNR}(\nu)&=\frac{P_r(\nu)}{kB\left[T_{\mathrm{sky}}(\nu)+T_0(F-1)\right]}\end{aligned}\]
+
+\newpage
+% Slide 15
+\[\displaystyle \overline R=\sum_b\frac{t_b}{t_{\mathrm{total}}}\sum_{k\in b}\Delta f\log_2\!\left(1+\mathrm{SNR}_k\right)\]
+
+\newpage
+% Slide 16
+\[\displaystyle \begin{aligned}y_k&=h_kx_k+w_k,\qquad w_k\sim\mathcal{CN}(0,V_k),\\[4pt]x[n]&=\operatorname{IFFT}\{X_k\}\end{aligned}\]
+
+\newpage
+% Slide 17
+\[\displaystyle f_D\simeq\frac{v_r}{c}\,f_c\]
+
+\newpage
+% Slide 18
+\[\displaystyle \begin{aligned}\mathbf a&=\mathbf D\mathbf c+\mathbf N\boldsymbol\beta+\mathbf e,\qquad\mathbf C=\operatorname{Cov}(\mathbf e),\\[4pt]\mathbf P&=\mathbf I-\mathbf Q_N\mathbf Q_N^{\mathsf T},\qquad\widehat{\mathbf c}=\mathbf H\mathbf a\end{aligned}\]
+
+\newpage
+% Slide 20
+\[\displaystyle \begin{aligned}M_2&=S+V,\qquad M_4=S^2+4SV+2V^2,\\[4pt]S&=\sqrt{2M_2^2-M_4},\qquad A=-10\log_{10}\!\left(\frac{S_{\mathrm{sample}}}{S_{\mathrm{reference}}}\right)\end{aligned}\]
+
+\newpage
+% Slide 23
+\[\displaystyle \begin{aligned}J_{ab}&=\mathbb E\!\left[\frac{\partial\log p(y;\boldsymbol\theta)}{\partial\theta_a}\frac{\partial\log p(y;\boldsymbol\theta)}{\partial\theta_b}\right],\\[4pt]\mathbf J_{\mathrm{eff}}&=\mathbf J_{cc}-\mathbf J_{c\eta}\mathbf J_{\eta\eta}^{-1}\mathbf J_{\eta c},\qquad\operatorname{Cov}(\widehat{\mathbf c})\succeq\mathbf J_{\mathrm{eff}}^{-1}\end{aligned}\]
+
+\newpage
+% Slide 24
+\[\displaystyle \mathrm{Efficiency}=\frac{\text{variance lower bound}}{\text{estimator variance}}\]
+
+\newpage
+% Slide 25
+\[\displaystyle \begin{aligned}\mathbf C(t,\sigma_{\mathrm{cal}})&=\operatorname{diag}\!\left[\mathbf V_{\mathrm{sample}}(t/2)+\mathbf V_{\mathrm{reference}}(t/2)\right]+\sigma_{\mathrm{cal}}^2\mathbf K,\\[4pt]K_{ij}&=\exp\!\left(-\frac{|\nu_i-\nu_j|}{10\,\mathrm{GHz}}\right)\end{aligned}\]
+
+\newpage
+% Slide 28
+\[\displaystyle \begin{aligned}z&=\Phi^{-1}\!\left(1-\frac{0.01}{8}\right),\qquad\widehat c_j>z\,s_{\mathrm{null}},\\[4pt]c_{95}&=z\,s_{\mathrm{null}}+1.64485\,s_{\mathrm{positive}}(c_{95})\end{aligned}\]
+
+\newpage
+% Slide 30
+\[\displaystyle \chi_{\mathrm{ppm}}=\frac{c_{\mu\mathrm{g}/\mathrm m^3}\,R\,T}{p\,M_{\mathrm g/\mathrm{mol}}}\]
+
+\newpage
+% Slide 31
+\[\displaystyle \begin{aligned}|b_i|&\leq\varepsilon\quad\Longrightarrow\quad B_j=\varepsilon\,\lVert\mathbf H_j\rVert_1,\\[4pt]c_{95,\mathrm{protected}}&\simeq(z+1.64485)s_j+2B_j\end{aligned}\]
+
+\end{document}
