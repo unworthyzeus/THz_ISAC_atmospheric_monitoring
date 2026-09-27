@@ -1,0 +1,25 @@
+{
+  "plan": {
+    "centers_ghz": [
+      284.0
+    ],
+    "subcarriers_per_block": 256,
+    "spacing_hz": 4000000.0,
+    "cyclic_prefix_fraction": 0.0625,
+    "frame_symbols": 10000,
+    "pilot_symbols": 30,
+    "simultaneous_rf_chains": 1
+  },
+  "selection": "Minimum worst single species oracle curvature limit across three VOCs; standard 45 degree design case only; 20 seconds, 0.001 dB residual, unknown gain offset and slope. Other species fixed ONLY during coarse screening, which cannot resolve joint rank. Final exact spectra and joint inference are mandatory and may reject the candidate. No global optimality claimed.",
+  "coarse_score_ug_m3": 1230.9638883918922,
+  "candidate_count": 224,
+  "design_input_sha256": "79714c81bdb173a30b380924962e38e1c3b036c77053a1b8deab43612eddb424",
+  "hardware_band_ghz": [
+    220.0,
+    330.0
+  ],
+  "power_dbm": 23.0,
+  "noise_figure_db": 6.0,
+  "calibration_residual_std_db": 0.001,
+  "hardware_status": "Frequency and bandwidth compatible with converter family; power, noise, calibration and flight qualification remain requirements. No hardware performance claimed."
+}

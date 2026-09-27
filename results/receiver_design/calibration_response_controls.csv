@@ -1,0 +1,5 @@
+total_s,residual_std_db,trials,target,concentration_ug_m3,hits,recall_pct,ci95_lower_pct,ci95_upper_pct,family_false_count,family_false_alarm_pct,calibration_status
+20.0,0.001,10000,CH3CN,1.0,272,2.72,2.410010746858216,3.057918260346132,89,0.89,Assumed random residual covariance; not measured calibration
+100.0,0.001,10000,CH3CN,1.0,314,3.14,2.80689425495648,3.5007493728442496,52,0.52,Assumed random residual covariance; not measured calibration
+100.0,0.0001,10000,CH3CN,1.0,9999,99.99,99.9442963002013,99.99974682224368,71,0.71,Assumed random residual covariance; not measured calibration
+20.0,0.0001,10000,CH3CN,1.0,9020,90.2,89.60051156505395,90.77595786706335,85,0.85,Assumed random residual covariance; not measured calibration

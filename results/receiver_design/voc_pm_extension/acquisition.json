@@ -1,0 +1,122 @@
+{
+  "acquired_utc": "2026-09-27T15:04:22.184618+00:00",
+  "source": "https://hitran.org",
+  "metadata": "https://www.hitran.org/docs/molec-meta/",
+  "window_ghz": [
+    0,
+    3000
+  ],
+  "records": [
+    {
+      "molecule": "CH3Cl",
+      "molecule_id": 24,
+      "isotopologue_id": 1,
+      "status": "acquired",
+      "lines": 6386,
+      "lines_60_400": 927,
+      "lines_220_330": 335,
+      "isotope_abundance": 0.7489369,
+      "isotope_mass_g_mol": 49.992328,
+      "raw_sha256": {
+        ".data": "0e153a60465265d9007bbdd1660ff7f2b3e34a0bb16e40404375e4eddbad6f91",
+        ".header": "8de776b097d8463cf5eb81c87d4fc3bc0c7066338a901919aa0c3bbaa97659dd"
+      }
+    },
+    {
+      "molecule": "CH3Cl",
+      "molecule_id": 24,
+      "isotopologue_id": 2,
+      "status": "acquired",
+      "lines": 6438,
+      "lines_60_400": 926,
+      "lines_220_330": 335,
+      "isotope_abundance": 0.2394912,
+      "isotope_mass_g_mol": 51.989379,
+      "raw_sha256": {
+        ".data": "3e8749f226f4325c394b83b5a0a3009c7d6f187dce7ac7fcd39b09044e33f984",
+        ".header": "28609ff6d8478e34c270027b1456edeb42fc5c39093ff16e8dbc73216cf0092e"
+      }
+    },
+    {
+      "molecule": "HCOOH",
+      "molecule_id": 32,
+      "isotopologue_id": 1,
+      "status": "acquired",
+      "lines": 6808,
+      "lines_60_400": 326,
+      "lines_220_330": 90,
+      "isotope_abundance": 0.9838977,
+      "isotope_mass_g_mol": 46.00548,
+      "raw_sha256": {
+        ".data": "d8b3f33e017ca7b825f8e8ee503300b2213ca7dd838ee3d413c6e56fd2138a24",
+        ".header": "209a9fc743bea089ef0e4ec448fef05019f851b4fb2f66514f66cc2cc7f27588"
+      }
+    },
+    {
+      "molecule": "HCOOH",
+      "molecule_id": 32,
+      "isotopologue_id": 2,
+      "status": "acquired",
+      "lines": 11632,
+      "lines_60_400": 791,
+      "lines_220_330": 311,
+      "isotope_abundance": 0.01105391,
+      "isotope_mass_g_mol": 47.008835,
+      "raw_sha256": {
+        ".data": "949c68d4001d7b93524d9e927c8c732f7f0e915c72fea6a9a9fb26a35c941d71",
+        ".header": "e765b2763176860d5c227a810210bee05a76795222528ebe9a367f584e72e092"
+      }
+    },
+    {
+      "molecule": "CH3Br",
+      "molecule_id": 40,
+      "isotopologue_id": 1,
+      "status": "failed",
+      "error": "Exception: Failed to retrieve data for given parameters."
+    },
+    {
+      "molecule": "CH3Br",
+      "molecule_id": 40,
+      "isotopologue_id": 2,
+      "status": "failed",
+      "error": "Exception: Failed to retrieve data for given parameters."
+    },
+    {
+      "molecule": "C2H4",
+      "molecule_id": 38,
+      "isotopologue_id": 1,
+      "status": "failed",
+      "error": "Exception: Failed to retrieve data for given parameters."
+    },
+    {
+      "molecule": "C2H4",
+      "molecule_id": 38,
+      "isotopologue_id": 2,
+      "status": "failed",
+      "error": "Exception: Failed to retrieve data for given parameters."
+    },
+    {
+      "molecule": "CH3F",
+      "molecule_id": 51,
+      "isotopologue_id": 1,
+      "status": "failed",
+      "error": "Exception: Failed to retrieve data for given parameters."
+    },
+    {
+      "molecule": "CH3F",
+      "molecule_id": 51,
+      "isotopologue_id": 2,
+      "status": "failed",
+      "error": "Exception: Failed to retrieve data for given parameters."
+    },
+    {
+      "molecule": "CH3I",
+      "molecule_id": 54,
+      "isotopologue_id": 1,
+      "status": "failed",
+      "error": "Exception: Failed to retrieve data for given parameters."
+    }
+  ],
+  "scope": "Organic gas candidates, not a regulatory VOC classification. No returned lines does not prove physical absence. No invented replacement spectra.",
+  "processed_sha256": "68fbbf4a0ace0a6e06a3a4df468d3248ae9777ba254e0a8c43a5492a8f97dbe6"
+}

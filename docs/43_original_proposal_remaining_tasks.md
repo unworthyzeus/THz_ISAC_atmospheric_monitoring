@@ -2,6 +2,8 @@
 
 Date: September 27, 2026. This audit compares the two page [original proposal](../I2R_proposal_THz_ISAC%20(1).pdf), the [September 23 task mapping](40_five_task_closure.md), and the [new payload sensing results](42_payload_recall.md). Updated after the [payload bounds, sensitivity and limit study](45_payload_bounds_results.md); its computational extensions of Tasks 4.1–4.3 are now implemented.
 
+**Receiver follow-up:** The [new implementation and findings](47_receiver_design_and_calibration.md) add a sequential frequency plan, exact spectra, raw moving coded OFDM controls, nonzero calibration Monte Carlo, inverse calibration requirements and a charged communication scheduling comparison. These address the computational design gaps below within a declared receiver model. RF power/noise capability, relative gain stability, wideband timing effects and independent physical validation remain open. PM remains a negative feasibility finding. No experimental calibration accuracy is claimed.
+
 ## What was checked and why
 
 The proposal has 11 numbered tasks. Its modeling and simulation requirements must be distinguished from successful pollutant retrieval and the further evidence needed for a validated instrument. The new payload method also needs extensions of analyses previously completed for pilots. Historical task entries 1.5, 3.3 and 4.4 are optional additions rather than original requirements.
@@ -33,8 +35,10 @@ Calibration recordings and independent gas/PM truth are needed to promote the fa
 ## Next steps
 
 1. Use the completed payload bound and sensitivity/floor evaluation for design decisions. M2M4 is already close to the full QPSK bound at the reference state, limiting gains available from estimator replacement alone.
-2. Select and evaluate a realizable band/resource design and moving path implementation: Tasks 2.1 and 2.2, plus the communication preservation objective.
+2. Use the evaluated sequential band/resource design and bounded moving receiver as the engineering baseline. Resolve its RF power/noise and relative gain requirements, fractional timing and wideband Doppler effects. Its passive sensing preserves decoded packets on the same hopping schedule, but retuning has a nonzero cost against a fixed band; zero architecture cost is not established.
 3. Resolve the joint sensing outcome: either obtain useful PM information under a justified design, or retain an explicit limitation/negative result for Tasks 3.1 and 3.2. Separate any benefit supplied by auxiliary sensors from information in the radio observation.
 4. Validate the selected configuration with independent calibration and concentration truth when suitable measurements become available.
 
 The original audit only changed the completion interpretation. This update incorporates new scientific code, physical integrations, response experiments and numerical verification, documented in the new results note. Historical experiment snapshots remain intact.
+
+The [20 s, 0.0001 dB extension](48_expanded_voc_pm_and_20s_calibration.md) adds two HITRAN VOCs to joint inference and evaluates PM1/fine/coarse size separation. Additional unknown gases reduce acetonitrile recall; the three-size inverse problem fails the numerical acceptance gate. These retained failures further qualify the frozen receiver design.

@@ -1,0 +1,9 @@
+{
+  "status": "built",
+  "pages": 10,
+  "output": "output/pdf/thz_isac_pollutant_sensing_ieee.pdf",
+  "sha256": "0811fe7503b8c7793c3a875365342ab624955c2b2491f719251aebf6c557dc41",
+  "unresolved_references": false,
+  "overfull_boxes": false,
+  "visual_review": "All rendered pages inspected"
+}

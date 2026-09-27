@@ -1,0 +1,37 @@
+{
+  "plan": {
+    "centers_ghz": [
+      228.0,
+      233.86666666666667,
+      239.73333333333332,
+      245.6,
+      251.46666666666667,
+      257.3333333333333,
+      263.2,
+      269.06666666666666,
+      274.93333333333334,
+      280.8,
+      286.6666666666667,
+      292.5333333333333,
+      298.4,
+      304.26666666666665,
+      310.1333333333333,
+      316.0
+    ],
+    "subcarriers_per_block": 16,
+    "spacing_hz": 1000000.0,
+    "cyclic_prefix_fraction": 0.0625,
+    "frame_symbols": 10000,
+    "pilot_symbols": 30,
+    "settling_s": 0.001
+  },
+  "rationale": "Fixed uniform coverage within one WR3.4 converter family; 16 sequential 16 MHz blocks. No simultaneous RF chains and no uncharged extra power or dwell.",
+  "source": "https://vadiodes.com/wp-content/uploads/2012/01/VDI-737_CC_Product_Manual.pdf",
+  "converter": "WR3.4CCU-M12 and WR3.4CCD-M12; 220-330 GHz; maximum IF 40 GHz; typical intrinsic conversion loss 12 dB.",
+  "power_dbm": 23.0,
+  "noise_figure_db": 6.0,
+  "settling_s_status": "Sensitivity assumption requiring measurement",
+  "rf_requirements": "Filtered single sideband with 1 GHz IF, synthesizer LO=(RF-1 GHz)/12, one active chain. Image rejection, amplification, antenna calibration, retuning and noise require characterization.",
+  "transmitter_gap": "At -11 dBm input P0.1dB and 12 dB intrinsic conversion loss, unamplified small-signal output is approximately -23 dBm before filters and waveform backoff. The 23 dBm reference requires at least 46 dB extra linear gain; no such flight hardware is demonstrated.",
+  "calibration": "0.001 dB correlated differential residual is a sensitivity case, not measured stability. Independent gain offset per hop is tested separately."
+}

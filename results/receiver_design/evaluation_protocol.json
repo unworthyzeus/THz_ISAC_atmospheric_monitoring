@@ -1,0 +1,21 @@
+{
+  "seed": 2026092901,
+  "draws": 10000,
+  "family_alpha": 0.01,
+  "family_size": 6,
+  "total_reference_and_sample_s": [
+    20.0,
+    100.0
+  ],
+  "differential_residual_std_db": [
+    0.0,
+    0.001,
+    0.01
+  ],
+  "correlation_length_ghz": 10.0,
+  "correction": "Common unknown gain offset and slope plus background and interfering gases; independent hop offsets also tested.",
+  "primary": "Fixed WR3.4 hopping architecture, nonzero 0.001 dB residual, 20 seconds total, standard atmosphere at 45 degrees.",
+  "inference": "Joint VOC and PM; absolute abundance remains dependent on reference truth.",
+  "systematic_bias": "Separate worst case epsilon times L1 operator norm. Robust threshold adds that bias to the null threshold and charges it twice in the 95% power limit.",
+  "scope": "Conditional simulated performance, no measurement, compliance or hardware certification."
+}

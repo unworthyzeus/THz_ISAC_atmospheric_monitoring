@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "generated_frames": 192,
+  "raw_complex_samples": 32640000,
+  "coded_information_bits": 33914880,
+  "correct_packets": 66240,
+  "packets": 66240,
+  "information_bit_errors": 0,
+  "undetected_crc_errors": 0,
+  "observed_correct_payload_bps": 16624941.17647059,
+  "receiver_frame_buffer_latency_ms": 10.625,
+  "measured_incremental_sensing_packet_loss": 0,
+  "scheduling_loss_vs_fixed_band_pct": 1.381509032943673,
+  "scheduling_comparison": "Same code, QPSK, 16 MHz and 23 dBm. Resource loss from retuning and whole frames; not Shannon capacity or measured hardware throughput.",
+  "maximum_residual_cfo_rms_hz": 1136.495140740499,
+  "maximum_absolute_doppler_hz": 5022890.214052427,
+  "cases": [
+    {
+      "case": "blank",
+      "truth_ug_m3": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "estimated_ug_m3": [
+        -6.572709571918095,
+        8.728839317377286,
+        0.16210183041522397,
+        12891944092.2614,
+        -15874418555.166565
+      ],
+      "standardized_error": [
+        -0.8301520095077674,
+        0.7097198576901212,
+        0.1208853490950198,
+        0.7990481386360266,
+        -0.7990632488149545
+      ],
+      "gas_detections": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "case": "CH3CN_local_limit",
+      "truth_ug_m3": [
+        0.0,
+        0.0,
+        6.1416457477197,
+        0.0,
+        0.0
+      ],
+      "estimated_ug_m3": [
+        -9.416816508600547,
+        -20.52409773401908,
+        4.684602417386818,
+        11462981131.412094,
+        -14116437609.185667
+      ],
+      "standardized_error": [
+        -1.1893708465653894,
+        -1.6687625001880373,
+        -1.0865712693230558,
+        0.7104804109236599,
+        -0.7105725767838148
+      ],
+      "gas_detections": [
+        false,
+        false,
+        true
+      ]
+    }
+  ],
+  "failed_acquisition_control": {
+    "coarse_error_hz": 700000.0,
+    "post_correction_cfo_rms_hz": 999955.4654438153,
+    "packets": 345,
+    "crc_pass": 0,
+    "correct_packets": 0,
+    "undetected_errors": 0,
+    "information_bit_errors": 88033,
+    "information_bits": 176640
+  },
+  "calibration_residual_std_db": 0.001,
+  "hardware_validated": false
+}

@@ -1,0 +1,25 @@
+{
+  "checked_date": "2026-09-27",
+  "purpose": "Look for independent measured channels, repeated receiver calibration and paired concentration truth for the receiver extension.",
+  "records": [
+    {
+      "url": "https://zenodo.org/records/15474823",
+      "title": "Sub-THz VNA-based Channel Sounder Structure and Channel Measurements at 100 and 300 GHz",
+      "observed_metadata": "Search indexed two frequency response MAT files and a readme. The direct record request returned HTTP 429.",
+      "decision": "Candidate propagation data only; raw files not acquired or inspected. Do not infer independent gas truth or calibration repeatability from the title."
+    },
+    {
+      "url": "https://radio.eng.niigata-u.ac.jp/datasets/sub-thz/",
+      "title": "Sub-THz Channel Sounding Dataset",
+      "observed_metadata": "Primary laboratory page describes 154/300 GHz directional channel transfer measurements, 4/8 GHz bandwidth and back-to-back calibration. Download requires registration. The displayed schema describes propagation scenarios rather than paired pollutant truth or repeated residual calibration campaigns.",
+      "decision": "Useful future propagation stress source. Not acquired; no registration or communication submitted. The described calibration procedure does not establish the 0.0001 dB residual required here."
+    },
+    {
+      "url": "https://pubs.acs.org/doi/10.1021/acssensors.5c01953",
+      "title": "Ultrafast 10 ppb Acetonitrile THz Gas Sensor Based on Flexible Low-Loss Ag/PP Hollow Waveguide",
+      "observed_metadata": "Search identified the article title; the publisher request returned HTTP 403.",
+      "decision": "Unreviewed lead. No quantitative performance or measurement data from this paper are used in the new evaluation."
+    }
+  ],
+  "result": "No suitable independent calibration and paired concentration dataset was acquired in this additional bounded search. This is not a claim that none exists."
+}

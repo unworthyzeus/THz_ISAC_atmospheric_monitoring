@@ -1,0 +1,15 @@
+{
+  "seed": 2026092902,
+  "frames_per_hop_per_pass": 3,
+  "waveform": "IFFT, cyclic prefix, AWGN, exact orbital carrier Doppler, integer timing acquisition, CP CFO estimate, existing pilot phase tracking, Hamming (7,4) and CRC16.",
+  "acquisition": "Initial predicted Doppler error 100 kHz; timing unknown within nine samples. Failure control at 700 kHz exceeds CP unambiguous range.",
+  "time": "Three 10.625 ms bursts per hop spread over a 10 second pass; matched independent reference pass. Only generated bursts count as sensing data. Waiting between orbital passes excluded.",
+  "gain": "Known geometric range normalization; atmospheric gain frozen within each 10.625 ms burst and recomputed between bursts. Sample and reference have matched weather. Differential calibration is uncorrected 0.001 dB random correlated residual, held fixed across bursts.",
+  "alternative_ch3cn_ug_m3": 6.1416457477197,
+  "simulated_transmission_s": 1.02,
+  "statistical_scope": "Two raw trajectory controls, not an empirical recall estimate; 10000-draw nonzero calibration assessment is separate.",
+  "limitations": [
+    "Narrowband Doppler per 16 MHz hop; wideband time dilation, fractional timing, sample clock error, multipath and measured phase noise are not simulated.",
+    "Hardware real time execution and full acquisition are not demonstrated. CP and pilot processing buffers the entire 10.625 ms frame."
+  ]
+}

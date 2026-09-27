@@ -1,0 +1,15 @@
+{
+  "status": "awaiting real measurements",
+  "empty_template": true,
+  "requirements": [
+    "Record repeated independent full sweeps at the intended power, timing, frequencies and temperature range.",
+    "error_db must be measured differential sample/reference error after a known physical calibration standard, including gain normalization.",
+    "Do not derive calibration truth from the gas retrieval being assessed.",
+    "Fit correction/covariance on separate campaigns, freeze it, then evaluate subsequent campaigns.",
+    "Check persistent signed drift separately from zero-mean covariance; a random standard deviation is not a systematic bound.",
+    "Verify covariance and detection performance on separate transmissions with independent concentration truth."
+  ],
+  "existing_analysis_command": "python scripts/characterize_receiver_calibration.py INPUT.csv --output results/receiver_measured_calibration --degree 1",
+  "existing_analysis_scope": "Descriptive repeated-sweep analysis only; it does not itself certify detection power or independence.",
+  "failure_policy": "Missing measurements remain missing. No fabricated observations or positive field claim."
+}

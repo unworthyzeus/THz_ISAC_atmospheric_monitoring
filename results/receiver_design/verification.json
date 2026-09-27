@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "checks": 344,
+  "failures": [],
+  "scope": "Numerical replay and conditional receiver controls. Calibration covariance and hardware performance are not measured."
+}

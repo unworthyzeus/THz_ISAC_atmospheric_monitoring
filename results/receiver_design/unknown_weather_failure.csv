@@ -1,0 +1,13 @@
+profile,target,apparent_concentration_bias_ug_m3,bias_over_nominal_sd,scope
+igra_01,H2CO,-2.2560100985926965,-0.41835273718677196,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_01,CH3OH,1.4715951716252391,0.16776298079465776,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_01,CH3CN,-0.10818772943181187,-0.11143008786616895,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_04,H2CO,-4.387428615209785,-0.8136013094664629,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_04,CH3OH,2.869023683955689,0.3270709054170843,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_04,CH3CN,-0.3288815158329115,-0.33873801030197304,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_07,H2CO,24.644986740080554,4.570146945297799,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_07,CH3OH,-16.34985029207388,-1.863895501583798,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_07,CH3CN,1.525293463349655,1.571006116270045,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_09,H2CO,12.747173135129799,2.363825754061055,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_09,CH3OH,-8.432666631405766,-0.961330478252307,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.
+igra_09,CH3CN,0.7507721425392084,0.7732725906161467,Background-only mismatch control; changed thermal noise and gain would require a full unmatched receiver likelihood.

@@ -7,6 +7,8 @@
 *.npz binary
 
 # Preserve the exact bytes bound by research provenance hashes.
+.gitattributes -text
+pytest.ini -text
 results/review/** -text
 results/repair_correlated/** -text
 results/resolution_noise_requirements/** -text
@@ -29,12 +31,20 @@ results/no2_intervention_audit/** -text
 results/no2_three_routes/** -text
 results/payload_recall/** -text
 results/payload_bounds/** -text
+results/receiver_design/** -text
 src/thz_isac/*.py -text
 scripts/*payload*.py -text
 scripts/build_current_paper.py -text
+scripts/*receiver*.py -text
 tests/test_payload*.py -text
+tests/test_hopping_receiver.py -text
 docs/4[2-6]*.md -text
+docs/47*.md -text
+docs/48*.md -text
 paper/payload*.tex -text
+paper/receiver_design.tex -text
+paper/receiver_voc_pm.tex -text
+paper/main.tex -text
 paper/current_study.tex -text
 paper/README.md -text
 README.md -text

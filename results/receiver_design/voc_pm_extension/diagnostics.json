@@ -1,0 +1,170 @@
+[
+  {
+    "mode": "original",
+    "total_s": 20.0,
+    "residual_std_db": 0.0001,
+    "status": "local estimator computed",
+    "condition": 367.81904429418773,
+    "scaled_identity_error": 4.390572598700975e-07
+  },
+  {
+    "mode": "expanded",
+    "total_s": 20.0,
+    "residual_std_db": 0.0001,
+    "status": "local estimator computed",
+    "condition": 677.4818881852196,
+    "scaled_identity_error": 2.7326821541923075e-07
+  },
+  {
+    "mode": "three_size_bins",
+    "total_s": 20.0,
+    "residual_std_db": 0.0001,
+    "status": "rejected: unstable size separation",
+    "condition": 97554633.51588821,
+    "scaled_identity_error": 0.5080854702933424
+  },
+  {
+    "mode": "PM oracle all other parameters known",
+    "total_s": 20.0,
+    "residual_std_db": 0.0001,
+    "target": "PM2.5",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 905.4478742797793
+  },
+  {
+    "mode": "PM oracle with nuisance",
+    "total_s": 20.0,
+    "residual_std_db": 0.0001,
+    "target": "PM2.5",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 13535633905.929537
+  },
+  {
+    "mode": "PM oracle all other parameters known",
+    "total_s": 20.0,
+    "residual_std_db": 0.0001,
+    "target": "PMcoarse",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 1111.0750987644612
+  },
+  {
+    "mode": "PM oracle with nuisance",
+    "total_s": 20.0,
+    "residual_std_db": 0.0001,
+    "target": "PMcoarse",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 472834851.83836216
+  },
+  {
+    "mode": "original",
+    "total_s": 20.0,
+    "residual_std_db": 0.001,
+    "status": "local estimator computed",
+    "condition": 346.4665536708695,
+    "scaled_identity_error": 2.980232238769531e-07
+  },
+  {
+    "mode": "expanded",
+    "total_s": 20.0,
+    "residual_std_db": 0.001,
+    "status": "local estimator computed",
+    "condition": 558.7564610936489,
+    "scaled_identity_error": 3.9824894820833575e-07
+  },
+  {
+    "mode": "three_size_bins",
+    "total_s": 20.0,
+    "residual_std_db": 0.001,
+    "status": "rejected: unstable size separation",
+    "condition": 36741973.15410516,
+    "scaled_identity_error": 0.32076365663490586
+  },
+  {
+    "mode": "PM oracle all other parameters known",
+    "total_s": 20.0,
+    "residual_std_db": 0.001,
+    "target": "PM2.5",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 5909.547512137735
+  },
+  {
+    "mode": "PM oracle with nuisance",
+    "total_s": 20.0,
+    "residual_std_db": 0.001,
+    "target": "PM2.5",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 56538796716.399124
+  },
+  {
+    "mode": "PM oracle all other parameters known",
+    "total_s": 20.0,
+    "residual_std_db": 0.001,
+    "target": "PMcoarse",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 7251.487964971093
+  },
+  {
+    "mode": "PM oracle with nuisance",
+    "total_s": 20.0,
+    "residual_std_db": 0.001,
+    "target": "PMcoarse",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 1970701649.390697
+  },
+  {
+    "mode": "original",
+    "total_s": 100.0,
+    "residual_std_db": 0.0001,
+    "status": "local estimator computed",
+    "condition": 339.3972947672206,
+    "scaled_identity_error": 2.1941913934460558e-07
+  },
+  {
+    "mode": "expanded",
+    "total_s": 100.0,
+    "residual_std_db": 0.0001,
+    "status": "local estimator computed",
+    "condition": 586.6285368552642,
+    "scaled_identity_error": 2.7326821541923075e-07
+  },
+  {
+    "mode": "three_size_bins",
+    "total_s": 100.0,
+    "residual_std_db": 0.0001,
+    "status": "rejected: unstable size separation",
+    "condition": 110591792.83993581,
+    "scaled_identity_error": 0.3278635318920235
+  },
+  {
+    "mode": "PM oracle all other parameters known",
+    "total_s": 100.0,
+    "residual_std_db": 0.0001,
+    "target": "PM2.5",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 681.2320876787655
+  },
+  {
+    "mode": "PM oracle with nuisance",
+    "total_s": 100.0,
+    "residual_std_db": 0.0001,
+    "target": "PM2.5",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 8135613266.818764
+  },
+  {
+    "mode": "PM oracle all other parameters known",
+    "total_s": 100.0,
+    "residual_std_db": 0.0001,
+    "target": "PMcoarse",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 835.9341154085466
+  },
+  {
+    "mode": "PM oracle with nuisance",
+    "total_s": 100.0,
+    "residual_std_db": 0.0001,
+    "target": "PMcoarse",
+    "status": "optimistic one parameter bound",
+    "local_lod95_ug_m3": 284031325.20608115
+  }
+]

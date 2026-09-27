@@ -1,0 +1,64 @@
+[
+  {
+    "case": "hopping_design_requirement",
+    "status": "evaluated",
+    "tx_power_dbm": 23.0,
+    "noise_figure_db": 6.0,
+    "local_lod95_ug_m3": [
+      24.698406674087522,
+      40.17563344229686,
+      4.446784119104592,
+      9474731863010.742,
+      330672551878.38245,
+      9144065436890.678
+    ],
+    "sensing_tones": 256,
+    "target_condition": 346.4665536708695
+  },
+  {
+    "case": "hopping_independent_unknown_gains",
+    "status": "evaluated",
+    "tx_power_dbm": 23.0,
+    "noise_figure_db": 6.0,
+    "local_lod95_ug_m3": [
+      4207.2957742521885,
+      11017.13858307986,
+      548.7685439625942,
+      1454696943416044.5,
+      50910873767728.01,
+      1403788662912857.8
+    ],
+    "sensing_tones": 256,
+    "target_condition": 238.77538108242646
+  },
+  {
+    "case": "hopping_receiver_noise_stress",
+    "status": "evaluated",
+    "tx_power_dbm": 23.0,
+    "noise_figure_db": 17.0,
+    "local_lod95_ug_m3": [
+      42.63854644311369,
+      54.316923545925086,
+      5.926023654926327,
+      12264586217674.672,
+      429046916778.5034,
+      11835580985128.77
+    ],
+    "sensing_tones": 240,
+    "target_condition": 247.20479622748977
+  },
+  {
+    "case": "unamplified_converter_before_backoff",
+    "status": "rejected",
+    "reason": "Fewer than 20 tones at 5 dB",
+    "tx_power_dbm": -23.0,
+    "noise_figure_db": 17.0
+  },
+  {
+    "case": "contiguous_exact_spectrum",
+    "status": "rejected",
+    "reason": "Target is unidentifiable after nuisance elimination",
+    "tx_power_dbm": 23.0,
+    "noise_figure_db": 6.0
+  }
+]
