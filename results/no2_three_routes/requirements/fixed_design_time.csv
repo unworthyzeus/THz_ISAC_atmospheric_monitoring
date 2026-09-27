@@ -1,0 +1,16 @@
+case,status,bias,sufficient_acquisition_s,energy_j,achieved_rmse
+coarse_equal_box,fixed_operator_bias_at_least_one,2.530908582726491,,,
+coarse_dwell_box,fixed_operator_bias_at_least_one,2.0857135725770215,,,
+fine_equal_box,fixed_operator_bias_at_least_one,2.536977773070647,,,
+fine_dwell_box,fixed_operator_bias_at_least_one,1.9282514321590052,,,
+coarse_equal_polynomial,conditional_fixed_design_sufficient,0.572517295864717,750.748,0.5962847305863545,0.9999996420361624
+coarse_equal_poly_residual,conditional_fixed_design_sufficient,0.7699260672598309,1255.44,0.9971758360258208,0.9999998472316697
+fine_dwell_polynomial,conditional_fixed_design_sufficient,0.46199309185376386,181.798,0.14407128357311655,0.9999979091318459
+fine_dwell_poly_residual,conditional_fixed_design_sufficient,0.6524099012843421,248.809,0.19730001291022534,0.9999989602115821
+coarse_equal_diff_stable,fixed_operator_bias_at_least_one,1.1411550386285398,,,
+coarse_equal_diff_drift,fixed_operator_bias_at_least_one,1.3355193838139623,,,
+coarse_equal_diff_independent,fixed_operator_bias_at_least_one,5.062075279903519,,,
+fine_dwell_diff_stable,conditional_fixed_design_sufficient,0.9239740673632184,3902.121,3.098892883923971,0.9999999983290169
+fine_dwell_diff_drift,fixed_operator_bias_at_least_one,1.1143967054146806,,,
+fine_dwell_diff_independent,fixed_operator_bias_at_least_one,3.856501313672159,,,
+fine_dwell_diff_poly_residual,conditional_fixed_design_sufficient,0.9430168506434325,5154.847,4.093968516097181,0.9999999976577819

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "maximum_sd_relative_change_20_vs40": 0.0004663019366312193,
+  "convergence_threshold": 0.01,
+  "orbit": "Circular 550 km overhead pass, stationary Earth, mu=3.986004418e14 m3/s2",
+  "reference": "Separate matched reference pass, same atmosphere and normalized instantaneous gain. Reference transmission time and energy charged; orbital waiting time excluded.",
+  "scope": "Time dependent local information with blockwise nuisance projection; continuum approximated by converged midpoint blocks. Not raw moving waveform or a demonstration of realizable gain tracking.",
+  "limitations": "Constant pollutant column profile and weather; no unknown normalization errors, Earth rotation, orbit uncertainty, Doppler or synchronization implementation."
+}

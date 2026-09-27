@@ -1,0 +1,28 @@
+{
+  "design": "All 54 archived nonlinear bias vectors, from 27 atmospheric states and two training concentration quantiles; previously inspected design evidence.",
+  "primary_pilots": 30000,
+  "pilot_grid": [
+    30000,
+    300000,
+    3000000,
+    10000000
+  ],
+  "residual_grid_db": [
+    0.0,
+    0.001,
+    0.01
+  ],
+  "methods": [
+    "nominal",
+    "atmospheric_tangent",
+    "bounded_bias"
+  ],
+  "heldout_seed": 909510,
+  "heldout_states": 64,
+  "heldout": "Independent uniform draws over T offset [-5,5] K, pressure offset [-2000,2000] Pa and gas height [1200,1800] m. Concentrations are complete real training records selected without outcome filtering.",
+  "selection": "No heldout outcome selects the bias envelope, method, pilots or covariance. Holdout is modeled sensitivity, not measured radio validation.",
+  "target": "Per-gas RMSE normalized by [4000,100,40,25] ug/m3 at most one.",
+  "resource": "1 microsecond per pilot; 23 dBm total transmitted power; ideal simultaneous probes. Retuning/coherence overhead excluded.",
+  "assumptions": "Known diagonal coherent covariance; residual is independent random noise. No measured systematic-error calibration or physical uncertainty coverage is claimed.",
+  "numerical": "Whitened null-space QP/SOCP with CLARABEL. Bias-response relative rank cutoff 1e-10. Achieved risks and identities are independently recomputed; no formal interval optimality certificate."
+}

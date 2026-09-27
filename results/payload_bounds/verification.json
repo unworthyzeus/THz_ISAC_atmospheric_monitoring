@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checks": 1552,
+  "physical_cases": 30,
+  "eligible_nominal_cases": 27,
+  "power_controls": 81,
+  "maximum_family_false_alarm_pct": 0.97,
+  "family_test": "Exact binomial upper test against 1% with Bonferroni over 30 physical cases",
+  "interpretation": "Conditional numerical verification, not atmospheric field validation"
+}

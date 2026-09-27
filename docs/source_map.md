@@ -37,3 +37,23 @@ The earlier notes below are retained as historical records. Their original concl
 # Current claim ledger
 
 The [September revision](revision_review.md) separates the implementation, new empirical results, and remaining inference. Historical primary-source provenance is retained in [sources](../sources/README.md).
+
+## Targeted follow-up, September 8, 2026
+
+**RESULT / SELF-DERIVED / INFERENCE.** A bounded atmospheric bias estimator improves CO and SO2 at the same 30,000 pilots; O3 and NO2 still fail the target at this budget. The [current evidence ledger](targeted_followup.md) separately labels original results, mathematical derivations, interpretation and unresolved requirements, with direct artifact links. Historical source statements above retain their original scope.
+
+## Continuation evidence, September 8, 2026
+
+**RESULT / SELF-DERIVED / INFERENCE:** The current evidence and its limits are separated in the [continuation note](continuation_0908.md) and [manuscript section](../paper/continuation_results.tex). Earlier entries retain their original scope.
+
+## NO2 intervention prioritization
+
+**RESULT / SELF-DERIVED / INFERENCE:** Six information-oracle ablations, a numerical calibration crossing and proposed differential/spectral interventions are separated in [NO₂ intervention options](no2_intervention_options.md). [Recorded ablations](../results/no2_intervention_audit/oracle_floors.csv) and [independent rational dual checks](../results/no2_intervention_audit/independent_dual_check.json) retain their original scope. The subsequently authorized interventions are now evaluated below.
+
+## NO2 three-route evaluation, September 8, 2026
+
+**SOURCE STATEMENT:** The I2R proposal specifies modeled spectroscopy and inversion tasks, with no repeated receiver calibration dataset. [Proposal](../references/proposals/I2R_proposal_THz_ISAC.pdf), physical pp. 1–2, Tasks 1–4. Laboratory THz reference-repeatability and frequency-tuning limitations motivate characterization, without specifying this receiver's drift. [NIST primary PDF](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=32980), physical p. 2, Eqs. 4–6; pp. 5–6, Section 5.A; p. 8, tuning-repeatability discussion.
+
+**RESULT / SELF-DERIVED:** A direct 424-probe HITRAN calculation, joint dwell design, temporal/spectral covariance controls, 30 design comparisons, 1952 stress outcomes and two exact represented-LP floor certificates are documented in [NO2 three routes](no2_three_routes.md). [Independent arithmetic and dual checks](../results/no2_three_routes/verification/checks.json) pass. At 100 s, the fine-grid box design gives 2.340 normalized RMSE; the stronger mixed polynomial assumption gives 1.363.
+
+**INFERENCE / UNRESOLVED:** Narrowing the calibration set is an unmeasured assumption. Actual-weather stress leaves the nominal SNR regime in 11 of 24 pairs. The implemented calibration interface cannot establish drift without receiver records; the constructive 248.809 s mixed-model result is conditional. [Full result and boundary](no2_three_routes.md), [current manuscript section](../paper/no2_three_routes.tex).

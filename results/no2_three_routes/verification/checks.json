@@ -1,0 +1,12 @@
+{
+  "design_rows": 30,
+  "stress_rows": 1952,
+  "pairs": 24,
+  "max_design_absolute_error": 2.220446049250313e-15,
+  "max_identity_error": 4.0712279751334277e-10,
+  "max_budget_error": 4.263256414560601e-14,
+  "max_stress_absolute_error": 2.842170943040401e-14,
+  "minimum_rounded_minus_continuous": 2.096216151770136e-07,
+  "maximum_rounded_minus_continuous": 0.00033786717420980494,
+  "exact_rational_floor_certificates": 2
+}

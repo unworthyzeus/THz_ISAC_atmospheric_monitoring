@@ -1,0 +1,11 @@
+{
+  "numerical_noise_free_unit_crossing_bracket_db": [
+    4.0177383422851566e-05,
+    4.017746925354004e-05
+  ],
+  "bracket_boundary": "The low endpoint uses a floating-point feasible primal; this is a numerical design requirement, not an empirically attainable receiver specification.",
+  "strongest_existing_NO2_probe_GHz": 349.3333333333333,
+  "strongest_existing_NO2_sensitivity_db_per_reference": 0.00018781448655654924,
+  "calibration_only_oracle_formula": 0.5324402916592428,
+  "frequency_selection_boundary": "Discarding existing observations cannot improve an optimal noise-free lower bound: any subset estimator is an admissible full-grid estimator with zero weights elsewhere. New frequencies or observation types change the model; dwell allocation affects noise."
+}

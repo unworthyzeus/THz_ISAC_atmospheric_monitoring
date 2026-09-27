@@ -1,0 +1,5 @@
+{
+  "design": "Two rounded fixed-variance solves returned optimal_inaccurate and were rejected.",
+  "evaluation": "An evaluation was launched before inspecting design exit status. It was stopped before any error outcomes were computed or inspected. Its frozen input metadata and progress log are retained. All final operators must pass before restarting evaluation.",
+  "initial_test": "An initial pytest collection failed because PYTHONPATH was absent; the corrected environment passed all eight analytic controls."
+}

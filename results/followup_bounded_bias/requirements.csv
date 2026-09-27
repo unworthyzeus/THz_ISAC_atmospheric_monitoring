@@ -1,0 +1,13 @@
+gas,residual_db,status,pilots,duration_s,energy_j
+CO,0.0,finite_design_envelope,314.0,0.000314,6.265123669002279e-05
+O3,0.0,finite_design_envelope,58973.0,0.058973,0.011766660450065969
+SO2,0.0,finite_design_envelope,12802.0,0.012802,0.002554334815623158
+NO2,0.0,finite_design_envelope,5909703.0,5.9097029999999995,1.1791407688558526
+CO,0.001,finite_design_envelope,314.0,0.000314,6.265123669002279e-05
+O3,0.001,finite_design_envelope,67768.0,0.067768,0.013521493656081096
+SO2,0.001,finite_design_envelope,13135.0,0.013134999999999999,0.002620777050711622
+NO2,0.001,not_reached_by_1e9_pilots,,,
+CO,0.01,finite_design_envelope,331.0,0.00033099999999999997,6.604318262546987e-05
+O3,0.01,not_reached_by_1e9_pilots,,,
+SO2,0.01,not_reached_by_1e9_pilots,,,
+NO2,0.01,not_reached_by_1e9_pilots,,,

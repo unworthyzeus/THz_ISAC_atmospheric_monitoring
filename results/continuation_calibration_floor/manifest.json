@@ -1,0 +1,48 @@
+{
+  "protocol": {
+    "epsilon_db": [
+      1e-05,
+      0.0001,
+      0.001
+    ],
+    "bands": [
+      "full_202",
+      "260_400_GHz"
+    ],
+    "objective": "Noise-free worst absolute bias over the same finite atmospheric hull plus arbitrary per-probe persistent calibration error.",
+    "interpretation": "A lower bound above one precludes the stated normalized RMSE target for every unbiased linear estimator satisfying the nuisance equalities, regardless of pilot count or thermal power.",
+    "certificate": "Exact rational dual feasibility for normalized stored binary coefficients. It does not certify physical spectroscopy, an empirical calibration envelope or nonlinear/prior-assisted estimators."
+  },
+  "wall_seconds": 2.7214027000009082,
+  "sampled_peak_rss_bytes": 190976000,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "torch": "2.4.1",
+    "scikit-learn": "1.8.0",
+    "sympy": "1.14.0",
+    "cvxpy": "1.8.2"
+  },
+  "command": [
+    "scripts/continue_calibration_floor.py"
+  ],
+  "failures": [],
+  "code_sha256": "46096e1e365ce520e41f5932515f74533cd9b59201dc1b77596fd26da6d37d99",
+  "outputs": {
+    "certificates.json": "abe4e651b5ca223ffd3febd043f2f0f051775ba31a713fbbaf2f332a68fe73a6",
+    "floors.csv": "84686b733565fe3a462dd8a485ddd84e81d2ba6bdbd9830db10ce426a9ccd17b",
+    "operators.npz": "0bdad2a1b927854d866f15256efff0a3785e6ed80196ca84c85d96645ab6f19f",
+    "protocol.json": "fbc1b5278e83628382c1c5b7013b24b26f579764f8298d4d5f3d10cafb105a09"
+  },
+  "input_hashes": {
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\followup_bounded_bias\\inputs.npz": "5895f44a0c80974b32cc1b0e92f34c5f372d77efdd1b91f8817b7ae0f39e98f2",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\closure_robust_atmosphere\\inputs.npz": "f1dc30ce3be0ddec32b9eef454010c6cb7a7e96fb05246701620fd45801b08d2"
+  },
+  "certificate_code_sha256": "b64d51709d32d220f1c1e3ac589a948092e1b44e3aef31f951324e7cb68a6b77"
+}

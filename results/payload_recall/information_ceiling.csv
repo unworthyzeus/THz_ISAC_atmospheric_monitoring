@@ -1,0 +1,13 @@
+band,method,target,all_other_parameters_known_sd_ug_m3,oracle_local_recall_pct,scope
+multiband_reference,pilots,H2CO,6.555204131728818,0.26958557586573906,Single target local Gaussian information ceiling; unachievable knowledge oracle
+multiband_reference,pilots,CH3OH,12.988797390688045,0.213019136302939,Single target local Gaussian information ceiling; unachievable knowledge oracle
+multiband_reference,pilots,CH3CN,0.9553833476780803,2.9479482123214664,Single target local Gaussian information ceiling; unachievable knowledge oracle
+multiband_reference,payload_m2m4,H2CO,0.3656949386748323,42.04744750364111,Single target local Gaussian information ceiling; unachievable knowledge oracle
+multiband_reference,payload_m2m4,CH3OH,0.7219675939635152,6.055926810923282,Single target local Gaussian information ceiling; unachievable knowledge oracle
+multiband_reference,payload_m2m4,CH3CN,0.053288912356585394,100.0,Single target local Gaussian information ceiling; unachievable knowledge oracle
+eband_73p5GHz,pilots,H2CO,127.06545312526728,0.17094322449400848,Single target local Gaussian information ceiling; unachievable knowledge oracle
+eband_73p5GHz,pilots,CH3OH,418.9669042043907,0.1679532640378642,Single target local Gaussian information ceiling; unachievable knowledge oracle
+eband_73p5GHz,pilots,CH3CN,25.054977705157356,0.18940586266562745,Single target local Gaussian information ceiling; unachievable knowledge oracle
+eband_73p5GHz,payload_m2m4,H2CO,7.290098989803767,0.25707897663737117,Single target local Gaussian information ceiling; unachievable knowledge oracle
+eband_73p5GHz,payload_m2m4,CH3OH,24.037137058781752,0.19042820949785388,Single target local Gaussian information ceiling; unachievable knowledge oracle
+eband_73p5GHz,payload_m2m4,CH3CN,1.4374674981724174,1.256067491018591,Single target local Gaussian information ceiling; unachievable knowledge oracle

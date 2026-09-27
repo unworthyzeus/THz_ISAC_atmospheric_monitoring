@@ -1,0 +1,71 @@
+{
+  "protocol": {
+    "design": "All 54 archived nonlinear bias vectors, from 27 atmospheric states and two training concentration quantiles; previously inspected design evidence.",
+    "primary_pilots": 30000,
+    "pilot_grid": [
+      30000,
+      300000,
+      3000000,
+      10000000
+    ],
+    "residual_grid_db": [
+      0.0,
+      0.001,
+      0.01
+    ],
+    "methods": [
+      "nominal",
+      "atmospheric_tangent",
+      "bounded_bias"
+    ],
+    "heldout_seed": 909510,
+    "heldout_states": 64,
+    "heldout": "Independent uniform draws over T offset [-5,5] K, pressure offset [-2000,2000] Pa and gas height [1200,1800] m. Concentrations are complete real training records selected without outcome filtering.",
+    "selection": "No heldout outcome selects the bias envelope, method, pilots or covariance. Holdout is modeled sensitivity, not measured radio validation.",
+    "target": "Per-gas RMSE normalized by [4000,100,40,25] ug/m3 at most one.",
+    "resource": "1 microsecond per pilot; 23 dBm total transmitted power; ideal simultaneous probes. Retuning/coherence overhead excluded.",
+    "assumptions": "Known diagonal coherent covariance; residual is independent random noise. No measured systematic-error calibration or physical uncertainty coverage is claimed.",
+    "numerical": "Whitened null-space QP/SOCP with CLARABEL. Bias-response relative rank cutoff 1e-10. Achieved risks and identities are independently recomputed; no formal interval optimality certificate."
+  },
+  "wall_seconds": 85.9497467000001,
+  "sampled_peak_rss_bytes": 450576384,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "torch": "2.4.1",
+    "scikit-learn": "1.8.0",
+    "sympy": "1.14.0",
+    "cvxpy": "1.8.2"
+  },
+  "command": [
+    "scripts/followup_bounded_bias.py"
+  ],
+  "failures": [],
+  "code_sha256": "0746003fca56ad242b4b160b8510709aab67d68b6df2f19b8afe6613a6d03115",
+  "outputs": {
+    "design.csv": "02e98eddb2e486006fb4255a7a54591353bba4dbd26acd0b4fa724a12e4aa1e0",
+    "heldout.csv": "732b73a78ead85301d9cf878f9d90edf6f14dd08ead8cebc6f342caeff45c4f8",
+    "heldout_protocol.json": "83424f4800e5116fc6339760731ea20db2ca2d98a96af8c16c6f51ddc1d51132",
+    "heldout_summary.csv": "aaaffc3a53804fc3252dd1d84149b900a2346bad412c04f73d6f967b78d08002",
+    "identities.csv": "17885e4f54fca54aa644b342300e5f91cb50ce70fce69f24a21c6be0c8229abb",
+    "inputs.npz": "5895f44a0c80974b32cc1b0e92f34c5f372d77efdd1b91f8817b7ae0f39e98f2",
+    "necessary_resources.csv": "ad541464ccf0964dfed676a6ac7786617e7c08f2494fb63a90d940852c9fc16e",
+    "protocol.json": "ebb87195b92a81915b0c080610515d03ae0db78b58887d71bd1499768356451f",
+    "requirements.csv": "abc8ed69190faef78a3d613f42f86e2471f46b58f6c4abc0337e7f57462ee227"
+  },
+  "input_hashes": {
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\closure_robust_atmosphere\\inputs.npz": "f1dc30ce3be0ddec32b9eef454010c6cb7a7e96fb05246701620fd45801b08d2",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\data\\processed\\air_quality\\beijing_air_quality_clean.csv.gz": "39d6ceee9d66824bccf68553293a490199084299174496db51fac42bcbc543f0",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\data\\processed\\hitran\\hitran_60_400GHz_lines.csv": "7d063e4036da3d3e5b75128ff954bc9d80159e63d1831c4bbf75a99bfdaeded8"
+  },
+  "development_attempts": [
+    "An exploratory dense parameterization failed in CLARABEL before holdout generation. Orthogonal variance decomposition and bias-response rank reduction resolved the numerical failure."
+  ],
+  "estimator_code_sha256": "b7ab9a7d797b0503b493893c0e639bf37ac00893df2a8c2d25da377e36616a6e"
+}

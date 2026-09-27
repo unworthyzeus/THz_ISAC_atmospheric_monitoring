@@ -1,0 +1,18 @@
+{
+  "claim": "Zero residual calibration is an ideal benchmark; receiver calibration accuracy is not experimentally established",
+  "concentration_ug_m3": 1.0,
+  "target": "CH3CN",
+  "profile": "standard",
+  "elevation_deg": 45,
+  "reference_s": 10,
+  "sample_s": 10,
+  "receiver_noise_multiplier": 1,
+  "family_alpha": 0.01,
+  "family_size": 6,
+  "metric": "Predicted recall, not empirical field recall",
+  "residual": "Standard deviation of zero mean differential dB error; exponential frequency correlation length 10 GHz; not an arbitrary deterministic bias bound",
+  "sources": {
+    "sensitivity.csv": "b76e0cdffe53b692368f7584de60893d6ea4911cf6c7f7aec9dfefc3782f1190",
+    "protocol.json": "f2f6dc1a2456bf4bd6f4ea79ef41d5e6d395a9102befaa0a1646373445acb319"
+  }
+}

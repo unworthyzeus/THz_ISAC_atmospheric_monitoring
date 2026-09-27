@@ -1,0 +1,8 @@
+{
+  "scope": "Sufficient time for each frozen 100-second design, not the optimum across redesigned estimators or proof of physical stationarity.",
+  "target_rmse": 1.0,
+  "maximum_time_s": 86400.0,
+  "power_dbm": -1.0,
+  "retune_s": 0.001,
+  "floors": "Exact rational dual lower bounds only for the represented normalized coarse/fine atmospheric-hull plus 1e-4 dB box LP."
+}

@@ -1,0 +1,38 @@
+{
+  "protocol": {
+    "scope": "Local packaging after independent verification, full THz tests and visual review."
+  },
+  "wall_seconds": 0.10787969999728375,
+  "sampled_peak_rss_bytes": 43073536,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "torch": "2.4.1",
+    "scikit-learn": "1.8.0",
+    "sympy": "1.14.0",
+    "cvxpy": "1.8.2"
+  },
+  "command": [
+    "scripts/finalize_no2_three_routes.py"
+  ],
+  "failures": [],
+  "code_sha256": "55c3a36ff6340b648a6bbf95946c5cb20a267cb32c2181d0634acb9ea3d531b1",
+  "outputs": {
+    "before_manifest.json": "f8344240b37ac6607cc819bcd62e2f900fbc7d4b04c27890576bfbe7535dd8d9",
+    "final_artifacts.json": "0d429f81dffefd128b42a03c0f5e433e38bfaa2d0112bcb05f2d902c633c4530",
+    "pdf_alias.json": "0d5f6b7c07e53b4a579716096b14a9aed3a02423190fad66be28094a5f937104",
+    "physical_overlap_check.json": "836ca7bd22f92cdd00b582e998c4d654ce0a9fae0e5fe6a8bbdbfc485d04c8b6",
+    "protocol.json": "10adac7110f7c2b832fc5d6188f83d512d751cb466ec24c480783f6bd511a4b5",
+    "visual_review.json": "7fe04c86cb1ca4f582677d479671435795bc2e0de90c0cdf7fb887804a4bbdfb"
+  },
+  "verification_sha256": "8279c58e7bb397c512c1a20b4f91e0ac1595ab49b8ac1819519d59a07206b9ed",
+  "pdf_sha256": "20a0201ddad177d23c685e36e2ce8a99f14fb68d8d940ebe1592bf4905cc4207",
+  "tests_passed": 161,
+  "source_record": "I2R proposal inspected in full locally, physical pp. 1-2. NIST DOI 10.1117/12.784620, official full PDF read through web tool; no receiver recordings acquired."
+}

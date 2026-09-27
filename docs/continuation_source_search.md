@@ -1,0 +1,14 @@
+# Bounded external-evidence search, September 8, 2026
+
+The search looked for synchronized atmospheric pollutant truth and sub-THz attenuation, as well as source power and calibration information relevant to the modeled probes. Two bounded query waves covered primary NIST/PTB resources, publisher papers and public repositories. No matching paired field dataset was acquired. This is an account of the search outcome, not evidence that such data do not exist.
+
+| Evidence type | Inspected source and locator | Use and boundary |
+| --- | --- | --- |
+| Manufacturer specification | [VDI VNA extenders](https://vadiodes.com/vna-extenders-vnax/), specification table, WM-710 (WR2.8), 260–400 GHz row | **SOURCE STATEMENT:** Typical test-port power is −1 dBm and typical magnitude stability is ±0.5 dB. **INFERENCE:** Neither magnitude stability nor dynamic range supplies the random likelihood variance or a measured calibration envelope for this receiver. [Recorded extraction](../results/continuation_calibration/source_record.json). |
+| Dated specification sensitivity | [VDI March 17, 2022 summary PDF](https://vadiodes.com/wp-content/uploads/2012/01/VDI-956_VNA-X_Typical_Performance_2022.03.17.pdf), physical p. 1, WM710 260–400 GHz column | **SOURCE STATEMENT:** The dated column lists −10 dBm. Both power scenarios are retained instead of selecting the favorable source. [Scenario protocol](../results/continuation_calibration/protocol.json). |
+| Optical atmospheric measurement | [NIST laser-comb report](https://www.nist.gov/news-events/news/2021/06/nist-laser-comb-systems-now-measure-all-primary-greenhouse-gases-air), system description and wavelength paragraph | **SOURCE STATEMENT:** The reported instrument operates in the mid infrared around 4.5–5 micrometers. It is not a paired 60–400 GHz dataset. |
+| Higher-frequency metrology | [PTB THz radiometry group](https://www.ptb.de/cms/en/ptb/fachabteilungen/abt7/fb-73/ag-734.html), working-group frequency description | **SOURCE STATEMENT:** The described 700 GHz to 5 THz capability is outside the modeled 60–400 GHz probe grid. It was not used as a measured covariance input. |
+
+Direct manufacturer HTML download returned HTTP 403; the table was read through the web tool and the extracted fields are retained, without claiming an original HTML snapshot. The initial failed download and a separate frequency-unit preflight failure remain in the [run logs](../results/continuation_calibration_run2.log) and [manifest development attempts](../results/continuation_calibration/manifest.json).
+
+**RESULT:** The continuation therefore uses published spectroscopy, existing real concentration records, declared hardware power scenarios and explicit modeled errors. It does not add field retrieval evidence. [New result table](../results/continuation_calibration/summary.csv), [required measurement protocol](continuation_measurement_protocol.md).

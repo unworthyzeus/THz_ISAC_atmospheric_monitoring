@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "checks": 436,
+  "failures": [],
+  "detector_cases": 12,
+  "detection_rows": 72,
+  "limitation": "Numerical and simulated-response verification, not field validation"
+}

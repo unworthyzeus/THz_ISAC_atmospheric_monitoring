@@ -1,0 +1,13 @@
+{
+  "url": "https://vadiodes.com/vna-extenders-vnax/",
+  "access": "Official table read through the web tool on 2026-09-08. Direct requests download returned HTTP 403; that failed attempt is retained in continuation_calibration_run2.log. No original HTML snapshot is claimed.",
+  "extracted_fields": {
+    "band_GHz": [
+      260,
+      400
+    ],
+    "typical_power_dbm": -1.0,
+    "typical_magnitude_stability_db": 0.5
+  },
+  "dated_pdf": "https://vadiodes.com/wp-content/uploads/2012/01/VDI-956_VNA-X_Typical_Performance_2022.03.17.pdf"
+}

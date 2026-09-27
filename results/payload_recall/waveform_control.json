@@ -1,0 +1,13 @@
+{
+  "payload_bits": 5104640,
+  "bit_errors": 12483,
+  "identical_decisions": true,
+  "received_samples_unchanged": true,
+  "pilots": 30,
+  "payload_symbols": 9970,
+  "additional_transmitted_symbols": 0,
+  "invalid_moment_tones": 0,
+  "estimated_noise_median": 1.0029295834572345,
+  "attenuation_rmse_db": 0.022439445485874968,
+  "scope": "Uncoded QPSK, static per-tone magnitude, CP and FFT, ideal timing; no RF measurements or FEC"
+}

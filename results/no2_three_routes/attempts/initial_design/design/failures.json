@@ -1,0 +1,12 @@
+[
+  {
+    "key": "fine_dwell_polynomial|100s",
+    "error": "RuntimeError('Unaccepted optimization status: optimal_inaccurate')",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\scripts\\no2_three_routes.py\", line 139, in design\n    result=solve_target(d,n,b,modes,residual,variance=variance)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\src\\thz_isac\\no2_design.py\", line 97, in solve_target\n    raise RuntimeError(f'Unaccepted optimization status: {problem.status}')\nRuntimeError: Unaccepted optimization status: optimal_inaccurate\n"
+  },
+  {
+    "key": "fine_dwell_poly_residual|100s",
+    "error": "RuntimeError('Unaccepted optimization status: optimal_inaccurate')",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\scripts\\no2_three_routes.py\", line 139, in design\n    result=solve_target(d,n,b,modes,residual,variance=variance)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\src\\thz_isac\\no2_design.py\", line 97, in solve_target\n    raise RuntimeError(f'Unaccepted optimization status: {problem.status}')\nRuntimeError: Unaccepted optimization status: optimal_inaccurate\n"
+  }
+]

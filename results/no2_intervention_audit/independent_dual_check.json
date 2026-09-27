@@ -1,0 +1,11 @@
+{
+  "exact_feasible_duals": [
+    "current",
+    "atmospheric_discrepancy_known",
+    "other_gas_concentrations_known",
+    "linear_nuisance_coefficients_known",
+    "atmosphere_and_other_gases_known",
+    "all_non_NO2_quantities_known"
+  ],
+  "scope": "Stored normalized binary LP coefficients only."
+}

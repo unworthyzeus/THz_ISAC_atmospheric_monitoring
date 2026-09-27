@@ -1,0 +1,6 @@
+{
+  "covariance_relative_error": 1.4372503187587427e-11,
+  "no2_variance_ratio": 1.0000000000054,
+  "operator_relative_error": 1.809953055039096e-11,
+  "interpretation": "Invertible coordinates on the offset-free observation space do not create information. Dropping off-diagonal contrast covariance would be incorrect."
+}

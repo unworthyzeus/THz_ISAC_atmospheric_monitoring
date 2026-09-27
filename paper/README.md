@@ -1,8 +1,12 @@
 # THz sensing
 
-The current September 23, 2026 manuscript is **Limits of Sub-THz VOC and Particulate Sensing with Communication-Pilot Reuse**. Read the [six-page PDF](../output/pdf/thz_isac_pollutant_sensing_ieee.pdf) and [five-task evidence report](../docs/40_five_task_closure.md). It covers expanded physics, conditional VOC limits, negative PM/E-band results, OFDM decoding, an ideal moving pass, published water measurements and public calcite transmission. It does not establish measured atmospheric VOC/PM retrieval or environmental compliance.
+**Critical assumption:** Favorable results require zero residual calibration error after correction, which has not been demonstrated experimentally. See the [permanent calibration note and retained sensitivity results](../docs/46_critical_calibration_assumption.md).
 
-Build from the repository root with `python scripts/build_current_paper.py`. This generates tables from saved evidence, compiles LaTeX twice and copies the PDF to its stable output path. [main.tex](main.tex) is the entry point; content is in [current_study.tex](current_study.tex). Compilation does not replace visual page inspection.
+The current September 27, 2026 manuscript is **Sub-THz Atmospheric Sensing with Pilot and Payload Reuse: Recall Gains and Calibration Limits**. Read the [PDF](../output/pdf/thz_isac_pollutant_sensing_ieee.pdf) and [payload recall report](../docs/42_payload_recall.md). The new section derives passive QPSK moment sensing and reports 99.955% conditional acetonitrile recall at 1 µg/m³ and 10 s, finite reference results and calibration failures. The [preceding evidence report](../docs/40_five_task_closure.md) retains the physical model, PM/E-band limitations and public measurement checks. Atmospheric VOC recall remains simulated.
+
+The [payload information and sensitivity extension](../docs/45_payload_bounds_results.md) adds Tasks 4.1–4.3: unknown noise and finite reference bounds, weather/elevation sensitivity, moving geometry information, and detection limits with ppm conversion. M2M4 is close to the full likelihood bound in the 45° reference; calibration and realizable spectral resources remain the priorities.
+
+Build from the repository root with `python scripts/build_current_paper.py`. This generates tables from saved evidence, requires successful payload verification, compiles LaTeX twice and copies the PDF to its stable output path. [main.tex](main.tex) is the entry point; content is in [current_study.tex](current_study.tex), [payload_recall.tex](payload_recall.tex) and [payload_bounds.tex](payload_bounds.tex). The latest build and deliverable records are in `results/payload_bounds/report`. Compilation does not replace visual page inspection.
 
 ## Historical September 8 result
 

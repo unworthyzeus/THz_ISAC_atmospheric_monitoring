@@ -1,0 +1,8 @@
+{
+  "eligible_cases": 27,
+  "validation_controls": 81,
+  "power_min_pct": 94.54,
+  "power_max_pct": 95.39,
+  "acetonitrile_lod_min": 0.2872663820834108,
+  "acetonitrile_lod_max": 400.5983063419967
+}

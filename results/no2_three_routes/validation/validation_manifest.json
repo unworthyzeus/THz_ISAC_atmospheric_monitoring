@@ -1,0 +1,49 @@
+[
+  {
+    "project": "important_research_because_its_for_n3cat/THz_ISAC_atmospheric_monitoring",
+    "tests": {
+      "returncode": 0,
+      "command": [
+        "C:\\Users\\guill\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "-o",
+        "addopts="
+      ],
+      "seconds": 4.0290036000005784,
+      "log": "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\validation\\tests\\THz_ISAC_atmospheric_monitoring.log",
+      "passed": 161
+    },
+    "build": {
+      "returncode": 0,
+      "command": [
+        "C:\\Users\\guill\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe",
+        "C:\\Users\\guill\\.codex\\plugins\\cache\\openai-bundled\\latex\\0.2.6\\scripts\\compile_latex.py",
+        "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\paper\\main.tex",
+        "--compiler",
+        "tectonic",
+        "--output-directory",
+        "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\paper\\build",
+        "--json"
+      ],
+      "seconds": 1.9865916000017023,
+      "log": "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\validation\\build\\THz_ISAC_atmospheric_monitoring.log",
+      "passed": null
+    },
+    "pdf": "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\paper\\build\\main.pdf",
+    "pdf_sha256": "20a0201ddad177d23c685e36e2ce8a99f14fb68d8d940ebe1592bf4905cc4207",
+    "qa": {
+      "pages": 15,
+      "issues": [],
+      "overfull": [],
+      "sheets": [
+        "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\validation\\pdf_qa\\THz_ISAC_atmospheric_monitoring_sheet1.png",
+        "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\validation\\pdf_qa\\THz_ISAC_atmospheric_monitoring_sheet2.png",
+        "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\validation\\pdf_qa\\THz_ISAC_atmospheric_monitoring_sheet3.png",
+        "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\validation\\pdf_qa\\THz_ISAC_atmospheric_monitoring_sheet4.png"
+      ]
+    }
+  }
+]

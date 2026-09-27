@@ -1,0 +1,42 @@
+{
+  "status": "completed",
+  "wall_seconds": 23.447566200000438,
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.3.5",
+  "inputs": {
+    "results/task_completion/physics_order4.npz": "3f1627248d6bf3ddffb499cc7f4b2720ab99ecbaf06d6317281daefd5feb8e11",
+    "results/task_completion/physics_manifest.json": "6062ca47f8223c1ae4f6cf60adf0de265d6d3f9216970e431e076a903e9af15f",
+    "results/task_completion/multiband_reference_channel.npz": "9a733be4699e541db7baefed85f443964db93fa6b5d839adb5e3e61ad210c339",
+    "results/task_completion/eband_73p5GHz_channel.npz": "3be58cc0d9e618ef364f41f16182aaef398db6a82936a07c49636b105c49ddf8",
+    "results/task_completion/measured_weather_attenuation.csv": "94cad3513c6e78471c4495d3da4a1a58e10faaa7205d3450d9f089c8fb6c4e17"
+  },
+  "code": {
+    "scripts/run_payload_recall.py": "b3e5e27d6e1432964e46aa0d7ff2b6b78efd9e6826c382612334e995f7d9b59f",
+    "src/thz_isac/payload_sensing.py": "deb6e054ca1b760a626dc674149a8c8e03e5b2aa931e277ed7e1dd55f331c2a2",
+    "src/thz_isac/attainable_estimation.py": "3c112f151e627d42947ae4d8f73180d10ce1ecbdcffea6717ccb74d8c8c9d31d"
+  },
+  "outputs": {
+    "concentration_curves.png": "24afe9f66f5488e98073a52ee3d8ae98e339af82829ba3e3c12666dbe9ac175e",
+    "concentration_errors.csv": "1d9495db887e9ca43f31c1375ddffd3853e457f46ca11fb141ce5d9c078fc755",
+    "conditional_curves.csv": "4610e3bc2dbb01bed3e4769dcff0598de70f5d52fc21175f04e5c4a7f4317ac6",
+    "detection_metrics.csv": "d9f08f9a9a80a02f9a6e49f0fb6d461354c0240bd0b998ab3c247a7c8e2cf05a",
+    "failed_cases.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "information_ceiling.csv": "d5cdfd5d68101c7fa7dc0dd8554408ee0ba3e1387fb1bfb8621742850b178156",
+    "protocol.json": "4f73af85fa8da05ce67dd322ed6861622b81599ee90934eca1a0ec99715f7948",
+    "raw_symbol_validation.csv": "ce983f12ef1a2ebbd81abb3637a5c006a700c48916946d4698c7187bdcfdbd60",
+    "recall_comparison.png": "cb08b9f4fc33a743f1c3563aeac09ccdae2271ffe395a1ced8e2bda4ea8d2dd5",
+    "recall_comparison.svg": "6f720b38a7296fbc10c03d07a378446626efd5f849531f1657dd909994ce1a5f",
+    "replay.npz": "7257f050833cd1b38f08a8295b71f2462a127e125f9d5f0c5cb4b0bb69ab5eeb",
+    "resources.csv": "c2718970ac94297bcbd2af724cd8217c87c7fee59200e88f7723ea2948ee68d2",
+    "stress_tests.csv": "e8306de7e3b41c589136086411493f2b6ceb3aa0a36c2f205bcacae8c707e324",
+    "waveform_control.json": "6fd7af71ec0e19a7759171c39e03e93d35373892021e163b302cea9f262dea7f"
+  },
+  "limitations": [
+    "No measured atmospheric CSI",
+    "M2M4 test responses use moment CLT",
+    "No real multiband radio demonstrated",
+    "Persistent calibration and unknown weather are not cured by payload reuse",
+    "QPSK resource comparison is not Gaussian-input capacity attainment"
+  ]
+}

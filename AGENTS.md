@@ -25,3 +25,7 @@ When adding research notes, always create or update a Markdown file explaining:
 
 Synthetic data generated from invented parameters must not be used as the main scientific result. Synthetic CSI is acceptable only when it is generated from external physical parameters, published models, or public datasets such as HITRAN line data and real pollution concentration records.
 
+## Critical calibration qualification
+
+When summarizing favorable payload recall or detection limits, state the residual calibration assumption alongside the result. The ideal benchmark assumes zero residual calibration error after correction; this accuracy has not been demonstrated experimentally. Retain the distinction between predicted recall, simulated empirical recall and measured field performance. Read `docs/46_critical_calibration_assumption.md` for the saved comparison and exact conditions before reusing headline results.
+

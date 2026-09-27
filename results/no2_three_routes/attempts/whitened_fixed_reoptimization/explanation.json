@@ -1,0 +1,4 @@
+{
+  "failure": "Three fixed-allocation reoptimizations returned optimal_inaccurate despite whitening; all continuous joint solutions passed.",
+  "revision": "For every optimized case, preserve the continuous joint operator and evaluate its actual risk at rounded dwell. This consistent discretization avoids unnecessary reoptimization and does not claim integer optimality. Operators will be verified independently. No evaluation outcomes were inspected."
+}

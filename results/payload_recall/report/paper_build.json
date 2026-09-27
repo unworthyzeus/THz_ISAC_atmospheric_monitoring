@@ -1,0 +1,9 @@
+{
+  "status": "built",
+  "pages": 7,
+  "output": "output/pdf/thz_isac_pollutant_sensing_ieee.pdf",
+  "sha256": "52f4e60d77affb7035277bf9cbbdcd56c5c4a9fa6ed426c58458c078baaf0ad5",
+  "unresolved_references": false,
+  "overfull_boxes": false,
+  "visual_review": "Passed: seven pages inspected, including final reference layout; no clipping or overlap. Recall chart inspected."
+}

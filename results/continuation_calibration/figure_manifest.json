@@ -1,0 +1,11 @@
+{
+  "source_sha256": {
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\continuation_calibration_floor\\floors.csv": "84686b733565fe3a462dd8a485ddd84e81d2ba6bdbd9830db10ce426a9ccd17b",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\continuation_calibration\\summary.csv": "35252425ecba1ebab741b65c3bb40593710e8b00cee060f63fedeb7e0d5fdf96"
+  },
+  "output_sha256": {
+    "calibration_limits.pdf": "c1a355344c088f875da9bacb65cc9b140e9589d9ad91e5071d923aab9ce1b25d",
+    "calibration_limits.png": "73fab3d809845ce07ab65e6e2dae7e637e77b70417e18ebb3d66c2cdf44ac1b5"
+  },
+  "script_sha256": "7f83a35c0e03009a2c88f22fb769822fef66777f89484bbdd42ffbf836b621f3"
+}

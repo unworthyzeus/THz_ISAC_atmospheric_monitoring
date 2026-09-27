@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-27",
+  "seed": 2026092703,
+  "draws_per_class": 20000,
+  "family_alpha": 0.01,
+  "family_size": 6,
+  "truth_ug_m3": [
+    1.0,
+    1.0,
+    1.0,
+    49.0,
+    41.0,
+    90.0
+  ],
+  "durations_s": [
+    10.0,
+    100.0
+  ],
+  "residual_std_db": [
+    0.0,
+    0.001
+  ],
+  "methods": [
+    "pilots",
+    "payload_energy_known_noise",
+    "payload_m2m4"
+  ],
+  "threshold_selection": "Fixed normal.isf(0.01/6), no test tuning",
+  "primary": "1 ug/m3 VOC, 10 s, same broad reference, all three methods including failures",
+  "data": "HITRAN/Mie/P.676-13 forward model from prior frozen arrays; observations simulated",
+  "signal_distribution": "Exact complex mean and noncentral chi-square energy; M2M4 joint moment CLT, independently checked on raw complex symbols",
+  "stationary_assumption": "Constant calibrated reference magnitude over the window; phase may vary for moment sensing",
+  "calibration": "Same persistent correlated dB residual as prior study; separate bounded-bias stress",
+  "modulation": "Constant modulus per active frequency, QPSK waveform control; no decoder oracle",
+  "resources": "Original 1 us broad-reference symbols, 30/10000 pilots; only existing payload used",
+  "scope": "Ideal multiband reference has no implementable RF band plan; E-band limitations retained",
+  "validation_selection": "No parameters selected from waveform validation or detection outcomes",
+  "prior_local_manuscript": "Preserved in Git stash: Preserve local September 8 manuscript before September 27 recall work"
+}

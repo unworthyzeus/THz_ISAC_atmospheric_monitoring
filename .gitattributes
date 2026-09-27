@@ -1,4 +1,4 @@
-* text=auto
+* text=auto whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 *.png binary
 *.pdf binary
 *.jpg binary
@@ -18,3 +18,24 @@ results/task_1_3_metrics/** -text
 results/task_completion/** -text
 results/five_task_closure/** -text
 src/thz_isac/data/** -text
+
+# New research snapshots also bind exact data and source bytes. Preserve their
+# recorded line endings on every platform instead of rewriting SHA256 inputs.
+results/closure_robust_atmosphere/** -text
+results/continuation_calibration/** -text
+results/continuation_calibration_floor/** -text
+results/followup_bounded_bias/** -text
+results/no2_intervention_audit/** -text
+results/no2_three_routes/** -text
+results/payload_recall/** -text
+results/payload_bounds/** -text
+src/thz_isac/*.py -text
+scripts/*payload*.py -text
+scripts/build_current_paper.py -text
+tests/test_payload*.py -text
+docs/4[2-6]*.md -text
+paper/payload*.tex -text
+paper/current_study.tex -text
+paper/README.md -text
+README.md -text
+AGENTS.md -text

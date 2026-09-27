@@ -1,0 +1,14 @@
+{
+  "total_observation_s": 20.0,
+  "reference_s": 10.0,
+  "sensing_s": 10.0,
+  "seed": 2026092704,
+  "draws_per_class": 20000,
+  "family_alpha": 0.01,
+  "family_size": 6,
+  "target": "Concentration enhancement over an independently measured baseline",
+  "absolute_concentration": "Requires external knowledge of baseline concentration",
+  "reference": "Independent noise; same background and stable calibration, no atmospheric evolution",
+  "comparisons": "All methods charged identical reference plus sensing transmissions",
+  "purpose": "Sensitivity to removing the exactly known reference assumption, secondary to primary protocol"
+}

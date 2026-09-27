@@ -13,6 +13,9 @@ PAPER = ROOT / "paper"
 
 def main():
     subprocess.run([sys.executable, str(ROOT / "scripts/build_closure_tables.py")], check=True)
+    subprocess.run([sys.executable, str(ROOT / "scripts/build_payload_table.py")], check=True)
+    subprocess.run([sys.executable, str(ROOT / "scripts/verify_payload_bounds.py")], check=True)
+    subprocess.run([sys.executable, str(ROOT / "scripts/report_payload_bounds.py")], check=True)
     (PAPER / "build").mkdir(exist_ok=True)
     for _ in range(2):
         result = subprocess.run(["pdflatex", "-interaction=nonstopmode", "-halt-on-error",
@@ -33,7 +36,9 @@ def main():
                   sha256=hashlib.sha256(stable.read_bytes()).hexdigest(),
                   unresolved_references=False, overfull_boxes=False,
                   visual_review="Render and inspect all pages separately; compilation is not visual review")
-    (ROOT / "results/five_task_closure/paper_build.json").write_text(json.dumps(result, indent=2) + "\n")
+    report = ROOT / "results/payload_bounds/report"
+    report.mkdir(exist_ok=True)
+    (report / "paper_build.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result))
 
 

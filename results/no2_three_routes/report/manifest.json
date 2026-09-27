@@ -1,0 +1,39 @@
+{
+  "protocol": {
+    "scope": "Display recorded verified results; no new model fitting."
+  },
+  "wall_seconds": 0.7133896999985154,
+  "sampled_peak_rss_bytes": 151650304,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "torch": "2.4.1",
+    "scikit-learn": "1.8.0",
+    "sympy": "1.14.0",
+    "cvxpy": "1.8.2"
+  },
+  "command": [
+    "scripts/report_no2_three_routes.py"
+  ],
+  "failures": [],
+  "code_sha256": "880c4664d17bfb17a546c68d0c6772daac925658defcc103ef2664e7f9b86b71",
+  "outputs": {
+    "frequency_schedule_100s.csv": "4d4f40420eaa3869d0d42876fd7f2daab4242b237fa6ece8287cd613479e2d73",
+    "no2_routes.pdf": "913d356d6b69bb3c637f7cbc0a06ec413e6e2be729a29009c5e9370702e5dd38",
+    "no2_routes.png": "422060e918dfdce192cbf2d483b8a44586bd2cdb4a055ec9c7f6e00c246b27d9",
+    "protocol.json": "3ea006fe67ba6448e7a5581cfec028bca5b484bb802e9fa9be00189ae87852d1"
+  },
+  "input_hashes": {
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\design\\summary.csv": "5c7626b3bd01a944be946d4127802a8fc64b4bad22024fd202f7367e0b0d62ea",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\evaluation\\summary.csv": "b9950d5096c41063500b90bce891d2fc50945fc31b9efb702d2a4bc81ec726df",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\design\\operators.npz": "53799e6e1b57070004f3d575b074e0d9bfe062fb44ca6742129d43915105d1ca"
+  },
+  "manuscript_section_sha256": "3003392f277183cbc081b83780111bfcfe184b9c175aec2fcc72444de4c2d408",
+  "research_note_sha256": "fd405a1f275dddec709ac1e2fad2b7d1fa053bbdf13ee90f681d9336aca83fbf"
+}

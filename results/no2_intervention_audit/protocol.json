@@ -1,0 +1,14 @@
+{
+  "epsilon_db": 0.0001,
+  "inputs": "All 202 existing probes and the 54-state design envelope; no new radio observations.",
+  "cases": [
+    "current",
+    "atmospheric_discrepancy_known",
+    "other_gas_concentrations_known",
+    "linear_nuisance_coefficients_known",
+    "atmosphere_and_other_gases_known",
+    "all_non_NO2_quantities_known"
+  ],
+  "question": "Which ideal additional knowledge could reduce the noise-free bias floor, before investing in a proposed instrument?",
+  "boundary": "Oracle ablations are hypothetical and retain the original NO2 sensitivity. Exact atmosphere here removes the entire archived discrepancy, not merely a surface temperature measurement. All finite-resource comparisons still use the existing noise and acquisition models."
+}

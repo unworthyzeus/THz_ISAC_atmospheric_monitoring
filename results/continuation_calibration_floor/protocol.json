@@ -1,0 +1,14 @@
+{
+  "epsilon_db": [
+    1e-05,
+    0.0001,
+    0.001
+  ],
+  "bands": [
+    "full_202",
+    "260_400_GHz"
+  ],
+  "objective": "Noise-free worst absolute bias over the same finite atmospheric hull plus arbitrary per-probe persistent calibration error.",
+  "interpretation": "A lower bound above one precludes the stated normalized RMSE target for every unbiased linear estimator satisfying the nuisance equalities, regardless of pilot count or thermal power.",
+  "certificate": "Exact rational dual feasibility for normalized stored binary coefficients. It does not certify physical spectroscopy, an empirical calibration envelope or nonlinear/prior-assisted estimators."
+}

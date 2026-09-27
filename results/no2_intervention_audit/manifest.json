@@ -1,0 +1,50 @@
+{
+  "protocol": {
+    "epsilon_db": 0.0001,
+    "inputs": "All 202 existing probes and the 54-state design envelope; no new radio observations.",
+    "cases": [
+      "current",
+      "atmospheric_discrepancy_known",
+      "other_gas_concentrations_known",
+      "linear_nuisance_coefficients_known",
+      "atmosphere_and_other_gases_known",
+      "all_non_NO2_quantities_known"
+    ],
+    "question": "Which ideal additional knowledge could reduce the noise-free bias floor, before investing in a proposed instrument?",
+    "boundary": "Oracle ablations are hypothetical and retain the original NO2 sensitivity. Exact atmosphere here removes the entire archived discrepancy, not merely a surface temperature measurement. All finite-resource comparisons still use the existing noise and acquisition models."
+  },
+  "wall_seconds": 2.693499300003168,
+  "sampled_peak_rss_bytes": 191315968,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "torch": "2.4.1",
+    "scikit-learn": "1.8.0",
+    "sympy": "1.14.0",
+    "cvxpy": "1.8.2"
+  },
+  "command": [
+    "scripts/no2_intervention_audit.py"
+  ],
+  "failures": [],
+  "code_sha256": "9c8e7752f12c6b372ff3db14293f8a7355ab6a7a75ce474892d2165d380c3630",
+  "outputs": {
+    "calibration_crossing.csv": "01387940a03ee58023bbb5c36ecbc134ba55993261da6521b72a5564d29ad337",
+    "certificates.json": "cd9565f40701c9320ee78687d8d5be26ba9ce04b8057f3f3bab6070887610b70",
+    "operators.npz": "0e43fc5bb604dd0033d451af6619e695a1b63c8f528a30e991a208398809340c",
+    "oracle_floors.csv": "8f8405290b4a37981899f41d326e57dc2e8ff4cf9bf1c7881f8cd5192cc4fe3e",
+    "protocol.json": "f6abed9924faf8ce8e432759f4b58e315bbee2b58d2b10ecc01dc1b05732ce83",
+    "summary.json": "6eaf515193b9fe40c5067908dfb507a714f55f521a9e3a8381aa827648824e74"
+  },
+  "input_hashes": {
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\followup_bounded_bias\\inputs.npz": "5895f44a0c80974b32cc1b0e92f34c5f372d77efdd1b91f8817b7ae0f39e98f2",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\closure_robust_atmosphere\\inputs.npz": "f1dc30ce3be0ddec32b9eef454010c6cb7a7e96fb05246701620fd45801b08d2"
+  },
+  "solver_code_sha256": "b64d51709d32d220f1c1e3ac589a948092e1b44e3aef31f951324e7cb68a6b77"
+}

@@ -1,0 +1,47 @@
+{
+  "seed": 2026092801,
+  "draws_per_class": 10000,
+  "family_alpha": 0.01,
+  "family_size": 6,
+  "sensing_snr_min_db": 5.0,
+  "minimum_sensing_tones": 20,
+  "elevations_deg": [
+    5,
+    15,
+    30,
+    45,
+    60,
+    90
+  ],
+  "profiles": [
+    "standard",
+    "igra_01",
+    "igra_04",
+    "igra_07",
+    "igra_09"
+  ],
+  "total_time_s": [
+    2.0,
+    20.0,
+    100.0
+  ],
+  "receiver_noise_multiplier": [
+    1.0,
+    2.0
+  ],
+  "noise_definition": "Multiplier of total effective receiver input noise, including sky and electronics",
+  "differential_residual_std_db": [
+    0.0,
+    0.0001,
+    0.001
+  ],
+  "correlation_length_ghz": 10.0,
+  "reference": "Half of total transmission time is independent reference, half sample. Both are charged. Background and gain are matched and normalized.",
+  "sensitivity": "Static elevation snapshots, matched known weather, recomputed ray, line shapes, atmospheric emission, link SNR and communication water filling",
+  "inference": "Joint three VOCs and two PM modes; nuisance gain, background amplitude, CO/O3/SO2/NO2. Absolute concentration requires independently known reference abundance.",
+  "validation": "All 30 physical cases, 20 seconds total, nominal receiver, zero residual. Untuned Bonferroni threshold. Separate null and per-VOC alternative samples.",
+  "limit": "Local CRLB is an estimation variance bound, not a universal bound on classification or biased estimators. LOD uses Gaussian local response; validated with nonlinear moment inversion.",
+  "floor": "Solve heteroscedastic positive-response variance before Monte Carlo. No fitting to test outcomes. Invalid inversion is a failure.",
+  "physics": "Measured weather is public data; concentration profiles, PM composition and radio observations remain modeled.",
+  "waveform": "Ideal simultaneous 256 separated 1 MHz tones over 60\u2013400 GHz, QPSK, 30/10000 pilots, 1 us symbols; no implementable multiband modem claimed"
+}

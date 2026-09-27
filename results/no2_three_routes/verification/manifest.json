@@ -1,0 +1,38 @@
+{
+  "protocol": {
+    "scope": "Independent arithmetic, constraint, allocation and outcome replay; no solver optimality certificate."
+  },
+  "wall_seconds": 0.49797039999975823,
+  "sampled_peak_rss_bytes": 100470784,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "torch": "2.4.1",
+    "scikit-learn": "1.8.0",
+    "sympy": "1.14.0",
+    "cvxpy": "1.8.2"
+  },
+  "command": [
+    "scripts/verify_no2_three_routes.py"
+  ],
+  "failures": [],
+  "code_sha256": "238a8ce38623c64227ebfd55d17c8bb699fbcc6bf125c191114a55b4aa96f906",
+  "outputs": {
+    "checks.json": "8279c58e7bb397c512c1a20b4f91e0ac1595ab49b8ac1819519d59a07206b9ed",
+    "protocol.json": "787cda73d211a168c5d84490391bb5afcb42cde9513bc44384daff9b511cfaf5"
+  },
+  "input_hashes": {
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\physical\\inputs.npz": "afc070c969332609ca210326741d4a6dd6d727c348eb121a9f56437d91346b09",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\design\\operators.npz": "53799e6e1b57070004f3d575b074e0d9bfe062fb44ca6742129d43915105d1ca",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\design\\summary.csv": "5c7626b3bd01a944be946d4127802a8fc64b4bad22024fd202f7367e0b0d62ea",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\design\\resources.csv": "7d3b1d513490592a6fef85b62d4724372927d0cedfc0e8578a97bb25c1905f02",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\evaluation\\stress_inputs.npz": "f298e1ac730d51193fad429ca05d56297222eec7ad221be898391bb0f6019288",
+    "C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\results\\no2_three_routes\\evaluation\\errors.csv": "e944ecbca76c6d744438134089afc13273887a87617b2c688fbf4c8772cdcbe4"
+  }
+}

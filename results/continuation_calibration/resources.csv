@@ -1,0 +1,9 @@
+configuration,acquisition,probes,pilots_per_tone,tone_power_dbm,duration_s,radiated_energy_j
+legacy_30k,ideal_simultaneous,202,30000,-1.0823996531184967,0.03,0.0059857869449066355
+legacy_10m,ideal_simultaneous,202,10000000,-1.0823996531184967,10.0,1.9952623149688786
+band_-1dBm_0.03s,sequential_260_400_GHz,71,422,-1.0,0.03,2.379966256880892e-05
+band_-1dBm_10s,sequential_260_400_GHz,71,140845,-1.0,10.0,0.007943278375601642
+band_-1dBm_100s,sequential_260_400_GHz,71,1408450,-1.0,100.0,0.07943278375601641
+band_-10dBm_0.03s,sequential_260_400_GHz,71,422,-10.0,0.03,2.9962e-06
+band_-10dBm_10s,sequential_260_400_GHz,71,140845,-10.0,10.0,0.0009999995
+band_-10dBm_100s,sequential_260_400_GHz,71,1408450,-10.0,100.0,0.009999995000000001

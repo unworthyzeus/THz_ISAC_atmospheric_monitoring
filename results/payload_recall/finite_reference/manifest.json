@@ -1,0 +1,11 @@
+{
+  "input_sha256": "7257f050833cd1b38f08a8295b71f2462a127e125f9d5f0c5cb4b0bb69ab5eeb",
+  "code_sha256": "c953c975d5fab520fbfe2c8c8a34906fe90be18a6b5cbceea9a5f800da5ca30a",
+  "outputs": {
+    "detection_metrics.csv": "350eba345e19c165ea17a3cf1966fce660086a7e74eafd5d54d3442726ab531d",
+    "modulation_mismatch.json": "7d79930568af701d84bc1d867fb20cd82fc42a7f408c4fc34dcb42850f5a1f31",
+    "protocol.json": "0c7102b3dc3ef221162ec2781d191a5b5d345c4f3f9baf73844f882a4e91a922",
+    "replay.npz": "a8d45f0cb5af16b5b957f2b0ad7ed71c600becbcdcec796c3b29d9ef1e4ea06a",
+    "verification.json": "188a37705ec8130ac9b929bf51d4c4b08790cfb849c4d94bff6418a872cb25c4"
+  }
+}

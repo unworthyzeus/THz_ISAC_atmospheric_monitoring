@@ -1,0 +1,11 @@
+# Standalone GitHub synchronization, September 8, 2026
+
+The revised manuscript, proposal files, experiment sources, tests and recorded scientific outputs are synchronized to the existing private THz repository. Temporary PDF preview images remain local under the ignored `tmp/` directory. [Current manuscript](../paper/build/main.pdf); [current evidence ledger](revision_0908.md).
+
+Three experiment entry points previously imported the provenance helper from a sibling portfolio directory. The helper is now included in this repository and `psutil` is declared in the requirements, so imports no longer require that sibling checkout. This is a packaging change; the recorded scientific runs retain their original code hashes and have not been overwritten. [Local helper](../scripts/repair_support.py); [experiment entry point](../scripts/run_attainability_0908.py); [dependencies](../requirements.txt).
+
+The current THz test, build, independent estimator verification and visual inspection records are copied into the repository, together with the incoming THz manuscript snapshot. Absolute paths inside historical execution metadata describe the original machine; current documentation links use repository paths. Older portfolio-wide ledgers retain historical workspace references. [Packaged validation](../results/revision_0908_validation/validation.json); [snapshot index](../results/revision_0908_validation/before_manifest.json).
+
+The complete 143-test suite passes after the packaging change, and all three experiment entry points import using the repository-local helper. Git attributes preserve exact bytes in the new hashed result and snapshot directories so newline normalization does not invalidate their SHA-256 records. [Synchronization tests](../results/revision_0908_validation/sync_tests.txt); [Git attributes](../.gitattributes).
+
+Raw and processed source data retain the existing ignore policy. Reproducing the physical experiment requires acquiring those externally sourced inputs using the existing project workflow; this synchronization does not distribute all local data or turn the modeled receiver into field validation. The next scientific requirement remains synchronized attenuation, independent calibration and concentration or column truth. [Data and evidence boundary](revision_0908.md).

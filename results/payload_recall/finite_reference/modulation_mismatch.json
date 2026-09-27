@@ -1,0 +1,8 @@
+{
+  "constellation": "Normalized square 16-QAM",
+  "fourth_moment": 1.32,
+  "true_attenuation_db": 0.0,
+  "erroneous_psk_attenuation_db": 0.8374554364736719,
+  "implication": "Use only with known constant modulus per-tone symbols; QAM requires its own moment/likelihood model",
+  "gaussian_noise": "Impulsive distortion and nonlinear hardware also violate the model"
+}

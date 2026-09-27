@@ -1,0 +1,63 @@
+\section{Balancing bounded atmospheric bias and variance}
+Hard tangent elimination treats each atmospheric direction as unbounded. This can discard useful gas information even though the declared perturbations are bounded. We instead retain target unbiasedness and the original nuisance cancellation while minimizing each target's worst MSE on a finite bias envelope. Let $b_s$, $s=1,\ldots,54$, be the archived nonlinear discrepancies for the 27 atmospheric states at the training median and 95th-percentile concentrations. These already inspected scenarios are design inputs, not a confirmation set. For target $j$ solve
+\begin{equation}
+\begin{aligned}
+\min_{h\in\mathbb R^{202},\;t\geq0}\quad & h^T\Sigma h+t^2\\
+\text{s.t.}\quad&D^Th=e_j,\quad N^Th=0,\\
+&-t\leq b_s^Th\leq t\quad\text{for every }s.
+\end{aligned}
+\label{eq:boundedbias}
+\end{equation}
+Here $h$ is unrestricted in sign; only $t$ is nonnegative. This is a convex quadratic/conic program. For the symmetric convex hull $\mathcal B=\operatorname{conv}\{\pm b_s\}$, linearity and the triangle inequality give
+\[
+\sup_{b\in\mathcal B}(h^Tb)^2=\max_s(h^Tb_s)^2.
+\]
+Thus the objective is the exact worst conditional MSE on the declared envelope. It is an application of convex robust estimation, not a claim that the envelope covers an actual atmosphere or receiver.
+
+Writing $s_i=\sqrt{\Sigma_{ii}}$, we parameterize the whitened row as its minimum-variance solution plus a vector in the null space of the whitened target and nuisance constraints. Orthogonality makes the variance a constant plus a squared Euclidean norm. This avoids the initially unsuccessful dense solver parameterization. The implementation uses CLARABEL and a $10^{-10}$ relative cutoff for the projected bias-response rank; physical risks and the equality identities are recomputed from the resulting operator. These are numerical solutions, not interval certificates of optimality. Independent tests cover an analytic two-sensor bias/variance optimum, nuisance cancellation and the convex-hull envelope.
+
+\begin{table}[t]\centering\scriptsize
+\caption{Worst normalized RMSE across the 54 design discrepancies at 30,000 coherent pilots, zero random residual.}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}\toprule
+Gas & Nominal GLS & Hard tangent & Bounded bias\\\midrule
+CO & \FollowupDesignCONominal & \FollowupDesignCOTangent & \FollowupDesignCOBounded\\
+O$_3$ & \FollowupDesignOThreeNominal & \FollowupDesignOThreeTangent & \FollowupDesignOThreeBounded\\
+SO$_2$ & \FollowupDesignSOTwoNominal & \FollowupDesignSOTwoTangent & \FollowupDesignSOTwoBounded\\
+NO$_2$ & \FollowupDesignNOTwoNominal & \FollowupDesignNOTwoTangent & \FollowupDesignNOTwoBounded\\
+\bottomrule\end{tabular}
+\end{table}
+
+The bounded alternative reaches the error target for CO and SO$_2$ without increasing pilot count. Its design worst SO$_2$ error is .722, compared with 1.184 for hard tangent elimination when both concentration scenarios are included. CO improves to .218 instead of the hard method's 1.061. The earlier median-only table has a different denominator of scenarios and is not silently substituted here.
+
+\section{New nonlinear states and resource requirements}
+After fixing the bias envelope and solver, we draw 64 new states with seed 909510. Temperature and pressure offsets are uniform over $[-5,5]$ K and $[-2000,2000]$ Pa; gas height is uniform over $[1200,1800]$ m. Each state uses a randomly selected complete real training-period concentration record, without filtering by outcome. The nonlinear forward mean is recomputed. These draws test new modeled states and compositions; the uniform perturbation law is not an empirically calibrated atmospheric distribution. No held-out outcome selects parameters or resources.
+
+\begin{table}[t]\centering\scriptsize
+\caption{Worst normalized RMSE on all 64 new states, 30,000 pilots, zero random residual. The final column counts states meeting error one under bounded-bias estimation.}
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{lrrrr}\toprule
+Gas & Nominal & Hard tangent & Bounded bias & Pass\\\midrule
+CO & .601 & 1.049 & .278 & 64/64\\
+O$_3$ & 2.785 & 2.706 & 1.312 & 0/64\\
+SO$_2$ & 3.294 & 1.182 & .738 & 64/64\\
+NO$_2$ & 13.660 & 13.711 & 12.162 & 0/64\\
+\bottomrule\end{tabular}
+\end{table}
+
+O$_3$ and NO$_2$ cannot meet the objective at these resources within the stated unbiased model: even the nominal matched thermal-only variance, retaining the original nuisances, requires at least 46,850 and 4,416,231 pilots after rounding upward. This is an information constraint, not a tuning failure. Geometric bisection of the bounded-bias design risk gives the following sufficient resources for its finite design envelope.
+
+\begin{table}[t]\centering\scriptsize
+\caption{Pilots needed for normalized error one on the finite design envelope. Random residual is independent across probes; systematic calibration remains separate.}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}\toprule
+Gas & Zero residual & .001 dB & .01 dB\\\midrule
+CO & 314 & 314 & 331\\
+O$_3$ & 58,973 & 67,768 & Not reached\\
+SO$_2$ & 12,802 & 13,135 & Not reached\\
+NO$_2$ & 5,909,703 & Not reached & Not reached\\
+\bottomrule\end{tabular}
+\end{table}
+``Not reached'' means the target still fails at $10^9$ pilots; it is not an asserted universal impossibility. At the independently fixed $10^7$-pilot, zero-residual grid point, all four gases pass in all 64 new states, with worst errors .085, .519, .283 and .828 in CO/O$_3$/SO$_2$/NO$_2$ order. At one microsecond per pilot this requires ten seconds and 1.995 J of total transmitted energy under ideal simultaneous probing. The design-envelope NO$_2$ threshold alone requires about 5.91 seconds and 1.18 J. Neither resource statement demonstrates hardware feasibility, ten-second stationarity or a calibrated residual floor.
+
+The complete design, held-out records, risk operators, failures, hashes and resource calculations are retained in \texttt{results/followup\_bounded\_bias}. The new estimator resolves the earlier CO/SO$_2$ variance penalty within the declared model. Synchronized measured attenuation, external calibration and a realizable receiver remain necessary for a field retrieval claim.

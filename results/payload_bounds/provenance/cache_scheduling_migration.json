@@ -1,0 +1,17 @@
+{
+  "reason": "Serial layer loop replaced with six independent process workers. Identical physical function, grids and multiplication order. No scientific input changed; cached numerical arrays preserved.",
+  "original_driver_sha256": "0d17d6e437a42e664f45ac741113a90b54f392ec01655655f9cd420161d46888",
+  "new_driver_sha256": "5bdc0d7786c62d159e7a8bcfd50f910abb53954de603629cc869969a2391cc62",
+  "records": [
+    {
+      "file": "standard_layers.npz",
+      "original_sha256": "53c6a5edab6ce24ecdc652d364ea1afacf3f3b6cdbe807594a1c4df29a3e0202",
+      "new_sha256": "67853be75366acb46b515d30ac6e591a7d07d2dcb2a91c031fd4f9d455db1525"
+    },
+    {
+      "file": "igra_01_layers.npz",
+      "original_sha256": "cbba023bf3fd2ddf15cb1bbdb92f0c4948610458dafd2d7a4cf4c88105e7d64b",
+      "new_sha256": "91346c8e3f1687bbffe17dcbff5a806c3ede2ec83f8770ff2f7bf40a327677ff"
+    }
+  ]
+}

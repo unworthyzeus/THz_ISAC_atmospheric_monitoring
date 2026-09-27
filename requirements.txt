@@ -7,3 +7,4 @@ hitran-api
 ucimlrepo
 pytest
 psutil
+cvxpy>=1.6

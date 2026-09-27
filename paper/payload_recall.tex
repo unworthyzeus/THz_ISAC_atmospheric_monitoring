@@ -1,0 +1,43 @@
+\section{Recovering information from the communication payload}
+\subsection{A different observable at fixed radio resources}
+The preceding limits use only 30 of every 10,000 transmitted symbols. In the 10 s broad reference, even perfect knowledge of every other parameter gives local Gaussian recall ceilings of 0.270\%, 0.213\% and 2.948\% at 1 \ugm\ for the three VOCs. A learned mapping of those same pilot samples cannot supply missing independent information. Instead, we process the already transmitted constant modulus payload.
+
+This direction follows two distinct lessons from the literature. MAPL-EMIT combines physical plume injection, real radiance backgrounds and spatial context, with separate validation selection and physical comparisons \cite{batchu}. Its methane image recall cannot be transferred to a single radio path. Its use of available information and explicit validation motivates our observable expansion. Payload reuse is already studied in ISAC \cite{payloadisac}, and second/fourth moment signal and noise separation is established M2M4 estimation \cite{m2m4}. We claim an application and evaluation for atmospheric absorption, not a new moment estimator.
+
+For a single frequency, write $y=\sqrt S x+w$, where $|x|=1$ and $w\sim\mathcal{CN}(0,V)$. Neither the unknown payload bits nor their phase enters the power moments:
+\begin{align}
+M_2&=S+V,&M_4&=S^2+4SV+2V^2,\\
+S&=\sqrt{2M_2^2-M_4},&V&=M_2-S.
+\end{align}
+The finite sample implementation replaces $\widehat M_2^2$ by $(N\widehat M_2^2-\widehat M_4)/(N-1)$. This removes bias in the estimate of $S^2$, not in its square root or logarithm. Invalid inversions remain failures. Absorption is $\widehat A=-10\log_{10}(\widehat S/S_{\rm ref})$.
+
+With $s=S/V$ and $k=10/\ln10$, a moment covariance calculation gives
+\begin{equation}
+\operatorname{var}(\widehat A)\simeq\frac{k^2}{N}
+\left(\frac2s+\frac1{s^2}+\frac4{s^3}+\frac1{s^4}\right).
+\end{equation}
+The simpler energy method with exactly known noise omits the final two terms. At 5 dB SNR, M2M4's variance is about 1.374 times the coherent known-symbol variance at equal sample count. However, a 10 s window supplies 9,970,000 payload symbols versus 30,000 pilots. The resulting VOC standard errors improve by about a factor of 18. Pilot samples are excluded from the new observable, preventing double counting.
+
+All comparisons retain the previous frequencies, power, joint target design and nuisance columns. They retain signed estimates and the same six-target, 1\% family false alarm budget. The broad reference has 1 microsecond symbols and no realizable RF band plan; the separate E-band waveform includes its original cyclic prefix. QPSK reuse preserves the same modem waveform but does not demonstrate attainment of Gaussian-input Shannon capacity.
+
+\subsection{Recall and finite reference results}
+Each of 12 configurations uses 20,000 positive and 20,000 absent controls. The primary concentration remains 1 \ugm; no operating threshold is selected from these outcomes. Table~\ref{tab:payload} reports all three VOCs at both durations with zero persistent residual and a calibrated stationary reference magnitude. Acetonitrile's 10 s M2M4 recall has Wilson interval 99.914--99.976\%, precision 99.815\% at artificial 50\% prevalence, and false positive frequency 0.185\%. The six-target family false alarm frequency is 0.920\%. At hypothetical 1\% prevalence, nominal acetonitrile precision is instead about 85.83\%.
+
+\begin{table}[t]\centering\footnotesize
+\caption{Recall at 1 \ugm\ with the same transmissions. Zero persistent residual, stationary multiband model.}
+\input{payload_recall_rows.tex}
+\label{tab:payload}
+\end{table}
+
+The 10 s conditional 95\%-power VOC limits fall to 3.150, 7.288 and 0.723 \ugm. PM remains practically unobservable. An additional experiment allocates 10 s to an independent reference and 10 s to the sample, charging both transmissions equally to both methods. Acetonitrile enhancement recall improves from 0.380\% to 93.800\%, with total radiated energy 3.991 J. This removes the exactly known reference assumption, while retaining stable atmospheric background. Absolute abundance still requires independently known baseline concentration.
+
+\subsection{Validation and failure boundaries}
+Pilot means and known-noise energy controls use exact complex Gaussian and noncentral chi-square draws. M2M4 controls use the joint asymptotic distribution of sample moments followed by nonlinear inversion. An independent raw-symbol check uses 240 million QPSK samples over eight settings, including changing phase and a 10\% noise change. At 10,000 symbols per trial, measured/predicted variance ratios span 0.970--1.070, with no invalid inversion. Main trials use at least 9.97 million symbols; they are not claimed to simulate every symbol explicitly.
+
+A separate 256-tone FFT/CP replay leaves all 5,104,640 payload bit decisions and the received arrays unchanged after sensing. The uncoded modem retains 12,483 bit errors. Receiver processing is additional even though transmission resources are unchanged. A 1\% actual noise-power increase makes the known-noise energy detector's formaldehyde false positive frequency 22.5\%; M2M4's tested VOC rates remain below 0.230\% across both signs of the noise perturbation.
+
+Persistent calibration is not removed by the extra samples. At the existing 0.001 dB correlated residual, acetonitrile recall falls to 33.310\% at 10 s and 48.700\% at 100 s. Under arbitrary bounded spectral bias, a robust threshold with radius 0.00001 dB retains 99.84\% conditional recall, while radius 0.0001 dB leaves only 15.03\%. Those uncertainty models have different meanings.
+
+Leaving each of four public weather profiles out of a nuisance basis produces acetonitrile linearized biases between $-0.393$ and $+2.007$ \ugm. These fixed-covariance diagnostics do not support universal recall under changing weather. Applying the PSK moment formula to 16-QAM produces 0.837 dB false attenuation even with infinite data. Appropriate modulation statistics, Gaussian receiver noise and stable or independently normalized gain are necessary. Moments are evaluated on individual subcarriers after the FFT, not on the nonconstant OFDM time waveform.
+
+The existing contiguous E-band remains unsuitable: its all-other-parameters-known local acetonitrile recall ceiling is only 1.256\% with 10 s payload reuse. A stationary 100 s reference is not a moving satellite demonstration. Numerical replay checks 436 hashes, estimator identities, confusion counts, variances and resource facts. The evidence in \texttt{results/payload\_recall} establishes conditional computational improvement, not measured atmospheric recall.

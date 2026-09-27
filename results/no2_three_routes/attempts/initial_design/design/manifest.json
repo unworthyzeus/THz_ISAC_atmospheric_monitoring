@@ -1,0 +1,189 @@
+{
+  "protocol": {
+    "question": "Evaluate all three proposed NO2 routes, including unfavorable controls, at matched integrated acquisition resources.",
+    "source_boundary": "HITRAN and the two-page I2R proposal are available. I2R contains research tasks, not repeated receiver calibration recordings. No measured drift is fitted or claimed.",
+    "frequency": "Union of the existing 71 retained probes in 260-400 GHz and a 0.25 GHz grid. Recompute the 24-layer Voigt model directly; retain new probes with nominal SNR >=5 dB at -1 dBm. Preserve all original band probes.",
+    "design_envelope": "54 recalculated discrepancies: the original 27 T/p/height states at two training-only concentration quantiles. Differential design uses twice this symmetric convex envelope, so it does not assume atmospheric cancellation.",
+    "calibration": "Box or a declared subset: three Legendre modes on 260-400 GHz, each coefficient bounded by (total-residual)/3, plus residual L-infinity box. No empirical coverage guarantee.",
+    "temporal": "Two separate spectra estimate changes. Identical persistent calibration cancels; remaining difference envelopes are 0, 1e-5, or 2e-4 dB. Independent 1e-4 errors in both readings require the last case. Absolute retrieval additionally requires a known baseline.",
+    "acquisition": "One active tone, -1 dBm, 1 microsecond pilots, 1 millisecond assumed retuning, one or two sorted sweeps. Each sweep is charged m-1 switches. Setup, inter-epoch waiting and moving-LEO geometry tracking are excluded. Duration denotes charged acquisition, not elapsed interval.",
+    "dwell": "Continuous c-optimal robust dwell, then integer pilots with at least one pilot at every retained tone and a new solve at the rounded variance. No support selection after evaluation.",
+    "durations_s": [
+      10.0,
+      100.0
+    ],
+    "cases": [
+      [
+        "coarse_equal_box",
+        "coarse",
+        "equal",
+        1,
+        0.0001,
+        0.0001
+      ],
+      [
+        "coarse_dwell_box",
+        "coarse",
+        "optimal",
+        1,
+        0.0001,
+        0.0001
+      ],
+      [
+        "fine_equal_box",
+        "fine",
+        "equal",
+        1,
+        0.0001,
+        0.0001
+      ],
+      [
+        "fine_dwell_box",
+        "fine",
+        "optimal",
+        1,
+        0.0001,
+        0.0001
+      ],
+      [
+        "coarse_equal_polynomial",
+        "coarse",
+        "equal",
+        1,
+        0.0001,
+        0.0
+      ],
+      [
+        "coarse_equal_poly_residual",
+        "coarse",
+        "equal",
+        1,
+        0.0001,
+        1e-05
+      ],
+      [
+        "fine_dwell_polynomial",
+        "fine",
+        "optimal",
+        1,
+        0.0001,
+        0.0
+      ],
+      [
+        "fine_dwell_poly_residual",
+        "fine",
+        "optimal",
+        1,
+        0.0001,
+        1e-05
+      ],
+      [
+        "coarse_equal_diff_stable",
+        "coarse",
+        "equal",
+        2,
+        0.0,
+        0.0
+      ],
+      [
+        "coarse_equal_diff_drift",
+        "coarse",
+        "equal",
+        2,
+        1e-05,
+        1e-05
+      ],
+      [
+        "coarse_equal_diff_independent",
+        "coarse",
+        "equal",
+        2,
+        0.0002,
+        0.0002
+      ],
+      [
+        "fine_dwell_diff_stable",
+        "fine",
+        "optimal",
+        2,
+        0.0,
+        0.0
+      ],
+      [
+        "fine_dwell_diff_drift",
+        "fine",
+        "optimal",
+        2,
+        1e-05,
+        1e-05
+      ],
+      [
+        "fine_dwell_diff_independent",
+        "fine",
+        "optimal",
+        2,
+        0.0002,
+        0.0002
+      ],
+      [
+        "fine_dwell_diff_poly_residual",
+        "fine",
+        "optimal",
+        2,
+        1e-05,
+        1e-06
+      ]
+    ],
+    "likelihood": "Known nominal coherent diagonal thermal covariance and zero independent residual, inherited LEO link. A second replay substitutes modeled weather-dependent covariance and flags low SNR; it cannot validate the coherent approximation.",
+    "evaluation": "Operators and allocations are frozen before evaluating 16 new modeled T/p/height states using real test-period concentrations and 24 same-station consecutive-hour pairs from that period. Real weather is used for the latter. No pair crosses the fixed train/validation/test boundary. Previously used public data are not a new independent population sample.",
+    "seed": 909803,
+    "new_states": 16,
+    "real_pairs": 24,
+    "sensitivity": "Replay fixed designs at -10 and -1 dBm and retuning 0, 0.1, 1, 10 ms. This is fixed-design sensitivity, not a new optimum.",
+    "reference_scale": "Errors divided by 25 ug/m3; change error uses the same magnitude, not a health compliance or detection threshold."
+  },
+  "wall_seconds": 13.277637799998047,
+  "sampled_peak_rss_bytes": 214986752,
+  "memory_sampling_seconds": 0.1,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+  "cpu_only": true,
+  "software": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "torch": "2.4.1",
+    "scikit-learn": "1.8.0",
+    "sympy": "1.14.0",
+    "cvxpy": "1.8.2"
+  },
+  "command": [
+    "scripts/no2_three_routes.py",
+    "design"
+  ],
+  "failures": [
+    {
+      "key": "fine_dwell_polynomial|100s",
+      "error": "RuntimeError('Unaccepted optimization status: optimal_inaccurate')",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\scripts\\no2_three_routes.py\", line 139, in design\n    result=solve_target(d,n,b,modes,residual,variance=variance)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\src\\thz_isac\\no2_design.py\", line 97, in solve_target\n    raise RuntimeError(f'Unaccepted optimization status: {problem.status}')\nRuntimeError: Unaccepted optimization status: optimal_inaccurate\n"
+    },
+    {
+      "key": "fine_dwell_poly_residual|100s",
+      "error": "RuntimeError('Unaccepted optimization status: optimal_inaccurate')",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\scripts\\no2_three_routes.py\", line 139, in design\n    result=solve_target(d,n,b,modes,residual,variance=variance)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Research\\important_research_because_its_for_n3cat\\THz_ISAC_atmospheric_monitoring\\src\\thz_isac\\no2_design.py\", line 97, in solve_target\n    raise RuntimeError(f'Unaccepted optimization status: {problem.status}')\nRuntimeError: Unaccepted optimization status: optimal_inaccurate\n"
+    }
+  ],
+  "code_sha256": "bb45e08a58aa44722653a0b92cc35662af900b7d3c010cad692f6c335d199e05",
+  "outputs": {
+    "failures.json": "ee948e7e517f7ff7a424b8e8dbde40f31c3d1c129dfb0a37803a63488c1ce602",
+    "operators.npz": "c2d1214dda9f2e708d753767e0dec0b29726e41e539fdd326d4c25a0b65c5dd8",
+    "protocol.json": "f85a9d1eb42f04dfb19eaf2f61a2e099637654dd303ae1a6618f562156e3d571",
+    "resources.csv": "ac0be5b99d4b5b74a2c4944eb76bc1723e2bb056208094deb3871f1c6a144719",
+    "sensitivity.csv": "c19feae8a876e3e63d205c327caa6c00c9f6e27e8b84d98ca537ba0a0fd2e6be",
+    "spectral_difference_control.json": "db638fb76d52f530098f22bfa5e2fd8eaf8acd24e5ec19353f02775456c27bf3",
+    "summary.csv": "2231bd5357f690eb592d00dc1e0b0a0158db7bda4326c6a0c10f226af8244c30"
+  },
+  "input_sha256": "afc070c969332609ca210326741d4a6dd6d727c348eb121a9f56437d91346b09",
+  "estimator_sha256": "0f31d7f2d44cf66b0379bd862790a79c9311e58098fa8ee06b245a45c2933821"
+}

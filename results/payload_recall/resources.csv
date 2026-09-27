@@ -1,0 +1,3 @@
+elapsed_s,frames,pilots,payload,total,charged_duration_s,transmit_power_w,total_radiated_energy_j,added_pilots,added_payload,incremental_radio_rate_loss_pct
+10.0,1000,30000,9970000,10000000,10.0,0.19952623149688797,1.9952623149688797,0,0,0.0
+100.0,10000,300000,99700000,100000000,100.0,0.19952623149688797,19.952623149688797,0,0,0.0
