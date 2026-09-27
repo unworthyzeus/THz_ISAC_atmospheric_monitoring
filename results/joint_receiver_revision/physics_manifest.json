@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "inputs": {
+    "results/joint_receiver_revision/selection.json": "08ac3aa39d8f5b13ce6ba1eadd0f90d682d92e814210ab9b67dba444ba47bcb8",
+    "data/raw/payload_bounds/lines.csv": "a418ae82e9f2fb1dc2f403e0e703b0314ce5cd5bdd83ff223b6118a067fbf8e6",
+    "results/receiver_design/voc_pm_extension/lines.csv": "68fbbf4a0ace0a6e06a3a4df468d3248ae9777ba254e0a8c43a5492a8f97dbe6",
+    "scripts/joint_receiver_support.py": "16fc6a2ee274210e6fdfa0bcad23b3c0bd77bddca9f16f1fc849d1b47dba321b",
+    "scripts/compute_joint_receiver_physics.py": "93f02dd3076fc3d0ddfc9998b3f7b4dc1c374a152f3ed623a5de92604e697846"
+  },
+  "outputs": {
+    "igra_01_layers.npz": "da9046e870acd59870e65fe931d1f9b6469da08fe2d78b8c8f5a5fa1126721b2",
+    "selected_igra_01_30_physics.npz": "794981aa499a31668f18a99b89a74728398eb0b736b015d8e7ab2136f9acc500",
+    "selected_igra_01_45_physics.npz": "12f940483095113b51e5a45240deedee23c1f2c6b3c1d6a1b4ca001d6cda9255",
+    "selected_igra_01_60_physics.npz": "af34bb4dc756b89b50d77d4fd761c6ed0c0b871ddae6587c5b2ef55a875846ac",
+    "selected_igra_01_90_physics.npz": "491a2bcd0aad324e6524ef893edc8c0413e27634491be998a7036a6c21845039",
+    "selected_standard_30_physics.npz": "9cf309fd07274865e4dfcfb26c9537e9ef63257a2c7d5938dcc6f56350d621e7",
+    "selected_standard_45_physics.npz": "bb2ee6115d5a5b3f658320517c2dcec136f1776183b49f01451d611076720f11",
+    "selected_standard_60_physics.npz": "d4625ec64bf003d1bcd0cbb92909b5b4f94ff1108e112419af1836ab1670a41c",
+    "selected_standard_90_physics.npz": "5b34252a8979acf7721951f95ae337c61c835074fc4bc0eb8955407d9fb2e516",
+    "standard_layers.npz": "67bf1968986dac65c32a6f11431b5664e2762293a3dfbf5f5a9304bfe9451313",
+    "uniform_igra_01_30_physics.npz": "c5bfe3334c96aa38b652326b2d8225236904c9a7629e44bf325c2cb687ba51a4",
+    "uniform_igra_01_45_physics.npz": "0d9763bdb12997b904eea04d22916a75ae782e7a3bdfc0d3a5d1fa8eb85f97e9",
+    "uniform_igra_01_60_physics.npz": "12d9bbc8ad48715b0745a3e3766bf7d759b5c21d7809c510e412e5029ac51aa2",
+    "uniform_igra_01_90_physics.npz": "aa93fea241b5f0ef5633c374c47d7e3ef093c0b3296ad2b45ed344fa805d417e",
+    "uniform_standard_30_physics.npz": "aac57b8c0eaad3d58726fde10250dc10e3bb47428e7b74d1c134eb92a7d4ce6d",
+    "uniform_standard_45_physics.npz": "040e1ac6f88a6dee695d2274b8c0189d86fe0d6fabca486b842dd2eb90bdd5a8",
+    "uniform_standard_60_physics.npz": "c3f7513c7c12206097491f23d9fb045a20a4707d6f419fa9d3d939c7092862f4",
+    "uniform_standard_90_physics.npz": "5e2b3f559477917ec64c7e1eff7adcdb500d261d8e05765a6140d4963fa0a937"
+  },
+  "scope": "Exact new tones, same established quadrature; standard design and January held-out weather. No measured radio responses."
+}

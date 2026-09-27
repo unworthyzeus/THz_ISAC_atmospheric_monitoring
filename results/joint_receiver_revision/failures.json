@@ -1,0 +1,218 @@
+[
+  {
+    "case": "selected_standard_45_2_0",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 4436972709598.175
+  },
+  {
+    "case": "selected_standard_45_2_0",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 155395411418.71033
+  },
+  {
+    "case": "selected_standard_45_2_0",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 4281585444621.886
+  },
+  {
+    "case": "selected_standard_45_2_0.0001",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 4465550490752.555
+  },
+  {
+    "case": "selected_standard_45_2_0.0001",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 156397608261.65024
+  },
+  {
+    "case": "selected_standard_45_2_0.0001",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 4309161036313.2344
+  },
+  {
+    "case": "selected_standard_45_2_0.001",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 6645593472453.705
+  },
+  {
+    "case": "selected_standard_45_2_0.001",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 232794727943.7333
+  },
+  {
+    "case": "selected_standard_45_2_0.001",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 6412808001810.879
+  },
+  {
+    "case": "selected_standard_45_20_0",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 1302740116129.0938
+  },
+  {
+    "case": "selected_standard_45_20_0",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 45625666323.34952
+  },
+  {
+    "case": "selected_standard_45_20_0",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 1257116841683.4656
+  },
+  {
+    "case": "selected_standard_45_20_0.0001",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 1396209378255.8826
+  },
+  {
+    "case": "selected_standard_45_20_0.0001",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 48903010268.18873
+  },
+  {
+    "case": "selected_standard_45_20_0.0001",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 1347308788075.905
+  },
+  {
+    "case": "selected_standard_45_20_0.001",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 5056077765392.777
+  },
+  {
+    "case": "selected_standard_45_20_0.001",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 177105834215.8211
+  },
+  {
+    "case": "selected_standard_45_20_0.001",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 4878977426046.93
+  },
+  {
+    "case": "selected_standard_45_100_0",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 578626238736.9099
+  },
+  {
+    "case": "selected_standard_45_100_0",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 20265137583.03719
+  },
+  {
+    "case": "selected_standard_45_100_0",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 558362163532.4393
+  },
+  {
+    "case": "selected_standard_45_100_0.0001",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 762761296623.0382
+  },
+  {
+    "case": "selected_standard_45_100_0.0001",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 26719012618.0317
+  },
+  {
+    "case": "selected_standard_45_100_0.0001",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 736043426065.3965
+  },
+  {
+    "case": "selected_standard_45_100_0.001",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 4910997751719.646
+  },
+  {
+    "case": "selected_standard_45_100_0.001",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 172021022875.6787
+  },
+  {
+    "case": "selected_standard_45_100_0.001",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 4738981857919.421
+  },
+  {
+    "case": "selected_igra_01_45_20_0.0001",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 751046491352.0496
+  },
+  {
+    "case": "selected_igra_01_45_20_0.0001",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 26284633041.95122
+  },
+  {
+    "case": "selected_igra_01_45_20_0.0001",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 724762528979.4377
+  },
+  {
+    "case": "uniform_standard_45_20_0.0001",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 3906304047330.3687
+  },
+  {
+    "case": "uniform_standard_45_20_0.0001",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 135380203208.53802
+  },
+  {
+    "case": "uniform_standard_45_20_0.0001",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 3770926572320.0986
+  },
+  {
+    "case": "uniform_igra_01_45_20_0.0001",
+    "target": "PM2.5",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 2137440226850.6812
+  },
+  {
+    "case": "uniform_igra_01_45_20_0.0001",
+    "target": "PMcoarse",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 74145708746.04414
+  },
+  {
+    "case": "uniform_igra_01_45_20_0.0001",
+    "target": "PM10",
+    "status": "no 95% response limit in the <=1 dB domain",
+    "formal_local_lod95_ug_m3": 2063295932605.005
+  }
+]

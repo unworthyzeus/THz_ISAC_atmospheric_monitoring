@@ -1,0 +1,173 @@
+{
+  "candidate_gaussian_rate_bps": 109520702.19964282,
+  "best_fixed_block_among_tested": {
+    "plan": "selected",
+    "center_ghz": 224.0,
+    "gaussian_fixed_rate_bps": 128306865.12621793
+  },
+  "gaussian_rate_loss_vs_best_tested_fixed_pct": 14.64158827985923,
+  "candidate_transmission_s": 19.72,
+  "interpretation": "Same 16 MHz instantaneous bandwidth, power and pilot/CP overhead. Best among tested blocks, not global band optimization. Gaussian-input rate is not QPSK throughput. Both reference and sample carry payload.",
+  "all_fixed_blocks": [
+    {
+      "plan": "selected",
+      "center_ghz": 224.0,
+      "gaussian_fixed_rate_bps": 128306865.12621793
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 228.0,
+      "gaussian_fixed_rate_bps": 128273840.15006989
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 238.66666666666666,
+      "gaussian_fixed_rate_bps": 127518279.42879364
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 246.66666666666666,
+      "gaussian_fixed_rate_bps": 126468011.469735
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 252.0,
+      "gaussian_fixed_rate_bps": 125571210.9649158
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 261.3333333333333,
+      "gaussian_fixed_rate_bps": 123632528.90892519
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 265.3333333333333,
+      "gaussian_fixed_rate_bps": 122651040.93442854
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 270.66666666666663,
+      "gaussian_fixed_rate_bps": 121186812.67450035
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 276.0,
+      "gaussian_fixed_rate_bps": 119520738.34695248
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 281.3333333333333,
+      "gaussian_fixed_rate_bps": 117611158.67306207
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 286.66666666666663,
+      "gaussian_fixed_rate_bps": 115388269.4433364
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 289.3333333333333,
+      "gaussian_fixed_rate_bps": 114123890.39736117
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 301.3333333333333,
+      "gaussian_fixed_rate_bps": 106129982.87533899
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 310.66666666666663,
+      "gaussian_fixed_rate_bps": 91740496.6607979
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 314.66666666666663,
+      "gaussian_fixed_rate_bps": 75731984.13257907
+    },
+    {
+      "plan": "selected",
+      "center_ghz": 318.66666666666663,
+      "gaussian_fixed_rate_bps": 33023868.60374238
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 228.0,
+      "gaussian_fixed_rate_bps": 128273840.15006989
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 233.86666666666667,
+      "gaussian_fixed_rate_bps": 127961349.89306736
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 239.73333333333332,
+      "gaussian_fixed_rate_bps": 127399784.44594294
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 245.6,
+      "gaussian_fixed_rate_bps": 126628930.9707752
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 251.46666666666667,
+      "gaussian_fixed_rate_bps": 125667749.52704482
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 257.3333333333333,
+      "gaussian_fixed_rate_bps": 124521835.36027895
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 263.2,
+      "gaussian_fixed_rate_bps": 123186320.84299573
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 269.06666666666666,
+      "gaussian_fixed_rate_bps": 121645869.40157294
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 274.93333333333334,
+      "gaussian_fixed_rate_bps": 119871797.98414962
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 280.8,
+      "gaussian_fixed_rate_bps": 117814758.05634718
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 286.6666666666667,
+      "gaussian_fixed_rate_bps": 115388269.44333635
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 292.5333333333333,
+      "gaussian_fixed_rate_bps": 112429812.09005642
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 298.4,
+      "gaussian_fixed_rate_bps": 108597647.18891001
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 304.26666666666665,
+      "gaussian_fixed_rate_bps": 103045874.32290281
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 310.1333333333333,
+      "gaussian_fixed_rate_bps": 93105096.84172904
+    },
+    {
+      "plan": "uniform",
+      "center_ghz": 316.0,
+      "gaussian_fixed_rate_bps": 66257084.047738336
+    }
+  ]
+}

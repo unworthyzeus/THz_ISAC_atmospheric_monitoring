@@ -1,0 +1,57 @@
+{
+  "condition_count": 288,
+  "output_count": 8,
+  "rows": 2304,
+  "axes": {
+    "plan": [
+      "uniform",
+      "selected"
+    ],
+    "profile": [
+      "standard",
+      "igra_01"
+    ],
+    "elevation_deg": [
+      30,
+      45,
+      60,
+      90
+    ],
+    "total_s": [
+      2,
+      20,
+      100
+    ],
+    "residual_std_db": [
+      0,
+      0.0001,
+      0.001
+    ],
+    "noise_figure_db": [
+      6,
+      17
+    ]
+  },
+  "fixed": {
+    "tx_power_dbm": 23,
+    "correlation_length_ghz": 10,
+    "matched_reference_weather": true
+  },
+  "targets": [
+    "H2CO",
+    "CH3OH",
+    "CH3CN",
+    "CH3Cl",
+    "HCOOH",
+    "PM2.5",
+    "PMcoarse",
+    "PM10"
+  ],
+  "pm_reference_ug_m3": {
+    "PM2.5": 15,
+    "PMcoarse": 45,
+    "PM10": 45
+  },
+  "scope": "Cartesian comparison under fixed assumed material/profile/calibration models, not an exhaustive physical population. Failed settings remain rejected for all outputs; no zero uncertainty imputation.",
+  "pm10": "Joint fine/coarse sum with cross covariance; positive PM10 response uses fine fraction 49/90."
+}

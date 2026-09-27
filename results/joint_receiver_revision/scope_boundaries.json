@@ -1,0 +1,16 @@
+{
+  "raw_frames": 16,
+  "raw_frame_scope": "Matched narrowband Doppler/CP and integer timing only. New frequency spot checks; full warped-time acquisition remains open.",
+  "measured_calibration": false,
+  "measured_concentration_validation": false,
+  "measured_aerosol_composition": false,
+  "unresolved": [
+    "RF power/noise/retuning/image rejection",
+    "Fractional timing, clock drift, time dilation, oscillator noise, pointing and multipath",
+    "Actual baseline abundance and pollutant vertical profiles",
+    "Full atmospheric weather transfer and nonstationarity",
+    "Measured spectral covariance, drift and independent field test",
+    "PM information and composition",
+    "Applicable environmental averaging/domain"
+  ]
+}

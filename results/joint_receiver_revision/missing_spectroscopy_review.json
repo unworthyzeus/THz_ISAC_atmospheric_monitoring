@@ -1,0 +1,41 @@
+{
+  "source": "https://hitran.org/media/refs/HITRAN-2024.pdf",
+  "page": 7,
+  "table": 1,
+  "source_pdf_sha256": "e9f1422deeb7cf43dd406c1df1ff4ffec92ac379dbaa557a3112e39163bb107c",
+  "requested_line_center_window_ghz": [
+    0,
+    3000
+  ],
+  "records": [
+    {
+      "molecule": "CH3Br",
+      "name": "Bromomethane",
+      "catalog_min_wavenumber_cm_1": 794,
+      "catalog_min_frequency_ghz": 23803.5211652,
+      "status": "Published HITRAN2024 line coverage outside requested window"
+    },
+    {
+      "molecule": "C2H4",
+      "name": "Ethylene",
+      "catalog_min_wavenumber_cm_1": 615,
+      "catalog_min_frequency_ghz": 18437.236167,
+      "status": "Published HITRAN2024 line coverage outside requested window"
+    },
+    {
+      "molecule": "CH3F",
+      "name": "Fluoromethane",
+      "catalog_min_wavenumber_cm_1": 945,
+      "catalog_min_frequency_ghz": 28330.387281,
+      "status": "Published HITRAN2024 line coverage outside requested window"
+    },
+    {
+      "molecule": "CH3I",
+      "name": "Iodomethane",
+      "catalog_min_wavenumber_cm_1": 693,
+      "catalog_min_frequency_ghz": 20775.6173394,
+      "status": "Published HITRAN2024 line coverage outside requested window"
+    }
+  ],
+  "interpretation": "This resolves why the published catalog provides no line centers in this request window; it does not prove absent molecular absorption or validate long infrared wings. Alternative microwave catalogs still require atmospheric broadening and validation."
+}

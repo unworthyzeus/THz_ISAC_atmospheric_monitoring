@@ -49,3 +49,11 @@ paper/current_study.tex -text
 paper/README.md -text
 README.md -text
 AGENTS.md -text
+
+# Exact byte provenance for the five-gas receiver revision.
+results/joint_receiver_revision/** -text
+scripts/*joint_receiver*.py -text
+tests/test_joint_receiver_metrics.py -text
+docs/49*.md -text
+docs/5[01]*.md -text
+paper/joint_receiver_revision.tex -text

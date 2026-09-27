@@ -1,0 +1,47 @@
+\section{Five-gas band selection and time/calibration limits}
+The frozen uniform schedule was revised using a five-gas joint design criterion, retaining both PM masses and all gain/background/interferent nuisance terms. A standard-atmosphere coordinate-exchange screen chose sixteen blocks; exact physical spectra were then recomputed. Neither January weather nor the new response samples selected the bands. Resources remain one sequential RF chain, sixteen 16 MHz blocks, identical pilots/CP, 23 dBm active power, 6 dB noise figure, matched reference, charged settling and equal reference/sample time. A global optimum is not claimed.
+
+At 20 s total and an \emph{assumed}, unmeasured 0.0001 dB residual, selected-design acetonitrile recall at 1 \ugm\ is 97.67\% (exact 95\% interval 97.36--97.96\%), versus 57.40\% for the fresh uniform-design control. The family false-alarm frequency is 0.79\%. Every result jointly fits five gases and fine/coarse PM. The nominal 95\% response concentrations change with both time and calibration (Table~\ref{tab:joint-time-cal}); they solve the positive-signal variance equation before Monte Carlo evaluation. PM has no valid 95\% response solution within the evaluated $\leq1$ dB absorption domain in any listed condition.
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{Nominal 95\% response concentration (\ugm), selected five-gas design, standard atmosphere at $45^\circ$, matched reference. Total time includes reference and sample; $\sigma$ is assumed residual standard deviation in dB. PM limits remain unavailable in the evaluated domain.}
+\label{tab:joint-time-cal}
+\begin{tabular}{rrrrrrr}\toprule
+Time (s) & $\sigma$ & H$_2$CO & CH$_3$OH & CH$_3$CN & CH$_3$Cl & HCOOH\\\midrule
+2 & 0 & 25.78 & 27.69 & 2.92 & 12.21 & 102.78 \\
+2 & 0.0001 & 25.86 & 27.91 & 2.94 & 12.31 & 102.89 \\
+2 & 0.001 & 33.02 & 44.26 & 4.55 & 19.69 & 113.33 \\
+20 & 0 & 7.57 & 8.13 & 0.86 & 3.58 & 30.17 \\
+20 & 0.0001 & 7.85 & 8.84 & 0.93 & 3.92 & 30.55 \\
+20 & 0.001 & 21.91 & 35.38 & 3.56 & 15.57 & 56.27 \\
+100 & 0 & 3.36 & 3.61 & 0.38 & 1.59 & 13.40 \\
+100 & 0.0001 & 3.95 & 5.00 & 0.52 & 2.23 & 14.23 \\
+100 & 0.001 & 20.83 & 34.60 & 3.47 & 15.19 & 49.31 \\
+\bottomrule\end{tabular}
+\end{table}
+
+The retained percentage tables report 1, 5 and 10 \ugm\ VOC recall, low-concentration PM recall, misses, false alarms, exact binomial intervals, relative bias/RMSE and precision/F1 under an explicitly artificial 50\% prevalence. A nominal 95\% detection point is not a 5\% concentration-error point: relative RMSE is approximately 21\% there. Zero observed misses do not imply zero population failure probability. Persistent residual covariance is drawn once per acquisition and does not diminish once per payload symbol.
+
+Formaldehyde, methanol, acetonitrile, chloromethane and formic acid are distinct molecular targets; CO/O$_3$/SO$_2$/NO$_2$ remain interferents. PM2.5 and coarse PM are disjoint modeled masses, while PM10 is their sum with cross covariance. The proposed PM1 subdivision remains numerically rejected. Under the assumed material model, smooth Rayleigh absorption is largely removed by gain-slope fitting and leading scattering shapes are nearly shared among size modes. Full Mie calculations do not restore practically useful mass information in these cases.
+
+Fresh moving raw-frame spot checks at each selected frequency preserve decoded packets, but the schedule loses 14.64\% of the Gaussian-input rate benchmark relative to the best tested fixed block at equal bandwidth and power. This architecture comparison is distinct from passive observation preserving an already scheduled modem and from coded QPSK throughput. Unknown weather, relative hop gains, realistic timing/oscillator effects, material calibration and independent concentration truth remain open. The results are conditional computational improvements, not validated atmospheric sensor performance.
+
+The common global comparison includes all five VOCs, PM2.5, coarse PM and PM10 in every condition: two band plans, two atmospheres, four elevations, three durations, three calibration residuals and two noise figures (6 and 17 dB), at fixed 23 dBm power. Of 288 conditions, 270 pass and 18 are explicitly rejected for all outputs. Table~\ref{tab:global-all} summarizes the 2304 retained rows. PM10 includes fine/coarse cross covariance. No valid 95\% PM limit exists in this grid. These conditional predictions include positive-response variance; their ranges are operating-condition envelopes, not confidence intervals or measured performance.
+
+\begin{table}[t]
+\centering\scriptsize
+\caption{Common global comparison. Reference concentration $c$ is in \ugm; recall is predicted percent across valid conditions. $N_{95}$ counts conditions with a response limit inside the evaluated absorption domain. Each output has 270 computed and 18 rejected conditions.}
+\label{tab:global-all}
+\begin{tabular}{lrrr}\toprule
+Output & $c$ & Recall range (\%) & $N_{95}$\\\midrule
+H2CO & 1 & 0.128--89.043 & 270 \\
+CH3OH & 1 & 0.130--72.886 & 270 \\
+CH3CN & 1 & 0.282--100.000 & 270 \\
+CH3Cl & 1 & 0.139--100.000 & 270 \\
+HCOOH & 1 & 0.125--12.651 & 269 \\
+PM2.5 & 15 & 0.125--0.125 & 0 \\
+Coarse PM & 45 & 0.125--0.125 & 0 \\
+PM10 & 45 & 0.125--0.125 & 0 \\
+\bottomrule\end{tabular}
+\end{table}

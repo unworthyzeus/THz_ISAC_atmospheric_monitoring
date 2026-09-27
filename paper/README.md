@@ -19,3 +19,5 @@ The previous source/PDF are preserved under [history/2026-09-08](history/2026-09
 Reproduction commands, runtime manifests, validation and retained failures are linked in that ledger. Historical source attribution remains in the [source map](../docs/source_map.md); older experiments retain their own assumptions in the manuscript appendices.
 
 The [expanded VOC/PM control](../docs/48_expanded_voc_pm_and_20s_calibration.md) reports the requested 20 s at 0.0001 dB, five jointly fitted VOCs, ineffective PM mass detection and rejected three-bin size separation. Use the receiver paper builder to regenerate both extensions.
+
+The current five-gas revision is built with `python scripts/build_joint_receiver_paper.py`. Its [condition tables](../docs/51_joint_design_time_calibration_results.md), [species and methods guide](../docs/50_species_methods_and_percentage_guide.md), [complete gap audit](../docs/49_completion_audit_and_fixes.md), and [manifest](../results/joint_receiver_revision/deliverable_manifest.json) supersede the earlier receiver build as the current deliverable. Prior result snapshots are preserved.

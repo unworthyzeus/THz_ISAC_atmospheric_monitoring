@@ -1,0 +1,9 @@
+{
+  "status": "built",
+  "pages": 11,
+  "output": "output/pdf/thz_isac_pollutant_sensing_ieee.pdf",
+  "sha256": "6912f38f58a222e88eceb445ce632f1297aaa50bae4f4c37f6f5e28bc05309b5",
+  "unresolved_references": false,
+  "overfull_boxes": false,
+  "visual_review": "All rendered pages and all three percentage, limit and global PM figures inspected"
+}
