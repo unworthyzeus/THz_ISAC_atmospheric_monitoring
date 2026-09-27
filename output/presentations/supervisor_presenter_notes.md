@@ -131,7 +131,7 @@ Sources: I2R_proposal_THz_ISAC (1).pdf, docs/49_completion_audit_and_fixes.md
 
 ## Slide 5: Evidence and operating conditions
 
-Exact dataset subsets and their roles are documented on slides 40–44.
+Each task explains its inputs on the method slide. Detailed dataset records remain on slides 40–44.
 
 
 Evidence | What it supports | What it cannot establish
@@ -197,6 +197,17 @@ T(z): atmospheric temperature (K)
 ρ_H₂O(z): water vapour mass density (kg/m³)
 Convert µg/m³ to kg/m³ before substitution
 
+
+Data and models used:
+
+NOAA IGRA: Beijing CHM00054511.
+2026 snapshot: 521 soundings.
+1 January profile in the current grid.
+Jan/Apr/Jul/Sep in earlier checks.
+Used for pressure, T and humidity.
+ITU P.835 supplies the standard case.
+VOC/PM vertical profiles are assumed.
+
 The channel responds to vertical weather variation instead of using one homogeneous slab.
 
 The assumed pollutant profile does not become measured truth because the weather profile is measured.
@@ -204,7 +215,7 @@ The assumed pollutant profile does not become measured truth because the weather
 
 
 
-Sources: paper/current_study.tex, docs/50_species_methods_and_percentage_guide.md, src/thz_isac/atmosphere.py
+Sources: paper/current_study.tex, docs/50_species_methods_and_percentage_guide.md, src/thz_isac/atmosphere.py, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 7: Task 1.1 · Results and profile uncertainty
@@ -281,7 +292,7 @@ LaTeX:
 ```
 
 
-Additional evidence: Current target gases = 5; Interfering gases = 4; Historical isotope tables = 34; Historical 60–400 GHz lines = 31,474
+Additional evidence: Current target gases = 5; Interfering gases = 4; Current isotope tables = 25; Current acquired lines = 319,001
 
 
 Notation legend:
@@ -301,6 +312,17 @@ P(z): atmospheric pressure
 δ_ℓ: line shift per unit pressure
 δ_ℓ P(z): pressure shift in frequency units
 
+
+Data and models used:
+
+HITRAN2024, acquired via HAPI.
+319,001 lines, 25 isotope tables.
+Acquisition window: 0–3000 GHz.
+Five VOC targets + four interferents.
+Line strength, width, shift and energy
+feed the local absorption profiles.
+HAPI supplies masses and partition sums.
+
 The joint receiver now includes five organic gas targets and four interfering gases.
 
 HITRAN strengths already include natural isotope abundance. Applying it twice would understate absorption.
@@ -308,7 +330,7 @@ HITRAN strengths already include natural isotope abundance. Applying it twice wo
 Voigt Doppler width uses isotope mass. Reported mass concentration uses the natural-mixture molar mass. HCOOH rotational intensities involve dipole-based calculations and do not remove spectroscopy uncertainty.
 
 
-Sources: docs/50_species_methods_and_percentage_guide.md, https://hitran.org/media/refs/HITRAN-2024.pdf, https://www.hitran.org/docs/molec-meta/
+Sources: docs/50_species_methods_and_percentage_guide.md, https://hitran.org/media/refs/HITRAN-2024.pdf, https://www.hitran.org/docs/molec-meta/, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 9: Task 1.2 · Every target gas and catalog gap
@@ -379,6 +401,17 @@ n(r): refractive index at radial distance r
 r: distance from Earth’s centre (m)
 ζ: local zenith angle
 
+
+Data and models used:
+
+HITRAN: the same nine-gas line pool.
+ITU P.676: oxygen/water background.
+ITU / January IGRA atmospheric states.
+Used in layerwise slant integration.
+Water paper, Fig. 8, 380.197 GHz:
+published slopes are a separate check.
+No measured atmospheric THz paths.
+
 Elevation changes both the optical path and the received SNR.
 
 A secant factor applied after vertical integration cannot represent all refracted path effects.
@@ -386,7 +419,7 @@ A secant factor applied after vertical integration cannot represent all refracte
 
 
 
-Sources: paper/current_study.tex, docs/50_species_methods_and_percentage_guide.md
+Sources: paper/current_study.tex, docs/50_species_methods_and_percentage_guide.md, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 11: Task 1.3 · Numerical convergence and thermal correction
@@ -488,6 +521,17 @@ dr: radius integration element (m)
 ≃: Rayleigh approximation for small particles
 The two final terms describe one radius r
 
+
+Data and models used:
+
+Inputs: assumed aerosol properties.
+Fine 0.03–2.5 µm; coarse 2.5–10 µm.
+Density and refractive index shown above.
+Used for mass-normalized extinction.
+Calcite: 8 sample + 4 blank recordings.
+Separate transmission check only:
+no measured PM mass or size labels.
+
 Rayleigh and full Mie agree closely in this particle-size and frequency regime.
 
 Material refractive index, shape, composition and humidity response remain assumptions.
@@ -495,7 +539,7 @@ Material refractive index, shape, composition and humidity response remain assum
 
 
 
-Sources: docs/50_species_methods_and_percentage_guide.md, paper/current_study.tex
+Sources: docs/50_species_methods_and_percentage_guide.md, paper/current_study.tex, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 13: Task 1.4 · PM definitions and the negative result
@@ -596,6 +640,16 @@ F = 10^(noise figure in dB / 10)
 T₀(F − 1): receiver noise temperature (K)
 Gains and losses must be converted from dB
 
+
+Data and models used:
+
+ITU P.676: background and sky emission.
+Task 1: HITRAN / IGRA propagation.
+550 km, 23 dBm, 6 dB NF: scenarios.
+Used to compute SNR and time budgets.
+No measured RF chain dataset is used.
+Power, noise and settling are requirements.
+
 Each block has sixteen 1 MHz tones. CP, pilots, full frames, reference time and retuning all consume the time budget.
 
 23 dBm across the selected bands and 6 dB receiver noise are unverified RF requirements.
@@ -603,7 +657,7 @@ Each block has sixteen 1 MHz tones. CP, pilots, full frames, reference time and 
 
 
 
-Sources: docs/50_species_methods_and_percentage_guide.md, docs/47_receiver_design_and_calibration.md
+Sources: docs/50_species_methods_and_percentage_guide.md, docs/47_receiver_design_and_calibration.md, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 15: Task 2.1 · Resources and communication cost
@@ -703,6 +757,16 @@ x[n]: transmitted time domain samples
 IFFT: inverse fast Fourier transform
 h_k scales amplitude and rotates phase
 
+
+Data and models used:
+
+Physics: Task 1. Receiver: Task 2.1.
+Generated QPSK/OFDM observations.
+16 raw frames: one per chosen block.
+Used for timing and decoded-bit checks.
+Recall trials use simulated moments.
+No downloaded or measured CSI set.
+
 The simulation connects physical channel attenuation to a bounded moving receiver.
 
 The large recall study does not generate every raw waveform sample for every Monte Carlo trial.
@@ -710,7 +774,7 @@ The large recall study does not generate every raw waveform sample for every Mon
 
 
 
-Sources: docs/50_species_methods_and_percentage_guide.md, results/joint_receiver_revision/scope_boundaries.json
+Sources: docs/50_species_methods_and_percentage_guide.md, results/joint_receiver_revision/scope_boundaries.json, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 17: Task 2.2 · What the waveform controls establish
@@ -806,6 +870,16 @@ I: identity matrix, T: matrix transpose
 H: linear concentration retrieval operator
 Bold symbols denote vectors or matrices
 
+
+Data and models used:
+
+Five target + four interfering gases.
+HITRAN signatures and two PM modes.
+Standard atmosphere selects 16 bands.
+January IGRA checks weather transfer.
+Used to build the joint inverse model.
+No measured training labels are used.
+
 Numerical gates check scaled H D ≈ I and nuisance rejection H N ≈ 0.
 
 No algorithm can separate an arbitrary gain error that occupies the same spectral direction as the pollutant.
@@ -813,7 +887,7 @@ No algorithm can separate an arbitrary gain error that occupies the same spectra
 
 
 
-Sources: docs/50_species_methods_and_percentage_guide.md, scripts/joint_receiver_support.py
+Sources: docs/50_species_methods_and_percentage_guide.md, scripts/joint_receiver_support.py, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 19: Task 3.1 · Frequency selection improves five-gas inference
@@ -886,6 +960,16 @@ S_sample: signal power in sample observation
 S_reference: signal power in reference
 log₁₀: base ten logarithm
 
+
+Data and models used:
+
+Generated QPSK moments, not field CSI.
+10,000 trials per null/positive class.
+Five VOC scenarios + PM mass controls.
+HITRAN/IGRA define the forward model.
+Used to estimate recall and mass error.
+Earlier three-gas controls stay separate.
+
 More existing symbols contribute information without adding sensing transmissions.
 
 Arbitrary QAM, nonlinear distortion or severe intercarrier interference invalidate these simple moments.
@@ -893,7 +977,7 @@ Arbitrary QAM, nonlinear distortion or severe intercarrier interference invalida
 M2M4 is established prior work. The contribution is its application, resource accounting and conditional evaluation here. Invalid inversions count as failures. Large experiments use the joint asymptotic distribution of second/fourth sample moments and nonlinear inversion. Raw QPSK controls independently test bounded cases.
 
 
-Sources: docs/50_species_methods_and_percentage_guide.md, docs/42_payload_recall.md, https://arxiv.org/abs/2506.15998, paper/current_study.tex
+Sources: docs/50_species_methods_and_percentage_guide.md, docs/42_payload_recall.md, https://arxiv.org/abs/2506.15998, paper/current_study.tex, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 21: Task 3.2 · Why payload reuse mattered
@@ -986,6 +1070,16 @@ J_eff: information after nuisance profiling
 Cov(ĉ): estimator covariance, units (µg/m³)²
 −1: matrix inverse, ⪰: covariance lower bound
 
+
+Data and models used:
+
+Analytical QPSK / magnitude likelihood.
+Unknown signal, noise and reference.
+Historical three-gas physical model.
+Used for Fisher bounds and efficiency.
+No independent measured dataset.
+20 s, zero extra residual: benchmark.
+
 The bound identifies when replacing the estimator offers little remaining gain.
 
 The bound is local and conditional on the likelihood, covariance and physical signatures.
@@ -993,7 +1087,7 @@ The bound is local and conditional on the likelihood, covariance and physical si
 
 
 
-Sources: docs/44_payload_information_derivation.md, docs/45_payload_bounds_results.md
+Sources: docs/44_payload_information_derivation.md, docs/45_payload_bounds_results.md, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 24: Task 4.1 · M2M4 is already close to the bound
@@ -1087,6 +1181,16 @@ K_ij: correlation of frequency bins i and j
 exp: exponential function
 σ_cal² K: persistent covariance contribution
 
+
+Data and models used:
+
+HITRAN gas signatures and PM model.
+ITU standard + January IGRA profile.
+288 settings; 8 outputs; 2,304 rows.
+Time 2/20/100 s, residual 0–0.001 dB.
+Used for the common sensitivity grid.
+These are generated model outputs.
+
 More time helps until persistent calibration error dominates.
 
 The 10 GHz correlation length and each calibration standard deviation remain unmeasured assumptions.
@@ -1094,7 +1198,7 @@ The 10 GHz correlation length and each calibration standard deviation remain unm
 
 
 
-Sources: docs/50_species_methods_and_percentage_guide.md, results/joint_receiver_revision/global_comparison_protocol.json
+Sources: docs/50_species_methods_and_percentage_guide.md, results/joint_receiver_revision/global_comparison_protocol.json, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 26: Task 4.2 · Longer time cannot remove calibration error
@@ -1183,6 +1287,16 @@ c₉₅: concentration for 95% recall (µg/m³)
 >: target detection decision
 The variance depends on positive concentration
 
+
+Data and models used:
+
+Current positive/null response trials.
+480 retained percentage/error rows.
+Used for limits, recall and intervals.
+WHO 2021 PM levels: comparison only.
+15/45 µg/m³: declared PM controls.
+No field compliance dataset is available.
+
 Reports include low recalls, missed detections, exact binomial intervals and concentration RMSE.
 
 95% detection power, a 95% confidence interval and 5% concentration error describe different quantities.
@@ -1190,7 +1304,7 @@ Reports include low recalls, missed detections, exact binomial intervals and con
 Recall = TP/(TP+FN). False alarms = FP/(FP+TN). Relative RMSE = sqrt(mean((estimate−truth)^2))/truth. Precision and F1 use artificial 50% prevalence. A missing in-domain solution remains unavailable. The PM10 output participates in the family although it derives from two masses.
 
 
-Sources: docs/50_species_methods_and_percentage_guide.md, scripts/evaluate_joint_receiver.py
+Sources: docs/50_species_methods_and_percentage_guide.md, scripts/evaluate_joint_receiver.py, docs/53_dataset_subsets_and_roles.md
 
 
 ## Slide 29: Task 4.3 · Every 95% limit needs time and calibration

@@ -6,6 +6,26 @@ Audited the saved acquisition records, current physics inputs and historical dat
 
 This audit changes documentation and the presentation, not the scientific experiments or reported recall. The current five VOC study uses controlled concentration scenarios. Its results are not predictions evaluated against UCI Beijing labels or paired field radio measurements.
 
+## Inputs explained within each task
+
+The current presentation places a visible explanation on every task's method slide, so the audience can understand the inputs while reading the method and results. [The task input module](../scripts/supervisor_task_sources.py) maintains these explanations and the presenter notes repeat them. The detailed appendix remains on slides 40–44.
+
+| Task | Method slide | Inputs and their role |
+| --- | ---: | --- |
+| 1.1 Atmospheric profiles | 6 | NOAA IGRA Beijing snapshot: 521 soundings; January profile for the current grid and four selected months for earlier checks. Pressure, temperature and humidity drive propagation. ITU P.835 provides the standard case; pollutant vertical profiles are assumed. |
+| 1.2 Molecular spectroscopy | 8 | HITRAN2024 via HAPI: 319,001 acquired lines, 25 isotope tables, 0–3000 GHz, five VOC targets and four interferents. Line parameters, masses and partition sums define gas absorption. |
+| 1.3 Path attenuation | 10 | The same HITRAN inputs, ITU P.676 background and ITU/January IGRA states enter slant integration. Published water slopes near 380.197 GHz provide a separate physical check. |
+| 1.4 Particulate extinction | 12 | Assumed size distributions, density and refractive index define mass extinction. Eight calcite sample and four blank recordings check transmission separately; they do not provide PM mass or size labels. |
+| 2.1 Receiver budget | 14 | Task 1 propagation and ITU emission feed assumed orbit, power and noise scenarios. These determine SNR and time requirements; no measured RF chain dataset is used. |
+| 2.2 Waveform chain | 16 | Generated QPSK/OFDM data: 16 raw frames check timing and decoding; simulated moments support recall trials. No measured CSI set is used. |
+| 3.1 Joint inversion | 18 | HITRAN signatures and two PM modes form the inverse model. The standard atmosphere selects 16 bands and January IGRA checks weather transfer; there are no measured training labels. |
+| 3.2 Payload estimator | 20 | Generated QPSK moments, 10,000 trials per null/positive class, controlled VOC and PM scenarios and the HITRAN/IGRA forward model estimate recall and mass error. Earlier three gas controls remain separate. |
+| 4.1 Lower bounds | 23 | Analytical QPSK and magnitude likelihoods with unknown signal, noise and reference determine Fisher bounds. Historical three gas efficiency and the 20 s zero extra residual benchmark are model based. |
+| 4.2 Global sensitivity | 25 | HITRAN/PM physics with standard and January IGRA atmospheres generate 288 settings and eight outputs: 2,304 rows across time, calibration and other variables. |
+| 4.3 Detection reporting | 28 | Current positive/null trials and 480 retained metric rows support limits, recall and intervals. WHO 2021 PM levels are comparisons and declared concentration controls; no field compliance dataset is available. |
+
+The revision adds provenance to the task narrative without adding new experiments. Independent receiver stability and paired concentration truth remain missing.
+
 ## Inputs to the current five VOC and PM study
 
 ### HITRAN2024 spectroscopy through HAPI

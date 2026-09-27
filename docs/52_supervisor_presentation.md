@@ -8,8 +8,8 @@ The presentation explains the problem, physical model, receiver, inversion, boun
 
 ## Delivered results
 
-- `output/presentations/sub_thz_isac_supervisor_review_v7_datasets.pptx`: current presentation with vector equation assets, notation legends and detailed dataset provenance.
-- `output/presentations/sub_thz_isac_supervisor_review_datasets.pdf`: current reading copy made from final reviewed slide renders, with slide bookmarks.
+- `output/presentations/sub_thz_isac_supervisor_review_v8_task_inputs.pptx`: current presentation with vector equation assets, notation legends and data explanations within every task.
+- `output/presentations/sub_thz_isac_supervisor_review_task_inputs.pdf`: current reading copy made from final reviewed slide renders, with slide bookmarks.
 - `output/presentations/supervisor_presenter_notes.md`: detailed presenter notes and evidence paths.
 - `output/presentations/supervisor_equations.tex`: exact LaTeX equation source.
 
@@ -18,6 +18,8 @@ The current VOC result table includes recall at 1 microgram per cubic metre, mis
 The notation revision adds a bottom legend to each of the twenty formula slides. Each legend defines that slide's symbols, indices, operators and applicable units. Definitions distinguish reused letters such as concentration and the speed of light, wavenumber and Boltzmann's constant, and the gas constant and propagation distance. The corresponding definitions also appear in the presenter notes. The other nineteen slides retain their content and layout. Earlier delivered versions remain available for reference.
 
 The dataset revision appends five provenance slides, with an overview pointer on slide 5. They identify the current HITRAN input pools, exact NOAA soundings, external water and calcite checks, historical Beijing filters and other laboratory or field controls. [The dataset ledger](53_dataset_subsets_and_roles.md) preserves the details and distinguishes evaluated data from metadata-only options.
+
+The task input revision adds a visible "Data and models used" explanation to each of the eleven task method slides. Each identifies the source or model, relevant subset and purpose, distinguishing observations, assumptions and generated responses. The appendix remains available for exact acquisition records. Task 1.2 now displays the current 25 isotope tables and 319,001 acquired lines; the historical catalog remains identified separately. All twenty formula legends remain in place. This revision does not rerun or change the scientific experiments.
 
 ## Scientific boundaries
 

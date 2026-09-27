@@ -15,7 +15,7 @@ document.set_metadata({'title': 'Sub-THz atmospheric sensing: supervisor researc
                        'author': 'Guillem Moreno Garcia',
                        'subject': 'All eleven tasks, methods, conditional results and remaining problems',
                        'keywords': 'ISAC, VOC, PM2.5, PM10, calibration, recall'})
-target = ROOT / 'output/presentations/sub_thz_isac_supervisor_review_datasets.pdf'
+target = ROOT / 'output/presentations/sub_thz_isac_supervisor_review_task_inputs.pdf'
 document.save(target, deflate=True)
 document.close()
 with fitz.open(target) as check:

@@ -103,9 +103,14 @@ for(let i=0;i<content.length;i++){
     if(s.explain)text(slide,s.explain,76,599,1025,73,25,muted);
    }
   }
-  if(s.result)text(slide,s.result,76,s.legend&&!s.table?721:681,1440,62,29,teal,true);
+  if(s.result)text(slide,s.result,76,s.legend&&!s.table?721:681,s.task_data?1014:1440,62,s.task_data?26:29,teal,true);
   if(s.limit)text(slide,s.limit,76,817,1398,52,24,red);
   compactFormula=false;
+  if(s.task_data){
+   text(slide,'Data and models used',1140,519,388,26,20,teal,true);
+   const box=text(slide,s.task_data,1140,549,388,156,18,muted);
+   box.text.style={typeface:font,fontSize:18,color:muted,autoFit:'none',verticalAlignment:'top',wrap:true};
+  }
   if(s.legend){
    text(slide,'Notation and units',76,749,1440,24,20,teal,true);
    s.legend.forEach((column,j)=>{
@@ -116,7 +121,7 @@ for(let i=0;i<content.length;i++){
   text(slide,String(number).padStart(2,'0'),1520,866,48,26,18,muted);
  }
  const sourceNotes=s.sources.map(q=>q.startsWith('http')?q:`https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/${q.startsWith('docs/53_')||q.startsWith('results/presentation_source_audit/')?'main':'461a3ba'}/${q.replaceAll(' ','%20')}`).join('\n');
- slide.speakerNotes.textFrame.setText(`${s.notes}\n\n${s.latex?'LaTeX equation source\n'+s.latex:''}\n\n${s.legend?'Notation legend\n'+s.legend.join('\n'):''}\n\nSources\n${sourceNotes}\n\nResearch snapshot 461a3ba. Predictions and simulations remain distinct from measured field performance.`);
+ slide.speakerNotes.textFrame.setText(`${s.notes}\n\n${s.task_data?'Data and models used\n'+s.task_data:''}\n\n${s.latex?'LaTeX equation source\n'+s.latex:''}\n\n${s.legend?'Notation legend\n'+s.legend.join('\n'):''}\n\nSources\n${sourceNotes}\n\nResearch snapshot 461a3ba. Predictions and simulations remain distinct from measured field performance.`);
 }
 const candidate=path.join(TMP,'candidate-detailed.pptx');
 await (await PresentationFile.exportPptx(p)).save(candidate);
