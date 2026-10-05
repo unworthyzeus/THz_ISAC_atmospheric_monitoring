@@ -1,0 +1,4 @@
+perturbation,maximum_absolute_attenuation_error_db,apparent_ch3cn_ug_m3,apparent_ch3cn_with_background_nuisance_ug_m3,scope
+water_plus_1pct,0.05327970435413576,0.5790760019761358,-0.0004697400504269922,Deterministic blank background bias only; no weather occurrence probability
+water_minus_1pct,0.05317703289966946,-0.5786006884861403,0.00045864917492188795,Deterministic blank background bias only; no weather occurrence probability
+temperature_plus_1K,0.080093315272185,-0.750058807950496,0.0013598624390862568,Deterministic blank background bias only; no weather occurrence probability

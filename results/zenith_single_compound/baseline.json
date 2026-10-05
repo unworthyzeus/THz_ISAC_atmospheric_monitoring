@@ -1,0 +1,48 @@
+{
+  "plan": {
+    "center_ghz": 235.0,
+    "bandwidth_hz": 10000000000.0,
+    "tones": 1024,
+    "cp_s": 1e-08,
+    "frame_symbols": 10000,
+    "pilot_symbols": 30
+  },
+  "link": {
+    "satellite_altitude_km": 550.0,
+    "tx_power_dbm": 25.0,
+    "tx_aperture_diameter_m": 0.1,
+    "rx_aperture_diameter_m": 1.0,
+    "subcarrier_bandwidth_hz": 9765625.0,
+    "tx_aperture_efficiency": 0.65,
+    "rx_aperture_efficiency": 0.65,
+    "receiver_noise_figure_db": 7.0,
+    "receiver_noise_temperature_k": 290.0,
+    "implementation_loss_db": 5.0,
+    "earth_radius_km": 6371.0,
+    "n_active_subcarriers": 1024
+  },
+  "result": {
+    "sd_ug_m3": 12.731277828869043,
+    "threshold_ug_m3": 29.61738111101279,
+    "predicted_detection_pct": 1.2295984080189497,
+    "local_95pct_limit_ug_m3": 50.5584696235549,
+    "total_s": 20.0,
+    "residual_db": 0.001,
+    "power_dbm": 25.0,
+    "tx_diameter_m": 0.1,
+    "rx_diameter_m": 1.0,
+    "noise_figure_db": 7.0,
+    "snr_min_db": -0.18740745729199812,
+    "snr_max_db": -0.16571238908948682,
+    "limit_95pct_ug_m3": 50.58139659686177,
+    "pilot_mean_snr_min": 255608.49498655144,
+    "frames_per_acquisition": 8896,
+    "pilots_per_tone_per_acquisition": 266880,
+    "symbols_per_acquisition": 88960000,
+    "charged_total_s": 19.998208,
+    "rounding_s": 0.0017919999999982394
+  },
+  "status": "Conditional pilot receiver prediction; assumed 0.001 dB differential residual; not measured",
+  "hypothesis": "Single prespecified CH3CN enhancement, known 1500 m exponential vertical shape",
+  "geometry": "90 degree snapshot; finite moving windows require delay, phase, frequency and gain tracking"
+}

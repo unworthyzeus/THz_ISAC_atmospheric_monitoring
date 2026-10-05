@@ -1,0 +1,7 @@
+{
+  "unit_response_error": 5.551115123125783e-16,
+  "nuisance_rejection_max": 9.556799795973347e-13,
+  "covariance_replay_error": 0.0,
+  "retained_reference_and_sample": true,
+  "constant_total_power_across_spacing_sweep": true
+}

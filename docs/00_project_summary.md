@@ -1,3 +1,9 @@
+# Current starting point: October 5, 2026
+
+LEO links are a useful running example for all parts of this study: geometry, atmospheric absorption, transmitter and receiver budgets, antennas, OFDM, Doppler, observation time, detection and future multistatic imaging. The underlying inference methods also apply to terrestrial and UAV paths after changing their geometry and hardware.
+
+Begin with the [90° single compound walkthrough](55_zenith_single_compound_walkthrough.md) and [source based supervisor revision](54_supervisor_revision_2026_10_05.md). These distinguish measured components, published designs and modeling assumptions, and retain failed low concentration detection. Earlier entries below describe their historical snapshots.
+
 <!-- review-2026-09-05 -->
 # Current interpretation: September 5, 2026
 

@@ -1,0 +1,13 @@
+{
+  "status": "Numerically fitted local PM errors; not validated detection limits",
+  "residual_db": 0.001,
+  "total_s": 20,
+  "projected_fine_coarse_cosine": 0.9999994852183366,
+  "local_sd_ug_m3": [
+    1971120027744751.2,
+    71455774602905.92
+  ],
+  "target_condition": 1971.0715610689758,
+  "input_status": "Assumed composition, density and size distributions; no PM concentration labels",
+  "interpretation": "A larger transmitter does not establish composition, size or unique PM mass"
+}

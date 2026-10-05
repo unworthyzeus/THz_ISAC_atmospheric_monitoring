@@ -1,0 +1,7 @@
+{
+  "background_max_relative_difference": 3.01961403072811e-09,
+  "sky_max_relative_difference": 7.568928409094134e-07,
+  "check_frequencies": 33,
+  "fine_layer_step_m": 50,
+  "baseline_layer_step_m": 100
+}

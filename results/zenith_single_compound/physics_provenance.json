@@ -1,0 +1,24 @@
+{
+  "inputs": {
+    "data/raw/payload_bounds/lines.csv": "a418ae82e9f2fb1dc2f403e0e703b0314ce5cd5bdd83ff223b6118a067fbf8e6",
+    "src/thz_isac/physical_spectroscopy.py": "aa55e3bd6be2f14c42b9acc2d96368f18af94bed388eefcdb4e2f29eeba27853",
+    "src/thz_isac/atmospheric_profiles.py": "8899233e181da68b74ddc01b35314fa7922612b20954ba0de67d5392777c234b",
+    "src/thz_isac/microwave_absorption.py": "16ffc15e927e03b940295af40951cb54cf89a4c07e2a07f153f1a9ef3c852e9b",
+    "src/thz_isac/slant_path.py": "fe83b7d18195db26e55d99bc8e4a1d2ddfc000e6443f757c5df88bc709d15ddf",
+    "src/thz_isac/concentration_units.py": "98d4ad205a04d5daeda34c9966895acda073d5ea9ce59d725c56305e7ad71992",
+    "src/thz_isac/zenith_tutorial.py": "42748adfa100c4d2a99f8d1b4563dac62a3d4c3afa7395e4c73fc57bb9753e8c",
+    "recipe": "235 GHz; 10 GHz; N=256,512,1024,2048; gas order 6; thermal dz100m order2; 1500m gas profile; v1"
+  },
+  "molecule": "CH3CN",
+  "line_count": 17880,
+  "isotope_ids": [
+    1
+  ],
+  "acquired_line_center_min_ghz": 2.7748926018255933,
+  "acquired_line_center_max_ghz": 2003.458557501552,
+  "wing_cutoff": "None within acquired line catalog",
+  "gas_scale_height_m": 1500,
+  "gas_quadrature_max_relative_difference": 1.7513793183876602e-09,
+  "gas_convergence_check_frequencies": 65,
+  "data_role": "External line parameters; generated channel; no measured CSI or concentration truth"
+}

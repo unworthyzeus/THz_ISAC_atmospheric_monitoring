@@ -1,5 +1,7 @@
 # Physical Model
 
+Updated 5 October 2026. The [single compound walkthrough](55_zenith_single_compound_walkthrough.md) gives the current minimal reproducible example; the [supervisor revision](54_supervisor_revision_2026_10_05.md) explains source evidence, PM corrections and practical limitations.
+
 ## Observation
 
 The intended observable is the amplitude of wideband CSI:
@@ -18,40 +20,30 @@ The early toy model used invented spectral lines. That model is no longer accept
 
 ## Molecular Absorption
 
-The real data version should use HITRAN line parameters:
+The current calculation uses acquired HITRAN line parameters:
 
 1. Line center.
 2. Line intensity.
 3. Air broadening coefficient.
-4. Lower state energy if temperature scaling is included.
+4. Lower state energy, temperature exponents, pressure shifts and isotope partition functions for temperature scaling.
 
-The model should evaluate line shapes across 60 to 400 GHz.
+The research range is 60 to 400 GHz. It is not an instantaneous receiver bandwidth. The new tutorial evaluates an explicit 10 GHz band from 230 to 240 GHz.
 
 ## Particulate Matter
 
-PM attenuation should use a published Rayleigh or Mie scattering model.
+Use full spherical Mie extinction with independently specified size distribution, density and complex refractive index. Separate absorption and scattering. PM2.5 and PM10 are aerodynamic mass cuts; use disjoint fine and coarse modes and derive PM10 by summing them.
 
-The initial assumption can be:
+In the Rayleigh limit and at fixed material optical constants, scattering per unit particle mass scales as particle radius cubed times frequency to the fourth power. Absorption per unit mass instead has leading linear frequency dependence. Consequently, total PM extinction cannot generally be modeled as concentration times frequency to the fourth power. The repository's current assumed absorbing particles are dominated by absorption, and their smooth signatures are almost indistinguishable from gain changes and one another.
 
-```text
-PM loss proportional to concentration * frequency^4
-```
-
-This is only reasonable when particle diameter is much smaller than wavelength. Larger particles require Mie scattering or a published empirical model.
+Convert aerodynamic to physical diameter with an explicit density/shape/slip model. Size distributions and optical constants remain assumptions unless independently measured. The [new PM diagnostic](../results/zenith_single_compound/pm_diagnosis.json) rejects useful joint PM mass sensing under the declared conditions. See the [Mie implementation documentation](https://miepython.readthedocs.io/en/latest/07_algorithm.html) and the linked supervisor derivation.
 
 ## Geometry
 
-The current slant path approximation is:
-
-```text
-path = troposphere_height / sin(elevation)
-```
-
-This is useful for first experiments, but a stratified integration should replace it later.
+The current implementation integrates stratified spherical refracted rays. Ground elevation ranges from the horizon to a maximum of 90°; 30° may be a minimum visibility mask. At 90° the atmospheric path is vertical and satellite slant range equals its height above the station. The old plane parallel path proportional to 1/sin(elevation) is an approximation, not the current general model. Coverage area, satellite off nadir angle and beam footprint are separate quantities.
 
 ## Noise
 
-The software currently adds Gaussian noise in dB. A more realistic version should generate complex CSI and then derive amplitude.
+The new tutorial generates complex Gaussian pilot mean observations for both reference and sample, then takes their log magnitude ratio. Its estimator uses the corresponding local covariance plus a persistent differential calibration covariance. Other modules retain payload and Gaussian attenuation controls with their own assumptions. Ideal phase/time correction and the assumed calibration covariance are not validated by generating receiver noise.
 
 ## Targets
 
