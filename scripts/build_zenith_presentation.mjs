@@ -3,7 +3,8 @@ import path from 'node:path';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const TMP=path.join(ROOT,'tmp/zenith_deck');
+const WORKED=process.env.DECK_PROFILE==='worked';
+const TMP=path.join(ROOT,WORKED?'tmp/zenith_worked_deck':'tmp/zenith_deck');
 const SKILL=process.env.PRESENTATION_SKILL_DIR??'C:/Users/guill/.codex/plugins/cache/openai-primary-runtime/presentations/26.905.11957/skills/presentations';
 const MODULES=process.env.RUNTIME_NODE_MODULES??'C:/Users/guill/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules';
 const PYTHON=process.env.RUNTIME_PYTHON??'C:/Users/guill/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe';
@@ -93,7 +94,7 @@ for(let i=0;i<content.length;i++){
 const candidate=path.join(TMP,'candidate.pptx');
 await (await PresentationFile.exportPptx(p)).save(candidate);
 console.log('Exported',content.length,'slides');
-const finalPath=path.join(ROOT,'output/presentations',process.env.DECK_NAME??'zenith_acetonitrile_tutorial_v2.pptx');
+const finalPath=path.join(ROOT,'output/presentations',process.env.DECK_NAME??(WORKED?'zenith_acetonitrile_worked_example_v2.pptx':'zenith_acetonitrile_tutorial_v2.pptx'));
 const result=await finalizePresentation({workspaceDir:ROOT,candidatePath:candidate,finalPath,pythonExecutable:PYTHON,
   integrityValidatorPath:path.join(SKILL,'container_tools/inspect_presentation_package_integrity.py'),
   layoutValidatorPath:path.join(SKILL,'container_tools/inspect_presentation_layout_geometry.py'),

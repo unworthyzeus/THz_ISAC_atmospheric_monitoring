@@ -1,5 +1,7 @@
 # A self contained presentation of the zenith example
 
+The revised [worked calculation for a telecom audience](57_zenith_worked_calculation.md) replaces the introductory teaching route below. It explains the physical origin of the four example numbers, with every numerical step through the receiver decision. This earlier version is retained for reference.
+
 5 October 2026. The presentation explains the acetonitrile example to a mathematically fluent audience with no prior knowledge of the project or radio engineering.
 
 ## Deliverables and purpose

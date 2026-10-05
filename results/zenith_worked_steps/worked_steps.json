@@ -1,0 +1,123 @@
+{
+  "case": "Same saved numerical example, actual HITRAN parameters and simulated receiver",
+  "frequency_ghz": 230.0048828125,
+  "true_q_ug_m3": 50.58139659686177,
+  "scale_height_m": 1500.0,
+  "molar_mass_g_mol": 41.053,
+  "avogadro": 6.02214076e+23,
+  "density_per_unit_q_m3": 1.4669185589360096e+16,
+  "surface_density_at_q_m3": 7.419878940483924e+17,
+  "profile_z_m": [
+    0,
+    500,
+    1500,
+    3000,
+    5000
+  ],
+  "profile_q_ug_m3": [
+    50.58139659686177,
+    36.24315439420197,
+    18.607855913724602,
+    6.845447634939726,
+    1.8044404056911818
+  ],
+  "vertical_mass_column_mg_m2": 75.87209489529266,
+  "line_count": 17880,
+  "first_quadrature_node": {
+    "z_m": 16.882621449212024,
+    "weight_m": 42.83112309479257,
+    "temperature_k": 288.04026325202454,
+    "pressure_pa": 101122.35153551753,
+    "cross_section_cm2": 2.6422462028103423e-20,
+    "density_per_unit_q_cm3": 14505008364.938766,
+    "optical_depth_per_unit_q": 1.6415371977351429e-06,
+    "attenuation_db_per_unit_q": 7.129105468152996e-06
+  },
+  "largest_line": {
+    "molecule": "CH3CN",
+    "molecule_id": 41,
+    "isotopologue_id": 1,
+    "role": "target",
+    "wavenumber_cm_1": 7.97678228,
+    "frequency_ghz": 239.13791666520444,
+    "line_intensity": 2.616e-21,
+    "einstein_a": 0.002339,
+    "gamma_air": 0.1594,
+    "gamma_self": 1.688,
+    "lower_state_energy": 47.8643,
+    "temperature_exponent": 0.71,
+    "air_pressure_shift": 0.0,
+    "isotopologue_mass_g_mol": 41.026549,
+    "natural_abundance": 0.9738662,
+    "strength_at_node": 2.8457590068319477e-21,
+    "gamma_at_node_cm_1": 0.16219005025968142,
+    "doppler_sigma_cm_1": 6.428627089677771e-06,
+    "profile_at_tone_cm": 0.4334214064673093,
+    "cross_section_contribution_cm2": 1.2334128712081161e-21
+  },
+  "node_partition_reference": 88658.97016000001,
+  "node_partition_temperature": 83172.06722831792,
+  "second_radiation_constant_cm_k": 1.438776877,
+  "cross_section_sum_at_node_cm2": 2.6422462028103432e-20,
+  "optical_depth_per_unit_q": 5.545084465494345e-05,
+  "a0_db_per_ug_m3": 0.0002408199585051,
+  "optical_depth_at_q": 0.0028047811651226674,
+  "attenuation_at_q_db": 0.012181009829586259,
+  "amplitude_ratio": 0.9985985923075931,
+  "amplitude_reduction_pct": 0.14014076924069307,
+  "power_ratio": 0.9971991485587065,
+  "sample_power_dbm": -97.61177776176523,
+  "pilots": 266880,
+  "rho0": 0.9610356583543582,
+  "normalized_complex_noise_variance": 3.89892129965059e-06,
+  "normalized_component_sd": 0.0013962308726801936,
+  "thermal_null_variance_db2": 0.0002941528651367299,
+  "total_null_variance_db2": 0.0002951528651367299,
+  "first_tone_null_sd_db": 0.017180013537152115,
+  "h0_real": 1.0009162403343888,
+  "h0_imag": 0.00044002514462468444,
+  "h1_real": 1.0007326946371633,
+  "h1_imag": -0.0009412580690930825,
+  "h0_magnitude": 1.000916337056827,
+  "h1_magnitude": 1.0007331372961077,
+  "first_tone_thermal_y_db": 0.0015899416238062045,
+  "first_tone_cal_db": -0.0020537565711870776,
+  "first_tone_y_db": -0.0004638149473808731,
+  "G": [
+    [
+      0.3013440204690398,
+      458.4635136714071,
+      127.08272292589399
+    ],
+    [
+      458.463513671407,
+      983654.5797088755,
+      -223.7792865873489
+    ],
+    [
+      127.082722925894,
+      -223.77928658731253,
+      198502.41434939357
+    ]
+  ],
+  "g": [
+    15.066265190809268,
+    22141.401031151596,
+    7023.360955313098
+  ],
+  "theta": [
+    39.42467555285479,
+    0.004136509296420779,
+    0.010146433267761684
+  ],
+  "removed_information": 0.29517443466363735,
+  "information": 0.006169585805402444,
+  "removed_score": 14.823031272135776,
+  "score": 0.24323391867349287,
+  "qhat_ug_m3": 39.424675552855305,
+  "sd0_ug_m3": 12.73127782886888,
+  "sd1_ug_m3": 12.745216438925857,
+  "threshold_ug_m3": 29.61738111101279,
+  "q95_reconstruction": 50.58139659686151,
+  "claims": "No measured concentration or orbital CSI; 0.001 dB residual remains assumed and unmeasured."
+}

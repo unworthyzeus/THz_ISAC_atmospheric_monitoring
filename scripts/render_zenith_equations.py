@@ -2,10 +2,12 @@
 from pathlib import Path
 import json
 import subprocess
+import os
 import fitz
 
 ROOT = Path(__file__).resolve().parents[1]
-BUILD = ROOT / 'tmp/zenith_deck'
+WORKED = os.environ.get('DECK_PROFILE') == 'worked'
+BUILD = ROOT / ('tmp/zenith_worked_deck' if WORKED else 'tmp/zenith_deck')
 ASSETS = BUILD / 'equations'
 ASSETS.mkdir(parents=True, exist_ok=True)
 slides = json.loads((BUILD/'slides.json').read_text(encoding='utf-8'))
@@ -37,5 +39,5 @@ with fitz.open(ASSETS/'equations.pdf') as doc:
         (ASSETS/filename).write_text(page.get_svg_image(text_as_path=True),encoding='utf-8')
         assets[str(number)]={'file':filename,'width':page.rect.width,'height':page.rect.height,'latex':tex}
 (BUILD/'equations.json').write_text(json.dumps(assets,indent=2),encoding='utf-8')
-(ROOT/'output/presentations/zenith_acetonitrile_equations.tex').write_text(source,encoding='utf-8')
+(ROOT/'output/presentations'/('zenith_acetonitrile_worked_equations.tex' if WORKED else 'zenith_acetonitrile_equations.tex')).write_text(source,encoding='utf-8')
 print(f'Rendered {len(equations)} mathematical equations')

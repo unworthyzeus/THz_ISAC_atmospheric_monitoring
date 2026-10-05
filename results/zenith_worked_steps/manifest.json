@@ -1,0 +1,27 @@
+{
+  "inputs": {
+    "data/raw/payload_bounds/lines.csv": "a418ae82e9f2fb1dc2f403e0e703b0314ce5cd5bdd83ff223b6118a067fbf8e6",
+    "results/zenith_single_compound/matrices.npz": "2ea8b8140f22c7172dddbc04e4cd2ea29223640551fe68dc5998b0230ad7875f",
+    "results/zenith_single_compound/worked_example.json": "4d428e4aee3886de44d87ff2a3298f549f9e62592c0ca4a5da7038c184aab995",
+    "results/zenith_single_compound/worked_observation.csv": "e1657ec3638a08ab7f24b341d2cbc5a23034c4229826dd5b98aa8c237fe2878a",
+    "results/zenith_single_compound/tone_by_tone.csv": "43c391404b6121ba213e92c98764d8d13ce8a690242b4e7ba6f28e36727bb76a",
+    "results/zenith_single_compound/baseline.json": "053eed4dfd49ab27782231a073c73e5560c336940e29d3b75d4ae99b39f4de34",
+    "src/thz_isac/physical_spectroscopy.py": "aa55e3bd6be2f14c42b9acc2d96368f18af94bed388eefcdb4e2f29eeba27853",
+    "src/thz_isac/atmospheric_profiles.py": "8899233e181da68b74ddc01b35314fa7922612b20954ba0de67d5392777c234b",
+    "src/thz_isac/slant_path.py": "fe83b7d18195db26e55d99bc8e4a1d2ddfc000e6443f757c5df88bc709d15ddf",
+    "src/thz_isac/zenith_tutorial.py": "42748adfa100c4d2a99f8d1b4563dac62a3d4c3afa7395e4c73fc57bb9753e8c",
+    "src/thz_isac/concentration_units.py": "98d4ad205a04d5daeda34c9966895acda073d5ea9ce59d725c56305e7ad71992",
+    "scripts/calculate_zenith_worked_steps.py": "c0d666cd2b526cba0822ada258856ff7c759abd4dfaa5474378552fce1c494d4"
+  },
+  "outputs": {
+    "altitude_contributions.csv": "d6db86195d41801ee30bd37d288efdb854e04600b6954f6084e0c3fdb0b7d0b7",
+    "complex_receiver_steps.csv": "8883ae9da61f8e7ffb74db516f46d11c7eba80dc7b57ac6136d9794aed79bbd5",
+    "largest_line_contributions.csv": "a46c74daef8c2df2552c27d4e25e5b7b1c5ae1d4c1e403d0e866a6cd5522c541",
+    "normal_equations.npz": "edf31f0d14233e0eec48c33c060f020c6ac0eeaec37e032d27d92afabcf013be",
+    "quadrature_first_tone.csv": "1103ff1afdb238757ee84e29b2f09150c0676c1cb29b7a2409c99917b4e49fc3",
+    "worked_steps.json": "30f539d29fdde53106de20a05ca7c452da128d4aa553b224dc45c80e515a23c1"
+  },
+  "calibration_residual_db": 0.001,
+  "seed": 20261005,
+  "role": "Detailed numerical replay, not a new measured experiment"
+}
