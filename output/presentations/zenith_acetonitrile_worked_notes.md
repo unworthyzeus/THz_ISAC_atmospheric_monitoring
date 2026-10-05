@@ -1,6 +1,6 @@
 # CH₃CN at 90°: worked calculation for a telecom audience
 
-Slides 1–25 explain the experiment and derive the numerical receiver decision. Slides 26–32 provide calculation details and references.
+Slides 1–26 explain the experiment and derive the numerical receiver decision. Slides 27–33 provide calculation details and references.
 
 The spectroscopic records are external physical data. The concentration profile and receiver observations are modeled; no orbital measurement is claimed.
 
@@ -156,7 +156,24 @@ Sources:
 - <https://www.itu.int/rec/R-REC-P.835-7-202408-I/en>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 8. Step 3 · One altitude node contributes optical depth
+## 8. Step 3 · The meaning of optical depth
+
+Optical depth is the accumulated absorption coefficient along the ray: τ(f) = ∫ n(s) σ(f,s) ds. Its dimensions cancel because molecular density times absorption cross section is an inverse length. For a thin layer, dτ is approximately the fraction of the power entering that layer that it absorbs. Successive layers multiply their transmission factors, so their optical depths add. The exact total absorbed power fraction is 1 − exp(−τ), which is approximately τ only when τ is small. Optical refers to electromagnetic propagation here, including these radio frequencies. In this differential example, τ is the additional optical depth caused by the modeled enhancement relative to the reference, with other path effects matched. Power transmission is exp(−τ), whereas channel magnitude transmission is exp(−τ/2). For the saved first tone, τ = 0.002804781165 gives power transmission 0.997199148559 and amplitude transmission 0.998598592308. Atmospheric emission belongs to the separate background noise model.
+
+Optical depth tells us how much absorption a wave accumulates along its path at a particular frequency.
+Each thin layer contributes according to how many molecules it contains and how strongly they absorb. These contributions add along the path.
+τ is dimensionless. The surviving power fraction is exp(−τ). At τ = 1, 36.8% survives and 63.2% is absorbed.
+
+In this example, τ = 0.00280478: the extra gas absorbs 0.2801% of the power, giving a 0.1401% amplitude reduction.
+
+Conditions: Here τ describes the additional CH₃CN absorption. Geometric spreading and background losses are separate.
+
+Sources:
+
+- <https://hitran.org/docs/definitions-and-units/>
+- <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
+
+## 9. Step 3 · One altitude node contributes optical depth
 
 At zenith, the geometric path element equals the vertical element. The model uses order six Gauss quadrature over altitude intervals and inserts atmospheric layer boundaries, giving 114 nodes. The first node is at 16.882621449 m. Its number density is n1(0) exp(−16.882621449/1500). Its contribution in dB per unit q is 4.342944819 × 1.641537197735 × 10^−6 = 7.129105468153 × 10^−6. Numerical integration weights must not be interpreted as a measurement of the local gas profile.
 
@@ -180,7 +197,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/quadrature_first_tone.csv>
 
-## 9. Step 3 · Adding the atmosphere gives the tone sensitivity
+## 10. Step 3 · Adding the atmosphere gives the tone sensitivity
 
 Each displayed row sums the exact quadrature contributions in that altitude interval, not a midpoint approximation. The 0–100 km total is 5.545084465494345 × 10^−5 optical depth per unit q. Multiplication by 10/ln10 gives 2.40819958505 × 10^−4 dB/(µg/m³), matching the earlier saved tone table to floating point precision. The full list of 114 nodes retains the temperature, pressure, cross section, molecular density and weight.
 
@@ -202,7 +219,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/altitude_contributions.csv>
 
-## 10. Step 4 · The chosen concentration gives 0.012181 dB
+## 11. Step 4 · The chosen concentration gives 0.012181 dB
 
 This is the missing multiplication behind the second row in the screenshot. Line strengths and cross sections determine a0, while q sets the magnitude of the extra gas column. This linearity is in optical depth and dB attenuation under the fixed trace gas line shape. The complex channel amplitude itself changes exponentially. Background cancellation assumes the reference and sample atmosphere are matched after correction.
 
@@ -222,7 +239,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 11. Step 5 · Absorption predicts the amplitude change
+## 12. Step 5 · Absorption predicts the amplitude change
 
 Beer attenuation gives a power factor exp(−τ), hence an amplitude factor exp(−τ/2). The result is deterministic for the chosen concentration and physical model. It contains no receiver noise yet. The total received sample power at this tone becomes −97.61177776 dBm compared with the reference −97.59959675 dBm. The baseline channel magnitude is normalized to one for the next receiver calculation.
 
@@ -245,7 +262,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://hitran.org/docs/definitions-and-units/>
 
-## 12. Step 6 · Observation time fixes the averaging gain
+## 13. Step 6 · Observation time fixes the averaging gain
 
 This slide specifies the actual resources without teaching OFDM. The two schedules occupy 19.998208 seconds of complete frames, leaving 0.001792 seconds unused. A full pilot symbol measures all 1024 tones simultaneously. Sensing does not use the unknown payload symbols here. The 90 degree geometry is a snapshot approximation, and waiting for comparable reference conditions is additional operational time.
 
@@ -266,7 +283,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 13. Step 7 · One tone remains uncertain after averaging
+## 14. Step 7 · One tone remains uncertain after averaging
 
 The expected signal at this tone is 0.012181 dB, while the null standard deviation after both acquisitions is 0.017180 dB. Even with perfectly known gain this is not a reliable single tone detection. With an unknown gain offset, a single tone cannot distinguish attenuation from a gain change at all. The normalized real and imaginary noise components each have standard deviation 0.001396230873. Multiple frequencies are essential for both uncertainty reduction and separation from nuisance gain changes.
 
@@ -290,7 +307,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 14. Step 8 · The saved receiver draw does not equal its mean
+## 15. Step 8 · The saved receiver draw does not equal its mean
 
 Exactly replay the original random generator draw: z_r,k = (u+jv)/sqrt(2Mρ0,k), h0 = 1+z0 and h1 = 10^(−a q/20)+z1. The model then adds one correlated differential dB calibration draw per pair. Each displayed magnitude is calculated from both complex components. The final y0 equals the stored observation to numerical precision. This addresses the difference between the deterministic table and what a receiver could actually return.
 
@@ -316,7 +333,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/complex_receiver_steps.csv>
 
-## 15. Step 9 · The detector uses the complete observed spectrum
+## 16. Step 9 · The detector uses the complete observed spectrum
 
 All 1024 plotted observations are retained from the original saved simulation. The true template is shown for explanation, but the estimator does not receive q. It receives y, the template a calculated for one unit of concentration, a covariance model, and nuisance directions. Frequencies share a persistent correlated calibration error, so simply treating every sample as independent would overstate the information.
 
@@ -329,7 +346,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 16. Step 10 · The design matrix encodes gas and gain changes
+## 17. Step 10 · The design matrix encodes gas and gain changes
 
 The molecular column is generated by the same physical integration at every tone. The other columns permit a constant and linear spectral gain error. They stop these simple instrument changes from automatically being called gas. All three columns must be fitted jointly. The table scales only a by 10^4 for readability; calculations use unscaled a. Allowing more nuisance directions can reduce sensitivity further.
 
@@ -355,7 +372,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 17. Step 11 · The covariance encodes which errors average down
+## 18. Step 11 · The covariance encodes which errors average down
 
 The residual describes the reference/sample difference, so it is added once, not once for each acquisition. The null covariance assumes the two per pilot SNR values are equal. Under a positive enhancement the sample is weaker, slightly increasing its variance. The actual log amplitude observations are not exactly Gaussian; the high coherent mean SNR supports the delta approximation and the saved Monte Carlo control checks it within the model.
 
@@ -376,7 +393,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 18. Step 12 · Weighted regression estimates the unknowns
+## 19. Step 12 · Weighted regression estimates the unknowns
 
 This is generalized least squares under the stated covariance. The saved production estimator uses Cholesky solves and SVD projection, avoiding explicit inverses. The worked replay computes G and g using Cholesky solves and solves the small system. Its q agrees with the original estimator H y. The normal equations are shown because they expose every coefficient in a compact numerical example, not because explicit matrix inversion is recommended.
 
@@ -397,7 +414,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 19. Step 12 · The full spectrum reduces to this numerical system
+## 20. Step 12 · The full spectrum reduces to this numerical system
 
 Use the displayed system to reproduce the estimate, allowing for rounded coefficients. The full precision G, g and theta are saved in normal_equations.npz and worked_steps.json. The effective information is Gqq − Gqb Gbb^−1 Gbq, which is much smaller than Gqq. A and C are both necessary to construct this system; y appears only in g.
 
@@ -421,7 +438,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/normal_equations.npz>
 
-## 20. Step 13 · Eliminating gain terms gives the concentration
+## 21. Step 13 · Eliminating gain terms gives the concentration
 
 This is the scalar Schur complement of the two gain parameters. It is algebraically equivalent to the whiten and project construction in the source tutorial. The subtraction removes the component of the molecular column that can be explained by a constant and a spectral slope. Rounding the two terms too aggressively before subtraction can lose precision, so the script uses full precision throughout. The inferred b coefficients are fitted nuisance values; they are not independent instrument calibration measurements.
 
@@ -442,7 +459,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 21. Step 14 · The estimate exceeds a prespecified threshold
+## 22. Step 14 · The estimate exceeds a prespecified threshold
 
 The threshold is fixed from the null model before inspecting the observation. The unconstrained signed estimator is used for the test; truncating negative estimates to zero would change its null distribution. This one successful random draw does not itself show 95% detection probability. The threshold and a 95% power concentration are different quantities.
 
@@ -450,11 +467,11 @@ The decision says the observed pattern is inconsistent with no enhancement under
 It does not establish exact concentration, unique chemical identity in a changing mixture, or field performance.
 
 $$
-\begin{gathered}s_0=I_q^{-1/2}=12.73127783\ \mathrm{\mu g/m^3}\\\tau=z_{0.99}s_0=(2.326347874)(12.73127783)=29.61738111\ \mathrm{\mu g/m^3}\\\widehat q=39.42467555>29.61738111\quad\Longrightarrow\quad\text{detection}\end{gathered}
+\begin{gathered}s_0=I_q^{-1/2}=12.73127783\ \mathrm{\mu g/m^3}\\q_{\mathrm{th}}=z_{0.99}s_0=(2.326347874)(12.73127783)=29.61738111\ \mathrm{\mu g/m^3}\\\widehat q=39.42467555>29.61738111\quad\Longrightarrow\quad\text{detection}\end{gathered}
 $$
 
 H₀: q = 0 · H₁: q > 0 · s₀: standard deviation under H₀
-τ: threshold for 1% false alarm probability for this one prespecified compound and decision
+q_th: threshold for 1% false alarm probability for this one prespecified compound and decision
 
 Conditions: 20 s total • ideal tracking • assumed, unmeasured 0.001 dB differential calibration residual
 
@@ -463,7 +480,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 22. Why the chosen q was 50.5814 µg/m³
+## 23. Why the chosen q was 50.5814 µg/m³
 
 The equation is implicit because s1 depends slightly on q through sample SNR. The code solves it numerically; evaluating at its solution gives the arithmetic displayed here. The constant variance approximation would give 50.5585 µg/m³. This explains the otherwise arbitrary looking number in the screenshot. It does not imply this is an environmentally typical concentration.
 
@@ -471,7 +488,7 @@ This concentration was selected from the analytical sensitivity calculation befo
 It is a controlled simulation input. It was neither measured in the atmosphere nor estimated from the sample.
 
 $$
-\begin{gathered}\Pr(\widehat q>\tau\mid q)=0.95\quad\Longleftrightarrow\quad q-\tau=z_{0.95}s_1(q)\\q_{95}=29.61738111+(1.644853627)(12.74521644)=50.58139660\ \mathrm{\mu g/m^3}\end{gathered}
+\begin{gathered}\Pr(\widehat q>q_{\mathrm{th}}\mid q)=0.95\quad\Longleftrightarrow\quad q-q_{\mathrm{th}}=z_{0.95}s_1(q)\\q_{95}=29.61738111+(1.644853627)(12.74521644)=50.58139660\ \mathrm{\mu g/m^3}\end{gathered}
 $$
 
 s₁(q) = √[H C(q) Hᵀ] · H is the first row of G⁻¹ Aᵀ C(0)⁻¹, so q̂ = H y.
@@ -486,7 +503,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 23. Repeated observations show success and failure rates
+## 24. Repeated observations show success and failure rates
 
 The counts are 113/10000 under q=0, 131/10000 at q=1 and 9475/10000 at q=50.5814. The exact binomial intervals describe Monte Carlo uncertainty, not uncertainty in hardware calibration, spectroscopy or real weather. The observations use complex pilot means, rather than directly drawing a Gaussian concentration estimate.
 
@@ -507,7 +524,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/results/zenith_single_compound/receiver_control.csv>
 
-## 24. What is real, assumed and simulated in this example
+## 25. What is real, assumed and simulated in this example
 
 The EMeRGe/IAGOS contextual reference is 145 pptv, equivalent to about 0.252 µg/m³ at 288.15 K and 101325 Pa. It is not a universal ground concentration or a concentration profile measurement for this example. Real detection requires independently measured concentration, blank stability and a tested moving receiver. Multiple ground receivers would require adequate ray diversity and an identifiable tomographic model. LEO is a useful example for the full chain, not evidence that every proposed sensing mode is feasible.
 
@@ -529,7 +546,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/54_supervisor_revision_2026_10_05.md>
 - <https://acp.copernicus.org/articles/23/1893/2023/index.html>
 
-## 25. The original table, now with its calculation attached
+## 26. The original table, now with its calculation attached
 
 This closes the requested explanation of the screenshot. The deterministic chain and statistical inverse are different operations. The forward model computes a pattern from a chosen concentration; the receiver fit estimates concentration from noisy observations without knowing the chosen value. That distinction is necessary to avoid confusing the simulated truth, predicted attenuation and retrieved concentration.
 
@@ -549,7 +566,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 26. Appendix · Temperature correction for the actual line
+## 27. Appendix · Temperature correction for the actual line
 
 The partition sums come from HAPI TIPS2025. The Boltzmann factor uses the lower state energy, and the last factor corrects stimulated emission. Width is also adjusted: γ = 0.1594 × (101122.3515/101325) × (296/288.040263)^0.71 = 0.1621900503 cm⁻¹. The saved source uses the second radiation constant defined in physical_spectroscopy.py. All factors are calculated at the first actual quadrature node, not at a rounded atmospheric state.
 
@@ -571,7 +588,7 @@ Sources:
 - <https://hitran.org/hapi/>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 27. Appendix · Power and noise at the first tone
+## 28. Appendix · Power and noise at the first tone
 
 Received power equals per tone power plus both antenna gains minus free space, background and implementation loss. Noise uses kB(Tsky+Te)Δf, with Tsky = 177.831 K and Te = 290(10^(7/10)−1). The noise figure is not counted twice. More exact values are saved in tone_by_tone.csv. The 25 dBm is the total average RF power across all tones, not per tone or electrical input power.
 
@@ -592,7 +609,7 @@ Sources:
 - <https://www.itu.int/rec/R-REC-P.676-13-202208-I>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/results/zenith_single_compound/tone_by_tone.csv>
 
-## 28. Appendix · Five actual rows of the covariance
+## 29. Appendix · Five actual rows of the covariance
 
 Each row and column is indexed by the original tone number. Multiply each displayed entry by 10^−4 dB² to obtain the covariance value. The diagonal includes both thermal and persistent calibration variance. Selecting only these tones requires recalculating the estimator using the corresponding A rows and this submatrix. Taking five entries from the full H would not produce the five tone estimator.
 
@@ -615,7 +632,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 29. Appendix · A five tone dot product can be checked by hand
+## 30. Appendix · A five tone dot product can be checked by hand
 
 These are the same five observations extracted from the full simulated spectrum. The weights are recomputed for only these five tones while allowing the same gain offset and slope. The entries and their products show a literal matrix multiplication. Its large uncertainty means the estimate 171.7494 is not persuasive evidence, even though it is larger than the full spectrum estimate. Source values retain full precision; the displayed products use full precision before rounding.
 
@@ -636,7 +653,7 @@ Sources:
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/55_zenith_single_compound_walkthrough.md>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/main/results/zenith_worked_steps/worked_steps.json>
 
-## 30. Appendix · Hardware evidence keeps its original scope
+## 31. Appendix · Hardware evidence keeps its original scope
 
 Transmit power values must refer to the same quantity when comparing hardware: average linear OFDM output differs from peak pulse power and electrical supply power. The published design and laboratory references are meaningful anchors but cannot prove the whole assumed measurement chain. The research note retains antenna dimensions, pointing, surface tolerance, motion and power comparisons.
 
@@ -657,7 +674,7 @@ Sources:
 - <https://doi.org/10.1109/JMW.2025.3610360>
 - <https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/b94f3fe/docs/54_supervisor_revision_2026_10_05.md>
 
-## 31. Sources · Spectroscopy and atmospheric state
+## 32. Sources · Spectroscopy and atmospheric state
 
 These are primary method and context references. The HITRAN table is an external physical input; the code adds the declared geometry, concentration profile and receiver error assumptions. See the linked source audit for each claim boundary. HAPI version in the retained experiment is 1.3.0.0.
 
@@ -674,7 +691,7 @@ Sources:
 - <https://www.itu.int/rec/R-REC-P.676-13-202208-I>
 - <https://acp.copernicus.org/articles/23/1893/2023/index.html>
 
-## 32. Sources · Every numerical step is saved
+## 33. Sources · Every numerical step is saved
 
 The numerical replay starts from the original experiment snapshot b94f3fe and does not alter the main scientific result. The data directory is results/zenith_worked_steps. The physical forward sum and the complex random draw are independently replayed, then compared against the saved outputs. The first tone sensitivity, whole spectrum estimate and uncertainty agree. Equations and slide source values are drawn from these files.
 

@@ -99,6 +99,15 @@ add('Step 2 · A line shape gives absorption at our tone',table=[['At z = 16.882
     caveat='σ is calculated from line parameters and atmospheric state. It is not a measured satellite attenuation.',
     notes='The Voigt function is the convolution of Doppler and collision broadening. Here the Lorentz half width is 0.1621900503 cm⁻¹ and the Doppler standard deviation is 6.42862709 × 10^−6 cm⁻¹. Their values are used at the actual tone wavenumber. Multiplying the temperature corrected line strength by this function gives one cross section. The other transitions supply the remaining sum. The layer has no single universal cross section: pressure and temperature change it with altitude.',refs=[S['hitran'],S['hapi'],S['p835'],S['steps']])
 
+add('Step 3 · The meaning of optical depth',body=[
+    'Optical depth tells us how much absorption a wave accumulates along its path at a particular frequency.',
+    'Each thin layer contributes according to how many molecules it contains and how strongly they absorb. These contributions add along the path.',
+    'τ is dimensionless. The surviving power fraction is exp(−τ). At τ = 1, 36.8% survives and 63.2% is absorbed.'],
+    takeaway=f"In this example, τ = {v['optical_depth_at_q']:.8f}: the extra gas absorbs {100*(1-v['power_ratio']):.4f}% of the power, giving a {v['amplitude_reduction_pct']:.4f}% amplitude reduction.",
+    caveat='Here τ describes the additional CH₃CN absorption. Geometric spreading and background losses are separate.',
+    notes='Optical depth is the accumulated absorption coefficient along the ray: τ(f) = ∫ n(s) σ(f,s) ds. Its dimensions cancel because molecular density times absorption cross section is an inverse length. For a thin layer, dτ is approximately the fraction of the power entering that layer that it absorbs. Successive layers multiply their transmission factors, so their optical depths add. The exact total absorbed power fraction is 1 − exp(−τ), which is approximately τ only when τ is small. Optical refers to electromagnetic propagation here, including these radio frequencies. In this differential example, τ is the additional optical depth caused by the modeled enhancement relative to the reference, with other path effects matched. Power transmission is exp(−τ), whereas channel magnitude transmission is exp(−τ/2). For the saved first tone, τ = 0.002804781165 gives power transmission 0.997199148559 and amplitude transmission 0.998598592308. Atmospheric emission belongs to the separate background noise model.',
+    refs=[S['hitran'],S['steps']])
+
 add('Step 3 · One altitude node contributes optical depth',table=[['First quadrature node', 'Numerical value'],
     ['Cross section σ₀', '2.6422462 × 10⁻²⁰ cm²/molecule'],
     ['Density n₁(z) for q = 1 µg/m³', '1.4505008 × 10¹⁰ molecules/cm³'],
@@ -211,15 +220,15 @@ add('Step 13 · Eliminating gain terms gives the concentration',
     notes='This is the scalar Schur complement of the two gain parameters. It is algebraically equivalent to the whiten and project construction in the source tutorial. The subtraction removes the component of the molecular column that can be explained by a constant and a spectral slope. Rounding the two terms too aggressively before subtraction can lose precision, so the script uses full precision throughout. The inferred b coefficients are fitted nuisance values; they are not independent instrument calibration measurements.')
 
 add('Step 14 · The estimate exceeds a prespecified threshold',
-    latex=r'\begin{gathered}s_0=I_q^{-1/2}=12.73127783\ \mathrm{\mu g/m^3}\\\tau=z_{0.99}s_0=(2.326347874)(12.73127783)=29.61738111\ \mathrm{\mu g/m^3}\\\widehat q=39.42467555>29.61738111\quad\Longrightarrow\quad\text{detection}\end{gathered}',
-    legend='H₀: q = 0 · H₁: q > 0 · s₀: standard deviation under H₀\nτ: threshold for 1% false alarm probability for this one prespecified compound and decision',
+    latex=r'\begin{gathered}s_0=I_q^{-1/2}=12.73127783\ \mathrm{\mu g/m^3}\\q_{\mathrm{th}}=z_{0.99}s_0=(2.326347874)(12.73127783)=29.61738111\ \mathrm{\mu g/m^3}\\\widehat q=39.42467555>29.61738111\quad\Longrightarrow\quad\text{detection}\end{gathered}',
+    legend='H₀: q = 0 · H₁: q > 0 · s₀: standard deviation under H₀\nq_th: threshold for 1% false alarm probability for this one prespecified compound and decision',
     body=['The decision says the observed pattern is inconsistent with no enhancement under this model.',
           'It does not establish exact concentration, unique chemical identity in a changing mixture, or field performance.'],
     caveat=CONDITION,
     notes='The threshold is fixed from the null model before inspecting the observation. The unconstrained signed estimator is used for the test; truncating negative estimates to zero would change its null distribution. This one successful random draw does not itself show 95% detection probability. The threshold and a 95% power concentration are different quantities.')
 
 add('Why the chosen q was 50.5814 µg/m³',
-    latex=r'\begin{gathered}\Pr(\widehat q>\tau\mid q)=0.95\quad\Longleftrightarrow\quad q-\tau=z_{0.95}s_1(q)\\q_{95}=29.61738111+(1.644853627)(12.74521644)=50.58139660\ \mathrm{\mu g/m^3}\end{gathered}',
+    latex=r'\begin{gathered}\Pr(\widehat q>q_{\mathrm{th}}\mid q)=0.95\quad\Longleftrightarrow\quad q-q_{\mathrm{th}}=z_{0.95}s_1(q)\\q_{95}=29.61738111+(1.644853627)(12.74521644)=50.58139660\ \mathrm{\mu g/m^3}\end{gathered}',
     legend='s₁(q) = √[H C(q) Hᵀ] · H is the first row of G⁻¹ Aᵀ C(0)⁻¹, so q̂ = H y.\nz₀.₉₅: standard normal 95th percentile · these weights are fixed under the null.',
     body=['This concentration was selected from the analytical sensitivity calculation before the random receiver draw.',
           'It is a controlled simulation input. It was neither measured in the atmosphere nor estimated from the sample.'],
@@ -311,13 +320,13 @@ add('Sources · Every numerical step is saved',body=[
     takeaway='Reproduce with scripts/calculate_zenith_worked_steps.py. The saved source hashes are in manifest.json.',
     notes='The numerical replay starts from the original experiment snapshot b94f3fe and does not alter the main scientific result. The data directory is results/zenith_worked_steps. The physical forward sum and the complex random draw are independently replayed, then compared against the saved outputs. The first tone sensitivity, whole spectrum estimate and uncertainty agree. Equations and slide source values are drawn from these files.',refs=[S['steps'],REPO+'main/results/zenith_worked_steps/manifest.json',REPO+'main/scripts/calculate_zenith_worked_steps.py',S['tutorial']])
 
-assert len(slides)==32
+assert len(slides)==33
 assert all(s['notes'] and s['sources'] for s in slides)
 assert math.isclose(v['a0_db_per_ug_m3']*v['true_q_ug_m3'],v['attenuation_at_q_db'],rel_tol=1e-12)
 assert math.isclose(v['q95_reconstruction'],v['true_q_ug_m3'],rel_tol=1e-12)
 (BUILD/'slides.json').write_text(json.dumps(slides,indent=2,ensure_ascii=False),encoding='utf-8')
 notes=['# CH₃CN at 90°: worked calculation for a telecom audience','',
-       'Slides 1–25 explain the experiment and derive the numerical receiver decision. Slides 26–32 provide calculation details and references.',
+       'Slides 1–26 explain the experiment and derive the numerical receiver decision. Slides 27–33 provide calculation details and references.',
        '', 'The spectroscopic records are external physical data. The concentration profile and receiver observations are modeled; no orbital measurement is claimed.', '']
 for i,s in enumerate(slides,1):
     notes += [f"## {i}. {s['title'].replace(chr(10),' ')}",'',s['notes'],'']

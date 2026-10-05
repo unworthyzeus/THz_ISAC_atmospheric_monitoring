@@ -4,9 +4,11 @@
 
 ## What changed and why
 
-The earlier table placed four numbers together without showing enough of their origin. The new presentation derives each one, then follows the actual simulated observation through the estimator and decision. It contains 25 main slides and seven appendix slides:
+The earlier table placed four numbers together without showing enough of their origin. The new presentation derives each one, then follows the actual simulated observation through the estimator and decision. It contains 26 main slides and seven appendix slides:
 
-- [PowerPoint](../output/presentations/zenith_acetonitrile_worked_example_v2.pptx)
+The optical depth revision adds a verbal explanation immediately before the atmospheric integral. It also labels the detection threshold q_th, keeping τ for optical depth in the presentation. The numerical experiment is unchanged.
+
+- [PowerPoint](../output/presentations/zenith_acetonitrile_worked_example_v3.pptx)
 - [PDF with slide bookmarks](../output/presentations/zenith_acetonitrile_worked_example.pdf)
 - [Complete text, tables, equations, presenter notes and source links](../output/presentations/zenith_acetonitrile_worked_notes.md)
 - [LaTeX equation source](../output/presentations/zenith_acetonitrile_worked_equations.tex)
@@ -62,6 +64,10 @@ $$
 The line need not be centered on the radio tone: pressure and Doppler broadening distribute its strength over frequency. Summing all 17,880 retained transitions gives σ₀ = 2.64224620281 × 10⁻²⁰ cm²/molecule at this altitude. Temperature, pressure and the line catalog determine this value; it is not an adjustable receiver coefficient. The [HITRAN definitions](https://hitran.org/docs/definitions-and-units/) specify the parameters and units; [HAPI](https://hitran.org/hapi/) supplies the TIPS2025 partition functions used here.
 
 ### 4. Integrate the atmospheric column
+
+**Optical depth measures the absorption accumulated along the ray at a particular frequency.** Each thin layer contributes according to its molecular density and absorption cross section. These contributions add: τ(f) = ∫ n(s)σ(f,s) ds. Optical depth is dimensionless, and the surviving power fraction from absorption alone is exp(−τ). At τ = 1, 36.8% survives and 63.2% is absorbed. The term also applies to radio waves. [HITRAN optical depth definition](https://hitran.org/docs/definitions-and-units/).
+
+The exact absorbed fraction is 1 − exp(−τ). It is approximately τ only for small optical depth. Here τ describes the extra CH₃CN absorption relative to the reference. The example value 0.002804781165 corresponds to 0.280085% additional power loss and 0.140141% amplitude reduction. Geometric spreading and background atmospheric losses remain separate.
 
 For q = 1 µg/m³, this node has n₁ = 1.45050083649 × 10¹⁰ molecules/cm³ and quadrature weight w = 4283.11230948 cm. Its optical depth contribution is
 
@@ -156,7 +162,7 @@ $env:DECK_PROFILE = 'worked'
 py -3.12 scripts/prepare_zenith_worked_presentation.py
 py -3.12 scripts/render_zenith_equations.py
 # Set a new output filename for each regenerated revision.
-$env:DECK_NAME = 'zenith_acetonitrile_worked_example_v3.pptx'
+$env:DECK_NAME = 'zenith_acetonitrile_worked_example_v4.pptx'
 node scripts/build_zenith_presentation.mjs
 py -3.12 scripts/package_zenith_pdf.py
 ```

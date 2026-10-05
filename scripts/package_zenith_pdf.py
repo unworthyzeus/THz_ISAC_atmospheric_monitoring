@@ -20,6 +20,6 @@ target=ROOT/'output/presentations'/('zenith_acetonitrile_worked_example.pdf' if 
 document.save(target,deflate=True)
 document.close()
 with fitz.open(target) as check:
-    assert len(check)==len(slides)==(32 if WORKED else 38)
+    assert len(check)==len(slides)==(33 if WORKED else 38)
     assert len(check.get_toc())==len(slides)
 print(f'Created {len(slides)} bookmarked pages: {target}')

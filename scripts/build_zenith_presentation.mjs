@@ -94,7 +94,7 @@ for(let i=0;i<content.length;i++){
 const candidate=path.join(TMP,'candidate.pptx');
 await (await PresentationFile.exportPptx(p)).save(candidate);
 console.log('Exported',content.length,'slides');
-const finalPath=path.join(ROOT,'output/presentations',process.env.DECK_NAME??(WORKED?'zenith_acetonitrile_worked_example_v2.pptx':'zenith_acetonitrile_tutorial_v2.pptx'));
+const finalPath=path.join(ROOT,'output/presentations',process.env.DECK_NAME??(WORKED?'zenith_acetonitrile_worked_example_v3.pptx':'zenith_acetonitrile_tutorial_v2.pptx'));
 const result=await finalizePresentation({workspaceDir:ROOT,candidatePath:candidate,finalPath,pythonExecutable:PYTHON,
   integrityValidatorPath:path.join(SKILL,'container_tools/inspect_presentation_package_integrity.py'),
   layoutValidatorPath:path.join(SKILL,'container_tools/inspect_presentation_layout_geometry.py'),
