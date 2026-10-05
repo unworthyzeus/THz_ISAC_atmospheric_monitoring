@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage[paperwidth=24in,paperheight=5in,margin=0.2in]{geometry}
+\usepackage{amsmath,amssymb,xcolor}
+\definecolor{eqcolor}{HTML}{126B76}
+\pagestyle{empty}
+\begin{document}
+\color{eqcolor}\fontsize{27}{36}\selectfont
+% Slide 13
+\[\displaystyle M=\left\lfloor\frac{10\ \mathrm{s}}{10{,}000\times112.4\ \mathrm{ns}}\right\rfloor\!\times30=266{,}880\]
+
+\newpage
+% Slide 14
+\[\displaystyle c(z)=q e^{-z/H_g},\quad H_g=1500\ \mathrm{m}\qquad a_k=\frac{10}{\ln 10}\int_0^{100\ \mathrm{km}}\sigma_k(z)n_1(z)\,dz\]
+
+\newpage
+% Slide 17
+\[\displaystyle T_e=T_0\left(10^{NF/10}-1\right),\qquad N_k=k_B(T_{\mathrm{sky},k}+T_e)\Delta f,\qquad\rho_{r,k}=P_{r,k}/N_k\]
+
+\newpage
+% Slide 18
+\[\displaystyle \mathbf Y_r=\operatorname{diag}(\mathbf h_r)\mathbf X_r+\mathbf W_r,\qquad r\in\{0,1\}\]
+
+\newpage
+% Slide 19
+\[\displaystyle \widehat h_{r,k}=\frac{1}{M}\sum_{m=1}^M Y_{r,k,m}X_{r,k,m}^{*},\qquad\widehat h_{r,k}\sim\mathcal{CN}\!\left(h_{r,k},\frac{N_k}{M}\right)\]
+
+\newpage
+% Slide 20
+\[\displaystyle y_k=-20\log_{10}\!\left(\frac{|\widehat h_{1,k}|}{|\widehat h_{0,k}|}\right),\qquad \mathbf y\in\mathbb R^{1024}\]
+
+\newpage
+% Slide 21
+\[\displaystyle \begin{gathered}\mathbf y=\mathbf A\boldsymbol\theta+\boldsymbol\varepsilon,\qquad\mathbf A=\begin{bmatrix}\mathbf a&\mathbf 1&\mathbf u\end{bmatrix}\in\mathbb R^{1024\times3}\\\boldsymbol\theta=\begin{bmatrix}q&b_0&b_1\end{bmatrix}^{T},\qquad u_k=\frac{f_k-\bar f}{f_{\max}-f_{\min}}\end{gathered}\]
+
+\newpage
+% Slide 22
+\[\displaystyle \begin{gathered}\mathbf C(q)=\operatorname{diag}(v_k(q))+\sigma_{\mathrm{cal}}^2\mathbf R,\quad R_{ij}=e^{-|f_i-f_j|/(10\ \mathrm{GHz})}\\v_k(q)=\frac{(20/\ln10)^2}{2M}\left[\rho_{0,k}^{-1}+\rho_{1,k}(q)^{-1}\right]\end{gathered}\]
+
+\newpage
+% Slide 23
+\[\displaystyle \begin{gathered}\mathbf C(0)=\mathbf L\mathbf L^T,\quad\widetilde{\mathbf y}=\mathbf L^{-1}\mathbf y,\quad\widetilde{\mathbf a}=\mathbf L^{-1}\mathbf a,\quad\widetilde{\mathbf B}=\mathbf L^{-1}\mathbf B\\\mathbf r=(\mathbf I-\mathbf Q\mathbf Q^T)\widetilde{\mathbf a}\end{gathered}\]
+
+\newpage
+% Slide 24
+\[\displaystyle \widehat q=\frac{\mathbf r^T\widetilde{\mathbf y}}{\mathbf r^T\mathbf r}=\mathbf H\mathbf y,\qquad\mathbf H=\frac{\mathbf r^T\mathbf L^{-1}}{\mathbf r^T\mathbf r},\qquad s_0^2=\mathbf H\mathbf C(0)\mathbf H^T\]
+
+\newpage
+% Slide 25
+\[\displaystyle H_0:q=0,\quad H_1:q>0,\qquad\widehat q>\underbrace{z_{0.99}s_0}_{\tau}=2.32635\times12.7313=29.6174\ \mathrm{\mu g/m^3}\]
+
+\newpage
+% Slide 30
+\[\displaystyle \mathbf y_5=\mathbf A_5\begin{bmatrix}q&b_0&b_1\end{bmatrix}^{T}+\boldsymbol\varepsilon_5,\qquad\mathbf A_5\in\mathbb R^{5\times3}\]
+
+\newpage
+% Slide 32
+\[\displaystyle \widehat q_5=\mathbf H_5\mathbf y_5=171.7494,\quad s_{0,5}=165.1163,\quad\tau_5=384.1179\ \mathrm{\mu g/m^3}\]
+
+\end{document}
