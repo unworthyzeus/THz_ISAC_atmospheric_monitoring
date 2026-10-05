@@ -18,54 +18,58 @@
 
 \newpage
 % Slide 9
+\[\displaystyle \begin{gathered}\alpha(f,z)=n(z)\,\sigma\!\left(f;T(z),p(z)\right)\\\tau(f;z_g,z_s)=\int_{z_g}^{z_s}\alpha(f,z)\,\mathrm dz\qquad\text{at }90^\circ\end{gathered}\]
+
+\newpage
+% Slide 10
 \[\displaystyle \delta\tau_{0,1}=\sigma_0n_1w=(2.6422462\times10^{-20})(1.4505008\times10^{10})(4283.1123)=1.6415372\times10^{-6}\]
 
 \newpage
-% Slide 11
+% Slide 12
 \[\displaystyle \begin{gathered}\Delta A_0=a_0q=(0.0002408199585)(50.5813966)=0.01218100983\ \mathrm{dB}\\\tau_0(q)=q\tau_{0,1}=(50.5813966)(5.545084465\times10^{-5})=0.002804781165\end{gathered}\]
 
 \newpage
-% Slide 12
+% Slide 13
 \[\displaystyle \begin{gathered}\frac{|h_{1,0}|}{|h_{0,0}|}=e^{-\tau_0/2}=10^{-\Delta A_0/20}=10^{-0.01218100983/20}=0.9985985923\\100\left(1-\frac{|h_{1,0}|}{|h_{0,0}|}\right)=0.1401407692\%\end{gathered}\]
 
 \newpage
-% Slide 14
+% Slide 15
 \[\displaystyle v_0(0)=\frac{(20/\ln10)^2}{2M}\left(\frac1{\rho_0}+\frac1{\rho_0}\right),\qquad\sqrt{C_{00}}=0.0171800\ \mathrm{dB}\]
 
 \newpage
-% Slide 15
+% Slide 16
 \[\displaystyle y_0=-20\log_{10}\!\left(\frac{1.0007331373}{1.0009163371}\right)-0.0020537566=0.0015899416-0.0020537566=-0.0004638149\ \mathrm{dB}\]
 
 \newpage
-% Slide 17
+% Slide 18
 \[\displaystyle \mathbf y=\mathbf A\boldsymbol\theta+\boldsymbol\varepsilon,\quad\mathbf A=[\mathbf a\ \mathbf1\ \mathbf u]\in\mathbb R^{1024\times3},\quad\boldsymbol\theta=[q\ b_0\ b_1]^T\]
 
 \newpage
-% Slide 18
+% Slide 19
 \[\displaystyle \begin{gathered}\mathbf C(q)=\operatorname{diag}(v_k(q))+10^{-6}\mathbf R,\qquad R_{ij}=e^{-|f_i-f_j|/(10\ \mathrm{GHz})}\\v_k(q)=\frac{(20/\ln10)^2}{2M}\left[\rho_{0,k}^{-1}+\rho_{1,k}(q)^{-1}\right],\quad\rho_{1,k}(q)=\rho_{0,k}10^{-a_kq/10}\end{gathered}\]
 
 \newpage
-% Slide 19
+% Slide 20
 \[\displaystyle \widehat{\boldsymbol\theta}=\arg\min_{\boldsymbol\theta}(\mathbf y-\mathbf A\boldsymbol\theta)^T\mathbf C(0)^{-1}(\mathbf y-\mathbf A\boldsymbol\theta),\qquad\mathbf G\widehat{\boldsymbol\theta}=\mathbf g\]
 
 \newpage
-% Slide 20
+% Slide 21
 \[\displaystyle \begin{bmatrix}G_{qq}&\mathbf G_{qb}\\\mathbf G_{bq}&\mathbf G_{bb}\end{bmatrix}\begin{bmatrix}\widehat q\\\widehat{\mathbf b}\end{bmatrix}=\begin{bmatrix}g_q\\\mathbf g_b\end{bmatrix}\]
 
 \newpage
-% Slide 21
+% Slide 22
 \[\displaystyle \begin{gathered}I_q=G_{qq}-\mathbf G_{qb}\mathbf G_{bb}^{-1}\mathbf G_{bq}=0.3013440205-0.2951744347=0.006169585805\\t_q=g_q-\mathbf G_{qb}\mathbf G_{bb}^{-1}\mathbf g_b=15.0662651908-14.8230312721=0.243233918673\\\widehat q=t_q/I_q=39.42467555\ \mathrm{\mu g/m^3}\end{gathered}\]
 
 \newpage
-% Slide 22
+% Slide 23
 \[\displaystyle \begin{gathered}s_0=I_q^{-1/2}=12.73127783\ \mathrm{\mu g/m^3}\\q_{\mathrm{th}}=z_{0.99}s_0=(2.326347874)(12.73127783)=29.61738111\ \mathrm{\mu g/m^3}\\\widehat q=39.42467555>29.61738111\quad\Longrightarrow\quad\text{detection}\end{gathered}\]
 
 \newpage
-% Slide 23
+% Slide 24
 \[\displaystyle \begin{gathered}\Pr(\widehat q>q_{\mathrm{th}}\mid q)=0.95\quad\Longleftrightarrow\quad q-q_{\mathrm{th}}=z_{0.95}s_1(q)\\q_{95}=29.61738111+(1.644853627)(12.74521644)=50.58139660\ \mathrm{\mu g/m^3}\end{gathered}\]
 
 \newpage
-% Slide 27
+% Slide 28
 \[\displaystyle S(T)=S(296)\frac{Q(296)}{Q(T)}\exp\!\left[-c_2E^{\prime\prime}\left(\frac1T-\frac1{296}\right)\right]\frac{1-e^{-c_2\widetilde\nu/T}}{1-e^{-c_2\widetilde\nu/296}}\]
 
 \end{document}

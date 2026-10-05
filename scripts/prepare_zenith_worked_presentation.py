@@ -101,12 +101,24 @@ add('Step 2 · A line shape gives absorption at our tone',table=[['At z = 16.882
 
 add('Step 3 · The meaning of optical depth',body=[
     'Optical depth tells us how much absorption a wave accumulates along its path at a particular frequency.',
-    'Each thin layer contributes according to how many molecules it contains and how strongly they absorb. These contributions add along the path.',
+    'Each altitude contributes differently: gas concentration, temperature and pressure vary with height. Optical depth adds those local contributions along the path.',
     'τ is dimensionless. The surviving power fraction is exp(−τ). At τ = 1, 36.8% survives and 63.2% is absorbed.'],
     takeaway=f"In this example, τ = {v['optical_depth_at_q']:.8f}: the extra gas absorbs {100*(1-v['power_ratio']):.4f}% of the power, giving a {v['amplitude_reduction_pct']:.4f}% amplitude reduction.",
     caveat='Here τ describes the additional CH₃CN absorption. Geometric spreading and background losses are separate.',
     notes='Optical depth is the accumulated absorption coefficient along the ray: τ(f) = ∫ n(s) σ(f,s) ds. Its dimensions cancel because molecular density times absorption cross section is an inverse length. For a thin layer, dτ is approximately the fraction of the power entering that layer that it absorbs. Successive layers multiply their transmission factors, so their optical depths add. The exact total absorbed power fraction is 1 − exp(−τ), which is approximately τ only when τ is small. Optical refers to electromagnetic propagation here, including these radio frequencies. In this differential example, τ is the additional optical depth caused by the modeled enhancement relative to the reference, with other path effects matched. Power transmission is exp(−τ), whereas channel magnitude transmission is exp(−τ/2). For the saved first tone, τ = 0.002804781165 gives power transmission 0.997199148559 and amplitude transmission 0.998598592308. Atmospheric emission belongs to the separate background noise model.',
     refs=[S['hitran'],S['steps']])
+
+tau_total=sum(float(r['optical_depth_per_unit_q']) for r in altitude)
+fraction_below=lambda top:sum(float(r['optical_depth_per_unit_q']) for r in altitude if float(r['upper_m'])<=top)/tau_total
+add('Step 3 · How height enters optical depth',
+    latex=r'\begin{gathered}\alpha(f,z)=n(z)\,\sigma\!\left(f;T(z),p(z)\right)\\\tau(f;z_g,z_s)=\int_{z_g}^{z_s}\alpha(f,z)\,\mathrm dz\qquad\text{at }90^\circ\end{gathered}',
+    legend='α: local absorption per unit path length · n: enhancement molecular density · σ: absorption cross section\nz_g: ground receiver height · z_s: satellite height · the saved atmospheric integral ends at 100 km',
+    body=['Our model uses n(z) = n(0) exp(−z / 1500 m) and recalculates σ using temperature and pressure at each height.',
+          'For this vertical path, raising the satellite above the gas layer mainly adds free space loss, with negligible extra CH₃CN absorption.'],
+    takeaway=f"At the first tone, {100*fraction_below(1000):.2f}% of the gas optical depth comes from below 1 km and {100*fraction_below(5000):.2f}% from below 5 km.",
+    caveat='These fractions depend on the assumed gas profile and atmosphere. A slanted ray also changes the path through each height.',
+    notes='Local absorption α(f,z) varies with altitude through both the enhancement molecular density and the temperature and pressure dependent cross section. Optical depth belongs to a specified path between endpoints. At zenith, ds = dz, giving the displayed integral. Use consistent length units: for example n in m⁻³, σ in m² and dz in m. The numerical code uses the equivalent cm units. The cumulative depth from a fixed ground height to an increasing upper boundary is nondecreasing for this positive gas enhancement, even if the local absorption varies nonmonotonically. A cross section at one frequency need not decrease monotonically with altitude because pressure and Doppler broadening change the line shape. The saved model sums 114 nodes from 0 to 100 km and treats the remaining path to 550 km as having negligible CH₃CN absorption. Raising the ground receiver can remove dense lower layers from the ray. Satellite height and elevation also affect slant geometry away from zenith. The reported altitude fractions are sums of the saved quadrature contributions, not measured atmospheric fractions.',
+    refs=[S['hitran'],S['p835'],S['steps'],REPO+'main/results/zenith_worked_steps/altitude_contributions.csv'])
 
 add('Step 3 · One altitude node contributes optical depth',table=[['First quadrature node', 'Numerical value'],
     ['Cross section σ₀', '2.6422462 × 10⁻²⁰ cm²/molecule'],
@@ -320,13 +332,13 @@ add('Sources · Every numerical step is saved',body=[
     takeaway='Reproduce with scripts/calculate_zenith_worked_steps.py. The saved source hashes are in manifest.json.',
     notes='The numerical replay starts from the original experiment snapshot b94f3fe and does not alter the main scientific result. The data directory is results/zenith_worked_steps. The physical forward sum and the complex random draw are independently replayed, then compared against the saved outputs. The first tone sensitivity, whole spectrum estimate and uncertainty agree. Equations and slide source values are drawn from these files.',refs=[S['steps'],REPO+'main/results/zenith_worked_steps/manifest.json',REPO+'main/scripts/calculate_zenith_worked_steps.py',S['tutorial']])
 
-assert len(slides)==33
+assert len(slides)==34
 assert all(s['notes'] and s['sources'] for s in slides)
 assert math.isclose(v['a0_db_per_ug_m3']*v['true_q_ug_m3'],v['attenuation_at_q_db'],rel_tol=1e-12)
 assert math.isclose(v['q95_reconstruction'],v['true_q_ug_m3'],rel_tol=1e-12)
 (BUILD/'slides.json').write_text(json.dumps(slides,indent=2,ensure_ascii=False),encoding='utf-8')
 notes=['# CH₃CN at 90°: worked calculation for a telecom audience','',
-       'Slides 1–26 explain the experiment and derive the numerical receiver decision. Slides 27–33 provide calculation details and references.',
+       'Slides 1–27 explain the experiment and derive the numerical receiver decision. Slides 28–34 provide calculation details and references.',
        '', 'The spectroscopic records are external physical data. The concentration profile and receiver observations are modeled; no orbital measurement is claimed.', '']
 for i,s in enumerate(slides,1):
     notes += [f"## {i}. {s['title'].replace(chr(10),' ')}",'',s['notes'],'']

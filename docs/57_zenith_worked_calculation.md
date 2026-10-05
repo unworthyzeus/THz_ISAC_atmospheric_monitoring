@@ -4,11 +4,13 @@
 
 ## What changed and why
 
-The earlier table placed four numbers together without showing enough of their origin. The new presentation derives each one, then follows the actual simulated observation through the estimator and decision. It contains 26 main slides and seven appendix slides:
+The earlier table placed four numbers together without showing enough of their origin. The new presentation derives each one, then follows the actual simulated observation through the estimator and decision. It contains 27 main slides and seven appendix slides:
 
 The optical depth revision adds a verbal explanation immediately before the atmospheric integral. It also labels the detection threshold q_th, keeping τ for optical depth in the presentation. The numerical experiment is unchanged.
 
-- [PowerPoint](../output/presentations/zenith_acetonitrile_worked_example_v3.pptx)
+The height clarification explicitly distinguishes local absorption at an altitude from optical depth integrated between endpoints. It adds the height dependent integral and the fraction of the saved first tone optical depth contributed below 1 km and 5 km. The physical calculation already included altitude dependent density, temperature and pressure.
+
+- [PowerPoint](../output/presentations/zenith_acetonitrile_worked_example_v4.pptx)
 - [PDF with slide bookmarks](../output/presentations/zenith_acetonitrile_worked_example.pdf)
 - [Complete text, tables, equations, presenter notes and source links](../output/presentations/zenith_acetonitrile_worked_notes.md)
 - [LaTeX equation source](../output/presentations/zenith_acetonitrile_worked_equations.tex)
@@ -68,6 +70,20 @@ The line need not be centered on the radio tone: pressure and Doppler broadening
 **Optical depth measures the absorption accumulated along the ray at a particular frequency.** Each thin layer contributes according to its molecular density and absorption cross section. These contributions add: τ(f) = ∫ n(s)σ(f,s) ds. Optical depth is dimensionless, and the surviving power fraction from absorption alone is exp(−τ). At τ = 1, 36.8% survives and 63.2% is absorbed. The term also applies to radio waves. [HITRAN optical depth definition](https://hitran.org/docs/definitions-and-units/).
 
 The exact absorbed fraction is 1 − exp(−τ). It is approximately τ only for small optical depth. Here τ describes the extra CH₃CN absorption relative to the reference. The example value 0.002804781165 corresponds to 0.280085% additional power loss and 0.140141% amplitude reduction. Geometric spreading and background atmospheric losses remain separate.
+
+**Height enters both the local absorption and the integration limits.** For a vertical ray,
+
+$$
+\alpha(f,z)=n(z)\sigma\!\left(f;T(z),p(z)\right),
+\qquad
+\tau(f;z_g,z_s)=\int_{z_g}^{z_s}\alpha(f,z)\,\mathrm dz.
+$$
+
+Here n(z) is the enhancement molecular density, α is absorption per unit path length, and z_g and z_s are the receiver and satellite heights. Molecular density varies with height. Temperature and pressure also change the cross section through line populations and broadening, so a single frequency's local absorption need not decrease monotonically with height. The cumulative depth from a fixed lower boundary is nondecreasing as the upper boundary increases for a positive enhancement. The code evaluates the atmospheric state and cross section at every integration node. [HITRAN temperature and pressure dependence](https://hitran.org/docs/definitions-and-units/).
+
+For the saved first tone and assumed profile, summing the [altitude contributions](../results/zenith_worked_steps/altitude_contributions.csv) gives 50.4461% of the extra optical depth below 1 km, 88.0298% below 3 km and 97.1679% below 5 km. These are modeled fractions. Their dependence on frequency and the assumed profile prevents treating them as universal atmospheric values.
+
+The numerical atmospheric integral stops at 100 km. The remaining path to the 550 km satellite adds negligible CH₃CN absorption under this profile. At zenith, raising an already high satellite mainly increases free space loss, whereas raising the ground receiver can remove dense lower atmospheric layers from the ray. At other elevations, the ray's slanted geometry also changes how much path it traverses at each height.
 
 For q = 1 µg/m³, this node has n₁ = 1.45050083649 × 10¹⁰ molecules/cm³ and quadrature weight w = 4283.11230948 cm. Its optical depth contribution is
 
@@ -162,7 +178,7 @@ $env:DECK_PROFILE = 'worked'
 py -3.12 scripts/prepare_zenith_worked_presentation.py
 py -3.12 scripts/render_zenith_equations.py
 # Set a new output filename for each regenerated revision.
-$env:DECK_NAME = 'zenith_acetonitrile_worked_example_v4.pptx'
+$env:DECK_NAME = 'zenith_acetonitrile_worked_example_v5.pptx'
 node scripts/build_zenith_presentation.mjs
 py -3.12 scripts/package_zenith_pdf.py
 ```
