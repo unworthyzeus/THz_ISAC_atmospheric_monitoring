@@ -1,6 +1,6 @@
-# Six explanatory pages plus a calculation recipe: the CH₃CN example
+# Worked CH₃CN example, calculation recipe and receiver units
 
-8 October 2026. Seven pages for a telecom audience. The underlying experiment is the saved 5 October calculation.
+8 October 2026. Eight pages for a telecom audience. The underlying experiment is the saved 5 October calculation.
 
 ## 1. The experiment and the concentration we want
 
@@ -263,14 +263,20 @@ $$
 \begin{aligned}s_0&=I_q^{-1/2}=12.73128\ \mathrm{\mu g/m^3}\\q_{\rm th}&=2.32635\,s_0=29.61738\ \mathrm{\mu g/m^3}\end{aligned}
 $$
 
-39.4247 > 29.6174: this simulated draw detects an enhancement at the chosen 1% false alarm rate. That is evidence within the stated error model.
+Φ(z) = P(Z ≤ z), where Z is standard normal: mean 0, SD 1.
+Φ⁻¹(0.99) = 2.32635: the cutoff with 99% below, 1% above.
+Under q = 0, q̂/s₀ is standard normal in the assumed model.
 
-q = 29.6174 + 1.64485 × 12.7452 = 50.5814 gives 95% predicted response (SD at that q: 12.7452). Simulated: 94.75% there, but 1.31% at 1 µg/m³.
+39.4247 > 29.6174: this draw detects an enhancement.
+At q = 50.5814, predicted response is 95%, simulated 94.75%.
+At 1 µg/m³, simulated response is 1.31%.
 
 Conditions: Conditional example: ideal tracking, matched background, 20 s total and an assumed, unmeasured 0.001 dB calibration residual.
 No atmospheric detection measurement or 3D reconstruction is established by this example.
 
 The entries displayed in G and g are rounded, so calculations use the saved full precision arrays. Solving gives qhat=39.4246755529, b0=0.0041365093 dB and b1=0.0101464333 dB. To see where the q uncertainty comes from, partition the two gain parameters as b. The Schur complement is Iq=Gqq−Gqb Gbb^−1 Gbq=0.301344020469−0.295174434664=0.006169585805. The remaining score is tq=gq−Gqb Gbb^−1 gb=15.066265190809−14.823031272136=0.243233918673, so qhat=tq/Iq. Iq has units (µg/m³)^−2 and tq has units (µg/m³)^−1. The standard deviation under the null is 1/sqrt(Iq). A 1% one sided false alarm rate for this prespecified compound uses the standard normal 99th percentile 2.326347874. The input q95 solves q95=qth+1.644853627 s1(q95), using s1=12.7452164389 and the alternative covariance under the same fixed estimator. In 10,000 simulated pairs, response is 94.75% at this input and only 1.31% at 1 µg/m³. Both remain conditional on the unmeasured calibration residual, matched atmosphere and ideal tracking. The next physical step is to measure blank stability and test independently measured concentrations. A detection here means a statistically significant enhancement of the prespecified template within the model, not exact concentration or unique identification in a changing gas mixture.
+
+Normal distribution notation: Phi(z) = P(Z <= z) for a standard normal variable Z with mean zero and standard deviation one. Phi takes a cutoff and returns the probability below it. Phi inverse takes a probability and returns the cutoff. Phi inverse(0.99) = 2.326347874, so P(Z > 2.326347874) = 0.01. The inverse superscript denotes the inverse function, not a reciprocal. Phi(0.99) itself is approximately 0.838913, which is a different operation. Under the no-enhancement hypothesis q = 0, qhat/s0 has a standard normal distribution in the assumed model. Multiplying the cutoff by s0 therefore gives the concentration threshold with a nominal one-sided 1% false-alarm probability. This does not mean a detection has a 99% probability of being correct.
 
 Sources:
 
@@ -333,7 +339,7 @@ $$
 \begin{aligned}q_{\rm th}&=\Phi^{-1}(0.99)s_0=29.61738111\ \mathrm{\mu g/m^3}\\\widehat q&=39.4247>q_{\rm th}\quad\Rightarrow\quad\text{detection}\end{aligned}
 $$
 
-Φ is the standard normal cumulative distribution.
+Φ⁻¹(0.99) = 2.32635: 99% below, 1% above. See page 6.
 
 Conditions: Conditional example: ideal tracking, matched background, 20 s total and an assumed, unmeasured 0.001 dB calibration residual.
 The 1% threshold applies to this prespecified compound and the stated error model.
@@ -349,3 +355,47 @@ Sources:
 - [Numerical steps](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/results/zenith_worked_steps/worked_steps.json)
 - [Observations](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/results/zenith_worked_steps/complex_receiver_steps.csv)
 - [Matrices](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/results/zenith_single_compound/matrices.npz)
+
+## 8. Units for power, pilot noise and calibration
+
+Absolute RF power, normalized complex pilot samples and attenuation errors describe different quantities and use different units.
+
+Power and pilot noise at tone 0
+
+| Quantity | Value and unit |
+| --- | --- |
+| Total transmit power | 25 dBm = 0.31623 W |
+| Transmit power per tone | -5.1030 dBm |
+| Received reference power | -97.5996 dBm |
+| Noise in one tone | -97.4270 dBm |
+| SNR ρ₀ = Psignal / Pnoise | 0.96104 linear = −0.17260 dB |
+| Pilot-mean variance<br>E|δh|² = 1/(Mρ₀) | 3.89892 × 10⁻⁶<br>Normalized, dimensionless |
+| Thermal loss SD | 0.01715 dB<br>Reference + sample |
+
+Total covariance C₀₀ = 0.000295153 dB².
+Pilot samples use linear complex amplitudes. Average R/X first, then take −20 log₁₀ of the sample/reference magnitude ratio to obtain loss in dB.
+
+Why a calibration error can be tiny in dB
+
+dBm specifies power relative to 1 mW. dB specifies a ratio. A drop from −97.5996 to −97.6006 dBm is 0.001 dB of extra loss.
+
+| Assumed residual SD | Relative power SD | Amplitude SD |
+| --- | --- | --- |
+| 0.001 dB (this example) | ≈ 0.0230% | ≈ 0.0115% |
+| 0.0001 dB (earlier design) | ≈ 0.00230% | ≈ 0.00115% |
+
+Small-error conversions: σP/P ≈ (ln 10 / 10) σdB and σ|h|/|h| ≈ (ln 10 / 20) σdB. These are standard deviations, not maximum errors or measured stability.
+
+Interference needs a separate power model
+
+For independent additive interference, add noise and interference powers in watts: SINR = Psignal / (Pnoise + Pinterference). Coherent interference can instead bias pilots. This example has no separate interference term.
+
+Conditions: The unit conversions are consistent. Achieving the assumed calibration stability remains unverified. Additional interference is not modeled here.
+
+dBm is 10 log10(P / 1 mW), an absolute power level. A power ratio uses 10 log10(P1/P0) dB. The difference between two power levels in dBm is in dB. A magnitude ratio uses 20 log10(|h1|/|h0|) when power is proportional to magnitude squared under the same normalization. The sensing observable is a positive loss, so it uses a minus sign. The complex pilot equation R = hX + W is evaluated in normalized linear amplitude units, never by adding dBm levels. All displayed received/noise powers refer to one 9.765625 MHz tone. Total 25 dBm is split across 1024 active tones. Noise power is k_B times system temperature times tone bandwidth, in watts. SNR rho is the received/noise power ratio. With M = 266880 independent pilots, E|delta h|^2 = 1/(M rho), dimensionless, and each real/imaginary component has half that variance. The differential logarithmic loss includes independent noise in both reference and sample. At q = 0 its thermal variance is (20/ln10)^2/(M rho) in dB squared. Adding sigma_cal squared gives the diagonal of C; off-diagonal calibration covariance is sigma_cal squared times the frequency correlation. Calibration is already differential, so it is not multiplied by two or divided by M. Its small-error relative power standard deviation is approximately (ln10/10) sigma_cal and its amplitude standard deviation approximately (ln10/20) sigma_cal. The numbers 0.0001 and 0.001 are in dB, not linear fractional errors. The earlier five-gas design assumes 0.0001 dB, while this separate zenith pilot example assumes 0.001 dB. These are assumed stability levels and cannot be made less demanding by changing the label to dBm. Additive independent interference would require a power I in watts and SINR = P_signal/(P_noise + P_interference); dBm powers must first be converted to watts before summation. Pilot-correlated or coherent interference may bias the channel estimate and requires its own model. The present example includes thermal noise and correlated multiplicative calibration error but no separate interference process.
+
+Sources:
+
+- [RF units](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/gettingstarted/content/concepts_decibels.htm)
+- [Numerical steps](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/results/zenith_worked_steps/worked_steps.json)
+- [Observations](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/results/zenith_worked_steps/complex_receiver_steps.csv)

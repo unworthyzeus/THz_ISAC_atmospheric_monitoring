@@ -26,6 +26,6 @@ target=ROOT/'output/presentations'/('zenith_compact_example.pdf' if COMPACT else
 document.save(target,deflate=True)
 document.close()
 with fitz.open(target) as check:
-    assert len(check)==len(slides)==(7 if COMPACT else 34 if WORKED else 38)
+    assert len(check)==len(slides)==(8 if COMPACT else 34 if WORKED else 38)
     assert len(check.get_toc())==len(slides)
 print(f'Created {len(slides)} bookmarked pages: {target}')

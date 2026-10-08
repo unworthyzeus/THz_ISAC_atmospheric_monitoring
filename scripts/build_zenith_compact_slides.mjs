@@ -1,12 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL,fileURLToPath} from 'node:url';
+import {createRequire} from 'node:module';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const TMP=path.join(ROOT,'tmp/zenith_compact_deck');
 const SKILL=process.env.PRESENTATION_SKILL_DIR??'C:/Users/guill/.codex/plugins/cache/openai-primary-runtime/presentations/26.1007.11041/skills/presentations';
 const MODULES=process.env.RUNTIME_NODE_MODULES??'C:/Users/guill/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules';
 const PYTHON=process.env.RUNTIME_PYTHON??'C:/Users/guill/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe';
+const sharp=createRequire(import.meta.url)(path.join(MODULES,'sharp'));
 process.env.RUNTIME_NODE_MODULES=MODULES;
 const {Presentation,PresentationFile,FileBlob}=await import(pathToFileURL(path.join(MODULES,'@oai/artifact-tool/dist/artifact_tool.mjs')));
 const {finalizePresentation,applyPresentationChartFont,resolvePresentationFont}=await import(pathToFileURL(path.join(SKILL,'container_tools/artifact_tool_utils.mjs')));
@@ -45,7 +47,10 @@ for(let i=0;i<content.length;i++){
     else if(b.type==='math'){
       const eq=equations[b.id];
       const ratio=Math.min(b.w/eq.width,b.h/eq.height,1.5);
-      slide.images.add({blob:new Uint8Array(await fs.readFile(path.join(TMP,'equations',eq.file))),contentType:'image/svg+xml',alt:'Equation: '+eq.latex,fit:'contain',position:{left:b.x,top:b.y+(b.h-eq.height*ratio)/2,width:eq.width*ratio,height:eq.height*ratio}});
+      // Embed real pixels: SVG-only exports can leave blank one-pixel PNG fallbacks.
+      // Keep the vector source and render at 4x for legible formulas in other viewers.
+      const formula=await sharp(await fs.readFile(path.join(TMP,'equations',eq.file)),{density:384}).png().toBuffer();
+      slide.images.add({blob:new Uint8Array(formula),contentType:'image/png',alt:'Equation: '+eq.latex,fit:'contain',position:{left:b.x,top:b.y+(b.h-eq.height*ratio)/2,width:eq.width*ratio,height:eq.height*ratio}});
     }else if(b.type==='chart'){
       const round=v=>Number(v.toPrecision(14));
       const ch=slide.charts.add('scatter',{position:{left:b.x,top:b.y,width:b.w,height:b.h},
@@ -61,15 +66,15 @@ for(let i=0;i<content.length;i++){
   text(slide,'Sources',66,856,82,25,17,'muted');
   const refWidth=1240/s.sources.length;
   s.sources.forEach((r,j)=>text(slide,r.label,155+j*refWidth,856,refWidth-8,25,17,'muted'));
-  text(slide,n+'/7',1468,852,66,30,20,'muted');
+  text(slide,n+'/'+content.length,1468,852,66,30,20,'muted');
   const body=s.blocks.map(b=>b.type==='text'?b.text:b.type==='math'?b.latex:b.type==='table'?b.values.map(r=>r.join(' | ')).join('\n'):'Predicted spectrum from saved data').join('\n\n');
   slide.speakerNotes.textFrame.setText(s.lead+'\n\n'+body+'\n\n'+s.notes+'\n\n'+s.caveat+'\n\nSources\n'+s.sources.map(r=>r.label+': '+r.url).join('\n'));
 }
 const candidate=path.join(TMP,'candidate.pptx');
 await (await PresentationFile.exportPptx(p)).save(candidate);
-const finalPath=path.join(ROOT,'output/presentations',process.env.DECK_NAME??'zenith_compact_example_v3.pptx');
+const finalPath=path.join(ROOT,'output/presentations',process.env.DECK_NAME??'zenith_compact_example_v4.pptx');
 const result=await finalizePresentation({workspaceDir:ROOT,candidatePath:candidate,finalPath,pythonExecutable:PYTHON,
-  explicitTotalSlideCount:7,requiredNativeTableOwnerSlides:[...new Set(tables)],requiredNativeChartOwnerSlides:charts,
+  explicitTotalSlideCount:content.length,requiredNativeTableOwnerSlides:[...new Set(tables)],requiredNativeChartOwnerSlides:charts,
   integrityValidatorPath:path.join(SKILL,'container_tools/inspect_presentation_package_integrity.py'),
   layoutValidatorPath:path.join(SKILL,'container_tools/inspect_presentation_layout_geometry.py'),
   layoutArgs:['--expected-slide-size-emu','15240000,8572500','--validate-heading-fit',...[...new Set(tables)].flatMap(n=>['--require-native-table-slide',String(n)])],
@@ -81,4 +86,4 @@ for(let i=0;i<finalDeck.slides.items.length;i++){
   const png=await finalDeck.export({slide:finalDeck.slides.items[i],format:'png',scale:1});
   await fs.writeFile(path.join(TMP,'renders',`slide-${String(i+1).padStart(2,'0')}.png`),new Uint8Array(await png.arrayBuffer()));
 }
-console.log('Finalized and rendered seven slides:',result.finalPath);
+console.log('Finalized and rendered',content.length,'slides:',result.finalPath);

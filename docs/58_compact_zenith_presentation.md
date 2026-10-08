@@ -2,11 +2,11 @@
 
 8 October 2026.
 
-The presentation now has six explanatory pages and a seventh page containing the numerical calculation recipe. It assumes a telecom background and explains the quantities specific to this sensing experiment, with numerical substitutions and sources.
+The v4 presentation has six explanatory pages, a seventh page containing the numerical calculation recipe, and an eighth page explaining RF units and the scope of interference. It assumes a telecom background and explains the quantities specific to this sensing experiment, with numerical substitutions and sources.
 
 ## Deliverables and purpose
 
-- [Editable PowerPoint](../output/presentations/zenith_compact_example_v3.pptx).
+- [Editable PowerPoint v4](../output/presentations/zenith_compact_example_v4.pptx).
 - [Reading PDF with source links](../output/presentations/zenith_compact_example.pdf).
 - [Complete text, equations, examples and source notes](../output/presentations/zenith_compact_example_notes.md).
 - [LaTeX equation source](../output/presentations/zenith_compact_example_equations.tex).
@@ -22,6 +22,17 @@ The user requested fewer pages with more meaning behind the words, detailed pilo
 5. Calibration error, two explicit ways it can imitate absorption, the observed loss vector, the design matrix and the covariance.
 6. The actual three by three system, its concentration estimate, uncertainty, threshold and conditional sensitivity.
 7. The calculation in execution order, including elimination of the two gain parameters and the numerical decision.
+8. Absolute power in dBm, linear complex pilot samples, loss in dB, covariance in dB², and the additional model needed for interference.
+
+## V4 formula compatibility, normal quantile and unit review
+
+The v3 package stored 17 SVG formulas with blank one-pixel PNG fallback images. Viewers that used the fallback could show empty formula regions. The builder now rasterizes the original vector formulas at four times their intrinsic resolution and embeds complete PNGs. The LaTeX sources remain available. Slide 6 explains `Phi(z) = P(Z <= z)` and `Phi^-1(0.99) = 2.32635`, the standard-normal cutoff with 99% below and 1% above. Slide 7 links back to that explanation. The inverse denotes a quantile function; `Phi(0.99)` itself is approximately 0.838913.
+
+The receiver unit review independently recomputed the transmit-power split, received link budget, thermal noise `k_B T B`, linear SNR, normalized complex pilot variance, differential logarithmic covariance and detection threshold from the saved arrays across all 1,024 tones. At tone zero, received reference power is −97.59959675 dBm, noise power is −97.42699177 dBm in 9.765625 MHz, and linear SNR is 0.96103566. After 266,880 pilots per acquisition, normalized complex-mean variance is 3.8989213 × 10⁻⁶. Differential thermal loss SD is 0.01715089 dB, and adding the assumed 0.001 dB calibration residual gives total SD 0.01718001 dB. The replayed covariance differs from the saved array by at most 3.47 × 10⁻¹⁸ dB². The 13 existing zenith tutorial tests pass.
+
+There is no dBm/dB labeling error in these equations. Absolute power uses dBm; attenuation and gain changes use dB. The small-error relative power SD corresponding to 0.001 dB is approximately 0.0230%, and the earlier design's 0.0001 dB corresponds to 0.00230%. Both are assumed calibration stability levels. Renaming them as dBm or treating the same numbers as linear fractions would change their meaning. These interpretations follow the linked [RF unit reference](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/gettingstarted/content/concepts_decibels.htm).
+
+This example contains thermal noise and correlated calibration error, with no separate additive-interference process. Independent interference requires summing noise and interference powers in watts before computing SINR; coherent or pilot-correlated interference may cause bias. No interference performance claim or new sensing experiment is introduced. Remaining work is to measure calibration stability and interference with the intended receiver, then update the covariance and validate the frozen detector against independent concentration measurements.
 
 ## Pilot and calibration examples
 
@@ -60,12 +71,12 @@ $env:DECK_PROFILE = 'compact'
 py -3.12 scripts/prepare_zenith_compact_slides.py
 py -3.12 scripts/render_zenith_equations.py
 # Use a new filename for each revision.
-$env:DECK_NAME = 'zenith_compact_example_v4.pptx'
+$env:DECK_NAME = 'zenith_compact_example_v5.pptx'
 node scripts/build_zenith_compact_slides.mjs
 py -3.12 scripts/package_zenith_pdf.py
 ```
 
-The preparation step reads the saved experiment and checks the pilot count, complex noise variance, pilot division example, calibration conversion, observed loss and matrix solution. Tables and the spectrum chart remain native PowerPoint objects, including the chart's data workbook. Equations are vector assets with separate LaTeX source. The PDF reproduces the slide images with page bookmarks and source hyperlinks. Its searchable text companion is the Markdown notes file.
+The preparation step reads the saved experiment and checks the pilot count, complex noise variance, pilot division example, calibration conversion, observed loss and matrix solution. Tables and the spectrum chart remain native PowerPoint objects, including the chart's data workbook. Equations retain vector and LaTeX source, while the PowerPoint embeds complete PNG images for compatibility. The PDF reproduces the eight slide images with page bookmarks and source hyperlinks. Its searchable text companion is the Markdown notes file.
 
 ## Limitations and next steps
 

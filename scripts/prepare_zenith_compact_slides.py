@@ -1,4 +1,4 @@
-"""Create six explanatory slides plus a numerical recipe from the saved physical experiment."""
+"""Create the worked presentation, numerical recipe and receiver units guide."""
 from pathlib import Path
 import csv
 import json
@@ -26,6 +26,7 @@ sources = {
     "Observations": REPO + "results/zenith_worked_steps/complex_receiver_steps.csv",
     "Matrices": REPO + "results/zenith_single_compound/matrices.npz",
     "Repeated trials": REPO + "results/zenith_single_compound/receiver_control.csv",
+    "RF units": "https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/gettingstarted/content/concepts_decibels.htm",
 }
 slides = []
 def page(title, lead, refs, caveat, notes=""):
@@ -174,8 +175,9 @@ eq(s, "6a", r"\widehat q=t_q/I_q=39.4247\ \mathrm{\mu g/m^3}", 66, 589, 710, 69)
 txt(s, "The same solve gives b̂₀ = 0.00413651 dB and b̂₁ = 0.01014643 dB. The true input was 50.5814 µg/m³. Observation errors explain the difference.", 66, 673, 710, 94, 23)
 head(s, "The threshold and its meaning", 830, 456)
 eq(s, "6b", r"\begin{aligned}s_0&=I_q^{-1/2}=12.73128\ \mathrm{\mu g/m^3}\\q_{\rm th}&=2.32635\,s_0=29.61738\ \mathrm{\mu g/m^3}\end{aligned}", 830, 491, 704, 103)
-txt(s, "39.4247 > 29.6174: this simulated draw detects an enhancement at the chosen 1% false alarm rate. That is evidence within the stated error model.", 830, 602, 704, 82, 23)
-txt(s, "q = 29.6174 + 1.64485 × 12.7452 = 50.5814 gives 95% predicted response (SD at that q: 12.7452). Simulated: 94.75% there, but 1.31% at 1 µg/m³.", 830, 693, 704, 85, 23)
+txt(s, "Φ(z) = P(Z ≤ z), where Z is standard normal: mean 0, SD 1.\nΦ⁻¹(0.99) = 2.32635: the cutoff with 99% below, 1% above.\nUnder q = 0, q̂/s₀ is standard normal in the assumed model.", 830, 599, 704, 96, 21.5)
+txt(s, "39.4247 > 29.6174: this draw detects an enhancement.\nAt q = 50.5814, predicted response is 95%, simulated 94.75%.\nAt 1 µg/m³, simulated response is 1.31%.", 830, 700, 704, 80, 21.5)
+s["notes"] += "\n\nNormal distribution notation: Phi(z) = P(Z <= z) for a standard normal variable Z with mean zero and standard deviation one. Phi takes a cutoff and returns the probability below it. Phi inverse takes a probability and returns the cutoff. Phi inverse(0.99) = 2.326347874, so P(Z > 2.326347874) = 0.01. The inverse superscript denotes the inverse function, not a reciprocal. Phi(0.99) itself is approximately 0.838913, which is a different operation. Under the no-enhancement hypothesis q = 0, qhat/s0 has a standard normal distribution in the assumed model. Multiplying the cutoff by s0 therefore gives the concentration threshold with a nominal one-sided 1% false-alarm probability. This does not mean a detection has a 99% probability of being correct."
 
 s = page("7. The complete calculation in execution order",
     "Inputs: atmospheric model, pilot observations and assumed error covariance. The arithmetic uses the full precision arrays.",
@@ -201,9 +203,37 @@ eq(s, "7e", r"\begin{aligned}\widehat q&=t_q/I_q=39.42467555\ \mathrm{\mu g/m^3}
 txt(s, "s₀ is the standard deviation when q = 0.", 830, 580, 704, 35, 23)
 head(s, "6. Compare with the detection threshold", 830, 631)
 eq(s, "7f", r"\begin{aligned}q_{\rm th}&=\Phi^{-1}(0.99)s_0=29.61738111\ \mathrm{\mu g/m^3}\\\widehat q&=39.4247>q_{\rm th}\quad\Rightarrow\quad\text{detection}\end{aligned}", 830, 670, 704, 88)
-txt(s, "Φ is the standard normal cumulative distribution.", 830, 756, 704, 28, 22.8)
+txt(s, "Φ⁻¹(0.99) = 2.32635: 99% below, 1% above. See page 6.", 830, 756, 704, 28, 21.5)
 
-assert len(slides)==7
+s = page("8. Units for power, pilot noise and calibration",
+    "Absolute RF power, normalized complex pilot samples and attenuation errors describe different quantities and use different units.",
+    ["RF units", "Numerical steps", "Observations"],
+    "The unit conversions are consistent. Achieving the assumed calibration stability remains unverified. Additional interference is not modeled here.",
+    "dBm is 10 log10(P / 1 mW), an absolute power level. A power ratio uses 10 log10(P1/P0) dB. The difference between two power levels in dBm is in dB. A magnitude ratio uses 20 log10(|h1|/|h0|) when power is proportional to magnitude squared under the same normalization. The sensing observable is a positive loss, so it uses a minus sign. The complex pilot equation R = hX + W is evaluated in normalized linear amplitude units, never by adding dBm levels. All displayed received/noise powers refer to one 9.765625 MHz tone. Total 25 dBm is split across 1024 active tones. Noise power is k_B times system temperature times tone bandwidth, in watts. SNR rho is the received/noise power ratio. With M = 266880 independent pilots, E|delta h|^2 = 1/(M rho), dimensionless, and each real/imaginary component has half that variance. The differential logarithmic loss includes independent noise in both reference and sample. At q = 0 its thermal variance is (20/ln10)^2/(M rho) in dB squared. Adding sigma_cal squared gives the diagonal of C; off-diagonal calibration covariance is sigma_cal squared times the frequency correlation. Calibration is already differential, so it is not multiplied by two or divided by M. Its small-error relative power standard deviation is approximately (ln10/10) sigma_cal and its amplitude standard deviation approximately (ln10/20) sigma_cal. The numbers 0.0001 and 0.001 are in dB, not linear fractional errors. The earlier five-gas design assumes 0.0001 dB, while this separate zenith pilot example assumes 0.001 dB. These are assumed stability levels and cannot be made less demanding by changing the label to dBm. Additive independent interference would require a power I in watts and SINR = P_signal/(P_noise + P_interference); dBm powers must first be converted to watts before summation. Pilot-correlated or coherent interference may bias the channel estimate and requires its own model. The present example includes thermal noise and correlated multiplicative calibration error but no separate interference process.")
+head(s, "Power and pilot noise at tone 0", 66, 182)
+tone0=tones[0]
+table(s, [["Quantity", "Value and unit"],
+    ["Total transmit power", "25 dBm = 0.31623 W"],
+    ["Transmit power per tone", f"{float(tone0['tx_per_tone_dbm']):.4f} dBm"],
+    ["Received reference power", f"{float(tone0['received_per_tone_dbm']):.4f} dBm"],
+    ["Noise in one tone", f"{float(tone0['noise_per_tone_dbm']):.4f} dBm"],
+    ["SNR ρ₀ = Psignal / Pnoise", "0.96104 linear = −0.17260 dB"],
+    ["Pilot-mean variance\nE|δh|² = 1/(Mρ₀)", "3.89892 × 10⁻⁶\nNormalized, dimensionless"],
+    ["Thermal loss SD", f"{math.sqrt(v['thermal_null_variance_db2']):.5f} dB\nReference + sample"]],
+    [.49,.51], 66, 228, 710, 418, 22)
+s["blocks"][-1]["row_heights"] = [46,48,48,48,48,48,68,64]
+txt(s, f"Total covariance C₀₀ = {v['total_null_variance_db2']:.6g} dB².\nPilot samples use linear complex amplitudes. Average R/X first, then take −20 log₁₀ of the sample/reference magnitude ratio to obtain loss in dB.", 66, 678, 710, 103, 22)
+head(s, "Why a calibration error can be tiny in dB", 830, 182)
+txt(s, "dBm specifies power relative to 1 mW. dB specifies a ratio. A drop from −97.5996 to −97.6006 dBm is 0.001 dB of extra loss.", 830, 228, 704, 84, 23)
+table(s, [["Assumed residual SD", "Relative power SD", "Amplitude SD"],
+    ["0.001 dB (this example)", "≈ 0.0230%", "≈ 0.0115%"],
+    ["0.0001 dB (earlier design)", "≈ 0.00230%", "≈ 0.00115%"]],
+    [.46,.28,.26], 830, 326, 704, 167, 22)
+txt(s, "Small-error conversions: σP/P ≈ (ln 10 / 10) σdB and σ|h|/|h| ≈ (ln 10 / 20) σdB. These are standard deviations, not maximum errors or measured stability.", 830, 507, 704, 88, 22)
+head(s, "Interference needs a separate power model", 830, 608)
+txt(s, "For independent additive interference, add noise and interference powers in watts: SINR = Psignal / (Pnoise + Pinterference). Coherent interference can instead bias pilots. This example has no separate interference term.", 830, 652, 704, 123, 22)
+
+assert len(slides)==8
 assert math.isclose(math.exp(-v["optical_depth_at_q"]),v["power_ratio"],rel_tol=1e-12)
 assert math.isclose(v["a0_db_per_ug_m3"]*v["true_q_ug_m3"],v["attenuation_at_q_db"],rel_tol=1e-12)
 assert np.allclose(np.linalg.solve(np.array(G),np.array(g)),v["theta"],rtol=1e-10,atol=1e-10)
@@ -214,8 +244,8 @@ assert math.isclose(-20*math.log10(10**(-.001/20)),.001,abs_tol=1e-12)
 assert math.isclose(.001/v["a0_db_per_ug_m3"],4.15248,abs_tol=1e-5)
 assert np.allclose(np.array([v["amplitude_ratio"],1j*v["amplitude_ratio"]])/np.array([1,1j]),v["amplitude_ratio"])
 (BUILD/"slides.json").write_text(json.dumps(slides,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-notes=["# Six explanatory pages plus a calculation recipe: the CH₃CN example","",
-       "8 October 2026. Seven pages for a telecom audience. The underlying experiment is the saved 5 October calculation.",""]
+notes=["# Worked CH₃CN example, calculation recipe and receiver units","",
+       "8 October 2026. Eight pages for a telecom audience. The underlying experiment is the saved 5 October calculation.",""]
 for number,s in enumerate(slides,1):
     notes += [f"## {s['title']}","",s["lead"],""]
     for b in s["blocks"]:
@@ -228,4 +258,4 @@ for number,s in enumerate(slides,1):
     notes += ["Conditions: "+s["caveat"],"",s["notes"],"","Sources:","",
               *[f"- [{r['label']}]({r['url']})" for r in s["sources"]],""]
 (OUT/"zenith_compact_example_notes.md").write_text("\n".join(notes),encoding="utf-8")
-print("Prepared seven slides with physical meanings, pilot and calibration examples, and a numerical recipe.")
+print("Prepared eight slides with formula notation, pilot and calibration examples, a numerical recipe and receiver units.")
