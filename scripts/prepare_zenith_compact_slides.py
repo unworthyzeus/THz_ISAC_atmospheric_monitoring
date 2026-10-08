@@ -53,10 +53,10 @@ s = page("1. The experiment and the concentration we want",
     "LEO links are a useful example across the whole sensing chain. The same framework can use other link geometries. The hardware audit distinguishes a published LEO design precedent from terrestrial hardware and CW component demonstrations. None validates this combined orbital configuration. The gas enhancement is relative to a matched reference. Baseline CH3CN loss is negligible in the saved link budget. The selected input q comes from the conditional sensitivity calculation on page 6, rather than an ambient concentration measurement.")
 head(s, "What the receiver is looking for", 66, 184)
 txt(s, "Gas molecules remove different amounts of power at different frequencies. We estimate how much the known CH₃CN absorption pattern has increased between two acquisitions.", 66, 227, 706, 120)
-txt(s, "The reference is the baseline channel. The sample is the channel with an added gas column. Other atmospheric changes are assumed corrected or absent.", 66, 357, 706, 92)
+txt(s, "Gas enhancement means Δc(z) = c_sample(z) − c_reference(z): extra CH₃CN above the reference atmosphere. It is simulated here, rather than measured pollution.", 66, 357, 706, 92)
 eq(s, "1a", r"\Delta c(z)=q\,e^{-z/(1500\,\mathrm m)}", 66, 459, 706, 68)
-txt(s, "q is the surface equivalent increase in mass concentration (µg/m³). Fixing the 1,500 m profile shape lets one scalar describe the column. One ray cannot recover a concentration at every height.", 66, 540, 706, 122)
-txt(s, "Worked input: q = 50.5814 µg/m³. At 1,500 m the enhancement is 18.6079 µg/m³. The receiver must estimate q without knowing that input.", 66, 671, 706, 81, 23)
+txt(s, "q is the surface equivalent concentration increase (µg/m³). The fixed 1,500 m profile lets one scalar describe the column; one ray cannot recover concentration at every height.", 66, 540, 706, 104)
+txt(s, "Example input: q = 50.5814 µg/m³ (18.6079 µg/m³ at 1,500 m). It was chosen for 95% predicted detection with an assumed 0.001 dB calibration residual. The receiver estimates q without knowing this input.", 66, 652, 706, 127, 23)
 head(s, "The specified link", 830, 184)
 table(s, [["Setting", "Value and meaning"],
     ["Elevation", "90° at the receiver, shortest geometric path"],
@@ -65,7 +65,7 @@ table(s, [["Setting", "Value and meaning"],
     ["Apertures", "0.10 m transmit / 1.0 m receive, efficiency 0.65"],
     ["Receiver", "7 dB noise figure, 5 dB implementation loss"],
     ["Acquisition", "10 s reference + 10 s sample"]], [.32, .68], 830, 227, 704, 427, 23)
-txt(s, "LEO is a useful example for the full method. This is a single compound absorption test along one ray. Multiple rays and additional assumptions would be needed for a 3D image.", 830, 670, 704, 90, 23)
+txt(s, "HITRAN supplies molecular line data, not the concentration q. This example chooses q using page 6's sensitivity calculation. A 3D image would need multiple rays and additional assumptions.", 830, 670, 704, 108, 23)
 
 s = page("2. Molecules, height and optical depth",
     "The forward model adds the absorption of each altitude layer. Its inputs are a concentration profile and spectral line parameters.",
@@ -155,20 +155,28 @@ indices=[0,511,1023]
 table(s, [["Tone k", "aₖ × 10⁴", "Offset", "Slope uₖ"],
     *[[str(k), f"{float(tones[k]['gas_db_per_ug_m3'])*1e4:.6f}", "1", f"{float(tones[k]['gain_slope_column']):.6f}"] for k in indices]],
     [.16,.32,.22,.30], 830, 302, 704, 188, 23)
-txt(s, "A is 1,024 × 3. aₖ is in dB/(µg/m³). uₖ spans −0.5 to +0.5. b₀ is a common shift, b₁ a spectral tilt. ε contains the remaining thermal and calibration errors.", 830, 503, 704, 89, 23)
+txt(s, "Only 3 example rows are shown; the fit uses all 1,024. aₖ: dB/(µg/m³); uₖ: −0.5 to +0.5. b₀ is a common shift, b₁ a tilt; ε is the remaining error.", 830, 503, 704, 89, 23)
 eq(s, "5c", r"C_{ij}(0)=\delta_{ij}v_i(0)+(0.001)^2 e^{-|f_i-f_j|/(10\,\mathrm{GHz})}", 830, 602, 704, 69)
 txt(s, "vᵢ(0) = (20 / ln 10)² / (Mρ₀ᵢ) includes both acquisitions. C is 1,024 × 1,024 in dB². δᵢⱼ selects the diagonal. The second term models calibration errors shared across frequency.", 830, 680, 704, 99, 23)
 
 s = page("6. Solve for concentration and make the decision",
-    "The full 1,024 tone data produce the system below. The concentration estimate and its uncertainty determine the detection decision.",
+    "Fit yₖ = aₖq + b₀ + b₁uₖ + εₖ to all 1,024 tones. q is the concentration increase (µg/m³); b₀ and b₁ are gain offset and slope (dB).",
     ["Numerical steps", "Repeated trials", "Hardware audit"],
     condition + "\nNo atmospheric detection measurement or 3D reconstruction is established by this example.",
     "The entries displayed in G and g are rounded, so calculations use the saved full precision arrays. Solving gives qhat=39.4246755529, b0=0.0041365093 dB and b1=0.0101464333 dB. To see where the q uncertainty comes from, partition the two gain parameters as b. The Schur complement is Iq=Gqq−Gqb Gbb^−1 Gbq=0.301344020469−0.295174434664=0.006169585805. The remaining score is tq=gq−Gqb Gbb^−1 gb=15.066265190809−14.823031272136=0.243233918673, so qhat=tq/Iq. Iq has units (µg/m³)^−2 and tq has units (µg/m³)^−1. The standard deviation under the null is 1/sqrt(Iq). A 1% one sided false alarm rate for this prespecified compound uses the standard normal 99th percentile 2.326347874. The input q95 solves q95=qth+1.644853627 s1(q95), using s1=12.7452164389 and the alternative covariance under the same fixed estimator. In 10,000 simulated pairs, response is 94.75% at this input and only 1.31% at 1 µg/m³. Both remain conditional on the unmeasured calibration residual, matched atmosphere and ideal tracking. The next physical step is to measure blank stability and test independently measured concentrations. A detection here means a statistically significant enhancement of the prespecified template within the model, not exact concentration or unique identification in a changing gas mixture.")
 G=v["G"]; g=v["g"]
-table(s, [["Equation", "Coefficient of q", "Coefficient of b₀", "Coefficient of b₁", "Right side g"],
-    *[[str(i+1),f"{G[i][0]:.9f}",f"{G[i][1]:.6f}",f"{G[i][2]:.6f}",f"{g[i]:.9f}"] for i in range(3)]],
-    [.10,.225,.225,.225,.225],66,180,1468,224,24)
-txt(s, "Columns correspond to q in µg/m³ and b₀, b₁ in dB. The displayed coefficients are rounded.", 66, 412, 1468, 34, 22, color="muted")
+txt(s, "G = AᵀC⁻¹A (3 × 3): weighted overlap between the gas, offset and slope templates.\ng = AᵀC⁻¹y (3 × 1): weighted match of those templates to the 1,024 observed losses.", 66, 172, 1468, 62, 23)
+fit_conditions = ["1. Concentration q", "2. Gain offset b₀", "3. Gain slope b₁"]
+expanded_equations = [
+    f"{G[i][0]:.9f} q {'+' if G[i][1] >= 0 else '−'} {abs(G[i][1]):.6f} b₀ {'+' if G[i][2] >= 0 else '−'} {abs(G[i][2]):.6f} b₁ = {g[i]:.9f}"
+    for i in range(3)
+]
+table(s, [["Normal equation", "Expanded equation: Gθ = g, with θ = [q, b₀, b₁]ᵀ"],
+    *[[fit_conditions[i], expanded_equations[i]] for i in range(3)]],
+    [.25,.75],66,240,1468,166,23)
+s["blocks"][-1]["row_heights"] = [40,42,42,42]
+txt(s, "Minimize J = (y − Aθ)ᵀC⁻¹(y − Aθ). Rows set ∂J/∂q = 0, ∂J/∂b₀ = 0 and ∂J/∂b₁ = 0. Coefficients are rounded.", 66, 416, 1468, 34, 21, color="muted")
+s["notes"] += "\n\nThese are the three weighted least-squares normal equations, not three individual tone measurements. q is the surface equivalent increase in CH3CN mass concentration relative to the matched reference, in micrograms/m3. Define theta = [q, b0, b1]^T, A = [a, 1, u] and residual r = y - A theta. The vector a contains the modeled gas absorption per concentration unit; 1 represents a common gain shift and u a normalized frequency trend. The vector y contains 1,024 observed differential losses and C = C(0) their assumed covariance. G = A^T C^-1 A is a 3 by 3 matrix of weighted overlaps between these templates. Its diagonal entries measure template strength under this weighting, while off-diagonal entries describe overlap between fit directions. Lowercase g = A^T C^-1 y is a three-entry vector of weighted matches between the templates and observed losses. Neither G nor g is a gas concentration; q is the unknown concentration component.\n\nMinimize J(theta) = r^T C^-1 r with the fixed null covariance. Setting the derivative with respect to q to zero gives a^T C^-1 r = 0; the derivative with respect to b0 gives 1^T C^-1 r = 0; and the derivative with respect to b1 gives u^T C^-1 r = 0. Together these say G theta = g. Every row contains information from all 1,024 tones, and all three unknowns must be solved together. The labels identify which derivative produced each row, not a separate one-variable solve.\n\nExpanded numerical normal equations (rounded for display):\n" + "\n".join(expanded_equations)
 head(s, "The estimate after fitting gain", 66, 456)
 txt(s, "Eliminating b₀ and b₁ leaves information Iq = 0.006169586 and weighted evidence tq = 0.243233919 for the gas. Their ratio gives:", 66, 497, 710, 84, 23)
 eq(s, "6a", r"\widehat q=t_q/I_q=39.4247\ \mathrm{\mu g/m^3}", 66, 589, 710, 69)
@@ -233,7 +241,29 @@ txt(s, "Small-error conversions: σP/P ≈ (ln 10 / 10) σdB and σ|h|/|h| ≈ (
 head(s, "Interference needs a separate power model", 830, 608)
 txt(s, "For independent additive interference, add noise and interference powers in watts: SINR = Psignal / (Pnoise + Pinterference). Coherent interference can instead bias pilots. This example has no separate interference term.", 830, 652, 704, 123, 22)
 
-assert len(slides)==8
+s = page("9. Why use all 1,024 tones instead of one?",
+    "The extra loss changes with frequency. That pattern helps separate the gas contribution from a common gain shift and a gain slope.",
+    ["Matrices", "Numerical steps", "Hardware audit"],
+    condition + "\nA calibration error with exactly the gas spectrum remains indistinguishable from gas, even with all tones.",
+    "This slide explains identifiability in the existing three-parameter fit, without introducing a new experiment or a quantitative performance comparison against an optimized single-tone design. One tone supplies one scalar loss y_k for three unknowns q, b0 and b1. Its design matrix has rank at most one, so concentration cannot be identified jointly with both unconstrained gain parameters from that tone alone. If gain offset and slope were independently known, one tone with nonzero gas response could estimate q. Across the full band, A = [a, 1, u] has 1,024 rows; the known gas spectral variation provides a fit direction distinct from the constant and slope columns. The weighted least-squares estimator combines tones using the assumed covariance, including correlations. More tones can supply additional spectral information and independent noise averaging, but do not imply a universal sqrt(1024) improvement. The total 25 dBm transmit power is split across the tones. Reallocating all power to one tone would change its SNR and requires a separate constrained comparison. Broad, smooth gas signatures can still overlap strongly with gain trends, reducing the information left for q. An error proportional to the gas template is structurally indistinguishable from gas in this spectral model. Calibration and the stated covariance remain essential.")
+head(s, "One tone: one loss, three unknowns", 66, 182)
+txt(s, "At one frequency, the observation model is\nyₖ = aₖq + b₀ + b₁uₖ + εₖ.", 66, 230, 710, 86, 27)
+txt(s, "A weaker signal can come from extra gas, a common gain change, or a frequency slope. One scalar observation cannot determine all three unknowns.", 66, 330, 710, 113, 25)
+txt(s, "Even without noise, any chosen q and b₁ can be matched by setting b₀ = yₖ − aₖq − b₁uₖ. Independent knowledge of the gain terms would be needed to infer q from that tone alone.", 66, 462, 710, 146, 24)
+txt(s, "A plain average of all 1,024 losses gives one number. Gas and a common gain change can both shift that mean; averaging discards the spectral shape that helps distinguish them.", 66, 640, 710, 115, 23)
+head(s, "Our special average: a weighted spectral fit", 830, 182)
+txt(s, "q̂ = Σₖ wₖyₖ uses all 1,024 tone losses.\nWeights depend on the gas pattern a and error covariance C; they need not sum to one.", 830, 230, 704, 86, 24)
+table(s, [["Weight constraint", "What it does"],
+    ["Σₖ wₖaₖ = 1", "Preserves the gas concentration q"],
+    ["Σₖ wₖ = 0", "Cancels a common gain offset b₀"],
+    ["Σₖ wₖuₖ = 0", "Cancels the gain slope b₁"]],
+    [.40,.60],830,330,704,219,23)
+s["blocks"][-1]["row_heights"] = [45,58,58,58]
+txt(s, "Some weights are negative to cancel gain changes. Subject to these constraints, the fit chooses weights that minimize predicted variance wᵀCw, accounting for noise and correlations.", 830, 565, 704, 109, 23)
+txt(s, "Before this fit, each tone averages 266,880 pilots. More tones do not guarantee a √1,024 improvement: total 25 dBm power is split across the tones.", 830, 690, 704, 87, 22)
+s["notes"] += "\n\nThe special average is a signed linear combination of the tone losses, not an ordinary mean. The weighted least-squares solution is theta_hat = (A^T C^-1 A)^-1 A^T C^-1 y. Taking its first row gives qhat = w^T y, with w^T = [1, 0, 0] (A^T C^-1 A)^-1 A^T C^-1. The weights satisfy w^T a = 1, w^T 1 = 0 and w^T u = 0, so the expected gas response is q and the fitted common offset and slope cancel. Among linear unbiased estimators under the assumed covariance, these weights minimize w^T C w. Their units are (micrograms/m3)/dB, since y is in dB and q is a concentration. Their sum is zero, not one, and some weights must be negative. Independent pilot repetition is averaged first within each tone; this spectral combination is a subsequent operation. A calibration residual aligned with a passes through exactly like gas and cannot be rejected by these constraints."
+
+assert len(slides)==9
 assert math.isclose(math.exp(-v["optical_depth_at_q"]),v["power_ratio"],rel_tol=1e-12)
 assert math.isclose(v["a0_db_per_ug_m3"]*v["true_q_ug_m3"],v["attenuation_at_q_db"],rel_tol=1e-12)
 assert np.allclose(np.linalg.solve(np.array(G),np.array(g)),v["theta"],rtol=1e-10,atol=1e-10)
@@ -245,7 +275,7 @@ assert math.isclose(.001/v["a0_db_per_ug_m3"],4.15248,abs_tol=1e-5)
 assert np.allclose(np.array([v["amplitude_ratio"],1j*v["amplitude_ratio"]])/np.array([1,1j]),v["amplitude_ratio"])
 (BUILD/"slides.json").write_text(json.dumps(slides,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 notes=["# Worked CH₃CN example, calculation recipe and receiver units","",
-       "8 October 2026. Eight pages for a telecom audience. The underlying experiment is the saved 5 October calculation.",""]
+       "8 October 2026. Nine pages for a telecom audience. The underlying experiment is the saved 5 October calculation.",""]
 for number,s in enumerate(slides,1):
     notes += [f"## {s['title']}","",s["lead"],""]
     for b in s["blocks"]:
@@ -258,4 +288,4 @@ for number,s in enumerate(slides,1):
     notes += ["Conditions: "+s["caveat"],"",s["notes"],"","Sources:","",
               *[f"- [{r['label']}]({r['url']})" for r in s["sources"]],""]
 (OUT/"zenith_compact_example_notes.md").write_text("\n".join(notes),encoding="utf-8")
-print("Prepared eight slides with formula notation, pilot and calibration examples, a numerical recipe and receiver units.")
+print("Prepared nine slides with explicit normal equations, gas enhancement, pilot and calibration examples, receiver units and the purpose of all tones.")

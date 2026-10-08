@@ -2,11 +2,11 @@
 
 8 October 2026.
 
-The v4 presentation has six explanatory pages, a seventh page containing the numerical calculation recipe, and an eighth page explaining RF units and the scope of interference. It assumes a telecom background and explains the quantities specific to this sensing experiment, with numerical substitutions and sources.
+The v5 presentation has six explanatory pages, a seventh page containing the numerical calculation recipe, an eighth page explaining RF units and interference, and a ninth page explaining why the fit uses all tones. It assumes a telecom background and explains the quantities specific to this sensing experiment, with numerical substitutions and sources.
 
 ## Deliverables and purpose
 
-- [Editable PowerPoint v4](../output/presentations/zenith_compact_example_v4.pptx).
+- [Editable PowerPoint v5](../output/presentations/zenith_compact_example_v5.pptx).
 - [Reading PDF with source links](../output/presentations/zenith_compact_example.pdf).
 - [Complete text, equations, examples and source notes](../output/presentations/zenith_compact_example_notes.md).
 - [LaTeX equation source](../output/presentations/zenith_compact_example_equations.tex).
@@ -23,6 +23,17 @@ The user requested fewer pages with more meaning behind the words, detailed pilo
 6. The actual three by three system, its concentration estimate, uncertainty, threshold and conditional sensitivity.
 7. The calculation in execution order, including elimination of the two gain parameters and the numerical decision.
 8. Absolute power in dBm, linear complex pilot samples, loss in dB, covariance in dB², and the additional model needed for interference.
+9. What the full spectrum adds compared with one tone: joint concentration and gain estimation, noise combination, and the remaining calibration ambiguity.
+
+## V5 equation identities, gas enhancement and use of all tones
+
+Slide 6 replaces the coefficient-only table with the three expanded normal equations and identifies the fit direction behind each row. It defines q as the surface equivalent CH₃CN concentration increase, G = AᵀC⁻¹A as the 3 by 3 matrix of weighted template overlaps, and g = AᵀC⁻¹y as the three-entry vector of weighted matches to the observed losses. The three rows set the derivatives of the weighted residual objective with respect to q, b₀ and b₁ to zero. All rows use all 1,024 observations, and all three parameters are solved jointly. The notes give the residual form of each equation. Coefficients and scientific results come from the same saved arrays; this revision changes their explanation.
+
+Slide 1 now states that gas enhancement is the sample-minus-reference concentration increase, rather than total ambient concentration. The input q = 50.5814 µg/m³ is simulated and was chosen for the model's 95% predicted detection target under the assumed, unmeasured 0.001 dB calibration residual. It is not an ambient pollution measurement or a concentration obtained from HITRAN; HITRAN supplies the spectroscopic response.
+
+Slide 5 explicitly labels its three displayed rows as examples from the full 1,024-row matrix. Slide 9 explains that one tone gives one equation for three unknowns in this fit, while distinct spectral templates across the band permit joint estimation. Repeated pilots are already averaged within each tone; the subsequent covariance-weighted fit combines all tone losses without collapsing their frequency pattern into one mean. A plain mean cannot separate gas from an unknown common gain shift. Multiple tones combine independent noisy observations, with correlations accounted for by C. This is an identifiability explanation, not a quantified superiority claim over an optimized single-tone design: total transmit power is fixed and divided among tones. Calibration error proportional to the gas template remains indistinguishable from gas. Measuring calibration stability and making a controlled, equal-resource comparison remain future work.
+
+The special spectral average is q̂ = wᵀy, with wᵀ equal to the first row of (AᵀC⁻¹A)⁻¹AᵀC⁻¹. Its signed weights preserve the gas response (wᵀa = 1), cancel offset (wᵀ1 = 0) and cancel slope (wᵀu = 0), while minimizing wᵀCw under the assumed covariance. Slide 9 states these conditions and distinguishes this operation from pilot averaging within each tone. This estimator remains conditional on the specified signal and calibration model.
 
 ## V4 formula compatibility, normal quantile and unit review
 
@@ -71,12 +82,12 @@ $env:DECK_PROFILE = 'compact'
 py -3.12 scripts/prepare_zenith_compact_slides.py
 py -3.12 scripts/render_zenith_equations.py
 # Use a new filename for each revision.
-$env:DECK_NAME = 'zenith_compact_example_v5.pptx'
+$env:DECK_NAME = 'zenith_compact_example_v6.pptx'
 node scripts/build_zenith_compact_slides.mjs
 py -3.12 scripts/package_zenith_pdf.py
 ```
 
-The preparation step reads the saved experiment and checks the pilot count, complex noise variance, pilot division example, calibration conversion, observed loss and matrix solution. Tables and the spectrum chart remain native PowerPoint objects, including the chart's data workbook. Equations retain vector and LaTeX source, while the PowerPoint embeds complete PNG images for compatibility. The PDF reproduces the eight slide images with page bookmarks and source hyperlinks. Its searchable text companion is the Markdown notes file.
+The preparation step reads the saved experiment and checks the pilot count, complex noise variance, pilot division example, calibration conversion, observed loss and matrix solution. Tables and the spectrum chart remain native PowerPoint objects, including the chart's data workbook. Equations retain vector and LaTeX source, while the PowerPoint embeds complete PNG images for compatibility. The PDF reproduces the nine slide images with page bookmarks and source hyperlinks. Its searchable text companion is the Markdown notes file.
 
 ## Limitations and next steps
 

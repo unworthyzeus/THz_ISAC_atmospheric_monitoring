@@ -1,6 +1,6 @@
 # Worked CH₃CN example, calculation recipe and receiver units
 
-8 October 2026. Eight pages for a telecom audience. The underlying experiment is the saved 5 October calculation.
+8 October 2026. Nine pages for a telecom audience. The underlying experiment is the saved 5 October calculation.
 
 ## 1. The experiment and the concentration we want
 
@@ -10,15 +10,15 @@ What the receiver is looking for
 
 Gas molecules remove different amounts of power at different frequencies. We estimate how much the known CH₃CN absorption pattern has increased between two acquisitions.
 
-The reference is the baseline channel. The sample is the channel with an added gas column. Other atmospheric changes are assumed corrected or absent.
+Gas enhancement means Δc(z) = c_sample(z) − c_reference(z): extra CH₃CN above the reference atmosphere. It is simulated here, rather than measured pollution.
 
 $$
 \Delta c(z)=q\,e^{-z/(1500\,\mathrm m)}
 $$
 
-q is the surface equivalent increase in mass concentration (µg/m³). Fixing the 1,500 m profile shape lets one scalar describe the column. One ray cannot recover a concentration at every height.
+q is the surface equivalent concentration increase (µg/m³). The fixed 1,500 m profile lets one scalar describe the column; one ray cannot recover concentration at every height.
 
-Worked input: q = 50.5814 µg/m³. At 1,500 m the enhancement is 18.6079 µg/m³. The receiver must estimate q without knowing that input.
+Example input: q = 50.5814 µg/m³ (18.6079 µg/m³ at 1,500 m). It was chosen for 95% predicted detection with an assumed 0.001 dB calibration residual. The receiver estimates q without knowing this input.
 
 The specified link
 
@@ -31,7 +31,7 @@ The specified link
 | Receiver | 7 dB noise figure, 5 dB implementation loss |
 | Acquisition | 10 s reference + 10 s sample |
 
-LEO is a useful example for the full method. This is a single compound absorption test along one ray. Multiple rays and additional assumptions would be needed for a 3D image.
+HITRAN supplies molecular line data, not the concentration q. This example chooses q using page 6's sensitivity calculation. A 3D image would need multiple rays and additional assumptions.
 
 Conditions: Actual HITRAN data and ITU atmosphere models support the calculation. The gas profile, hardware and receiver observations are modeled.
 
@@ -213,7 +213,7 @@ $$
 | 511 | 4.032712 | 1 | -0.000489 |
 | 1023 | 7.500802 | 1 | 0.500000 |
 
-A is 1,024 × 3. aₖ is in dB/(µg/m³). uₖ spans −0.5 to +0.5. b₀ is a common shift, b₁ a spectral tilt. ε contains the remaining thermal and calibration errors.
+Only 3 example rows are shown; the fit uses all 1,024. aₖ: dB/(µg/m³); uₖ: −0.5 to +0.5. b₀ is a common shift, b₁ a tilt; ε is the remaining error.
 
 $$
 C_{ij}(0)=\delta_{ij}v_i(0)+(0.001)^2 e^{-|f_i-f_j|/(10\,\mathrm{GHz})}
@@ -237,15 +237,18 @@ Sources:
 
 ## 6. Solve for concentration and make the decision
 
-The full 1,024 tone data produce the system below. The concentration estimate and its uncertainty determine the detection decision.
+Fit yₖ = aₖq + b₀ + b₁uₖ + εₖ to all 1,024 tones. q is the concentration increase (µg/m³); b₀ and b₁ are gain offset and slope (dB).
 
-| Equation | Coefficient of q | Coefficient of b₀ | Coefficient of b₁ | Right side g |
-| --- | --- | --- | --- | --- |
-| 1 | 0.301344020 | 458.463514 | 127.082723 | 15.066265191 |
-| 2 | 458.463513671 | 983654.579709 | -223.779287 | 22141.401031152 |
-| 3 | 127.082722926 | -223.779287 | 198502.414349 | 7023.360955313 |
+G = AᵀC⁻¹A (3 × 3): weighted overlap between the gas, offset and slope templates.
+g = AᵀC⁻¹y (3 × 1): weighted match of those templates to the 1,024 observed losses.
 
-Columns correspond to q in µg/m³ and b₀, b₁ in dB. The displayed coefficients are rounded.
+| Normal equation | Expanded equation: Gθ = g, with θ = [q, b₀, b₁]ᵀ |
+| --- | --- |
+| 1. Concentration q | 0.301344020 q + 458.463514 b₀ + 127.082723 b₁ = 15.066265191 |
+| 2. Gain offset b₀ | 458.463513671 q + 983654.579709 b₀ − 223.779287 b₁ = 22141.401031152 |
+| 3. Gain slope b₁ | 127.082722926 q − 223.779287 b₀ + 198502.414349 b₁ = 7023.360955313 |
+
+Minimize J = (y − Aθ)ᵀC⁻¹(y − Aθ). Rows set ∂J/∂q = 0, ∂J/∂b₀ = 0 and ∂J/∂b₁ = 0. Coefficients are rounded.
 
 The estimate after fitting gain
 
@@ -275,6 +278,15 @@ Conditions: Conditional example: ideal tracking, matched background, 20 s total 
 No atmospheric detection measurement or 3D reconstruction is established by this example.
 
 The entries displayed in G and g are rounded, so calculations use the saved full precision arrays. Solving gives qhat=39.4246755529, b0=0.0041365093 dB and b1=0.0101464333 dB. To see where the q uncertainty comes from, partition the two gain parameters as b. The Schur complement is Iq=Gqq−Gqb Gbb^−1 Gbq=0.301344020469−0.295174434664=0.006169585805. The remaining score is tq=gq−Gqb Gbb^−1 gb=15.066265190809−14.823031272136=0.243233918673, so qhat=tq/Iq. Iq has units (µg/m³)^−2 and tq has units (µg/m³)^−1. The standard deviation under the null is 1/sqrt(Iq). A 1% one sided false alarm rate for this prespecified compound uses the standard normal 99th percentile 2.326347874. The input q95 solves q95=qth+1.644853627 s1(q95), using s1=12.7452164389 and the alternative covariance under the same fixed estimator. In 10,000 simulated pairs, response is 94.75% at this input and only 1.31% at 1 µg/m³. Both remain conditional on the unmeasured calibration residual, matched atmosphere and ideal tracking. The next physical step is to measure blank stability and test independently measured concentrations. A detection here means a statistically significant enhancement of the prespecified template within the model, not exact concentration or unique identification in a changing gas mixture.
+
+These are the three weighted least-squares normal equations, not three individual tone measurements. q is the surface equivalent increase in CH3CN mass concentration relative to the matched reference, in micrograms/m3. Define theta = [q, b0, b1]^T, A = [a, 1, u] and residual r = y - A theta. The vector a contains the modeled gas absorption per concentration unit; 1 represents a common gain shift and u a normalized frequency trend. The vector y contains 1,024 observed differential losses and C = C(0) their assumed covariance. G = A^T C^-1 A is a 3 by 3 matrix of weighted overlaps between these templates. Its diagonal entries measure template strength under this weighting, while off-diagonal entries describe overlap between fit directions. Lowercase g = A^T C^-1 y is a three-entry vector of weighted matches between the templates and observed losses. Neither G nor g is a gas concentration; q is the unknown concentration component.
+
+Minimize J(theta) = r^T C^-1 r with the fixed null covariance. Setting the derivative with respect to q to zero gives a^T C^-1 r = 0; the derivative with respect to b0 gives 1^T C^-1 r = 0; and the derivative with respect to b1 gives u^T C^-1 r = 0. Together these say G theta = g. Every row contains information from all 1,024 tones, and all three unknowns must be solved together. The labels identify which derivative produced each row, not a separate one-variable solve.
+
+Expanded numerical normal equations (rounded for display):
+0.301344020 q + 458.463514 b₀ + 127.082723 b₁ = 15.066265191
+458.463513671 q + 983654.579709 b₀ − 223.779287 b₁ = 22141.401031152
+127.082722926 q − 223.779287 b₀ + 198502.414349 b₁ = 7023.360955313
 
 Normal distribution notation: Phi(z) = P(Z <= z) for a standard normal variable Z with mean zero and standard deviation one. Phi takes a cutoff and returns the probability below it. Phi inverse takes a probability and returns the cutoff. Phi inverse(0.99) = 2.326347874, so P(Z > 2.326347874) = 0.01. The inverse superscript denotes the inverse function, not a reciprocal. Phi(0.99) itself is approximately 0.838913, which is a different operation. Under the no-enhancement hypothesis q = 0, qhat/s0 has a standard normal distribution in the assumed model. Multiplying the cutoff by s0 therefore gives the concentration threshold with a nominal one-sided 1% false-alarm probability. This does not mean a detection has a 99% probability of being correct.
 
@@ -399,3 +411,46 @@ Sources:
 - [RF units](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/gettingstarted/content/concepts_decibels.htm)
 - [Numerical steps](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/results/zenith_worked_steps/worked_steps.json)
 - [Observations](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/results/zenith_worked_steps/complex_receiver_steps.csv)
+
+## 9. Why use all 1,024 tones instead of one?
+
+The extra loss changes with frequency. That pattern helps separate the gas contribution from a common gain shift and a gain slope.
+
+One tone: one loss, three unknowns
+
+At one frequency, the observation model is
+yₖ = aₖq + b₀ + b₁uₖ + εₖ.
+
+A weaker signal can come from extra gas, a common gain change, or a frequency slope. One scalar observation cannot determine all three unknowns.
+
+Even without noise, any chosen q and b₁ can be matched by setting b₀ = yₖ − aₖq − b₁uₖ. Independent knowledge of the gain terms would be needed to infer q from that tone alone.
+
+A plain average of all 1,024 losses gives one number. Gas and a common gain change can both shift that mean; averaging discards the spectral shape that helps distinguish them.
+
+Our special average: a weighted spectral fit
+
+q̂ = Σₖ wₖyₖ uses all 1,024 tone losses.
+Weights depend on the gas pattern a and error covariance C; they need not sum to one.
+
+| Weight constraint | What it does |
+| --- | --- |
+| Σₖ wₖaₖ = 1 | Preserves the gas concentration q |
+| Σₖ wₖ = 0 | Cancels a common gain offset b₀ |
+| Σₖ wₖuₖ = 0 | Cancels the gain slope b₁ |
+
+Some weights are negative to cancel gain changes. Subject to these constraints, the fit chooses weights that minimize predicted variance wᵀCw, accounting for noise and correlations.
+
+Before this fit, each tone averages 266,880 pilots. More tones do not guarantee a √1,024 improvement: total 25 dBm power is split across the tones.
+
+Conditions: Conditional example: ideal tracking, matched background, 20 s total and an assumed, unmeasured 0.001 dB calibration residual.
+A calibration error with exactly the gas spectrum remains indistinguishable from gas, even with all tones.
+
+This slide explains identifiability in the existing three-parameter fit, without introducing a new experiment or a quantitative performance comparison against an optimized single-tone design. One tone supplies one scalar loss y_k for three unknowns q, b0 and b1. Its design matrix has rank at most one, so concentration cannot be identified jointly with both unconstrained gain parameters from that tone alone. If gain offset and slope were independently known, one tone with nonzero gas response could estimate q. Across the full band, A = [a, 1, u] has 1,024 rows; the known gas spectral variation provides a fit direction distinct from the constant and slope columns. The weighted least-squares estimator combines tones using the assumed covariance, including correlations. More tones can supply additional spectral information and independent noise averaging, but do not imply a universal sqrt(1024) improvement. The total 25 dBm transmit power is split across the tones. Reallocating all power to one tone would change its SNR and requires a separate constrained comparison. Broad, smooth gas signatures can still overlap strongly with gain trends, reducing the information left for q. An error proportional to the gas template is structurally indistinguishable from gas in this spectral model. Calibration and the stated covariance remain essential.
+
+The special average is a signed linear combination of the tone losses, not an ordinary mean. The weighted least-squares solution is theta_hat = (A^T C^-1 A)^-1 A^T C^-1 y. Taking its first row gives qhat = w^T y, with w^T = [1, 0, 0] (A^T C^-1 A)^-1 A^T C^-1. The weights satisfy w^T a = 1, w^T 1 = 0 and w^T u = 0, so the expected gas response is q and the fitted common offset and slope cancel. Among linear unbiased estimators under the assumed covariance, these weights minimize w^T C w. Their units are (micrograms/m3)/dB, since y is in dB and q is a concentration. Their sum is zero, not one, and some weights must be negative. Independent pilot repetition is averaged first within each tone; this spectral combination is a subsequent operation. A calibration residual aligned with a passes through exactly like gas and cannot be rejected by these constraints.
+
+Sources:
+
+- [Matrices](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/results/zenith_single_compound/matrices.npz)
+- [Numerical steps](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/results/zenith_worked_steps/worked_steps.json)
+- [Hardware audit](https://github.com/unworthyzeus/THz_ISAC_atmospheric_monitoring/blob/d4a25c4/docs/54_supervisor_revision_2026_10_05.md)

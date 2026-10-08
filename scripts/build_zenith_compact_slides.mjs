@@ -72,7 +72,7 @@ for(let i=0;i<content.length;i++){
 }
 const candidate=path.join(TMP,'candidate.pptx');
 await (await PresentationFile.exportPptx(p)).save(candidate);
-const finalPath=path.join(ROOT,'output/presentations',process.env.DECK_NAME??'zenith_compact_example_v4.pptx');
+const finalPath=path.join(ROOT,'output/presentations',process.env.DECK_NAME??'zenith_compact_example_v5.pptx');
 const result=await finalizePresentation({workspaceDir:ROOT,candidatePath:candidate,finalPath,pythonExecutable:PYTHON,
   explicitTotalSlideCount:content.length,requiredNativeTableOwnerSlides:[...new Set(tables)],requiredNativeChartOwnerSlides:charts,
   integrityValidatorPath:path.join(SKILL,'container_tools/inspect_presentation_package_integrity.py'),
