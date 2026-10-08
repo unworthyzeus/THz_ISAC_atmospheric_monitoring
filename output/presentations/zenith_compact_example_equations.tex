@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage[paperwidth=24in,paperheight=5in,margin=0.2in]{geometry}
+\usepackage{amsmath,amssymb,xcolor}
+\definecolor{eqcolor}{HTML}{126B76}
+\pagestyle{empty}
+\begin{document}
+\color{eqcolor}\fontsize{27}{36}\selectfont
+% Slide 1a
+\[\displaystyle \Delta c(z)=q\,e^{-z/(1500\,\mathrm m)}\]
+
+\newpage
+% Slide 2a
+\[\displaystyle \textstyle\alpha(f,z)=n(z)\sigma(f,z),\quad\tau(f)=\int_{z_g}^{z_s}\alpha(f,z)\,\mathrm dz\]
+
+\newpage
+% Slide 3a
+\[\displaystyle \Delta A_k=a_kq,\quad a_0=0.0002408199585\ \mathrm{dB}/(\mathrm{\mu g/m^3})\]
+
+\newpage
+% Slide 4a
+\[\displaystyle \begin{aligned}R_{k,m}&=h_kX_{k,m}+W_{k,m}\\\widehat h_k&=(1/M)\textstyle\sum_{m=1}^{M}R_{k,m}/X_{k,m}\end{aligned}\]
+
+\newpage
+% Slide 4b
+\[\displaystyle \begin{aligned}\widehat h_{0,0}&=1.0009162403+j\,0.0004400251\\\widehat h_{1,0}&=1.0007326946-j\,0.0009412581\end{aligned}\]
+
+\newpage
+% Slide 4c
+\[\displaystyle -20\log_{10}(|\widehat h_{1,0}|/|\widehat h_{0,0}|)=0.0015899416\ \mathrm{dB}\]
+
+\newpage
+% Slide 5a
+\[\displaystyle y_0=0.0015899416-0.0020537566=-0.0004638149\ \mathrm{dB}\]
+
+\newpage
+% Slide 5b
+\[\displaystyle y_k=a_kq+b_0+b_1u_k+\varepsilon_k,\quad A_{k,:}=[a_k\ 1\ u_k]\]
+
+\newpage
+% Slide 5c
+\[\displaystyle C_{ij}(0)=\delta_{ij}v_i(0)+(0.001)^2 e^{-|f_i-f_j|/(10\,\mathrm{GHz})}\]
+
+\newpage
+% Slide 6a
+\[\displaystyle \widehat q=t_q/I_q=39.4247\ \mathrm{\mu g/m^3}\]
+
+\newpage
+% Slide 6b
+\[\displaystyle \begin{aligned}s_0&=I_q^{-1/2}=12.73128\ \mathrm{\mu g/m^3}\\q_{\rm th}&=2.32635\,s_0=29.61738\ \mathrm{\mu g/m^3}\end{aligned}\]
+
+\newpage
+% Slide 7a
+\[\displaystyle \textstyle a_k=(10/\ln10)\sum_\ell\sigma(f_k,z_\ell)n_1(z_\ell)w_\ell\]
+
+\newpage
+% Slide 7b
+\[\displaystyle \begin{aligned}\widehat h_{r,k}&=(1/M)\textstyle\sum_m R_{r,k,m}/X_{k,m},\quad r\in\{0,1\}\\y_k&=-20\log_{10}(|\widehat h_{1,k}|/|\widehat h_{0,k}|)+e_k\end{aligned}\]
+
+\newpage
+% Slide 7c
+\[\displaystyle \begin{aligned}A&=[\mathbf a\ \mathbf1\ \mathbf u],\quad C=C(0)\ \text{on page 5}\\G&=A^TC^{-1}A,\qquad g=A^TC^{-1}\mathbf y\end{aligned}\]
+
+\newpage
+% Slide 7d
+\[\displaystyle \begin{aligned}I_q&=G_{qq}-G_{qb}G_{bb}^{-1}G_{bq}\\t_q&=g_q-G_{qb}G_{bb}^{-1}g_b\end{aligned}\]
+
+\newpage
+% Slide 7e
+\[\displaystyle \begin{aligned}\widehat q&=t_q/I_q=39.42467555\ \mathrm{\mu g/m^3}\\s_0&=I_q^{-1/2}=12.73127783\ \mathrm{\mu g/m^3}\end{aligned}\]
+
+\newpage
+% Slide 7f
+\[\displaystyle \begin{aligned}q_{\rm th}&=\Phi^{-1}(0.99)s_0=29.61738111\ \mathrm{\mu g/m^3}\\\widehat q&=39.4247>q_{\rm th}\quad\Rightarrow\quad\text{detection}\end{aligned}\]
+
+\end{document}
