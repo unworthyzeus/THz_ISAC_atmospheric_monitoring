@@ -1,0 +1,59 @@
+{
+  "study_date": "2026-10-14",
+  "purpose": "Noiseless observability and line broadening demonstration",
+  "assumptions": {
+    "temperature_k": 296.0,
+    "pressure_pa": 101325.0,
+    "water_pressure_pa": 1000.0,
+    "co_enhancement_ppm": 1.0,
+    "cloud_interval_m": [
+      20.0,
+      40.0
+    ],
+    "distance_equals_atmospheric_length": true,
+    "exact_background_and_calibration": true,
+    "phase": "Only magnitudes modeled; molecular dispersion not computed",
+    "spectroscopy": "HITRAN isotopologue 1, 296 K, trace limit air broadened Voigt, no wing cutoff within 0 to 3000 GHz catalog",
+    "scenario_values": "Chosen inputs, not measured environmental conditions"
+  },
+  "sources": {
+    "hitran": "https://hitran.org/hapi/",
+    "hitran_request": "molecule 5, isotopologue 1, 0 to 3000/29.9792458 cm^-1",
+    "jpl": "https://spec.jpl.nasa.gov/ftp/pub/catalog/c028001.cat",
+    "itu": "https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.676-13-202208-I!!PDF-E.pdf"
+  },
+  "checks": {
+    "all_passed": true,
+    "line_records": 146,
+    "in_band_ground_state_lines": 8,
+    "hapi_max_relative_cross_section_difference": 1.4377388168895777e-13,
+    "max_hitran_jpl_center_difference_mhz": 0.012383888602585102,
+    "matrix_shape_frequency_length": [
+      4717,
+      200
+    ],
+    "max_optical_depth_recovery_error": 5.495012689957782e-16,
+    "max_recovered_ppm_error": 7.833733661755105e-13,
+    "single_line_integral": 1.0000000000000127,
+    "zero_loss_before_cloud": true,
+    "constant_loss_after_cloud": true,
+    "unconstrained_background_ambiguity_verified": true,
+    "ambiguity_max_relative_roundoff": 2.842170943040401e-14,
+    "ambiguity_roundoff_tolerance": 6.606486814809004e-13
+  },
+  "limitations": [
+    "No measured channel or demonstrated sensitivity",
+    "No atmospheric or calibration uncertainty",
+    "Minor isotopologues and non-Voigt effects omitted",
+    "Far wing accuracy is not validated by this example",
+    "The same forward model is used in recovery; this verifies inversion algebra only"
+  ],
+  "sha256": {
+    "results/restart_2026_10_14/sources/CO_iso1_0_3000GHz.data": "5329cca54d1618313132a62a2be665790e3b7e7757b978fc0a5d5e0808a7e462",
+    "results/restart_2026_10_14/sources/jpl_c028001.cat": "7792f9a3a28ad1adef2960a099eee64bfbec539f816516d04372ea2465540d94",
+    "src/thz_isac/microwave_absorption.py": "16ffc15e927e03b940295af40951cb54cf89a4c07e2a07f153f1a9ef3c852e9b",
+    "src/thz_isac/data/itu676_13_oxygen.csv": "70ac1100b8017e0aebe144b0f661e79772c86d39dd904d14a9549af2d7b1067b",
+    "src/thz_isac/data/itu676_13_water.csv": "6180c28575cb60f021a1246d3913c9c02f86527a6ef5db46db0c68107fe5ac25",
+    "scripts/restart_co_observability.py": "c13d9a2fd7c0cc6098541d4d4b75a892e72078438447678ca9e05900eac92ce8"
+  }
+}

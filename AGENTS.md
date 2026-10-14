@@ -2,6 +2,12 @@
 
 Commit completed changes and push to `main` by default, unless the user explicitly requests otherwise.
 
+## Active research scope
+
+The user reset the research scope on October 14, 2026. Follow `README.md` and `docs/59_restart_observability_2026_10_14.md`: CO first, 60 to 1000 GHz, h(f, l), no receiver noise, and separation of atmospheric and chemical absorption. Historical task lists, detector designs and completion claims do not define the active work. Other gases, mixtures and angular dependence are later extensions.
+
+## Project language and research records
+
 All project facing text must be written in English.
 
 This includes:

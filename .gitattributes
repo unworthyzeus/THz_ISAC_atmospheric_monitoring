@@ -57,3 +57,9 @@ tests/test_joint_receiver_metrics.py -text
 docs/49*.md -text
 docs/5[01]*.md -text
 paper/joint_receiver_revision.tex -text
+
+# Preserve the restart sources and the script recorded in its manifest.
+results/restart_2026_10_14/** -text
+scripts/restart_co_observability.py -text
+# The unmodified JPL catalog uses padded, fixed width records.
+results/restart_2026_10_14/sources/jpl_c028001.cat whitespace=-blank-at-eol
