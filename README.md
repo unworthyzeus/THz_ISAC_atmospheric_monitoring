@@ -6,6 +6,8 @@ The immediate question for the supervisor meeting is: **How can we observe chemi
 
 Read the [new foundations and meeting brief](docs/59_restart_observability_2026_10_14.md). It derives the reference ratio, explains why absorption lines are continuous, distinguishes path length from cloud thickness, and states the conditions for unique separation.
 
+The meeting presentation is available as an [editable PowerPoint](output/presentations/co_observability_editorial_v2.pptx) and a [reading PDF](output/presentations/co_observability_editorial_v2.pdf). Its 14 slides use a new ivory, charcoal and copper design. The [presenter notes](output/presentations/co_observability_presenter_notes.md) contain the assumptions, derivations and source links. See the [presentation record](docs/60_co_observability_presentation.md) for the content scope and reproduction steps.
+
 With a matched atmospheric reference, chemical optical depth follows from `tau_c = -2 ln(|h| / |h_0|)`. Without a reference or constraints on the atmosphere, its factor and the chemical factor cannot be uniquely separated. Zero receiver noise does not remove this ambiguity.
 
 The [first CO example](scripts/restart_co_observability.py) uses fresh HITRAN line parameters, JPL line centers and an ITU P.676 background. It provides:
