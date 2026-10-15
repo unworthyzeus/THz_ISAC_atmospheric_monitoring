@@ -47,3 +47,11 @@ Intermediate numerical evidence and slide renders are placed under `tmp/co_obser
 ## Remaining work and next steps
 
 The next research decision is how to obtain the reference channel: a controlled matched measurement or a model with explicitly constrained atmospheric and instrumental quantities. Then vary those uncertain quantities and test whether their spectral responses can reproduce a change in CO column. Only after that should the study extend to other gases, mixtures and angular dependence.
+
+## Concise speaking script, October 15, 2026
+
+The user requested a short English script to accompany the presentation. The [two page script](../output/pdf/co_observability_speaking_script.pdf) provides a few spoken sentences for each of the 14 slides, with 551 spoken words and the central optical depth equation. It condenses the existing presenter notes into language suitable for oral delivery.
+
+This adds no new calculations or performance claims. The script retains the exact atmosphere and calibration assumptions, the distinction between molecular column and concentration, and the distinction between a model consistency check and a practical detection limit. The detailed source references and qualifications remain in the full presenter notes. The research questions and next steps above remain open.
+
+Rebuild with `python scripts/build_co_speaking_script.py`, using a Python environment with ReportLab and pypdf and the installed Georgia font. The output contains selectable text and embedded fonts.
