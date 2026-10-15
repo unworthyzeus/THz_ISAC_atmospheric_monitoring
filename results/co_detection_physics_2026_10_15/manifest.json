@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-15",
+  "purpose": "Explain physical linewidths and quantify signal scale without asserting experimental detectability",
+  "assumptions": {
+    "temperature_k": 296,
+    "total_pressure_pa": 101325,
+    "water_reference_pa": 1000,
+    "water_perturbed_pa": 1010,
+    "atmospheric_path_m": 200,
+    "cloud_length_m": 20,
+    "co_enhancement_ppm": 1,
+    "receiver_noise": "absent",
+    "humidity_case": "Chosen deterministic sensitivity perturbation, not an uncertainty distribution"
+  },
+  "first_line": {
+    "center_ghz": 115.2711894161114,
+    "gamma_ghz": 2.40733343774,
+    "lorentz_fwhm_ghz": 4.81466687548,
+    "t2_ps": 66.11254618774775,
+    "doppler_fwhm_mhz": 0.2684609772297709,
+    "width_ratio_lorentz_to_doppler": 17934.326713558872
+  },
+  "humidity_345ghz": {
+    "center_ghz": 345.79600041029545,
+    "air_hwhm_ghz_at_296K_1atm": 2.13452230096,
+    "background_db_at_200m": 1.6895278421301216,
+    "co_extra_db_for_1ppm_20m": 7.966024085408678e-05,
+    "co_amplitude_transmission": 0.9999908288179008,
+    "relative_amplitude_drop_ppm": 9.171182099199093,
+    "water_plus_10pa_residual_db": 0.0186961338868481,
+    "water_mismatch_to_co_loss_ratio": 234.69843533480778
+  },
+  "checks": {
+    "normalized_doppler_area": 1.0,
+    "linewidth_coherence_relation": true,
+    "baseline_matches_saved_calculation": true,
+    "amplitude_loss_consistency": true
+  },
+  "limitations": [
+    "No measured channel or demonstrated hardware precision",
+    "HITRAN main isotopologue Voigt approximation",
+    "Effective T2 inferred from the same Lorentz width, not independently measured",
+    "Humidity sensitivity is not a complete uncertainty analysis or identifiability test",
+    "No joint atmosphere and gas retrieval or detection threshold is claimed",
+    "Historical CH3CN curve retained only to explain the attached image"
+  ],
+  "source_sha256": {
+    "results/restart_2026_10_14/co_line_parameters.csv": "42d1605ec0c156ad4cea099149224273be8d31b7608403fa814a62d448e32bd1",
+    "results/restart_2026_10_14/channel_matrices.npz": "1ee966844bc00bf26a5de95ce8819316bc80d34dea21fab96a81b0f15518089e",
+    "src/thz_isac/microwave_absorption.py": "16ffc15e927e03b940295af40951cb54cf89a4c07e2a07f153f1a9ef3c852e9b",
+    "results/zenith_single_compound/tone_by_tone.csv": "43c391404b6121ba213e92c98764d8d13ce8a690242b4e7ba6f28e36727bb76a",
+    "results/zenith_worked_steps/worked_steps.json": "30f539d29fdde53106de20a05ca7c452da128d4aa553b224dc45c80e515a23c1"
+  }
+}
