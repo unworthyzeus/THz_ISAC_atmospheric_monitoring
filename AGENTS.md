@@ -6,6 +6,8 @@ Commit completed changes and push to `main` by default, unless the user explicit
 
 The user reset the research scope on October 14, 2026. Follow `README.md` and `docs/59_restart_observability_2026_10_14.md`: CO first, 60 to 1000 GHz, h(f, l), no receiver noise, and separation of atmospheric and chemical absorption. Historical task lists, detector designs and completion claims do not define the active work. Other gases, mixtures and angular dependence are later extensions.
 
+The October 15 follow up in `docs/62_co_concentration_and_detection_requirements.md` uses a 200 m path through CO enriched air and a chosen total concentration upper bound of 1.5 ppm. Keep total concentration distinct from enhancement above reference. The previous 20 m cloud was an illustrative geometry, not a physical absorption limit. The user maintains a separate Drive presentation copy.
+
 ## Project language and research records
 
 All project facing text must be written in English.

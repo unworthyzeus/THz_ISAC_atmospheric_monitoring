@@ -1,0 +1,4 @@
+parameter,background_loss_derivative_db_per_unit,linearized_magnitude_equivalent_to_1ppm_co,one_at_a_time_signed_change_equivalent_to_1ppm_co
+water_partial_pressure_pa,0.04131578434144245,0.2536607685134117,0.2536561832457854
+temperature_k,-0.4477223737495706,0.023407795147728477,-0.023403456070948597
+total_pressure_pa,0.0002650045162368997,39.5472264269487,39.552128875952825

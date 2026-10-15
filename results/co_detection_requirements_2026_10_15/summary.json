@@ -1,0 +1,288 @@
+{
+  "date": "2026-10-15",
+  "purpose": "Specify CO signal scale and conditional concentration requirements, not instrument performance",
+  "assumptions": {
+    "temperature_k": 296.0,
+    "total_pressure_pa": 101325.0,
+    "water_partial_pressure_pa": 1000,
+    "cloud_length_m": 20.0,
+    "total_atmospheric_path_m": 200,
+    "concentration": "CO enhancement above matched reference",
+    "receiver_noise_in_forward_model": "absent",
+    "line_model": "Saved HITRAN main isotopologue, trace gas air broadened Voigt at 296 K",
+    "conditional_thresholds": "Chosen reliable differential loss resolutions, not standard deviations or measured specifications"
+  },
+  "strongest_in_band_co_peak": {
+    "catalog_center_ghz": 921.7996913527024,
+    "modeled_peak_ghz": 921.8118329115571,
+    "co_db_per_ppm_for_cloud": 0.0010480193607784675,
+    "atmospheric_loss_db_for_200m": 38.38675663191651,
+    "atmospheric_power_transmission": 0.00014498542194561344,
+    "co_power_drop_percent_per_1ppm": 0.024128626151643257,
+    "co_amplitude_drop_percent_per_1ppm": 0.012065040901881447,
+    "water_1000_to_1010pa_residual_db": 0.41345226357493203,
+    "water_residual_equivalent_co_ppm_at_one_frequency": 394.5082305233562,
+    "free_space_loss_db_for_200m_isotropic_antennas": 137.76122870876793
+  },
+  "conditional_concentration_requirements": [
+    {
+      "reliably_resolvable_extra_loss_db_assumed": 0.1,
+      "co_concentration_ppm_for_cloud": 95.41808457214009
+    },
+    {
+      "reliably_resolvable_extra_loss_db_assumed": 0.01,
+      "co_concentration_ppm_for_cloud": 9.541808457214008
+    },
+    {
+      "reliably_resolvable_extra_loss_db_assumed": 0.001,
+      "co_concentration_ppm_for_cloud": 0.9541808457214008
+    },
+    {
+      "reliably_resolvable_extra_loss_db_assumed": 0.0001,
+      "co_concentration_ppm_for_cloud": 0.09541808457214009
+    }
+  ],
+  "concentration_signal_scale": [
+    {
+      "co_concentration_ppm": 0.01,
+      "extra_co_loss_db_at_strongest_peak": 1.0480193607784675e-05
+    },
+    {
+      "co_concentration_ppm": 0.04,
+      "extra_co_loss_db_at_strongest_peak": 4.19207744311387e-05
+    },
+    {
+      "co_concentration_ppm": 0.05,
+      "extra_co_loss_db_at_strongest_peak": 5.240096803892338e-05
+    },
+    {
+      "co_concentration_ppm": 0.1,
+      "extra_co_loss_db_at_strongest_peak": 0.00010480193607784676
+    },
+    {
+      "co_concentration_ppm": 0.15,
+      "extra_co_loss_db_at_strongest_peak": 0.00015720290411677012
+    },
+    {
+      "co_concentration_ppm": 0.35,
+      "extra_co_loss_db_at_strongest_peak": 0.0003668067762724636
+    },
+    {
+      "co_concentration_ppm": 0.5,
+      "extra_co_loss_db_at_strongest_peak": 0.0005240096803892338
+    },
+    {
+      "co_concentration_ppm": 1.0,
+      "extra_co_loss_db_at_strongest_peak": 0.0010480193607784675
+    },
+    {
+      "co_concentration_ppm": 1.5,
+      "extra_co_loss_db_at_strongest_peak": 0.0015720290411677012
+    }
+  ],
+  "absolute_concentration_examples": [
+    {
+      "total_co_ppm": 0.15,
+      "reference_co_ppm": 0.0,
+      "enhancement_co_ppm": 0.15,
+      "extra_loss_db_at_strongest_peak": 0.00015720290411677012
+    },
+    {
+      "total_co_ppm": 0.35,
+      "reference_co_ppm": 0.0,
+      "enhancement_co_ppm": 0.35,
+      "extra_loss_db_at_strongest_peak": 0.0003668067762724636
+    },
+    {
+      "total_co_ppm": 0.5,
+      "reference_co_ppm": 0.0,
+      "enhancement_co_ppm": 0.5,
+      "extra_loss_db_at_strongest_peak": 0.0005240096803892338
+    },
+    {
+      "total_co_ppm": 1.0,
+      "reference_co_ppm": 0.0,
+      "enhancement_co_ppm": 1.0,
+      "extra_loss_db_at_strongest_peak": 0.0010480193607784675
+    },
+    {
+      "total_co_ppm": 1.5,
+      "reference_co_ppm": 0.0,
+      "enhancement_co_ppm": 1.5,
+      "extra_loss_db_at_strongest_peak": 0.0015720290411677012
+    },
+    {
+      "total_co_ppm": 0.15,
+      "reference_co_ppm": 0.1,
+      "enhancement_co_ppm": 0.04999999999999999,
+      "extra_loss_db_at_strongest_peak": 5.240096803892336e-05
+    },
+    {
+      "total_co_ppm": 0.35,
+      "reference_co_ppm": 0.1,
+      "enhancement_co_ppm": 0.24999999999999997,
+      "extra_loss_db_at_strongest_peak": 0.0002620048401946168
+    },
+    {
+      "total_co_ppm": 0.5,
+      "reference_co_ppm": 0.1,
+      "enhancement_co_ppm": 0.4,
+      "extra_loss_db_at_strongest_peak": 0.00041920774431138705
+    },
+    {
+      "total_co_ppm": 1.0,
+      "reference_co_ppm": 0.1,
+      "enhancement_co_ppm": 0.9,
+      "extra_loss_db_at_strongest_peak": 0.0009432174247006208
+    },
+    {
+      "total_co_ppm": 1.5,
+      "reference_co_ppm": 0.1,
+      "enhancement_co_ppm": 1.4,
+      "extra_loss_db_at_strongest_peak": 0.0014672271050898543
+    }
+  ],
+  "chosen_total_concentration_upper_ppm": 1.5,
+  "formula": "C_min_ppm = delta_A_reliable_db / 0.0010480193607784675 * (20 m / cloud_length_m)",
+  "statistical_convention": {
+    "false_alarm_probability_per_test": 0.01,
+    "detection_probability": 0.95,
+    "signal_to_std_requirement": 3.971201500992313,
+    "assumptions": "One preselected frequency, known positive signal, zero mean Gaussian residual with known sigma, no systematic bias; no search over gases or frequencies",
+    "sigma_definition": "Standard deviation of the final differential dB residual, including reference error"
+  },
+  "statistical_precision_requirements": [
+    {
+      "co_concentration_ppm": 0.01,
+      "signal_db": 1.0480193607784675e-05,
+      "maximum_gaussian_residual_std_db": 2.6390485612895526e-06
+    },
+    {
+      "co_concentration_ppm": 0.04,
+      "signal_db": 4.19207744311387e-05,
+      "maximum_gaussian_residual_std_db": 1.055619424515821e-05
+    },
+    {
+      "co_concentration_ppm": 0.05,
+      "signal_db": 5.240096803892338e-05,
+      "maximum_gaussian_residual_std_db": 1.3195242806447764e-05
+    },
+    {
+      "co_concentration_ppm": 0.1,
+      "signal_db": 0.00010480193607784676,
+      "maximum_gaussian_residual_std_db": 2.6390485612895527e-05
+    },
+    {
+      "co_concentration_ppm": 0.15,
+      "signal_db": 0.00015720290411677012,
+      "maximum_gaussian_residual_std_db": 3.9585728419343284e-05
+    },
+    {
+      "co_concentration_ppm": 0.35,
+      "signal_db": 0.0003668067762724636,
+      "maximum_gaussian_residual_std_db": 9.236669964513432e-05
+    },
+    {
+      "co_concentration_ppm": 0.5,
+      "signal_db": 0.0005240096803892338,
+      "maximum_gaussian_residual_std_db": 0.00013195242806447762
+    },
+    {
+      "co_concentration_ppm": 1.0,
+      "signal_db": 0.0010480193607784675,
+      "maximum_gaussian_residual_std_db": 0.00026390485612895524
+    },
+    {
+      "co_concentration_ppm": 1.5,
+      "signal_db": 0.0015720290411677012,
+      "maximum_gaussian_residual_std_db": 0.00039585728419343284
+    }
+  ],
+  "conditional_statistical_limits": [
+    {
+      "assumed_gaussian_residual_std_db": 0.01,
+      "co_ppm_for_95percent_detection_1percent_false_alarm": 37.89244406746942
+    },
+    {
+      "assumed_gaussian_residual_std_db": 0.001,
+      "co_ppm_for_95percent_detection_1percent_false_alarm": 3.789244406746942
+    },
+    {
+      "assumed_gaussian_residual_std_db": 0.0001,
+      "co_ppm_for_95percent_detection_1percent_false_alarm": 0.37892444067469416
+    }
+  ],
+  "single_frequency_atmospheric_sensitivity": [
+    {
+      "parameter": "water_partial_pressure_pa",
+      "background_loss_derivative_db_per_unit": 0.04131578434147798,
+      "linearized_magnitude_equivalent_to_1ppm_co": 0.02536607685131936,
+      "one_at_a_time_signed_change_equivalent_to_1ppm_co": 0.02536603099684186
+    },
+    {
+      "parameter": "temperature_k",
+      "background_loss_derivative_db_per_unit": -0.4477223737495706,
+      "linearized_magnitude_equivalent_to_1ppm_co": 0.002340779514772848,
+      "one_at_a_time_signed_change_equivalent_to_1ppm_co": -0.002340736115720912
+    },
+    {
+      "parameter": "total_pressure_pa",
+      "background_loss_derivative_db_per_unit": 0.0002650045162440051,
+      "linearized_magnitude_equivalent_to_1ppm_co": 3.954722642588834,
+      "one_at_a_time_signed_change_equivalent_to_1ppm_co": 3.954771658346058
+    }
+  ],
+  "local_spectral_identifiability": {
+    "frequency_range_ghz": [
+      906.8118329115571,
+      936.8118329115571
+    ],
+    "frequency_step_ghz": 0.1,
+    "samples": 301,
+    "nuisance_parameters": [
+      "water_partial_pressure_pa",
+      "temperature_k",
+      "total_pressure_pa",
+      "constant_gain_db",
+      "linear_gain_db"
+    ],
+    "metric": "Equal frequency weights in differential dB; not an instrument covariance model",
+    "nuisance_rank": 5,
+    "rank_with_co": 6,
+    "co_response_norm_fraction_outside_nuisance_span": 0.7325742741962699,
+    "nuisance_scaled_singular_values": [
+      1.7105933093213719,
+      1.1438168554014105,
+      0.8629755701872742,
+      0.14426396572430408,
+      0.0038216302844256912
+    ],
+    "claim": "CO adds a locally independent response for this explicit uniform atmosphere and smooth calibration model",
+    "not_claimed": "Global uniqueness, mixture separation, measured performance or a practical ppm limit"
+  },
+  "scenario_note": "Concentrations in the output are enhancements above a reference, not observed background ranges",
+  "checks": {
+    "catalog_signal_matches_saved_calculation": true,
+    "catalog_atmosphere_matches_saved_calculation": true,
+    "conditional_thresholds_reproduce_assumed_loss": true,
+    "cloud_length_scaling": true,
+    "finite_difference_step_stability": true,
+    "nonlinear_check_of_single_parameter_equivalent_change": true,
+    "co_local_rank_increment": true
+  },
+  "limitations": [
+    "No measured reliable loss resolution or calibration residual",
+    "No implemented or experimentally validated detector; Gaussian operating point is a chosen requirement",
+    "Atmospheric mismatch is a deterministic example, not an uncertainty distribution",
+    "One frequency cannot establish species identity with unrestricted interference",
+    "Maximum chemical peak does not identify the best instrument operating frequency"
+  ],
+  "source_sha256": {
+    "results/restart_2026_10_14/co_line_parameters.csv": "42d1605ec0c156ad4cea099149224273be8d31b7608403fa814a62d448e32bd1",
+    "scripts/restart_co_observability.py": "c13d9a2fd7c0cc6098541d4d4b75a892e72078438447678ca9e05900eac92ce8",
+    "src/thz_isac/microwave_absorption.py": "16ffc15e927e03b940295af40951cb54cf89a4c07e2a07f153f1a9ef3c852e9b",
+    "src/thz_isac/data/itu676_13_oxygen.csv": "70ac1100b8017e0aebe144b0f661e79772c86d39dd904d14a9549af2d7b1067b",
+    "src/thz_isac/data/itu676_13_water.csv": "6180c28575cb60f021a1246d3913c9c02f86527a6ef5db46db0c68107fe5ac25",
+    "scripts/quantify_co_detection_requirements.py": "8a4f9a225e8634f4caa85bce51a797a10cacf102750429ad5a99951a5bf2d238"
+  }
+}
